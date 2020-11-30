@@ -1,5 +1,5 @@
 const fixProperties = (properties) => {
-  const validPropertiesAsOneString = `
+  const validPropertiesAsString = `
     gender
     name
     location
@@ -14,9 +14,8 @@ const fixProperties = (properties) => {
     nat
   `;
 
-  const validProperties = validPropertiesAsOneString.trim().split(/[\s+]/);
-  const propertiesToUse = properties.filter( p => validProperties.includes(p) );
-  return propertiesToUse;
+  const validProperties = validPropertiesAsString.trim().split(/[\s+]/);
+  return properties.filter( p => validProperties.includes(p) );
 };
 
 export default fixProperties;
