@@ -1,5 +1,5 @@
-import fixProperties from "/PropertiesFixer.js";
-import fixNumResults from "/NumResultsFixer.js";
+import fixProperties from "./PropertiesFixer.js";
+import fixNumResults from "./NumResultsFixer.js";
 
 const buildUrl = (numResults, properties, isToInclude) => {
   const baseUrlSlash = "https://randomuser.me/api/";

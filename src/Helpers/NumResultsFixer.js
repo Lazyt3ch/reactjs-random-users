@@ -1,7 +1,15 @@
+import constants from "../constants.js";
+
 const fixNumResults = (numResults) => {
-  const numResultsLowerLimit = 5;
-  const numResultsUpperLimit = 1000;
-  const numResultsDefault = 50;
+  const {
+    numResultsLowerLimit,
+    numResultsUpperLimit,
+    numResultsDefault,
+  } = constants.fetcher;
+
+  // const numResultsLowerLimit = 5;
+  // const numResultsUpperLimit = 1000;
+  // const numResultsDefault = 50;
 
   let numResultsToUse = numResultsDefault;
   

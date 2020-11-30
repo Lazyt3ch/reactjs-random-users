@@ -1,4 +1,4 @@
-import buildUrl from "/UrlBuilder.js";
+import buildUrl from "./UrlBuilder.js";
 
 const fetchUsers = (numResults, properties, isToInclude=true) => {
   const completeUrl = buildUrl(numResults, properties, isToInclude);

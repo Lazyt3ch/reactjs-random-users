@@ -1,12 +1,29 @@
-import React, {setState} from "react";
-import UsersGrid from "/Components/UsersGrid.js";
+import React, {useState} from "react";
+import UsersGrid from "./Components/UsersGrid.js";
+import Fetcher from "./Components/Fetcher.js";
+// import constants from "./constants.js";
 import './App.css';
 
+// console.log("UsersGrid =", UsersGrid);
+// console.log("Fetcher =", Fetcher);
+
 function App() {
-  const [numResults, setNumResults] = setState(0);
-  const [properties, setProperties] = setState("");
+  // const {
+  //   numResultsLowerLimit,
+  //   numResultsUpperLimit,
+  //   numResultsDefault,
+  // } = constants.fetcher;
+
+  const [numResults, setNumResults] = useState(0);
+  const [properties, setProperties] = useState("");
+
   return (
-    <UsersGrid numResults={numResults} properties={properties} />
+    <>
+      <Fetcher 
+        numResultsLowerLimit={numResultsLowerLimit}
+      />
+      <UsersGrid numResults={numResults} properties={properties} />
+    </>
   );
 }
 
