@@ -1,3 +1,5 @@
+import paramsFixer from "/ParamsFixer.js";
+
 const usersFetcher = (numResults, params=[]) => {
   const validParamsAsOneString = `
     gender
@@ -31,6 +33,10 @@ const usersFetcher = (numResults, params=[]) => {
 
   if (numResults < numResultsLowerLimit) {
     numResults = numResultsLowerLimit;
+  }
+
+  if (numResults > numResultsUpperLimit) {
+    numResults = numResultsUpperLimit;
   }
 
   const baseUrl = https://randomuser.me/api/;
