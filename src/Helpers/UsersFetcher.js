@@ -1,45 +1,17 @@
-import paramsFixer from "/ParamsFixer.js";
+import fixProperties from "/PropertiesFixer.js";
+import fixNumResults from "/NumResultsFixer.js";
 
-const usersFetcher = (numResults, params=[]) => {
-  const validParamsAsOneString = `
-    gender
-    name
-    location
-    email
-    login
-    registered
-    dob
-    phone
-    cell
-    id
-    picture
-    nat
-  `;
+const usersFetcher = (numResults, properties, propertiesIncluded=true) => {
+  const baseUrlSlash = "https://randomuser.me/api/";
 
-  const validParams = validParamsAsOneString.trim().split(/[\s+]/);
+  const numResultsToUse = fixNumResults(numResults);
+  const numResultsSubstr = `results=${numResultsToUse}`;
 
-  const numResultsLowerLimit = 5;
-  const numResultsUpperLimit = 1000;
-  const numResultsDefault = 100;
-  let numResultsToUse;
+  const propertiesToUse = fixProperties(properties);
+  const propertiesSubstr = properties.length
+    ? propertiesSubstr = `${propertiesIncluded ? "inc" : "exc"}=${properties.join(",")}`
+    : "";
 
-  if (typeof numResults === "number") {
-    numResultsToUse = numResults;
-  } else if (typeof numResults === "string") {
-    numResultsToUse = parseInt(numResults);
-  } else {
-    numResultsToUse = numResultsDefault;
-  }
-
-  if (numResults < numResultsLowerLimit) {
-    numResults = numResultsLowerLimit;
-  }
-
-  if (numResults > numResultsUpperLimit) {
-    numResults = numResultsUpperLimit;
-  }
-
-  const baseUrl = https://randomuser.me/api/;
 };
 
 export default usersFetcher;

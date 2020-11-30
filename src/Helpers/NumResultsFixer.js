@@ -1,15 +1,13 @@
-const numResultsFixer = (numResults) => {
+const fixNumResults = (numResults) => {
   const numResultsLowerLimit = 5;
   const numResultsUpperLimit = 1000;
   const numResultsDefault = 100;
-  let numResultsToUse;
+  let numResultsToUse = numResultsDefault;
   
   if (typeof numResults === "number") {
     numResultsToUse = numResults;
   } else if (typeof numResults === "string") {
     numResultsToUse = parseInt(numResults);
-  } else {
-    numResultsToUse = numResultsDefault;
   }
   
   if (numResultsToUse < numResultsLowerLimit) {
@@ -20,3 +18,5 @@ const numResultsFixer = (numResults) => {
 
   return numResultsToUse;    
 }
+
+export default fixNumResults;
