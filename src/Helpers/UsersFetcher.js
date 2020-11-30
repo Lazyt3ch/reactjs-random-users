@@ -1,17 +1,12 @@
-import fixProperties from "/PropertiesFixer.js";
-import fixNumResults from "/NumResultsFixer.js";
+import buildUrl from "/UrlBuilder.js";
 
-const usersFetcher = (numResults, properties, propertiesIncluded=true) => {
-  const baseUrlSlash = "https://randomuser.me/api/";
+const fetchUsers = (numResults, properties, isToInclude=true) => {
+  const completeUrl = buildUrl(numResults, properties, isToInclude);
 
-  const numResultsToUse = fixNumResults(numResults);
-  const numResultsSubstr = `results=${numResultsToUse}`;
-
-  const propertiesToUse = fixProperties(properties);
-  const propertiesSubstr = properties.length
-    ? propertiesSubstr = `${propertiesIncluded ? "inc" : "exc"}=${properties.join(",")}`
-    : "";
+  fetch(completeUrl)
+    .then(response => response.json())
+    .then(data => console.log(data));
 
 };
 
-export default usersFetcher;
+export default fetchUsers;
