@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react";
 import constants from "../constants.js";
-
+import fixNumResults from "../Helpers/NumResultsFixer.js";
 
 function FetcherSetup(props) {
   const {
@@ -19,13 +19,14 @@ function FetcherSetup(props) {
   }
 
   function handleOnChangeRange() {
-    if (numResults !== numResultsRangeRef.current.value) {
-      // TODO
-    }
+    // if (numResults !== numResultsRangeRef.current.value) {
+    //   // TODO
+    // }
+    setNumResults(numResultsRangeRef.current.value);
   }
 
   function handleOnChangeText() {
-
+    setNumResults(fixNumResults(numResultsRangeRef.current.value));
   }
 
 
@@ -39,14 +40,14 @@ function FetcherSetup(props) {
         name="num_results_range" 
         min={numResultsLowerLimit} 
         max={numResultsUpperLimit}
-        value={numResultsDefault}
+        value={numResults}
         ref={numResultsRangeRef}
         onChange={handleOnChangeRange}
       />
       <input type="text" 
         id="num_results" 
         ref={numResultsRef}
-        value={numResultsDefault}
+        value={numResults}
         onChange={handleOnChangeText}
       />
 
