@@ -4,6 +4,20 @@ const constants = {
     numResultsUpperLimit: 1000,
     numResultsDefault: 50,
   },
+  validPropertiesString: `
+    gender
+    name
+    location
+    email
+    login
+    registered
+    dob
+    phone
+    cell
+    id
+    picture
+    nat
+  `,
   
 }
 

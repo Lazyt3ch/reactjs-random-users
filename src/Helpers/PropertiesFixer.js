@@ -1,21 +1,11 @@
-const fixProperties = (properties) => {
-  const validPropertiesAsString = `
-    gender
-    name
-    location
-    email
-    login
-    registered
-    dob
-    phone
-    cell
-    id
-    picture
-    nat
-  `;
+import constants from "../constants.js";
 
-  const validProperties = validPropertiesAsString.trim().split(/[\s+]/);
-  return properties.filter( p => validProperties.includes(p) );
+const fixProperties = (properties) => {
+  const {validPropertiesAsString} = constants;
+  const validProperties = validPropertiesAsString.trim().toLowerCase().split(/[\s+]/);
+  return properties
+    .map( p => p.toLowerCase() )
+    .filter( p => validProperties.includes(p) );
 };
 
 export default fixProperties;
