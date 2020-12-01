@@ -21,11 +21,15 @@ function Fetcher(props) {
   }
 
   const allProperties = getAllProperties(constants);
+  console.log("FETCHER: allProperties =", allProperties)
 
-  const updateStatuses = (status, modIdx=-1) => {
-    allProperties.reduce( (acc, p, idx) => 
-      modIdx === idx ? ({...acc, [p]: status}) : acc, {});
-    return JSON.stringify(allProperties);
+  const updateStatuses = (status, updatedProperty="") => {
+    const statusProperties = allProperties.reduce( (acc, property) => 
+      updatedProperty === "" || updatedProperty === property 
+        ? ({...acc, [property]: status}) 
+        : acc, 
+        {});
+    return JSON.stringify(statusProperties);
   };
 
   const [statusesString, setStatusesString] = useState(updateStatuses(true));

@@ -9,9 +9,10 @@ function FetcherProperties(props) {
   } = props;
 
   const statuses = JSON.parse(statusesString);
+  console.log("FETCHER_PROPERTIES: statuses =", statuses)
 
   const allProperties = Object.keys(statuses);
-  console.log("allProperties =", allProperties)
+  console.log("FETCHER_PROPERTIES: allProperties =", allProperties)
   console.log("statuses =", statuses)
   console.log("handleSelectAll =", handleSelectAll)
 
@@ -30,12 +31,12 @@ function FetcherProperties(props) {
       </div>
 
       <ul style={{listStyleType: "none"}}>
-        {allProperties.map( (property, idx) => 
-          <li key={idx} style={{marginBottom: ".5rem"}}>            
+        {allProperties.map( (property) => 
+          <li key={property} style={{marginBottom: ".5rem"}}>            
             <input 
               type="checkbox" 
-              checked={statuses[idx]} 
-              onChange={(event) => handleUpdateStatus(event, idx)}
+              checked={statuses[property]} 
+              onChange={(event) => handleUpdateStatus(event, property)}
             />
             <span style={{marginLeft: "1rem"}}>
               {property}
