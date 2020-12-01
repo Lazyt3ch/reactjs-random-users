@@ -1,12 +1,5 @@
 import constants from "../constants.js";
 
-const getAllProperties = constants => {
-  const {allPropertiesString} = constants;
-  const allProperties = allPropertiesString.trim().toLowerCase().split(/\s+/);
-  // console.log("allProperties =", allProperties);
-  return allProperties;
-}
-
 const fixProperties = (properties) => {
   const allProperties = getAllProperties(constants);
   return properties
@@ -14,5 +7,24 @@ const fixProperties = (properties) => {
     .filter( p => allProperties.includes(p) );
 };
 
-export {getAllProperties};
+const getAllProperties = constants => {
+  const {allPropertiesString} = constants;
+  const allProperties = allPropertiesString.trim().toLowerCase().split(/\s+/);
+  // console.log("allProperties =", allProperties);
+  return allProperties;
+}
+
+const getValidProperties = statusesString => {
+  if (statusesString.length < 5) {
+    return [];
+  }
+
+  const selectedProperties = Object.entries(JSON.parse(statusesString))
+    .filter( ([_, value]) => value === true )
+    .map( ([key, value]) => key );
+  
+  return fixProperties(selectedProperties);
+};
+
 export default fixProperties;
+export {getAllProperties, getValidProperties};

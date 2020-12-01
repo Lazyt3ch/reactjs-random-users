@@ -10,10 +10,6 @@ function FetcherProperties(props) {
 
   const statuses = JSON.parse(statusesString);
   const allProperties = Object.keys(statuses);
-  // console.log("FETCHER_PROPERTIES: statuses =", statuses)
-  // console.log("FETCHER_PROPERTIES: allProperties =", allProperties)
-  // console.log("statuses =", statuses)
-  // console.log("handleSelectAll =", handleSelectAll)
 
   return (
     <div style={{marginTop: "1rem"}}>
