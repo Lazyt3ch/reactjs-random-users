@@ -1,22 +1,19 @@
 import React from "react";
-import constants from "../../constants.js";
-import {getAllProperties} from "../../Helpers/PropertiesFixer.js";
 
 function FetcherProperties(props) {
-  const allProperties = getAllProperties(constants);
-  const allStatuses = allProperties.reduce( (acc, p) => ({...acc, [p]: true}), {});
+  const {
+    statusesString,     
+    handleUnselectAll,
+    handleSelectAll, 
+    handleUpdateStatus,
+  } = props;
 
-  function setAll(status) {
-    allProperties.forEach( p => allStatuses[p] = status );
-  }
+  const statuses = JSON.parse(statusesString);
 
-  function handleUnselectAll() {
-    setAll(false);
-  }
-
-  function handleSelectAll() {
-    setAll(true);
-  }
+  const allProperties = Object.keys(statuses);
+  console.log("allProperties =", allProperties)
+  console.log("statuses =", statuses)
+  console.log("handleSelectAll =", handleSelectAll)
 
   return (
     <div style={{marginTop: "1rem"}}>
@@ -35,7 +32,11 @@ function FetcherProperties(props) {
       <ul style={{listStyleType: "none"}}>
         {allProperties.map( (property, idx) => 
           <li key={idx} style={{marginBottom: ".5rem"}}>            
-            <input type="checkbox" checked={allStatuses[idx]} />
+            <input 
+              type="checkbox" 
+              checked={statuses[idx]} 
+              onChange={(event) => handleUpdateStatus(event, idx)}
+            />
             <span style={{marginLeft: "1rem"}}>
               {property}
             </span>
