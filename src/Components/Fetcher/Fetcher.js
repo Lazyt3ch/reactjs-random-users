@@ -23,20 +23,31 @@ function Fetcher(props) {
   const allProperties = getAllProperties(constants);
   console.log("FETCHER: allProperties =", allProperties)
 
-  const updateStatuses = (status, updatedProperty="") => {
+  const updateStatuses = (status) => {
     const statusProperties = allProperties.reduce( (acc, property) => 
-      updatedProperty === "" || updatedProperty === property 
-        ? ({...acc, [property]: status}) 
-        : acc, 
-        {});
+      ({...acc, [property]: status}), {});
     return JSON.stringify(statusProperties);
   };
 
   const [statusesString, setStatusesString] = useState(updateStatuses(true));
   const handleUnselectAll = (event) => setStatusesString(updateStatuses(false));
   const handleSelectAll = (event) => setStatusesString(updateStatuses(true));
-  const handleUpdateStatus = (event, idx) => 
-    setStatusesString(updateStatuses(event.target.value, idx));
+  
+  const handleCheck = (event) => {
+    const {checked, name} = event.target;
+    console.log("checked, name =", checked, name)
+    const statusesCopy = Object.assign({}, JSON.parse(statusesString));
+    for (const key in Object.keys(statusesCopy)) {
+      if (key === name) {
+        statusesCopy[key] = !checked;
+        break;
+      }
+    }
+    console.log("statusesCopy =", statusesCopy)
+    const statusesCopyString = JSON.stringify(statusesCopy);
+    setStatusesString(statusesCopyString);
+  };
+    
 
   return (
     <div>
@@ -50,7 +61,7 @@ function Fetcher(props) {
         statusesString={statusesString}
         handleUnselectAll={handleUnselectAll}
         handleSelectAll={handleSelectAll}
-        handleUpdateStatus={handleUpdateStatus}
+        handleUpdateStatus={handleCheck}
       />
       
       <FetcherLaunch />

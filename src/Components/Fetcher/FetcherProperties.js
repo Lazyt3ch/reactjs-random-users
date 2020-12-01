@@ -35,8 +35,9 @@ function FetcherProperties(props) {
           <li key={property} style={{marginBottom: ".5rem"}}>            
             <input 
               type="checkbox" 
+              name={property}
               checked={statuses[property]} 
-              onChange={(event) => handleUpdateStatus(event, property)}
+              onChange={handleUpdateStatus}
             />
             <span style={{marginLeft: "1rem"}}>
               {property}
