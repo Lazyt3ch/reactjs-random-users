@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import FetcherSetup from "./Components/FetcherSetup.js";
-import FetcherSetup2 from "./Components/FetcherSetup2.js";
+import FetcherSetup from "./Components/Fetcher/FetcherSetup.js";
+import FetcherSetup2 from "./Components/Fetcher/FetcherSetup2.js";
 import UsersGrid from "./Components/UsersGrid.js";
 import './App.css';
 

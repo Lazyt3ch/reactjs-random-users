@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
 import fetchUsers from "../Helpers/UsersFetcher.js";
 
 function FetcherLaunch(props) {
