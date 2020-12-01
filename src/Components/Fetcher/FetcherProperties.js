@@ -8,9 +8,32 @@ function FetcherProperties(props) {
   const allStatuses = allProperties.reduce( (acc, p) => ({...acc, [p]: true}), {});
   console.log("allStatuses =", allStatuses);
 
+  function setAll(status) {
+    allProperties.forEach( p => allStatuses[p] = status );
+  }
+
+  function handleUnselectAll() {
+    setAll(false);
+  }
+
+  function handleSelectAll() {
+    setAll(true);
+  }
+
   return (
     <div style={{marginTop: "1rem"}}>
       <p style={{marginLeft: "2rem"}}>Select user properties to retrieve</p>
+      
+      <div style={{marginLeft: "2rem"}}>
+        <button onClick={handleUnselectAll}>
+          Unselect all
+        </button>
+        
+        <button onClick={handleSelectAll}>
+          Select all
+        </button>
+      </div>
+
       <ul style={{listStyleType: "none"}}>
         {allProperties.map( (property, idx) => 
           <li key={idx} style={{marginBottom: ".5rem"}}>            
