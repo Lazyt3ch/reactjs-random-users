@@ -25,7 +25,7 @@ function FetcherNumResults(props) {
   // const numResultsTextRef = useRef();
 
   return (
-    <div>
+    <div style={{marginLeft: "2rem", marginTop: "1rem"}}>
       <label htmlFor="num_results_range" className="input-label">
         Number of results ({numResultsLowerLimit} &mdash; {numResultsUpperLimit})
       </label>
