@@ -21,7 +21,7 @@ function Fetcher(props) {
   }
 
   const allProperties = getAllProperties(constants);
-  console.log("FETCHER: allProperties =", allProperties)
+  // console.log("FETCHER: allProperties =", allProperties)
 
   const updateStatuses = (status) => {
     const statusProperties = allProperties.reduce( (acc, property) => 
@@ -37,9 +37,9 @@ function Fetcher(props) {
     const {checked, name} = event.target;
     console.log("checked, name =", checked, name)
     const statusesCopy = Object.assign({}, JSON.parse(statusesString));
-    for (const key in Object.keys(statusesCopy)) {
+    for (const key of Object.keys(statusesCopy)) {
       if (key === name) {
-        statusesCopy[key] = !checked;
+        statusesCopy[key] = checked;
         break;
       }
     }
