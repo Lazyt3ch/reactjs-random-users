@@ -7,9 +7,6 @@ function FetcherNumResults(props) {
     numResultsUpperLimit,
   } = constants;
 
-  // console.log("numResultsLowerLimit, numResultsUpperLimit =",
-  //   numResultsLowerLimit, numResultsUpperLimit);  
-
   const {
     numResults, 
     onRangeValueChange, 
@@ -20,9 +17,6 @@ function FetcherNumResults(props) {
     onRangeValueChange, onTextValueChange);
 
   const inputTextSize = numResultsUpperLimit.toString().length;
-
-  // const numResultsRangeRef = useRef();
-  // const numResultsTextRef = useRef();
 
   return (
     <div style={{marginLeft: "2rem", marginTop: "1rem"}}>

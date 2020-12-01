@@ -4,9 +4,7 @@ import {getAllProperties} from "../../Helpers/PropertiesFixer.js";
 
 function FetcherProperties(props) {
   const allProperties = getAllProperties(constants);
-  // console.log("allProperties =", allProperties);
   const allStatuses = allProperties.reduce( (acc, p) => ({...acc, [p]: true}), {});
-  console.log("allStatuses =", allStatuses);
 
   function setAll(status) {
     allProperties.forEach( p => allStatuses[p] = status );
