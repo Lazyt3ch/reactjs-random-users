@@ -7,20 +7,21 @@ const fixNumResults = (numResults) => {
     numResultsDefault,
   } = constants.fetcher;
 
-  // const numResultsLowerLimit = 5;
-  // const numResultsUpperLimit = 1000;
-  // const numResultsDefault = 50;
-
   let numResultsToUse = numResultsDefault;
-  
-  if (Number.isInteger(numResults)) {
+
+  if (typeof numResults === "string") {
+    numResultsToUse = parseInt(numResults);
+  } else if (Number.isInteger(numResults)) {
     numResultsToUse = numResults;
-    if (numResultsToUse < numResultsLowerLimit) {
-      numResultsToUse = numResultsLowerLimit;
-    } else if (numResultsToUse > numResultsUpperLimit) {
-      numResultsToUse = numResultsUpperLimit;
-    }
-  }  
+  } 
+
+  console.log("numResultsToUse =", numResultsToUse)
+
+  if (numResultsToUse < numResultsLowerLimit) {
+    numResultsToUse = numResultsLowerLimit;
+  } else if (numResultsToUse > numResultsUpperLimit) {
+    numResultsToUse = numResultsUpperLimit;
+  }
 
   return numResultsToUse;    
 }

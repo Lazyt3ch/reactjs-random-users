@@ -10,7 +10,7 @@ function FetcherSetup(props) {
   } = constants.fetcher;
 
   const numResultsRangeRef = useRef();
-  const numResultsRef = useRef();
+  const numResultsTextRef = useRef();
 
   const [numResults, setNumResults] = useState(numResultsDefault);
 
@@ -29,12 +29,12 @@ function FetcherSetup(props) {
     setNumResults(fixNumResults(numResultsRangeRef.current.value));
   }
 
-
   return (
     <div>
-      <label for="num_results_range" className="input-label">
+      <label htmlFor="num_results_range" className="input-label">
         Number of results
       </label>
+
       <input type="range" 
         id="num_results_range" 
         name="num_results_range" 
@@ -44,10 +44,11 @@ function FetcherSetup(props) {
         ref={numResultsRangeRef}
         onChange={handleOnChangeRange}
       />
+
       <input type="text" 
         id="num_results" 
-        ref={numResultsRef}
         value={numResults}
+        ref={numResultsTextRef}
         onChange={handleOnChangeText}
       />
 

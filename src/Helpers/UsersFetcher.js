@@ -1,12 +1,22 @@
 import buildUrl from "./UrlBuilder.js";
 
-const fetchUsers = (numResults, properties, isToInclude=true) => {
+async function fetchUsers(numResults, properties, isToInclude=true) {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
+  let results = null;
 
-  fetch(completeUrl)
-    .then(response => response.json())
-    .then(data => console.log(data));
-
+  try {
+    const response = await fetch(completeUrl);
+    const data = await response.json();
+    if (data.error) {
+      console.log("The server returned an error");      
+    } else {
+      results = data.results;
+    }
+  } catch(err) {
+    console.log(`An error occurred: ${err}`);
+  } finally {
+    return results;
+  }
 };
 
 export default fetchUsers;
