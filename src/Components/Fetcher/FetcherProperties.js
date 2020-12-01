@@ -5,20 +5,21 @@ function FetcherProperties(props) {
     statusesString,     
     handleUnselectAll,
     handleSelectAll, 
-    handleUpdateStatus,
+    handleSingleCheck,
   } = props;
 
   const statuses = JSON.parse(statusesString);
-  console.log("FETCHER_PROPERTIES: statuses =", statuses)
-
   const allProperties = Object.keys(statuses);
-  console.log("FETCHER_PROPERTIES: allProperties =", allProperties)
-  console.log("statuses =", statuses)
-  console.log("handleSelectAll =", handleSelectAll)
+  // console.log("FETCHER_PROPERTIES: statuses =", statuses)
+  // console.log("FETCHER_PROPERTIES: allProperties =", allProperties)
+  // console.log("statuses =", statuses)
+  // console.log("handleSelectAll =", handleSelectAll)
 
   return (
     <div style={{marginTop: "1rem"}}>
-      <p style={{marginLeft: "2rem"}}>Select user properties to retrieve</p>
+      <p style={{marginLeft: "2rem"}}>
+        Select user properties to retrieve
+      </p>
       
       <div style={{marginLeft: "2rem"}}>
         <button onClick={handleUnselectAll}>
@@ -37,7 +38,7 @@ function FetcherProperties(props) {
               type="checkbox" 
               name={property}
               checked={statuses[property]} 
-              onChange={handleUpdateStatus}
+              onChange={handleSingleCheck}
             />
             <span style={{marginLeft: "1rem"}}>
               {property}

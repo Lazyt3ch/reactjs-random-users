@@ -13,9 +13,6 @@ function FetcherNumResults(props) {
     onTextValueChange,
   } = props;
 
-  // console.log("onRangeValueChange, onTextValueChange =",
-  //   onRangeValueChange, onTextValueChange);
-
   const inputTextSize = numResultsUpperLimit.toString().length;
 
   return (

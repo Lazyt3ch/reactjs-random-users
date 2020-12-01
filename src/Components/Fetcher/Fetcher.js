@@ -33,9 +33,8 @@ function Fetcher(props) {
   const handleUnselectAll = (event) => setStatusesString(updateStatuses(false));
   const handleSelectAll = (event) => setStatusesString(updateStatuses(true));
   
-  const handleCheck = (event) => {
+  const handleSingleCheck = (event) => {
     const {checked, name} = event.target;
-    console.log("checked, name =", checked, name)
     const statusesCopy = Object.assign({}, JSON.parse(statusesString));
     for (const key of Object.keys(statusesCopy)) {
       if (key === name) {
@@ -43,11 +42,9 @@ function Fetcher(props) {
         break;
       }
     }
-    console.log("statusesCopy =", statusesCopy)
     const statusesCopyString = JSON.stringify(statusesCopy);
     setStatusesString(statusesCopyString);
-  };
-    
+  };    
 
   return (
     <div>
@@ -61,7 +58,7 @@ function Fetcher(props) {
         statusesString={statusesString}
         handleUnselectAll={handleUnselectAll}
         handleSelectAll={handleSelectAll}
-        handleUpdateStatus={handleCheck}
+        handleSingleCheck={handleSingleCheck}
       />
       
       <FetcherLaunch />

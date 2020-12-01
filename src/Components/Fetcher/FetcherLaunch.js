@@ -9,13 +9,13 @@ function FetcherLaunch(props) {
     setIsFetching(true);
     const results = await fetchUsers(numResults, properties);
     setIsFetching(false);
-    console.log(results);
+    // console.log(results);
   }
 
   return (
     <div>
       <button onClick={handleFetchUsers} disabled={isFetching}>
-          Fetch Users
+        Fetch Users
       </button>
     </div>
   );
