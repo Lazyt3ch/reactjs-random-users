@@ -21,7 +21,6 @@ function Fetcher(props) {
   }
 
   const allProperties = getAllProperties(constants);
-  // console.log("FETCHER: allProperties =", allProperties)
 
   const getUpdatedStatuses = (status) => {
     const statusProperties = allProperties.reduce( (acc, property) => 
@@ -30,7 +29,6 @@ function Fetcher(props) {
   };
 
   const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true));
-  // const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
   const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
 
   const handleUnselectAll = (event) => {
