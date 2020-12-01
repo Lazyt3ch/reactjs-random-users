@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import constants from "../../constants.js";
 
-function FetcherSetup(props) {
+function FetcherNumResults(props) {
   const {
     numResultsLowerLimit,
     numResultsUpperLimit,
@@ -45,4 +45,4 @@ function FetcherSetup(props) {
   );
 }
 
-export default FetcherSetup;
+export default FetcherNumResults;

@@ -1,7 +1,9 @@
 import React, {useState} from "react";
-import FetcherSetup from "./FetcherSetup.js";
-import FetcherSetup2 from "./FetcherSetup2.js";
+
+import FetcherNumResults from "./FetcherNumResults.js";
+import FetcherProperties from "./FetcherProperties.js";
 import FetcherLaunch from "./FetcherLaunch.js";
+
 import constants from "../../constants.js";
 import fixNumResults from "../../Helpers/NumResultsFixer.js";
 
@@ -21,12 +23,12 @@ function Fetcher(props) {
 
   return (
     <div>
-      <FetcherSetup 
+      <FetcherNumResults 
         numResults={numResults} 
         onRangeValueChange = {handleRangeValueChange}
         onTextValueChange = {handleTextValueChange}
       />
-      <FetcherSetup2 />
+      <FetcherProperties />
       <FetcherLaunch />
     </div>
   );
