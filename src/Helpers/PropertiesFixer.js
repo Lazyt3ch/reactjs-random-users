@@ -1,12 +1,16 @@
 import constants from "../constants.js";
 
+const getAllProperties = constants => {
+  const {allPropertiesString} = constants;
+  return allPropertiesString.trim().toLowerCase().split(/[\s+]/);
+}
+
 const fixProperties = (properties) => {
-  const {validPropertiesAsString} = constants;
-  const validProperties = validPropertiesAsString
-    .trim().toLowerCase().split(/[\s+]/);
+  const allProperties = getAllProperties(constants);
   return properties
     .map( p => p.toLowerCase() )
-    .filter( p => validProperties.includes(p) );
+    .filter( p => allProperties.includes(p) );
 };
 
+export {getAllProperties};
 export default fixProperties;

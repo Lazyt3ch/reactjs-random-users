@@ -1,29 +1,22 @@
-import React, {useState, useRef} from "react";
-import constants from "../constants.js";
-import fixNumResults from "../Helpers/NumResultsFixer.js";
-import fetchUsers from "../Helpers/UsersFetcher.js";
+import React, {useRef} from "react";
+import constants from "../../constants.js";
 
 function FetcherSetup(props) {
   const {
     numResultsLowerLimit,
     numResultsUpperLimit,
-    numResultsDefault,
-  } = constants.fetcher;
+  } = constants;
+
+  const {
+    numResults, 
+    handleRangeValueChange, 
+    handleTextValueChange
+  } = props;
 
   const inputTextSize = numResultsUpperLimit.toString().length;
 
   const numResultsRangeRef = useRef();
   const numResultsTextRef = useRef();
-
-  const [numResults, setNumResults] = useState(numResultsDefault);
-
-  function handleOnChangeRange() {
-    setNumResults(numResultsRangeRef.current.value);
-  }
-
-  function handleOnChangeText() {
-    setNumResults(fixNumResults(numResultsTextRef.current.value));
-  }
 
   return (
     <div>
@@ -38,7 +31,7 @@ function FetcherSetup(props) {
         max={numResultsUpperLimit}
         value={numResults}
         ref={numResultsRangeRef}
-        onChange={handleOnChangeRange}
+        onChange={handleRangeValueChange}
       />
 
       <input type="text" 
@@ -46,7 +39,7 @@ function FetcherSetup(props) {
         size={inputTextSize}
         value={numResults}
         ref={numResultsTextRef}
-        onChange={handleOnChangeText}
+        onChange={handleTextValueChange}
       />
     </div>
   );

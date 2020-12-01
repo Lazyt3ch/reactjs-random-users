@@ -1,10 +1,8 @@
 const constants = {
-  fetcher: {
-    numResultsLowerLimit: 1,
-    numResultsUpperLimit: 1000,
-    numResultsDefault: 50,
-  },
-  validPropertiesString: `
+  numResultsLowerLimit: 1,
+  numResultsUpperLimit: 1000,
+  numResultsDefault: 50,
+  allPropertiesString: `
     gender
     name
     location

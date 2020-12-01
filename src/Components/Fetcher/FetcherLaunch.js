@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import fetchUsers from "../Helpers/UsersFetcher.js";
+import fetchUsers from "../../Helpers/UsersFetcher.js";
 
 function FetcherLaunch(props) {
+  const {numResults, properties} = props;
   const [isFetching, setIsFetching] = useState(false);
 
   async function handleFetchUsers() {
-    // console.log("handleFetchUsers button clicked")
     setIsFetching(true);
-    const results = await fetchUsers(numResults);
+    const results = await fetchUsers(numResults, properties);
     setIsFetching(false);
     console.log(results);
   }

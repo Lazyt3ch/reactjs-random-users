@@ -6,7 +6,7 @@ const fixNumResults = (numResults) => {
     numResultsLowerLimit,
     numResultsUpperLimit,
     numResultsDefault,
-  } = constants.fetcher;
+  } = constants;
   console.log("numResultsLowerLimit =", numResultsLowerLimit)
 
   let numResultsToUse = numResultsDefault;
