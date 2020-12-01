@@ -1,16 +1,26 @@
 import constants from "../constants.js";
 
 const fixNumResults = (numResults) => {
+  console.log("numResults, typeof =", numResults, typeof numResults)
   const {
     numResultsLowerLimit,
     numResultsUpperLimit,
     numResultsDefault,
   } = constants.fetcher;
+  console.log("numResultsLowerLimit =", numResultsLowerLimit)
 
   let numResultsToUse = numResultsDefault;
 
   if (typeof numResults === "string") {
-    numResultsToUse = parseInt(numResults);
+    if (numResults === "") {
+      numResultsToUse = 1;
+      console.log("numResults = 1")
+    } else {
+      numResultsToUse = parseInt(numResults);
+      if (isNaN(numResults)) {
+        numResultsToUse = numResultsDefault;
+      }
+    }
   } else if (Number.isInteger(numResults)) {
     numResultsToUse = numResults;
   } 
@@ -22,6 +32,7 @@ const fixNumResults = (numResults) => {
   } else if (numResultsToUse > numResultsUpperLimit) {
     numResultsToUse = numResultsUpperLimit;
   }
+  console.log("LIMIT FIXED: numResultsToUse =", numResultsToUse)
 
   return numResultsToUse;    
 }

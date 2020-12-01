@@ -1,6 +1,6 @@
 import buildUrl from "./UrlBuilder.js";
 
-async function fetchUsers(numResults, properties, isToInclude=true) {
+async function fetchUsers(numResults, properties=[], isToInclude=true) {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
   let results = null;
 
@@ -15,6 +15,7 @@ async function fetchUsers(numResults, properties, isToInclude=true) {
   } catch(err) {
     console.log(`An error occurred: ${err}`);
   } finally {
+    // console.log("results =", results);
     return results;
   }
 };
