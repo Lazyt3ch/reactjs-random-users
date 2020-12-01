@@ -15,9 +15,10 @@ const buildUrl = (numResults, properties, isToInclude) => {
     : "";
   urlParams.push(propertiesSubstr);
 
-  const completeUrl = urlParams.length
-    ? `${baseUrlSlash}?${urlParams.join("&")}`
-    : baseUrlSlash;
+  let completeUrl = baseUrlSlash;
+  if (urlParams.length) {
+    completeUrl += `?${urlParams.join("&")}`;
+  }
 
   return completeUrl;  
 };

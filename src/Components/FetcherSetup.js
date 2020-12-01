@@ -19,10 +19,10 @@ function FetcherSetup(props) {
 
   const [isFetching, setIsFetching] = useState(false);
 
-  function handleFetchUsers() {
-    console.log("handleFetchUsers button clicked")
+  async function handleFetchUsers() {
+    // console.log("handleFetchUsers button clicked")
     setIsFetching(true);
-    const results = fetchUsers(numResults);
+    const results = await fetchUsers(numResults);
     setIsFetching(false);
     console.log(results);
   }
