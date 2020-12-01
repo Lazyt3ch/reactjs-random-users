@@ -17,16 +17,6 @@ function FetcherSetup(props) {
 
   const [numResults, setNumResults] = useState(numResultsDefault);
 
-  const [isFetching, setIsFetching] = useState(false);
-
-  async function handleFetchUsers() {
-    // console.log("handleFetchUsers button clicked")
-    setIsFetching(true);
-    const results = await fetchUsers(numResults);
-    setIsFetching(false);
-    console.log(results);
-  }
-
   function handleOnChangeRange() {
     setNumResults(numResultsRangeRef.current.value);
   }
@@ -58,12 +48,6 @@ function FetcherSetup(props) {
         ref={numResultsTextRef}
         onChange={handleOnChangeText}
       />
-
-      <div>
-        <button onClick={handleFetchUsers} disabled={isFetching}>
-          Fetch Users
-        </button>
-      </div>
     </div>
   );
 }
