@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import FetcherSetup from "./Components/Fetcher/FetcherSetup.js";
-import FetcherSetup2 from "./Components/Fetcher/FetcherSetup2.js";
+import Fetcher from "./Components/Fetcher/Fetcher.js";
 import UsersGrid from "./Components/UsersGrid.js";
 import './App.css';
 
@@ -11,8 +10,7 @@ function App() {
 
   return (
     <>
-      <FetcherSetup />
-      <FetcherSetup2 />
+      <Fetcher />
       <UsersGrid numResults={numResults} properties={properties} />
     </>
   );
