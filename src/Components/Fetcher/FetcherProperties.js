@@ -4,7 +4,7 @@ import {getAllProperties} from "../../Helpers/PropertiesFixer.js";
 
 function FetcherProperties(props) {
   const allProperties = getAllProperties(constants);
-  console.log("allProperties =", allProperties);
+  // console.log("allProperties =", allProperties);
 
   return (
     <div>

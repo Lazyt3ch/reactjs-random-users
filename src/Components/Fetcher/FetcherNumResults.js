@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React from "react";
 import constants from "../../constants.js";
 
 function FetcherNumResults(props) {
@@ -7,16 +7,22 @@ function FetcherNumResults(props) {
     numResultsUpperLimit,
   } = constants;
 
+  // console.log("numResultsLowerLimit, numResultsUpperLimit =",
+  //   numResultsLowerLimit, numResultsUpperLimit);  
+
   const {
     numResults, 
-    handleRangeValueChange, 
-    handleTextValueChange
+    onRangeValueChange, 
+    onTextValueChange,
   } = props;
+
+  console.log("onRangeValueChange, onTextValueChange =",
+    onRangeValueChange, onTextValueChange);
 
   const inputTextSize = numResultsUpperLimit.toString().length;
 
-  const numResultsRangeRef = useRef();
-  const numResultsTextRef = useRef();
+  // const numResultsRangeRef = useRef();
+  // const numResultsTextRef = useRef();
 
   return (
     <div>
@@ -30,16 +36,14 @@ function FetcherNumResults(props) {
         min={numResultsLowerLimit} 
         max={numResultsUpperLimit}
         value={numResults}
-        ref={numResultsRangeRef}
-        onChange={handleRangeValueChange}
+        onChange={onRangeValueChange}
       />
 
       <input type="text" 
         id="num_results_text" 
         size={inputTextSize}
         value={numResults}
-        ref={numResultsTextRef}
-        onChange={handleTextValueChange}
+        onChange={onTextValueChange}
       />
     </div>
   );

@@ -3,7 +3,7 @@ import constants from "../constants.js";
 const getAllProperties = constants => {
   const {allPropertiesString} = constants;
   const allProperties = allPropertiesString.trim().toLowerCase().split(/\s+/);
-  console.log("allProperties =", allProperties);
+  // console.log("allProperties =", allProperties);
   return allProperties;
 }
 

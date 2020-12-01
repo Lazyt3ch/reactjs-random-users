@@ -10,23 +10,26 @@ import fixNumResults from "../../Helpers/NumResultsFixer.js";
 function Fetcher(props) {
   const {numResultsDefault} = constants;
   const [numResults, setNumResults] = useState(numResultsDefault);
+  console.log("FETCHER: numResults =", numResults);
 
-  function handleRangeValueChange(value) {
+  function handleRangeValueChange(event) {
     // setNumResults(numResultsRangeRef.current.value);
-    setNumResults(value);
+    console.log("RANGE: event.target.value =", event.target.value);
+    setNumResults(event.target.value);
   }
 
-  function handleTextValueChange(value) {
+  function handleTextValueChange(event) {
     // setNumResults(fixNumResults(numResultsTextRef.current.value));
-    setNumResults(fixNumResults(value));
+    console.log("TEXT: event.target.value =", event.target.value);
+    setNumResults(fixNumResults(event.target.value));
   }
 
   return (
     <div>
       <FetcherNumResults 
         numResults={numResults} 
-        onRangeValueChange = {handleRangeValueChange}
-        onTextValueChange = {handleTextValueChange}
+        onRangeValueChange={handleRangeValueChange}
+        onTextValueChange={handleTextValueChange}
       />
       <FetcherProperties />
       <FetcherLaunch />
