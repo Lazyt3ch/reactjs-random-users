@@ -10,6 +10,7 @@ import {getAllProperties, getValidProperties} from "../../Helpers/PropertiesFixe
 
 function Fetcher(props) {
   const {numResultsDefault} = constants;
+  const {results, setResults} = props;
   const [numResults, setNumResults] = useState(numResultsDefault);
 
   function handleRangeValueChange(event) {
@@ -79,6 +80,8 @@ function Fetcher(props) {
       <FetcherLaunch
         numResults={numResults} 
         validProperties={validProperties}
+        results={results}
+        setResults={setResults}
       />
     </div>
   );

@@ -2,14 +2,15 @@ import React, {useState} from "react";
 import fetchUsers from "../../Helpers/UsersFetcher.js";
 
 function FetcherLaunch(props) {
-  const {numResults, validProperties} = props;
+  const {numResults, validProperties, setResults} = props;
   const [isFetching, setIsFetching] = useState(false);
 
   async function handleFetchUsers() {
     setIsFetching(true);
-    const results = await fetchUsers(numResults, validProperties);
+    const resultsNew = await fetchUsers(numResults, validProperties);
     setIsFetching(false);
-    console.log(results);
+    console.log(resultsNew);
+    setResults(resultsNew)
   }
 
   return (
