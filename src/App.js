@@ -19,7 +19,7 @@ function App() {
 
       <div>
         <p>DEBUG INFO:</p>
-        {results}
+        {results.map( user => <div key={user.name.first + user.name.last}>{user.name.first}</div> )}
       </div>
 
     </>
