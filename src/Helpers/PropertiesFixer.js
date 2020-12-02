@@ -14,7 +14,6 @@ const getAllProperties = constants => {
     .toLowerCase()
     .split(/\s+/)
     .sort();
-  // console.log("allProperties =", allProperties);
   return allProperties;
 }
 

@@ -15,7 +15,6 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
   } catch(err) {
     console.log(`An error occurred: ${err}`);
   } finally {
-    // console.log("results =", results);
     return results;
   }
 };

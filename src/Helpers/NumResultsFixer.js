@@ -1,13 +1,11 @@
 import constants from "../constants.js";
 
 const fixNumResults = (numResults) => {
-  // console.log("numResults, typeof =", numResults, typeof numResults)
   const {
     numResultsLowerLimit,
     numResultsUpperLimit,
     numResultsDefault,
   } = constants;
-  // console.log("numResultsLowerLimit =", numResultsLowerLimit)
 
   let numResultsToUse = numResultsDefault;
 
@@ -25,16 +23,12 @@ const fixNumResults = (numResults) => {
     numResultsToUse = numResults;
   } 
 
-  // console.log("numResultsToUse =", numResultsToUse)
-
   if (numResultsToUse < numResultsLowerLimit) {
     numResultsToUse = numResultsLowerLimit;
   } else if (numResultsToUse > numResultsUpperLimit) {
     numResultsToUse = numResultsUpperLimit;
   }
   
-  // console.log("LIMIT FIXED: numResultsToUse =", numResultsToUse)
-
   return numResultsToUse;    
 }
 
