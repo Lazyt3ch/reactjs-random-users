@@ -1,16 +1,21 @@
 import React, {useState} from "react";
 import fetchUsers from "../../Helpers/UsersFetcher.js";
+import {useHistory} from "react-router-dom";
 
 function FetcherLaunch(props) {
   const {numResults, validProperties, setResults} = props;
   const [isFetching, setIsFetching] = useState(false);
+  const history = useHistory();
 
   async function handleFetchUsers() {
     setIsFetching(true);
     const resultsNew = await fetchUsers(numResults, validProperties);
     setIsFetching(false);
     console.log(resultsNew);
-    setResults(resultsNew)
+    if (resultsNew) {
+      setResults(resultsNew);
+      history.push("view");
+    }
   }
 
   return (

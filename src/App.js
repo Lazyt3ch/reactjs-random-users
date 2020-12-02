@@ -19,10 +19,6 @@ function App() {
       <Nav />
       
       <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
-
         <Route path="/get">
           <Fetcher 
             results={results}
@@ -34,6 +30,11 @@ function App() {
           <UsersGrid 
             results={results} 
           />
+        </Route>
+
+        <Route path="/">
+          {/* The slash-only path must always be the last one, or navigation will not work! */}
+          <Home />
         </Route>
       </Switch>
     </Router>
