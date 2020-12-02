@@ -9,3 +9,8 @@
     margin-right: 1rem;
 }
 
+.nav li {
+    display: inline;
+    margin-right: 1rem;
+    text-decoration: none;
+}

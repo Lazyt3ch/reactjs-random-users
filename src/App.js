@@ -1,30 +1,37 @@
 import React, {useState} from "react";
+import Nav from "./Components/Nav/Nav.js";
 import Fetcher from "./Components/Fetcher/Fetcher.js";
 import UsersGrid from "./Components/UserGrid/UsersGrid.js";
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [results, setResults] = useState([]);
 
   return (
-    <>
-      <Fetcher 
-        results={results}
-        setResults={setResults}
-      />
+    <Router>
+      <Nav />
+      
+      <Switch>
+        <Route path="/">
+          <Fetcher 
+            results={results}
+            setResults={setResults}
+          />
+        </Route>
 
-      <UsersGrid 
-        results={results} 
-      />
-
-      {/*
-      <div>
-        <p>DEBUG INFO:</p>
-        {results.map( user => <div key={user.name.first + user.name.last}>{user.name.first}</div> )}
-      </div>
-      */}
-
-    </>
+        <Route path="/show">
+          <UsersGrid 
+            results={results} 
+          />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
