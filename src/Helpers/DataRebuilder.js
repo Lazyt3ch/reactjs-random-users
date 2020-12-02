@@ -1,24 +1,26 @@
-import constants from "../constants.js";
+const getUserDataString = userObj => {
+  // const rebuiltArr = [];
+  let builtStr = "";
 
-const getUserDataString = (userObj) => {
-  const userData = {};
-  const pieces = {
-    name: ["title", "first", "last"],
-  };
-  for (const [key] of Object.entries)) {
-    switch (key) {
-      case 'name':
-        pieces = ;
-        userData[key] = `${name.title} ${name.first} ${name.last}`;
-        break;
-    }
-
+  const buildString = currentObj => {
+    let inner;
+    Object.keys(currentObj).forEach( key => {
+      inner = currentObj[key];
+      if (typeof inner === 'object') {
+        buildString(inner);
+      } else {
+        builtStr += ", " + inner;
+      }
+    });
   }
-};
+  
+  buildString(userObj);
+  return builtStr;
+}
 
-const rebuildResults = results => {
+const buildResults = results => {
   const rebuiltResults = results.map( userObj => getUserDataString(userObj) );
   return rebuiltResults;
 };
 
-export default rebuildResults;
+export default buildResults;
