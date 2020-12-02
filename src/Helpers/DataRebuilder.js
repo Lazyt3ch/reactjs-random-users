@@ -6,14 +6,15 @@ const getRebuiltData = userObj => {
   console.log("userObj =", userObj);
   // let builtArr = [];
   const builtObj = {};
-  // const builtStr = "";
+  let builtStr = "";
 
   if (typeof userObj !== 'object') {
     return builtObj;
   }
 
   // const extractData = (currentObj, level=1, subArr=[]) => {
-  const extractData = (currentObj, level=1, builtStr="") => {
+  // const extractData = (currentObj, level=1, builtStr="") => {
+  const extractData = (currentObj, level=1) => {
       let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
@@ -23,11 +24,14 @@ const getRebuiltData = userObj => {
         // subArr.push( `${key}: (` );
         // extractData(value, level + 1, subArr);
         builtStr = `${builtStr.length ? builtStr + ", " : ""}${key}: (`;
+        console.log("builtStr =", builtStr)
         // extractData(value, level + 1, `${builtStr.length ? builtStr + ", " : ""}${key}: (` );
-        extractData(value, level + 1, builtStr);
+        // extractData(value, level + 1, builtStr);
+        extractData(value, level + 1);
       } else {
         // subArr.push( `${key}: ${value}` );
-        builtStr += `${key}: ${value}, `;
+        builtStr = `${builtStr}${key}: ${value}, `;
+        console.log("builtStr =", builtStr)
         hitBottom = true;
       }
     });
