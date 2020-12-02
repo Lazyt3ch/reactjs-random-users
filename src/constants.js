@@ -16,6 +16,12 @@ const constants = {
     picture
     nat
   `,
+  propertyPieces = {
+    name: ["title", "first", "last"],
+    gender: [],
+    coordinates: ["latitude", "longitude"],
+  
+  },
   
 }
 
