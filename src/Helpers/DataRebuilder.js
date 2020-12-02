@@ -2,6 +2,10 @@ const removeTrailingCommaSpace = str => {
   return str.endsWith(", ") ? str.slice(0, -2) : str;
 };
 
+const addTrailingCommaSpace = str => {
+  return str.endsWith(", ") ? str : `${str}, `;
+};
+
 const getRebuiltData = userObj => {
   console.log("userObj =", userObj);
   // let builtArr = [];
@@ -23,7 +27,7 @@ const getRebuiltData = userObj => {
       if (typeof value === 'object') {
         // subArr.push( `${key}: (` );
         // extractData(value, level + 1, subArr);
-        builtStr = `${builtStr.length ? builtStr + ", " : ""}${key}: (`;
+        builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
         console.log("builtStr =", builtStr)
         // extractData(value, level + 1, `${builtStr.length ? builtStr + ", " : ""}${key}: (` );
         // extractData(value, level + 1, builtStr);
@@ -39,7 +43,7 @@ const getRebuiltData = userObj => {
     if (hitBottom) {
       if (level > 1) {
         // subArr.push( ")".repeat(level - 1) );
-        builtStr = `${removeTrailingCommaSpace(builtStr)}${")".repeat(level - 1)}`;
+        builtStr = `${removeTrailingCommaSpace(builtStr)}${")".repeat(level - 1)}, `;
       }
     }
     
