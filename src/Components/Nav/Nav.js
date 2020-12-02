@@ -17,7 +17,7 @@ function Nav(props) {
             style={navLinkStyle}
             activeClassName="nav-link-active"
           >
-            Data getter
+            Data Retriever
           </NavLink>
         </li>
 
@@ -27,7 +27,7 @@ function Nav(props) {
             style={navLinkStyle}
             activeClassName="nav-link-active"
           >
-            Data viewer
+            Data Viewer
           </NavLink>
         </li>
 
@@ -37,7 +37,7 @@ function Nav(props) {
             style={navLinkStyle}
             activeClassName="nav-link-active"
           >
-            Home page
+            Home Page
           </NavLink>        
         </li>
 

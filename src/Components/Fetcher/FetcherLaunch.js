@@ -32,7 +32,7 @@ function FetcherLaunch(props) {
         Retrieve users data
       </button>
 
-      <p style={ dataRetrieved ? {color: "blue", textWeight: 700} : null }>
+      <p style={ dataRetrieved ? {fontWeight: 700} : null }>
         { dataRetrieved
           ? "Users data has been retrieved. Switching to Dava Viewer..."
           : validProperties.length 
