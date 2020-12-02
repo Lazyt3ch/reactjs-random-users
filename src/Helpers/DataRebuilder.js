@@ -1,29 +1,47 @@
-const getUserDataString = userObj => {
-  // const rebuiltArr = [];
-  // let builtStr = "";
-  let builtArr = [];
 
-  const extractData = currentObj => {
-    let inner;
-    Object.keys(currentObj).forEach( key => {
-      inner = currentObj[key];
-      if (typeof inner === 'object') {
-        extractData(inner);
+
+const getRebuiltData = userObj => {
+  console.log("userObj =", userObj);
+  // let builtArr = [];
+  const builtObj = {};
+
+  if (typeof userObj !== 'object') {
+    return builtObj;
+  }
+
+  const extractData = (currentObj, level=0, subArr=[]) => {
+    let hitBottom = false;
+
+    Object.entries(currentObj).forEach( ([key, value]) => {
+      if (typeof value === 'object') {
+        subArr.push(`${key}: (`);
+        // builtArr.push(`${key}`);
+        extractData(value, level + 1);
       } else {
-        // builtStr += ", " + inner;
-        // builtStr += `, ${key}: ${inner}`;
-        builtArr.push(`${key}: ${inner}`);
+        // builtArr.push(`${key}: ${value} ${")".repeat(level)}`);
+        subArr.push(`${key}: ${value}`);
+        hitBottom = true;
       }
     });
+
+    if (hitBottom) {
+      // builtArr.push( ")" );
+      subArr.push( ")".repeat(level) );
+      return subArr;
+    }
   }
+
+  Object.entries(userObj).forEach( ([key, value]) => {
+    builtObj[key] = typeof value === 'object' ? extractData(value) : value;
+  });
   
-  extractData(userObj);
-  // return builtStr;
-  return builtArr;
+  // extractData(userObj);
+  console.log("builtObj =", builtObj);
+  return builtObj;
 }
 
 const buildResults = results => {
-  const rebuiltResults = results.map( userObj => getUserDataString(userObj) );
+  const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
   return rebuiltResults;
 };
 

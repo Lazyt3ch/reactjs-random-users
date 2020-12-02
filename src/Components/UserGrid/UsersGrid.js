@@ -8,7 +8,7 @@ function UsersGrid(props) {
   const usersPerPageDefault = 20;
   const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
   const rebultResults = buildResults(results);
-  console.log("rebultResults =", rebultResults);
+  // console.log("rebultResults =", rebultResults);
 
   return (
     <div>
