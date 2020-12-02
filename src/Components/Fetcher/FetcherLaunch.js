@@ -19,7 +19,7 @@ function FetcherLaunch(props) {
         onClick={handleFetchUsers} 
         disabled={isFetching || !validProperties.length}
       >
-        Fetch Users
+        Retrieve users data
       </button>
 
       <p>
