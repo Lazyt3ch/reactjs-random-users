@@ -17,12 +17,14 @@ const getRebuiltData = userObj => {
       let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
-      // console.log("key, value =", key, value)
+      console.log("key, value =", key, value)
 
       if (typeof value === 'object') {
         // subArr.push( `${key}: (` );
         // extractData(value, level + 1, subArr);
-        extractData(value, level + 1, `${builtStr.length ? builtStr + ", " : ""}${key}: (` );
+        builtStr = `${builtStr.length ? builtStr + ", " : ""}${key}: (`;
+        // extractData(value, level + 1, `${builtStr.length ? builtStr + ", " : ""}${key}: (` );
+        extractData(value, level + 1, builtStr);
       } else {
         // subArr.push( `${key}: ${value}` );
         builtStr += `${key}: ${value}, `;
