@@ -8,11 +8,15 @@ function Nav(props) {
     <nav>
       <ul className="nav">
         <li>
-          <Link to="/">Get Users Data</Link>
+          <Link to="/home">Home page</Link>
         </li>
 
         <li>
-          <Link to="/show">Display Users Data</Link>
+          <Link to="/get">Data getter</Link>
+        </li>
+
+        <li>
+          <Link to="/view">Data viewer</Link>
         </li>
       </ul>
     </nav>
