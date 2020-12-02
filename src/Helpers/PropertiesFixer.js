@@ -9,7 +9,11 @@ const fixProperties = (properties) => {
 
 const getAllProperties = constants => {
   const {allPropertiesString} = constants;
-  const allProperties = allPropertiesString.trim().toLowerCase().split(/\s+/);
+  const allProperties = allPropertiesString
+    .trim()
+    .toLowerCase()
+    .split(/\s+/)
+    .sort();
   // console.log("allProperties =", allProperties);
   return allProperties;
 }

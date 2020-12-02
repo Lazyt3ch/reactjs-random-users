@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 function FetcherProperties(props) {
   const {
@@ -9,8 +9,11 @@ function FetcherProperties(props) {
     handleSingleCheck,
   } = props;
 
-  const statuses = JSON.parse(statusesString);
-  const allProperties = Object.keys(statuses);
+  const propertiesStatuses = JSON.parse(statusesString);
+  const allProperties = Object.keys(propertiesStatuses);
+  const numTotalProperties = allProperties.length;
+  const numSelectedProperties = Object.values(propertiesStatuses)
+    .reduce( (acc, value) => acc + value, 0 );  
 
   return (
     <div style={{marginTop: "1rem"}}>
@@ -19,15 +22,26 @@ function FetcherProperties(props) {
       </p>
       
       <div style={{marginLeft: "2rem"}}>
-        <button className="properties-button" onClick={handleUnselectAll}>
+        <button 
+          className="properties-button" 
+          disabled={numSelectedProperties === 0}
+          onClick={handleUnselectAll}
+        >
           Unselect all
         </button>
         
-        <button className="properties-button" onClick={handleSelectAll}>
+        <button 
+          className="properties-button" 
+          disabled={numSelectedProperties === numTotalProperties}
+          onClick={handleSelectAll}
+        >
           Select all
         </button>
 
-        <button className="properties-button" onClick={handleInvertSelection}>
+        <button 
+          className="properties-button" 
+          onClick={handleInvertSelection}
+        >
           Invert Selection
         </button>
       </div>
@@ -38,7 +52,7 @@ function FetcherProperties(props) {
             <input 
               type="checkbox" 
               name={property}
-              checked={statuses[property]} 
+              checked={propertiesStatuses[property]} 
               onChange={handleSingleCheck}
             />
             <span style={{marginLeft: "1rem"}}>
