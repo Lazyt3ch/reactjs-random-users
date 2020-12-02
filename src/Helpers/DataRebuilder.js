@@ -1,21 +1,25 @@
 const getUserDataString = userObj => {
   // const rebuiltArr = [];
-  let builtStr = "";
+  // let builtStr = "";
+  let builtArr = [];
 
-  const buildString = currentObj => {
+  const extractData = currentObj => {
     let inner;
     Object.keys(currentObj).forEach( key => {
       inner = currentObj[key];
       if (typeof inner === 'object') {
-        buildString(inner);
+        extractData(inner);
       } else {
-        builtStr += ", " + inner;
+        // builtStr += ", " + inner;
+        // builtStr += `, ${key}: ${inner}`;
+        builtArr.push(`${key}: ${inner}`);
       }
     });
   }
   
-  buildString(userObj);
-  return builtStr;
+  extractData(userObj);
+  // return builtStr;
+  return builtArr;
 }
 
 const buildResults = results => {
