@@ -17,10 +17,12 @@ function App() {
         results={results} 
       />
 
+      {/*
       <div>
         <p>DEBUG INFO:</p>
         {results.map( user => <div key={user.name.first + user.name.last}>{user.name.first}</div> )}
       </div>
+      */}
 
     </>
   );

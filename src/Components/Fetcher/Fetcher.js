@@ -41,25 +41,38 @@ function Fetcher(props) {
     setStatusesString(getUpdatedStatuses(true));
     setValidProperties(allProperties);
   }
+
+  const updateValidProperties = (statusesNew) => {
+    const validPropertiesNew = allProperties.reduce( (acc, p) =>
+      statusesNew[p] ? [...acc, p] : acc, [] );      
+    setValidProperties(validPropertiesNew);
+  }
+
+  const handleInvertSelection = (event) => {
+    const statusesNew = Object.assign({}, JSON.parse(statusesString));
+
+    for (const property of allProperties) {
+      statusesNew[property] = !statusesNew[property];
+    }
+
+    setStatusesString(JSON.stringify(statusesNew));
+  }
   
   const handleSingleCheck = (event) => {
     const {checked, name} = event.target;
-    const statusesCopy = Object.assign({}, JSON.parse(statusesString));
+    const statusesNew = Object.assign({}, JSON.parse(statusesString));
 
-    for (const key of Object.keys(statusesCopy)) {
-      if (key === name) {
-        statusesCopy[key] = checked;
+    for (const property of allProperties) {
+      if (property === name) {
+        statusesNew[property] = checked;
         break;
       }
     }
 
-    const statusesCopyString = JSON.stringify(statusesCopy);
-    setStatusesString(statusesCopyString);
+    const statusesNewString = JSON.stringify(statusesNew);
+    setStatusesString(statusesNewString);
 
-    const validPropertiesNew = allProperties.reduce( (acc, p) =>
-      statusesCopy[p] ? [...acc, p] : acc,
-      [] );
-    setValidProperties(validPropertiesNew);
+    updateValidProperties(statusesNew);
   };    
 
   return (
@@ -73,8 +86,9 @@ function Fetcher(props) {
       <FetcherProperties 
         statusesString={statusesString}
         handleUnselectAll={handleUnselectAll}
-        handleSelectAll={handleSelectAll}
-        handleSingleCheck={handleSingleCheck}
+        handleSelectAll={handleSelectAll}      
+        handleInvertSelection={handleInvertSelection}  
+        handleSingleCheck={handleSingleCheck}        
       />
       
       <FetcherLaunch

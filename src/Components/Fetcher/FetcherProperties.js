@@ -5,6 +5,7 @@ function FetcherProperties(props) {
     statusesString,     
     handleUnselectAll,
     handleSelectAll, 
+    handleInvertSelection,
     handleSingleCheck,
   } = props;
 
@@ -18,12 +19,16 @@ function FetcherProperties(props) {
       </p>
       
       <div style={{marginLeft: "2rem"}}>
-        <button onClick={handleUnselectAll}>
+        <button className="properties-button" onClick={handleUnselectAll}>
           Unselect all
         </button>
         
-        <button onClick={handleSelectAll}>
+        <button className="properties-button" onClick={handleSelectAll}>
           Select all
+        </button>
+
+        <button className="properties-button" onClick={handleInvertSelection}>
+          Invert Selection
         </button>
       </div>
 
