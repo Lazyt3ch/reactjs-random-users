@@ -22,20 +22,20 @@ const getRebuiltData = userObj => {
       let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
-      console.log("key, value =", key, value)
+      // console.log("key, value =", key, value)
 
       if (typeof value === 'object') {
         // subArr.push( `${key}: (` );
         // extractData(value, level + 1, subArr);
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
-        console.log("builtStr =", builtStr)
+        // console.log("builtStr =", builtStr)
         // extractData(value, level + 1, `${builtStr.length ? builtStr + ", " : ""}${key}: (` );
         // extractData(value, level + 1, builtStr);
         extractData(value, level + 1);
       } else {
         // subArr.push( `${key}: ${value}` );
         builtStr = `${builtStr}${key}: ${value}, `;
-        console.log("builtStr =", builtStr)
+        // console.log("builtStr =", builtStr)
         hitBottom = true;
       }
     });
