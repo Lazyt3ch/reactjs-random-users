@@ -19,7 +19,7 @@ const getRebuiltData = userObj => {
     let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
-      if (typeof value === 'object') {
+      if (value !== null && typeof value === 'object') {
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
         extractData(value, level + 1);
       } else {
