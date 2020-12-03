@@ -1,5 +1,6 @@
 import React from "react";
 import constants from "../../constants.js";
+import fixNumResults from "../../Helpers/NumResultsFixer.js";
 
 function FetcherNumResults(props) {
   const {
@@ -9,11 +10,20 @@ function FetcherNumResults(props) {
 
   const {
     numResults, 
-    onRangeValueChange, 
-    onTextValueChange,
+    setNumResults,
   } = props;
 
   const inputTextSize = numResultsUpperLimit.toString().length;
+
+  function handleRangeValueChange(event) {
+    setNumResults(event.target.value);
+  }
+
+  function handleTextValueChange(event) {
+    setNumResults(fixNumResults(event.target.value));
+  }
+
+
 
   return (
     <div style={{marginLeft: "2rem", marginTop: "1rem"}}>
@@ -27,14 +37,14 @@ function FetcherNumResults(props) {
         min={numResultsLowerLimit} 
         max={numResultsUpperLimit}
         value={numResults}
-        onChange={onRangeValueChange}
+        onChange={handleRangeValueChange}
       />
 
       <input type="text" 
         id="num_results_text" 
         size={inputTextSize}
         value={numResults}
-        onChange={onTextValueChange}
+        onChange={handleTextValueChange}
       />
     </div>
   );

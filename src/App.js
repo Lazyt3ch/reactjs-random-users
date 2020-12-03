@@ -5,7 +5,7 @@ import Home from "./Components/Home/Home.js";
 import Fetcher from "./Components/Fetcher/Fetcher.js";
 import UsersGrid from "./Components/UserGrid/UsersGrid.js";
 
-import constants from "../../constants.js";
+import constants from "./constants.js";
 
 import './App.css';
 
@@ -28,6 +28,8 @@ function App() {
       <Switch>
         <Route path="/get">
           <Fetcher 
+            numResults={numResults}
+            setNumResults={setNumResults}
             results={results}
             setResults={setResults}
           />

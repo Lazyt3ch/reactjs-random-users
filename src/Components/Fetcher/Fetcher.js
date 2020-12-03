@@ -5,21 +5,15 @@ import FetcherProperties from "./FetcherProperties.js";
 import FetcherLaunch from "./FetcherLaunch.js";
 
 import constants from "../../constants.js";
-import fixNumResults from "../../Helpers/NumResultsFixer.js";
 import {getAllProperties, getValidProperties} from "../../Helpers/PropertiesFixer.js";
 
 function Fetcher(props) {
-  const {numResultsDefault} = constants;
-  const {results, setResults} = props;
-  const [numResults, setNumResults] = useState(numResultsDefault);
-
-  function handleRangeValueChange(event) {
-    setNumResults(event.target.value);
-  }
-
-  function handleTextValueChange(event) {
-    setNumResults(fixNumResults(event.target.value));
-  }
+  const {
+    results, 
+    setResults,
+    numResults, 
+    setNumResults
+  } = props;
 
   const allProperties = getAllProperties(constants);
 
@@ -79,8 +73,7 @@ function Fetcher(props) {
     <div>
       <FetcherNumResults 
         numResults={numResults} 
-        onRangeValueChange={handleRangeValueChange}
-        onTextValueChange={handleTextValueChange}
+        setNumResults={setNumResults}
       />
       
       <FetcherProperties 
