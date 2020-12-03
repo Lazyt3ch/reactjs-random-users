@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {
   getAllProperties, 
   getValidProperties, 
-  getUpdatedStatuses
+  getUpdatedStatuses,
 } from "../../Helpers/PropertiesFixer.js";
 
 function FetcherProperties(props) {
@@ -11,17 +11,17 @@ function FetcherProperties(props) {
     allProperties,
     statusesString,     
     setStatusesString,
+    validProperties,
+    setValidProperties,
   } = props;
 
-  const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
-
   const handleUnselectAll = (event) => {
-    setStatusesString(getUpdatedStatuses(false));
+    setStatusesString(getUpdatedStatuses(false, allProperties));
     setValidProperties([]);
   };
 
   const handleSelectAll = (event) => {
-    setStatusesString(getUpdatedStatuses(true));
+    setStatusesString(getUpdatedStatuses(true, allProperties));
     setValidProperties(allProperties);
   };
 
@@ -54,12 +54,8 @@ function FetcherProperties(props) {
 
     const statusesNewString = JSON.stringify(statusesNew);
     setStatusesString(statusesNewString);
-
     updateValidProperties(statusesNew);
   };
-
-
-
 
   const propertiesStatuses = JSON.parse(statusesString);
   const numTotalProperties = allProperties.length;

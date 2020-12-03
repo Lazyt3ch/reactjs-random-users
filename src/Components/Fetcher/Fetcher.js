@@ -16,6 +16,8 @@ function Fetcher(props) {
     allProperties,
     statusesString,
     setStatusesString,
+    validProperties,
+    setValidProperties,
     // FetcherLaunch
     results, 
     setResults,
@@ -83,11 +85,11 @@ function Fetcher(props) {
       />
       
       <FetcherProperties 
+        allProperties={allProperties}
         statusesString={statusesString}
-        handleUnselectAll={handleUnselectAll}
-        handleSelectAll={handleSelectAll}      
-        handleInvertSelection={handleInvertSelection}  
-        handleSingleCheck={handleSingleCheck}        
+        setStatusesString={setStatusesString}
+        validProperties={validProperties}
+        setValidProperties={setValidProperties}
       />
       
       <FetcherLaunch

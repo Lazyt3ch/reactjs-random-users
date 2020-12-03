@@ -6,7 +6,11 @@ import Fetcher from "./Components/Fetcher/Fetcher.js";
 import UsersGrid from "./Components/UserGrid/UsersGrid.js";
 
 import constants from "./constants.js";
-import { getAllProperties, getUpdatedStatuses } from "./Helpers/PropertiesFixer.js";
+import { 
+  getAllProperties, 
+  getUpdatedStatuses,
+  getValidProperties,
+} from "./Helpers/PropertiesFixer.js";
 
 import './App.css';
 
@@ -23,6 +27,7 @@ function App() {
 
   const allProperties = getAllProperties(constants);
   const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true, allProperties));
+  const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
 
   const [results, setResults] = useState([]);
 
@@ -38,6 +43,8 @@ function App() {
             allProperties={allProperties}
             statusesString={statusesString}
             setStatusesString={setStatusesString}
+            validProperties={validProperties}
+            setValidProperties={setValidProperties}
             results={results}
             setResults={setResults}
           />
