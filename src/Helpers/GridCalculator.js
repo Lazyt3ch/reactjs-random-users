@@ -8,6 +8,9 @@ const getColumnWidths = results => {
   });
 
   console.log("columnWidths =", columnWidths);
+
+  columnWidths.forEach( (w, idx, arr) => 
+    arr[idx] = Math.max(1, Math.log(w)) );
   
   const sumOfWidths = columnWidths.reduce( (acc, w) => acc + w, 0 );
   columnWidths.forEach( (w, idx, arr) => 

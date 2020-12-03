@@ -29,9 +29,13 @@ function UsersGrid(props) {
 
       {rebuiltResults && rebuiltResults.length > 1
         ? rebuiltResults.map( (userObj, idx) => 
-          <React.Fragment key={idx} style={idx === 0 ? {fontWeight: 700} : null}>
+          <React.Fragment key={idx}>
             {Object.values(userObj).map( value => 
-              <div key={value} className="right-margin-span">
+              <div 
+                key={value} 
+                className="grid-item" 
+                style={idx === 0 ? {fontWeight: 700} : null}
+              >
                 {value}
               </div>
             )}
