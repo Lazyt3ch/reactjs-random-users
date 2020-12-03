@@ -9,18 +9,18 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
     const response = await fetch(completeUrl);
     const data = await response.json();
     if (data.error) {
-      errorMessage = "The server returned an error";
+      errorMessage = "The server returned an unspecified error.";
       console.log(errorMessage);      
     } else {
       results = data.results;
     }
   } catch(err) {
     errorMessage = `An error occurred: ${err}`;
-    console.log();
+    console.log(errorMessage);
   } finally {
     return { 
       results, 
-      error: errorMessage 
+      errorMessage,
     };
   }
 };
