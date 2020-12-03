@@ -17,7 +17,7 @@ function UsersGrid(props) {
   const rebuiltResults = buildResults(results, validProperties);  
   console.log("rebuiltResults =", rebuiltResults);
 
-  // const columnWidthsNew = getColumnWidths(rebuiltResults);
+  const columnWidthsNew = getColumnWidths(rebuiltResults);
   // setColumnWidths(columnWidthsNew);
 
   return (
