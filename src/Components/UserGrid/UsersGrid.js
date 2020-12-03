@@ -19,19 +19,23 @@ function UsersGrid(props) {
 
   const columnWidthsNew = getColumnWidths(rebuiltResults);
   // setColumnWidths(columnWidthsNew);
+  const gridTemplateColumns = {gridTemplateColumns: 
+    columnWidthsNew.map( w => `${w}%` ).join(" ")
+  };
+  console.log("gridTemplateColumns =", gridTemplateColumns);
 
   return (
-    <div>
+    <div className="grid-container" style={gridTemplateColumns}>
 
       {rebuiltResults && rebuiltResults.length > 1
         ? rebuiltResults.map( (userObj, idx) => 
-          <div key={idx} style={idx === 0 ? {fontWeight: 700} : null}>
+          <React.Fragment key={idx} style={idx === 0 ? {fontWeight: 700} : null}>
             {Object.values(userObj).map( value => 
-              <span key={value} className="right-margin-span">
+              <div key={value} className="right-margin-span">
                 {value}
-              </span>
+              </div>
             )}
-          </div>
+          </React.Fragment>
           )                
         : ""
       }
