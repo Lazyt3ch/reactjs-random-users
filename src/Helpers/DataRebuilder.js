@@ -16,14 +16,15 @@ const getRebuiltData = userObj => {
   }
 
   const extractData = (currentObj, level=1) => {
-      let hitBottom = false;
+    let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
       if (typeof value === 'object') {
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
         extractData(value, level + 1);
       } else {
-        builtStr = `${builtStr}${key}: ${value}, `;
+        // <undefined> will replace an empry string, and <null> will replace null
+        builtStr = `${builtStr}${key.length ? key : "<undefined>"}: ${value ? value: "<null>"}, `;
         hitBottom = true;
       }
     });
