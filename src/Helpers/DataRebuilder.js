@@ -8,7 +8,7 @@ const addTrailingCommaSpace = str => {
 
 // const getRebuiltData = (userObj, addTags) => {
 const getRebuiltData = (userObj, addTags) => {
-    console.log("userObj =", userObj);
+  // console.log("userObj =", userObj);
   const builtObj = {};
   let builtStr;
 
@@ -21,6 +21,10 @@ const getRebuiltData = (userObj, addTags) => {
   //   // return tag.length ? `&lt;${tag}&gt;${str}&lt;/${tag}&gt;` : str;
   // }
 
+  // const tagger = str => {
+  //   return <span>{str}</span>;
+  // }  
+
   const extractData = (currentObj, level=1) => {
     let hitBottom = false;
 
@@ -28,12 +32,12 @@ const getRebuiltData = (userObj, addTags) => {
       if (value !== null && typeof value === 'object') {
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
         // builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}
-        //   + ${tagger(key, "span")}: (`;
+        //   + ${tagger(key)}: (`;
         extractData(value, level + 1);
       } else {
         // <undefined> will replace an empry string, and <null> will replace a null value
         builtStr = `${builtStr}${key.length ? key : "<undefined>"}: ${value ? value: "<null>"}, `;
-        // builtStr += tagger((key.length ? key : "<undefined>"), "span")
+        // builtStr += tagger((key.length ? key : "<undefined>"))
         //   + `: ${value ? value: "<null>"}, `;
         hitBottom = true;
       }
@@ -46,6 +50,7 @@ const getRebuiltData = (userObj, addTags) => {
     }
     
     return builtStr;
+    // return <div>builtStr</div>;
   }
 
   Object.entries(userObj).forEach( ([key, value]) => {
