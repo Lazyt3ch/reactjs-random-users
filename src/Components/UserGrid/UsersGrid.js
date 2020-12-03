@@ -16,7 +16,7 @@ function UsersGrid(props) {
       <div>
         {rebuiltResults && rebuiltResults.length 
           ? Object.keys(rebuiltResults[0]).map( key =>
-            <span key={key}>
+            <span key={key} className="right-margin-span">
               {key}
             </span> )
           : ""
@@ -27,7 +27,7 @@ function UsersGrid(props) {
         ? rebuiltResults.map( (userObj, idx) => 
           <div key={idx}>
             {Object.values(userObj).map( value => 
-              <span key={value}>
+              <span key={value} className="right-margin-span">
                 {value}
               </span>
             )}

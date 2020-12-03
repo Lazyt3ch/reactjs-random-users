@@ -23,3 +23,7 @@
     font-weight: 600;
     color: blue;
 }
+
+.right-margin-span {
+    margin-right: 1rem;
+}
