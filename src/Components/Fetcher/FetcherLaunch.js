@@ -6,6 +6,7 @@ function FetcherLaunch(props) {
   const {
     numResults, 
     validProperties, 
+    // results,
     setResults,
   } = props;
 
@@ -15,16 +16,16 @@ function FetcherLaunch(props) {
   
   const history = useHistory();
 
-  async function handleFetchUsers() {
+  async function handleFetchUsers() {    
     setIsFetching(true);
-    const { results, errorMessage } = await fetchUsers(numResults, validProperties);
-    console.log("results =", results);
+    const { resultsArr, errorMessage } = await fetchUsers(numResults, validProperties);
+    console.log("resultsArr =", resultsArr);
     console.log("errorMessage =", errorMessage);
     setIsFetching(false);
     setFetchAttempted(true);
 
-    if (results) {
-      setResults(results);
+    if (resultsArr && resultsArr.length) {
+      setResults(resultsArr);
       setMessageAfterFetch("Users data have been retrieved. Switching to Dava Viewer...");
       setTimeout( () => {
         history.push("view");
@@ -51,7 +52,9 @@ function FetcherLaunch(props) {
 
       <p style={ fetchAttempted ? {fontWeight: 700} : null }>
         { fetchAttempted
-          ? {messageAfterFetch}
+          ? messageAfterFetch.length 
+            ? messageAfterFetch 
+            : "An error occurred."
           : validProperties.length 
             ? "You can request users data now." 
             : "Select at least one user property."

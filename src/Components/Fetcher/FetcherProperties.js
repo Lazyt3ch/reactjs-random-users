@@ -9,9 +9,11 @@ import {
 function FetcherProperties(props) {
   const {
     allProperties,
+
     statusesString,     
     setStatusesString,
-    validProperties,
+    
+    // validProperties,
     setValidProperties,
   } = props;
 

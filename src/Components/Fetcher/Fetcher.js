@@ -9,6 +9,7 @@ function Fetcher(props) {
     // FetcherNumResults:
     numResults, 
     setNumResults,
+
     // FetcherProperties:
     allProperties,
 
@@ -17,6 +18,7 @@ function Fetcher(props) {
     
     validProperties,
     setValidProperties,
+    
     // FetcherLaunch:
     results, 
     setResults,
