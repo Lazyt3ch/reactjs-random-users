@@ -9,7 +9,7 @@ const addTrailingCommaSpace = str => {
 const getRebuiltData = userObj => {
   console.log("userObj =", userObj);
   const builtObj = {};
-  let builtStr = "";
+  let builtStr;
 
   if (typeof userObj !== 'object') {
     return builtObj;
@@ -39,13 +39,13 @@ const getRebuiltData = userObj => {
   }
 
   Object.entries(userObj).forEach( ([key, value]) => {
+    builtStr = "";
     builtObj[key] = typeof value === 'object' 
       ? removeTrailingCommaSpace(extractData(value))
       : value;
   });
   
   console.log("builtObj =", builtObj);
-
   return builtObj;
 }
 
