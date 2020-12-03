@@ -1,8 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 
 import {
-  getAllProperties, 
-  getValidProperties, 
   getUpdatedStatuses,
 } from "../../Helpers/PropertiesFixer.js";
 
@@ -12,7 +10,7 @@ function FetcherProperties(props) {
 
     statusesString,     
     setStatusesString,
-    
+
     // validProperties,
     setValidProperties,
   } = props;

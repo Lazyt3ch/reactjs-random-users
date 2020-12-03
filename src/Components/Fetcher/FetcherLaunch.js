@@ -6,7 +6,6 @@ function FetcherLaunch(props) {
   const {
     numResults, 
     validProperties, 
-    // results,
     setResults,
   } = props;
 
@@ -19,14 +18,12 @@ function FetcherLaunch(props) {
   async function handleFetchUsers() {    
     setIsFetching(true);
     const { resultsArr, errorMessage } = await fetchUsers(numResults, validProperties);
-    console.log("resultsArr =", resultsArr);
-    console.log("errorMessage =", errorMessage);
     setIsFetching(false);
     setFetchAttempted(true);
 
     if (resultsArr && resultsArr.length) {
       setResults(resultsArr);
-      setMessageAfterFetch("Users data have been retrieved. Switching to Dava Viewer...");
+      setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setTimeout( () => {
         history.push("view");
         setFetchAttempted(false);
@@ -37,7 +34,7 @@ function FetcherLaunch(props) {
       setTimeout( () => {
         setFetchAttempted(false);
         setMessageAfterFetch("");
-      }, 5000 );
+      }, 3000 );
     }
   }
 

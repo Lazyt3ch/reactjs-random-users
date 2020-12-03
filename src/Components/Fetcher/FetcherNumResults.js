@@ -22,11 +22,12 @@ function FetcherNumResults(props) {
   function handleTextValueChange(event) {
     setNumResults(fixNumResults(event.target.value));
   }
-  
+
   return (
     <div style={{marginLeft: "2rem", marginTop: "1rem"}}>
       <label htmlFor="num_results_range" className="input-label">
-        Number of users to retrieve data for ({numResultsLowerLimit} &mdash; {numResultsUpperLimit})
+        Number of users to retrieve data for 
+        ({numResultsLowerLimit} &mdash; {numResultsUpperLimit})
       </label>
 
       <input type="range" 
