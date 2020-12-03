@@ -27,3 +27,8 @@
 .right-margin-span {
     margin-right: 1rem;
 }
+
+.grid-container {
+    display: grid;
+
+}

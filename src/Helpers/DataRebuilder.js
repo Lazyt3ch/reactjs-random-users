@@ -6,7 +6,7 @@ const addTrailingCommaSpace = str => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-const getRebuiltData = userObj => {
+const getRebuiltData = (userObj) => {
   console.log("userObj =", userObj);
   const builtObj = {};
   let builtStr;
@@ -49,9 +49,24 @@ const getRebuiltData = userObj => {
   return builtObj;
 }
 
-const buildResults = results => {
+const buildResults = (results, validProperties) => {
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
-  return rebuiltResults;
+  // return rebuiltResults;
+  const results2D = [validProperties]; // Row 0 contains property headers
+  console.log("results2D =", results2D);
+
+  let rowArr;
+  
+  for (const rowObj of rebuiltResults) {
+    rowArr = [];
+    for (const p of validProperties) {
+      rowArr.push(rowObj[p]);
+    }
+    results2D.push(rowArr);
+  }
+
+  console.log("results2D =", results2D);
+  return results2D;
 };
 
 export default buildResults;

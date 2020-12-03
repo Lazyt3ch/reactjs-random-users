@@ -30,13 +30,14 @@ function App() {
   const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
 
   const [results, setResults] = useState([]);
+  const [columnWidths, setColumnWidths] = useState([]);
 
   return (
     <Router>
       <Nav />
       
       <Switch>
-        <Route path="/get">
+        <Route path="/get" exact>
           <Fetcher 
             numResults={numResults}
             setNumResults={setNumResults}
@@ -50,13 +51,16 @@ function App() {
           />
         </Route>
 
-        <Route path="/view">
+        <Route path="/view" exact>
           <UsersGrid 
+            validProperties={validProperties}
             results={results} 
+            columnWidths={columnWidths}
+            setColumnWidths={setColumnWidths}
           />
         </Route>
 
-        <Route path="/">
+        <Route path="/" exact>
           {/* The slash-only path must always be the last one, or navigation will not work!
               Alternatively, add `exact` directive to Route. */}
           <Home />
