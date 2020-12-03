@@ -12,7 +12,6 @@ const fixNumResults = (numResults) => {
   if (typeof numResults === "string") {
     if (numResults === "") {
       numResultsToUse = 1;
-      console.log("numResults = 1")
     } else {
       numResultsToUse = parseInt(numResults);
       if (isNaN(numResults)) {

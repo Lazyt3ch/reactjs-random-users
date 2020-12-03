@@ -6,28 +6,37 @@ function FetcherLaunch(props) {
   const {
     numResults, 
     validProperties, 
-    // results,
     setResults,
   } = props;
 
   const [isFetching, setIsFetching] = useState(false);
-  const [dataRetrieved, setDataRetrieved] = useState(false);
+  const [fetchAttempted, setFetchAttempted] = useState(false);
+  const [messageAfterFetch, setMessageAfterFetch] = useState("");
   
   const history = useHistory();
 
   async function handleFetchUsers() {
     setIsFetching(true);
-    const resultsNew = await fetchUsers(numResults, validProperties);
+    const { results, error } = await fetchUsers(numResults, validProperties);
     setIsFetching(false);
-    console.log(resultsNew);
+    
+    console.log(results);
 
-    if (resultsNew) {
-      setResults(resultsNew);
-      setDataRetrieved(true);
+    if (results) {
+      setResults(results);
+      setFetchAttempted(true);
+      setMessageAfterFetch("Users data have been retrieved. Switching to Dava Viewer...");
       setTimeout( () => {
         history.push("view");
-        setDataRetrieved(false);
+        setFetchAttempted(false);
+        setMessageAfterFetch("");
       }, 2000 );
+    } else {
+      setMessageAfterFetch(error);
+      setTimeout( () => {
+        setFetchAttempted(false);
+        setMessageAfterFetch("");
+      }, 5000 );
     }
   }
 
@@ -40,9 +49,9 @@ function FetcherLaunch(props) {
         Retrieve users data
       </button>
 
-      <p style={ dataRetrieved ? {fontWeight: 700} : null }>
-        { dataRetrieved
-          ? "Users data has been retrieved. Switching to Dava Viewer..."
+      <p style={ fetchAttempted ? {fontWeight: 700} : null }>
+        { fetchAttempted
+          ? {messageAfterFetch}
           : validProperties.length 
             ? "You can request users data now." 
             : "Select at least one user property."

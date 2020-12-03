@@ -1,12 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 import buildResults from "../../Helpers/DataRebuilder.js";
 
 function UsersGrid(props) {
   // const {numResults, properties} = props;
   const {results} = props;
+  
+  // TODO:
+  // const usersPerPageDefault = 20;
+  // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
 
-  const usersPerPageDefault = 20;
-  const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
   const rebuiltResults = buildResults(results);  
   console.log("rebuiltResults =", rebuiltResults);
 

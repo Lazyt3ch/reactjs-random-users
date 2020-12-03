@@ -1,81 +1,27 @@
-import React, {useState} from "react";
+import React from "react";
 
 import FetcherNumResults from "./FetcherNumResults.js";
 import FetcherProperties from "./FetcherProperties.js";
 import FetcherLaunch from "./FetcherLaunch.js";
 
-import constants from "../../constants.js";
-// import {getAllProperties, getValidProperties} from "../../Helpers/PropertiesFixer.js";
-
 function Fetcher(props) {
   const {
-    // FetcherNumResults
+    // FetcherNumResults:
     numResults, 
     setNumResults,
-    // FetcherProperties
+    // FetcherProperties:
     allProperties,
+
     statusesString,
     setStatusesString,
+    
     validProperties,
     setValidProperties,
-    // FetcherLaunch
+    // FetcherLaunch:
     results, 
     setResults,
   } = props;
 
-  // const allProperties = getAllProperties(constants);
-
-  // const getUpdatedStatuses = (status) => {
-  //   const statusProperties = allProperties.reduce( (acc, property) => 
-  //     ({...acc, [property]: status}), {});
-  //   return JSON.stringify(statusProperties);
-  // };
-
-  // const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true));
-  // const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
-
-  // const handleUnselectAll = (event) => {
-  //   setStatusesString(getUpdatedStatuses(false));
-  //   setValidProperties([]);
-  // };
-
-  // const handleSelectAll = (event) => {
-  //   setStatusesString(getUpdatedStatuses(true));
-  //   setValidProperties(allProperties);
-  // }
-
-  // const updateValidProperties = (statusesNew) => {
-  //   const validPropertiesNew = allProperties.reduce( (acc, p) =>
-  //     statusesNew[p] ? [...acc, p] : acc, [] );      
-  //   setValidProperties(validPropertiesNew);
-  // }
-
-  // const handleInvertSelection = (event) => {
-  //   const statusesNew = Object.assign({}, JSON.parse(statusesString));
-
-  //   for (const property of allProperties) {
-  //     statusesNew[property] = !statusesNew[property];
-  //   }
-
-  //   setStatusesString(JSON.stringify(statusesNew));
-  // }
-  
-  // const handleSingleCheck = (event) => {
-  //   const {checked, name} = event.target;
-  //   const statusesNew = Object.assign({}, JSON.parse(statusesString));
-
-  //   for (const property of allProperties) {
-  //     if (property === name) {
-  //       statusesNew[property] = checked;
-  //       break;
-  //     }
-  //   }
-
-  //   const statusesNewString = JSON.stringify(statusesNew);
-  //   setStatusesString(statusesNewString);
-
-  //   updateValidProperties(statusesNew);
-  // };    
 
   return (
     <div>
@@ -86,15 +32,19 @@ function Fetcher(props) {
       
       <FetcherProperties 
         allProperties={allProperties}
+
         statusesString={statusesString}
         setStatusesString={setStatusesString}
+        
         validProperties={validProperties}
         setValidProperties={setValidProperties}
       />
       
       <FetcherLaunch
         numResults={numResults} 
+        
         validProperties={validProperties}
+        
         results={results}
         setResults={setResults}
       />
