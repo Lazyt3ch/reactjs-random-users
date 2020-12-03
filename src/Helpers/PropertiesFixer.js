@@ -29,5 +29,11 @@ const getValidProperties = statusesString => {
   return fixProperties(selectedProperties);
 };
 
+const getUpdatedStatuses = (status, allProperties) => {
+  const statusProperties = allProperties.reduce( (acc, property) => 
+    ({...acc, [property]: status}), {});
+  return JSON.stringify(statusProperties);
+};
+
 export default fixProperties;
-export {getAllProperties, getValidProperties};
+export {getAllProperties, getValidProperties, getUpdatedStatuses};

@@ -5,69 +5,75 @@ import FetcherProperties from "./FetcherProperties.js";
 import FetcherLaunch from "./FetcherLaunch.js";
 
 import constants from "../../constants.js";
-import {getAllProperties, getValidProperties} from "../../Helpers/PropertiesFixer.js";
+// import {getAllProperties, getValidProperties} from "../../Helpers/PropertiesFixer.js";
 
 function Fetcher(props) {
   const {
+    // FetcherNumResults
+    numResults, 
+    setNumResults,
+    // FetcherProperties
+    allProperties,
+    statusesString,
+    setStatusesString,
+    // FetcherLaunch
     results, 
     setResults,
-    numResults, 
-    setNumResults
   } = props;
 
-  const allProperties = getAllProperties(constants);
+  // const allProperties = getAllProperties(constants);
 
-  const getUpdatedStatuses = (status) => {
-    const statusProperties = allProperties.reduce( (acc, property) => 
-      ({...acc, [property]: status}), {});
-    return JSON.stringify(statusProperties);
-  };
+  // const getUpdatedStatuses = (status) => {
+  //   const statusProperties = allProperties.reduce( (acc, property) => 
+  //     ({...acc, [property]: status}), {});
+  //   return JSON.stringify(statusProperties);
+  // };
 
-  const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true));
-  const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
+  // const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true));
+  // const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
 
-  const handleUnselectAll = (event) => {
-    setStatusesString(getUpdatedStatuses(false));
-    setValidProperties([]);
-  };
+  // const handleUnselectAll = (event) => {
+  //   setStatusesString(getUpdatedStatuses(false));
+  //   setValidProperties([]);
+  // };
 
-  const handleSelectAll = (event) => {
-    setStatusesString(getUpdatedStatuses(true));
-    setValidProperties(allProperties);
-  }
+  // const handleSelectAll = (event) => {
+  //   setStatusesString(getUpdatedStatuses(true));
+  //   setValidProperties(allProperties);
+  // }
 
-  const updateValidProperties = (statusesNew) => {
-    const validPropertiesNew = allProperties.reduce( (acc, p) =>
-      statusesNew[p] ? [...acc, p] : acc, [] );      
-    setValidProperties(validPropertiesNew);
-  }
+  // const updateValidProperties = (statusesNew) => {
+  //   const validPropertiesNew = allProperties.reduce( (acc, p) =>
+  //     statusesNew[p] ? [...acc, p] : acc, [] );      
+  //   setValidProperties(validPropertiesNew);
+  // }
 
-  const handleInvertSelection = (event) => {
-    const statusesNew = Object.assign({}, JSON.parse(statusesString));
+  // const handleInvertSelection = (event) => {
+  //   const statusesNew = Object.assign({}, JSON.parse(statusesString));
 
-    for (const property of allProperties) {
-      statusesNew[property] = !statusesNew[property];
-    }
+  //   for (const property of allProperties) {
+  //     statusesNew[property] = !statusesNew[property];
+  //   }
 
-    setStatusesString(JSON.stringify(statusesNew));
-  }
+  //   setStatusesString(JSON.stringify(statusesNew));
+  // }
   
-  const handleSingleCheck = (event) => {
-    const {checked, name} = event.target;
-    const statusesNew = Object.assign({}, JSON.parse(statusesString));
+  // const handleSingleCheck = (event) => {
+  //   const {checked, name} = event.target;
+  //   const statusesNew = Object.assign({}, JSON.parse(statusesString));
 
-    for (const property of allProperties) {
-      if (property === name) {
-        statusesNew[property] = checked;
-        break;
-      }
-    }
+  //   for (const property of allProperties) {
+  //     if (property === name) {
+  //       statusesNew[property] = checked;
+  //       break;
+  //     }
+  //   }
 
-    const statusesNewString = JSON.stringify(statusesNew);
-    setStatusesString(statusesNewString);
+  //   const statusesNewString = JSON.stringify(statusesNew);
+  //   setStatusesString(statusesNewString);
 
-    updateValidProperties(statusesNew);
-  };    
+  //   updateValidProperties(statusesNew);
+  // };    
 
   return (
     <div>

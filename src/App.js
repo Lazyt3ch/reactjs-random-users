@@ -6,6 +6,7 @@ import Fetcher from "./Components/Fetcher/Fetcher.js";
 import UsersGrid from "./Components/UserGrid/UsersGrid.js";
 
 import constants from "./constants.js";
+import { getAllProperties, getUpdatedStatuses } from "./Helpers/PropertiesFixer.js";
 
 import './App.css';
 
@@ -15,9 +16,13 @@ import {
   Route,
 } from "react-router-dom";
 
+
 function App() {
   const {numResultsDefault} = constants;
   const [numResults, setNumResults] = useState(numResultsDefault);
+
+  const allProperties = getAllProperties(constants);
+  const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true, allProperties));
 
   const [results, setResults] = useState([]);
 
@@ -30,6 +35,9 @@ function App() {
           <Fetcher 
             numResults={numResults}
             setNumResults={setNumResults}
+            allProperties={allProperties}
+            statusesString={statusesString}
+            setStatusesString={setStatusesString}
             results={results}
             setResults={setResults}
           />

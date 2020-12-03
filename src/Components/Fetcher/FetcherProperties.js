@@ -1,16 +1,67 @@
 import React from "react";
 
+import {
+  getAllProperties, 
+  getValidProperties, 
+  getUpdatedStatuses
+} from "../../Helpers/PropertiesFixer.js";
+
 function FetcherProperties(props) {
   const {
+    allProperties,
     statusesString,     
-    handleUnselectAll,
-    handleSelectAll, 
-    handleInvertSelection,
-    handleSingleCheck,
+    setStatusesString,
   } = props;
 
+  const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
+
+  const handleUnselectAll = (event) => {
+    setStatusesString(getUpdatedStatuses(false));
+    setValidProperties([]);
+  };
+
+  const handleSelectAll = (event) => {
+    setStatusesString(getUpdatedStatuses(true));
+    setValidProperties(allProperties);
+  };
+
+  const updateValidProperties = (statusesNew) => {
+    const validPropertiesNew = allProperties.reduce( (acc, p) =>
+      statusesNew[p] ? [...acc, p] : acc, [] );      
+    setValidProperties(validPropertiesNew);
+  };
+
+  const handleInvertSelection = (event) => {
+    const statusesNew = Object.assign({}, JSON.parse(statusesString));
+
+    for (const property of allProperties) {
+      statusesNew[property] = !statusesNew[property];
+    }
+
+    setStatusesString(JSON.stringify(statusesNew));
+  };
+  
+  const handleSingleCheck = (event) => {
+    const {checked, name} = event.target;
+    const statusesNew = Object.assign({}, JSON.parse(statusesString));
+
+    for (const property of allProperties) {
+      if (property === name) {
+        statusesNew[property] = checked;
+        break;
+      }
+    }
+
+    const statusesNewString = JSON.stringify(statusesNew);
+    setStatusesString(statusesNewString);
+
+    updateValidProperties(statusesNew);
+  };
+
+
+
+
   const propertiesStatuses = JSON.parse(statusesString);
-  const allProperties = Object.keys(propertiesStatuses);
   const numTotalProperties = allProperties.length;
   const numSelectedProperties = Object.values(propertiesStatuses)
     .reduce( (acc, value) => acc + value, 0 );  
