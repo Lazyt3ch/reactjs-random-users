@@ -6,8 +6,9 @@ const addTrailingCommaSpace = str => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-const getRebuiltData = (userObj) => {
-  console.log("userObj =", userObj);
+// const getRebuiltData = (userObj, addTags) => {
+const getRebuiltData = (userObj, addTags) => {
+    console.log("userObj =", userObj);
   const builtObj = {};
   let builtStr;
 
@@ -15,16 +16,25 @@ const getRebuiltData = (userObj) => {
     return builtObj;
   }
 
+  // const tagger = (str, tag) => {
+  //   return tag.length ? `<${tag}>${str}</${tag}>` : str;
+  //   // return tag.length ? `&lt;${tag}&gt;${str}&lt;/${tag}&gt;` : str;
+  // }
+
   const extractData = (currentObj, level=1) => {
     let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
       if (value !== null && typeof value === 'object') {
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
+        // builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}
+        //   + ${tagger(key, "span")}: (`;
         extractData(value, level + 1);
       } else {
-        // <undefined> will replace an empry string, and <null> will replace null
+        // <undefined> will replace an empry string, and <null> will replace a null value
         builtStr = `${builtStr}${key.length ? key : "<undefined>"}: ${value ? value: "<null>"}, `;
+        // builtStr += tagger((key.length ? key : "<undefined>"), "span")
+        //   + `: ${value ? value: "<null>"}, `;
         hitBottom = true;
       }
     });
@@ -49,8 +59,9 @@ const getRebuiltData = (userObj) => {
   return builtObj;
 }
 
+// const buildResults = (results, validProperties, addTags=false) => {
 const buildResults = (results, validProperties) => {
-  const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
+    const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
   // return rebuiltResults;
   const results2D = [validProperties]; // Row 0 contains property headers
   console.log("results2D =", results2D);
