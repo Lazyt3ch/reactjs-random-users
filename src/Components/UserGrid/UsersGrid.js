@@ -14,15 +14,17 @@ function UsersGrid(props) {
   // const usersPerPageDefault = 20;
   // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
 
-  // const rebuiltResults = buildResults(results, validProperties, true);  
   const rebuiltResults = buildResults(results, validProperties);  
   console.log("rebuiltResults =", rebuiltResults);
 
   const columnWidthsNew = getColumnWidths(rebuiltResults);
-  // setColumnWidths(columnWidthsNew);
+
   const gridTemplateColumns = {gridTemplateColumns: 
-    columnWidthsNew.map( w => `${w}%` ).join(" ")
-  };
+    columnWidthsNew.map( (w, idx) => 
+      `minmax(${validProperties[idx].length}rem, ${w}%)` 
+    ).join(" ")
+  };  
+  
   console.log("gridTemplateColumns =", gridTemplateColumns);
 
   return (
