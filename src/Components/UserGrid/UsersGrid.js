@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from "react";
+import React, {useEffect} from "react";
 import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 
@@ -37,22 +37,28 @@ function UsersGrid(props) {
       ? getRebuiltResults(results, validProperties)
       : [];
     setResults2D(results2DNew);
+  }, [results, validProperties, setResults2D]);
 
+  useEffect( () => {
     const briefResults2DNew = Array.isArray(results2D) && results2D.length > 1
       ? getBriefResults(results2D, validProperties)
       : [];
     setBriefResults2D(briefResults2DNew);
+  }, [results2D, validProperties, setBriefResults2D]);
 
+  useEffect( () => {
     const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
       ? getGridColumnsFormula(results2D, validProperties)
       : "";
     setGridColumnsFormula(gridColumnsFormulaNew);
-
+  }, [results2D, validProperties, setGridColumnsFormula]);
+  
+  useEffect( () => {
     const briefGridColumnsFormulaNew = Array.isArray(briefResults2D) && briefResults2D.length > 1
       ? getGridColumnsFormula(briefResults2D, validProperties)
       : "";
     setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
-  }, [resultsFetchCount]);
+  }, [briefResults2D, validProperties, setBriefGridColumnsFormula]);
 
 
   function handleBriefResultsChange(event) {
