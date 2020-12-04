@@ -77,7 +77,7 @@ const getRebuiltData = (userObj, addTags) => {
   return builtObj;
 }
 
-const buildResults = (results, validProperties) => {
+const getRebuiltResults = (results, validProperties) => {
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
 
   // Row 0 contains property names (it's like a table header)
@@ -100,5 +100,5 @@ const buildResults = (results, validProperties) => {
   return results2D;
 };
 
-export default buildResults;
+export default getRebuiltResults;
 export {getBriefResults};

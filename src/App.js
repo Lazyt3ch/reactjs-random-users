@@ -32,7 +32,8 @@ function App() {
 
   const [results, setResults] = useState([]);
 
-  const [gridColumnsFormula, setGridColumnsFormula] = useState([]);
+  const [gridColumnsFormula, setGridColumnsFormula] = useState("");
+  const [briefGridColumnsFormula, setBriefGridColumnsFormula] = useState("");
   const [isBriefResults, setIsBriefResults] = useState(false);
   const [displayedResults, setDisplayedResults] = useState([]);
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
@@ -73,6 +74,9 @@ function App() {
             
             gridColumnsFormula={gridColumnsFormula}
             setGridColumnsFormula={setGridColumnsFormula}
+
+            briefGridColumnsFormula={briefGridColumnsFormula}
+            setBriefGridColumnsFormula={setBriefGridColumnsFormula}
             
             displayedResults={displayedResults}
             setDisplayedResults={setDisplayedResults}

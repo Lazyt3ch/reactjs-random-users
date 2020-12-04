@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo} from "react";
-import buildResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
+import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 
 function UsersGrid(props) {
@@ -11,6 +11,9 @@ function UsersGrid(props) {
     
     gridColumnsFormula,
     setGridColumnsFormula,
+
+    briefGridColumnsFormula,
+    setBriefGridColumnsFormula,
     
     isBriefResults, 
     setIsBriefResults,
@@ -23,26 +26,42 @@ function UsersGrid(props) {
   // const usersPerPageDefault = 20;
   // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
 
-  const results2D = buildResults(results, validProperties);  
-  // console.log("results2D =", results2D);
+  // let results2D;
+  // let briefResults2D;
+
+  const results2D = useMemo( () => {
+    return ( Array.isArray(results) && results.length > 1
+      ? getRebuiltResults(results, validProperties)
+      : [] );
+  }, [resultsFetchCount]);
+
+  const briefResults2D = useMemo( () => {
+    return ( Array.isArray(results2D) && results2D.length > 1
+      ? getBriefResults(results2D, validProperties)
+      : [] );
+  }, [resultsFetchCount]);
 
   useEffect( () => {
-    setGridColumnsFormula(getGridColumnsFormula(results2D, validProperties));
-  }, [resultsFetchCount, validProperties, setGridColumnsFormula]);
+    const gridColumnsFormulaNew = getGridColumnsFormula(results2D, validProperties);
+    setGridColumnsFormula(gridColumnsFormulaNew);
+
+    const briefGridColumnsFormulaNew = getGridColumnsFormula(briefResults2D, validProperties);
+    setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
+  }, [resultsFetchCount]);
 
   function handleBriefResultsChange(event) {
     setIsBriefResults(event.target.checked);    
   }
 
-  const briefResults = useMemo(() => getBriefResults(results2D), [resultsFetchCount]);
-
   useEffect( () => {
     const displayedResultsNew = isBriefResults
-      ? briefResults
+      ? briefResults2D
       : results2D;
-
     setDisplayedResults(displayedResultsNew);
-  }, [resultsFetchCount, isBriefResults, setDisplayedResults]);
+  }, [
+    resultsFetchCount, 
+    isBriefResults, 
+  ]);
 
   return (
     <React.Fragment>
@@ -60,7 +79,11 @@ function UsersGrid(props) {
       </div>
 
       <div className="grid-container" 
-        style={{gridTemplateColumns: gridColumnsFormula}}
+        style={{gridTemplateColumns: 
+          isBriefResults
+            ? briefGridColumnsFormula
+            : gridColumnsFormula
+        }}
       >
         {displayedResults && displayedResults.length > 1
           ? displayedResults.map( (userObj, idx) => 
