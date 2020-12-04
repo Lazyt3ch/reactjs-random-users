@@ -6,6 +6,32 @@ const addTrailingCommaSpace = str => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
+const getBriefItem = item => {
+  // TODO
+  // Simply removes any text fragments like "name: "
+  const briefItem = item.replace(/[a-z]+:\s/g, "");
+  return briefItem;
+};
+
+const removeSubpropertyNames = results2D => {
+  const briefResults = [ results2D[0] ]; // Row 0 contains property names
+  console.log("HEADER ROW ONLY: briefResults =", briefResults);
+  let briefRowArr;
+
+  results2D.forEach( (rowArr, idx) => {
+    if (idx > 0) {
+      briefRowArr = [];
+      rowArr.forEach( item => {
+        briefRowArr.push(getBriefItem(item));
+      });
+      briefResults.push(briefRowArr);
+    }
+  });
+
+  console.log("ALL ROWS: briefResults =", briefResults);
+  return briefRowArr;
+};
+
 const getRebuiltData = (userObj, addTags) => {
   const builtObj = {};
   let builtStr;
@@ -72,3 +98,4 @@ const buildResults = (results, validProperties) => {
 };
 
 export default buildResults;
+export {removeSubpropertyNames};

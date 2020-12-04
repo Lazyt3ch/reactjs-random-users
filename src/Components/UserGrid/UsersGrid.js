@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import buildResults from "../../Helpers/DataRebuilder.js";
+import buildResults, {removeSubpropertyNames} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 
 function UsersGrid(props) {
@@ -35,7 +35,7 @@ function UsersGrid(props) {
 
   useEffect( () => {
     const displayedResultsNew = isBriefResults
-      ? results2D
+      ? removeSubpropertyNames(results2D)
       : results2D;
 
     setDisplayedResults(displayedResultsNew);
@@ -43,7 +43,7 @@ function UsersGrid(props) {
 
   return (
     <React.Fragment>
-      <div style={{marginLeft: "2rem"}}>
+      <div style={{marginLeft: "2rem", marginBottom: "1rem"}}>
         <input type="checkbox" 
           id="brief-checkbox"
           name="brief-checkbox"
@@ -52,7 +52,7 @@ function UsersGrid(props) {
         />
         <label htmlFor="brief-checkbox" 
           style={{display: "inline", paddingLeft: ".3rem"}}>
-          Hide property/subproperty names
+          Hide subproperty names
         </label>
       </div>
 
