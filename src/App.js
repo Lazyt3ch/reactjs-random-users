@@ -35,6 +35,8 @@ function App() {
   const [gridColumnsFormula, setGridColumnsFormula] = useState([]);
   const [isBriefResults, setIsBriefResults] = useState(false);
   const [displayedResults, setDisplayedResults] = useState([]);
+  const [resultsFetchCount, setResultsFetchCount] = useState(0);
+
 
   return (
     <Router>
@@ -56,6 +58,9 @@ function App() {
             
             results={results}
             setResults={setResults}
+
+            resultsFetchCount={resultsFetchCount}
+            setResultsFetchCount={setResultsFetchCount}
           />
         </Route>
 
@@ -64,6 +69,7 @@ function App() {
             validProperties={validProperties}
 
             results={results} 
+            resultsFetchCount={resultsFetchCount}
             
             gridColumnsFormula={gridColumnsFormula}
             setGridColumnsFormula={setGridColumnsFormula}

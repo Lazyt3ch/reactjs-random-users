@@ -14,7 +14,7 @@ const getBriefItem = item => {
   return briefItem;
 };
 
-const removeSubpropertyNames = results2D => {
+const getBriefResults = results2D => {
   const briefResults = [ results2D[0] ]; // Row 0 contains property names, preserving them as is
   // console.log("HEADER ROW ONLY: briefResults =", briefResults);
   let briefRowArr;
@@ -22,10 +22,12 @@ const removeSubpropertyNames = results2D => {
   results2D.forEach( (rowArr, idx) => {
     if (idx > 0) {
       briefRowArr = [];
+
       rowArr.forEach( item => {
         briefRowArr.push(getBriefItem(item));
       });
-      briefResults.push(briefRowArr);
+
+      briefResults.push( briefRowArr.slice() ); // Always push a copy of the array!
     }
   });
 
@@ -99,4 +101,4 @@ const buildResults = (results, validProperties) => {
 };
 
 export default buildResults;
-export {removeSubpropertyNames};
+export {getBriefResults};

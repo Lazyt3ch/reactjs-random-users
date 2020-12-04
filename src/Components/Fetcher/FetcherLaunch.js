@@ -5,8 +5,13 @@ import {useHistory} from "react-router-dom";
 function FetcherLaunch(props) {
   const {
     numResults, 
+
     validProperties, 
+    
     setResults,
+    
+    resultsFetchCount, 
+    setResultsFetchCount,
   } = props;
 
   const [isFetching, setIsFetching] = useState(false);
@@ -24,6 +29,7 @@ function FetcherLaunch(props) {
     if (resultsArr && resultsArr.length) {
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
+      setResultsFetchCount(resultsFetchCount + 1);
       setTimeout( () => {
         history.push("view");
         setFetchAttempted(false);

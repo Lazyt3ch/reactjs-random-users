@@ -1,10 +1,11 @@
 import React, {useEffect} from "react";
-import buildResults, {removeSubpropertyNames} from "../../Helpers/DataRebuilder.js";
+import buildResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 
 function UsersGrid(props) {
   const {
     results,
+    resultsFetchCount,
 
     validProperties,
     
@@ -27,7 +28,7 @@ function UsersGrid(props) {
 
   useEffect( () => {
     setGridColumnsFormula(getGridColumnsFormula(results2D, validProperties));
-  }, [results2D, validProperties, setGridColumnsFormula]);
+  }, [resultsFetchCount, validProperties, setGridColumnsFormula]);
 
   function handleBriefResultsChange(event) {
     setIsBriefResults(event.target.checked);    
@@ -35,11 +36,11 @@ function UsersGrid(props) {
 
   useEffect( () => {
     const displayedResultsNew = isBriefResults
-      ? removeSubpropertyNames(results2D)
+      ? getBriefResults(results2D)
       : results2D;
 
     setDisplayedResults(displayedResultsNew);
-  }, [results2D, isBriefResults, setDisplayedResults]);
+  }, [resultsFetchCount, isBriefResults, setDisplayedResults]);
 
   return (
     <React.Fragment>

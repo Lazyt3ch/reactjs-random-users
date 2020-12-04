@@ -22,6 +22,10 @@ function Fetcher(props) {
     // FetcherLaunch:
     results, 
     setResults,
+
+    resultsFetchCount, 
+    setResultsFetchCount,
+
   } = props;
 
 
@@ -49,6 +53,9 @@ function Fetcher(props) {
         
         results={results}
         setResults={setResults}
+
+        resultsFetchCount={resultsFetchCount} 
+        setResultsFetchCount={setResultsFetchCount}    
       />
     </div>
   );
