@@ -26,11 +26,14 @@ function App() {
   const [numResults, setNumResults] = useState(numResultsDefault);
 
   const allProperties = getAllProperties(constants);
+
   const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true, allProperties));
   const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
 
   const [results, setResults] = useState([]);
-  const [columnWidths, setColumnWidths] = useState([]);
+
+  const [gridColumnsFormula, setGridColumnsFormula] = useState([]);
+  const [displayedResults, setDisplayedResults] = useState([]);
 
   return (
     <Router>
@@ -41,11 +44,15 @@ function App() {
           <Fetcher 
             numResults={numResults}
             setNumResults={setNumResults}
+
             allProperties={allProperties}
+            
             statusesString={statusesString}
             setStatusesString={setStatusesString}
+            
             validProperties={validProperties}
             setValidProperties={setValidProperties}
+            
             results={results}
             setResults={setResults}
           />
@@ -54,9 +61,14 @@ function App() {
         <Route path="/view" exact>
           <UsersGrid 
             validProperties={validProperties}
+
             results={results} 
-            columnWidths={columnWidths}
-            setColumnWidths={setColumnWidths}
+            
+            gridColumnsFormula={gridColumnsFormula}
+            setGridColumnsFormula={setGridColumnsFormula}
+            
+            displayedResults={displayedResults}
+            setDisplayedResults={setDisplayedResults}
           />
         </Route>
 

@@ -18,6 +18,15 @@ const getColumnWidths = results => {
 
   console.log("columnWidths =", columnWidths);
   return columnWidths;
-}
+};
 
-export default getColumnWidths;
+const getGridColumnsFormula = (results2D, validProperties) => {
+  const columnWidths = getColumnWidths(results2D);
+  const gridColumnsFormula = columnWidths.map( (w, idx) => 
+    `minmax(${validProperties[idx].length}rem, ${w}%)` )
+    .join(" ");
+  console.log("gridColumnsFormula =", gridColumnsFormula);
+  return gridColumnsFormula;
+};
+
+export default getGridColumnsFormula;

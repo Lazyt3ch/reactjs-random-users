@@ -1,37 +1,36 @@
 import React from "react";
 import buildResults from "../../Helpers/DataRebuilder.js";
-import getColumnWidths from "../../Helpers/GridCalculator.js";
+import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 
 function UsersGrid(props) {
   const {
     results,
+
     validProperties,
-    columnWidths,
-    setColumnWidths,
+    
+    gridColumnsFormula,
+    setGridColumnsFormula,
+    
+    displayedResults, 
+    setDisplayedResults
   } = props;
   
   // TODO:
   // const usersPerPageDefault = 20;
   // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
 
-  const rebuiltResults = buildResults(results, validProperties);  
-  console.log("rebuiltResults =", rebuiltResults);
+  const results2D = buildResults(results, validProperties);  
+  console.log("results2D =", results2D);
 
-  const columnWidthsNew = getColumnWidths(rebuiltResults);
-
-  const gridTemplateColumns = {gridTemplateColumns: 
-    columnWidthsNew.map( (w, idx) => 
-      `minmax(${validProperties[idx].length}rem, ${w}%)` 
-    ).join(" ")
-  };  
-  
-  console.log("gridTemplateColumns =", gridTemplateColumns);
+  setGridColumnsFormula(getGridColumnsFormula(results2D, validProperties));
+  const gridTemplateColumnsStyle = {gridTemplateColumns: gridColumnsFormula};
+  console.log("gridTemplateColumnsStyle =", gridTemplateColumnsStyle);
 
   return (
-    <div className="grid-container" style={gridTemplateColumns}>
+    <div className="grid-container" style={gridTemplateColumnsStyle}>
 
-      {rebuiltResults && rebuiltResults.length > 1
-        ? rebuiltResults.map( (userObj, idx) => 
+      {results2D && results2D.length > 1
+        ? results2D.map( (userObj, idx) => 
           <React.Fragment key={idx}>
             {Object.values(userObj).map( value => 
               <div 

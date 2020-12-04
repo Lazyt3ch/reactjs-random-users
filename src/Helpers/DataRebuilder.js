@@ -50,9 +50,11 @@ const getRebuiltData = (userObj, addTags) => {
 
 const buildResults = (results, validProperties) => {
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
-  const results2D = [validProperties]; // Row 0 contains property names
-  // console.log("results2D =", results2D);
 
+  // Row 0 contains property names (it's like a table header)
+  const results2D = [validProperties]; 
+
+  // console.log("results2D =", results2D);
   let rowArr;
   
   for (const rowObj of rebuiltResults) {
