@@ -16,7 +16,7 @@ const getBriefItem = item => {
 
 const getBriefResults = results2D => {
   const briefResults = [ results2D[0] ]; // Row 0 contains property names, preserving them as is
-  console.log("HEADER ROW ONLY: briefResults =", briefResults);
+  // console.log("HEADER ROW ONLY: briefResults =", briefResults);
   let briefRowArr;
 
   results2D.forEach( (rowArr, idx) => {
@@ -31,7 +31,7 @@ const getBriefResults = results2D => {
     }
   });
 
-  console.log("ALL ROWS: briefResults =", briefResults);
+  // console.log("ALL ROWS: briefResults =", briefResults);
   return briefResults;
 };
 
@@ -73,7 +73,7 @@ const getRebuiltData = (userObj, addTags) => {
       : value;
   });
   
-  console.log("builtObj =", builtObj);
+  // console.log("builtObj =", builtObj);
   return builtObj;
 }
 

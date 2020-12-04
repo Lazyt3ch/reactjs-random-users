@@ -24,7 +24,7 @@ function UsersGrid(props) {
   // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
 
   const results2D = buildResults(results, validProperties);  
-  console.log("results2D =", results2D);
+  // console.log("results2D =", results2D);
 
   useEffect( () => {
     setGridColumnsFormula(getGridColumnsFormula(results2D, validProperties));

@@ -7,7 +7,7 @@ const getColumnWidths = results => {
     });
   });
 
-  console.log("columnWidths =", columnWidths);
+  // console.log("columnWidths =", columnWidths);
 
   columnWidths.forEach( (w, idx, arr) => 
     arr[idx] = Math.max(1, Math.log(w)) );
@@ -16,7 +16,7 @@ const getColumnWidths = results => {
   columnWidths.forEach( (w, idx, arr) => 
     arr[idx] = Math.max(1, Math.floor(100 * w / sumOfWidths)) );
 
-  console.log("columnWidths =", columnWidths);
+  // console.log("columnWidths =", columnWidths);
   return columnWidths;
 };
 
@@ -25,7 +25,7 @@ const getGridColumnsFormula = (results2D, validProperties) => {
   const gridColumnsFormula = columnWidths.map( (w, idx) => 
     `minmax(${validProperties[idx].length}rem, ${w}%)` )
     .join(" ");
-  console.log("gridColumnsFormula =", gridColumnsFormula);
+  // console.log("gridColumnsFormula =", gridColumnsFormula);
   return gridColumnsFormula;
 };
 
