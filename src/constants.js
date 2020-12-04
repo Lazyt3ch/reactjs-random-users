@@ -2,7 +2,7 @@ const constants = {
   numResultsLowerLimit: 1,
   numResultsUpperLimit: 1000,
   numResultsDefault: 50,
-  allPropertiesString: `
+  allPropertiesUnorderedString: `
     gender
     name
     location
@@ -15,6 +15,20 @@ const constants = {
     id
     picture
     nat
+  `,
+  allPropertiesString: `
+    name
+    gender
+    dob
+    nat
+    location
+    phone
+    cell
+    email
+    login
+    registered
+    id
+    picture
   `,
   propertyPieces: {
     gender: null,
