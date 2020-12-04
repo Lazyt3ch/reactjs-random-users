@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 import buildResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 
@@ -34,9 +34,11 @@ function UsersGrid(props) {
     setIsBriefResults(event.target.checked);    
   }
 
+  const briefResults = useMemo(() => getBriefResults(results2D), [resultsFetchCount]);
+
   useEffect( () => {
     const displayedResultsNew = isBriefResults
-      ? getBriefResults(results2D)
+      ? briefResults
       : results2D;
 
     setDisplayedResults(displayedResultsNew);
