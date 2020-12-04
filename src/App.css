@@ -13,6 +13,11 @@
     margin-left: 1rem;
 }
 
+.nav-container {
+    display: block;
+    margin-bottom: 2rem;
+}
+
 .nav-ul li {
     display: inline;
     margin-right: 1rem;

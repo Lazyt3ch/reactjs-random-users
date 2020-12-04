@@ -6,10 +6,12 @@ import {
 function Nav(props) {
   const navLinkStyle = {
     textDecoration: "none",
+    backgroundColor: "#EEEEEE",
+    padding: ".5rem",
   };
 
   return (
-    <nav>
+    <nav className="nav-container">
       <ul className="nav-ul">
         <li>
           <NavLink 
