@@ -33,6 +33,7 @@ function App() {
   const [results, setResults] = useState([]);
 
   const [gridColumnsFormula, setGridColumnsFormula] = useState([]);
+  const [isBriefResults, setIsBriefResults] = useState(false);
   const [displayedResults, setDisplayedResults] = useState([]);
 
   return (
@@ -69,6 +70,9 @@ function App() {
             
             displayedResults={displayedResults}
             setDisplayedResults={setDisplayedResults}
+
+            isBriefResults={isBriefResults}
+            setIsBriefResults={setIsBriefResults}
           />
         </Route>
 

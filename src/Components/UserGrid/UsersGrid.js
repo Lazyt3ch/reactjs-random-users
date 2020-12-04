@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import buildResults from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 
@@ -11,8 +11,11 @@ function UsersGrid(props) {
     gridColumnsFormula,
     setGridColumnsFormula,
     
+    isBriefResults, 
+    setIsBriefResults,
+
     displayedResults, 
-    setDisplayedResults
+    setDisplayedResults,
   } = props;
   
   // TODO:
@@ -22,31 +25,58 @@ function UsersGrid(props) {
   const results2D = buildResults(results, validProperties);  
   console.log("results2D =", results2D);
 
-  setGridColumnsFormula(getGridColumnsFormula(results2D, validProperties));
-  const gridTemplateColumnsStyle = {gridTemplateColumns: gridColumnsFormula};
-  console.log("gridTemplateColumnsStyle =", gridTemplateColumnsStyle);
+  useEffect( () => {
+    setGridColumnsFormula(getGridColumnsFormula(results2D, validProperties));
+  }, [results2D, validProperties, setGridColumnsFormula]);
+
+  function handleBriefResultsChange(event) {
+    setIsBriefResults(event.target.checked);    
+  }
+
+  useEffect( () => {
+    const displayedResultsNew = isBriefResults
+      ? results2D
+      : results2D;
+
+    setDisplayedResults(displayedResultsNew);
+  }, [results2D, isBriefResults, setDisplayedResults]);
 
   return (
-    <div className="grid-container" style={gridTemplateColumnsStyle}>
+    <React.Fragment>
+      <div style={{marginLeft: "2rem"}}>
+        <input type="checkbox" 
+          id="brief-checkbox"
+          name="brief-checkbox"
+          selected={isBriefResults}           
+          onChange={handleBriefResultsChange}
+        />
+        <label htmlFor="brief-checkbox" 
+          style={{display: "inline", paddingLeft: ".3rem"}}>
+          Hide property/subproperty names
+        </label>
+      </div>
 
-      {results2D && results2D.length > 1
-        ? results2D.map( (userObj, idx) => 
-          <React.Fragment key={idx}>
-            {Object.values(userObj).map( value => 
-              <div 
-                key={value} 
-                className="grid-item" 
-                style={idx === 0 ? {fontWeight: 700} : null}
-              >
-                {value}
-              </div>
-            )}
-          </React.Fragment>
-          )                
-        : ""
-      }
-
-    </div>
+      <div className="grid-container" 
+        style={{gridTemplateColumns: gridColumnsFormula}}
+      >
+        {displayedResults && displayedResults.length > 1
+          ? displayedResults.map( (userObj, idx) => 
+            <React.Fragment key={idx}>
+              {Object.values(userObj).map( value => 
+                <div 
+                  key={value} 
+                  className="grid-item" 
+                  style={idx === 0 ? {fontWeight: 700} : null}
+                >
+                  {value}
+                </div>
+              )}
+            </React.Fragment>
+            )                
+          : ""
+        }
+      </div>
+    </React.Fragment>
   );
 }
 
