@@ -70,10 +70,7 @@ function UsersGrid(props) {
       ? briefResults2D
       : results2D;
     setDisplayedResults(displayedResultsNew);
-  }, [
-    resultsFetchCount, 
-    isBriefResults, 
-  ]);
+  }, [briefResults2D, results2D, isBriefResults, setDisplayedResults]);
 
   return (
     <React.Fragment>
