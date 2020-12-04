@@ -7,6 +7,12 @@ function UsersGrid(props) {
     results,
     resultsFetchCount,
 
+    results2D,
+    setResults2D,
+
+    briefResults2D,
+    setBriefResults2D,
+
     validProperties,
     
     gridColumnsFormula,
@@ -26,28 +32,28 @@ function UsersGrid(props) {
   // const usersPerPageDefault = 20;
   // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
 
-  // let results2D;
-  // let briefResults2D;
-
-  const results2D = useMemo( () => {
-    return ( Array.isArray(results) && results.length > 1
-      ? getRebuiltResults(results, validProperties)
-      : [] );
-  }, [resultsFetchCount]);
-
-  const briefResults2D = useMemo( () => {
-    return ( Array.isArray(results2D) && results2D.length > 1
-      ? getBriefResults(results2D, validProperties)
-      : [] );
-  }, [resultsFetchCount]);
-
   useEffect( () => {
-    const gridColumnsFormulaNew = getGridColumnsFormula(results2D, validProperties);
+    const results2DNew = Array.isArray(results) && results.length > 1
+      ? getRebuiltResults(results, validProperties)
+      : [];
+    setResults2D(results2DNew);
+
+    const briefResults2DNew = Array.isArray(results2D) && results2D.length > 1
+      ? getBriefResults(results2D, validProperties)
+      : [];
+    setBriefResults2D(briefResults2DNew);
+
+    const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
+      ? getGridColumnsFormula(results2D, validProperties)
+      : "";
     setGridColumnsFormula(gridColumnsFormulaNew);
 
-    const briefGridColumnsFormulaNew = getGridColumnsFormula(briefResults2D, validProperties);
+    const briefGridColumnsFormulaNew = Array.isArray(briefResults2D) && briefResults2D.length > 1
+      ? getGridColumnsFormula(briefResults2D, validProperties)
+      : "";
     setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
   }, [resultsFetchCount]);
+
 
   function handleBriefResultsChange(event) {
     setIsBriefResults(event.target.checked);    

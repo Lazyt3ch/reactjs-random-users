@@ -32,12 +32,13 @@ function App() {
 
   const [results, setResults] = useState([]);
 
+  const [results2D, setResults2D] = useState([]);
+  const [briefResults2D, setBriefResults2D] = useState([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState("");
   const [briefGridColumnsFormula, setBriefGridColumnsFormula] = useState("");
   const [isBriefResults, setIsBriefResults] = useState(false);
   const [displayedResults, setDisplayedResults] = useState([]);
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
-
 
   return (
     <Router>
@@ -71,7 +72,13 @@ function App() {
 
             results={results} 
             resultsFetchCount={resultsFetchCount}
-            
+
+            results2D={results2D} 
+            setResults2D={setResults2D} 
+
+            briefResults2D={briefResults2D} 
+            setBriefResults2D={setBriefResults2D} 
+
             gridColumnsFormula={gridColumnsFormula}
             setGridColumnsFormula={setGridColumnsFormula}
 
