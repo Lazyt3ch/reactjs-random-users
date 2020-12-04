@@ -7,15 +7,16 @@ const addTrailingCommaSpace = str => {
 };
 
 const getBriefItem = item => {
-  // TODO
   // Simply removes any text fragments like "name: "
+  // console.log("item =", item);
   const briefItem = item.replace(/[a-z]+:\s/g, "");
+  // console.log("briefItem =", briefItem);
   return briefItem;
 };
 
 const removeSubpropertyNames = results2D => {
-  const briefResults = [ results2D[0] ]; // Row 0 contains property names
-  console.log("HEADER ROW ONLY: briefResults =", briefResults);
+  const briefResults = [ results2D[0] ]; // Row 0 contains property names, preserving them as is
+  // console.log("HEADER ROW ONLY: briefResults =", briefResults);
   let briefRowArr;
 
   results2D.forEach( (rowArr, idx) => {
@@ -28,7 +29,7 @@ const removeSubpropertyNames = results2D => {
     }
   });
 
-  console.log("ALL ROWS: briefResults =", briefResults);
+  // console.log("ALL ROWS: briefResults =", briefResults);
   return briefRowArr;
 };
 
