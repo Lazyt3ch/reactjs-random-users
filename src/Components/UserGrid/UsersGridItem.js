@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ReactTooltip from 'react-tooltip';
 
 function UsersGridItem(props) {
@@ -10,28 +10,23 @@ function UsersGridItem(props) {
 
   console.log("value =", value);
 
-  // const subpropNamePattern = "([a-z]+:\\s)";
-  // const subpropNameRegexp = new RegExp(subpropNamePattern);
-  // const subpropNameOrClosingParenRegexp = new RegExp(`${subpropNamePattern}|([)])`);
-  // console.log(`${subpropNamePattern}|(\\))`);
-
   const subpropNamePattern = "[a-z]+:\\s";
   const subpropNameRegexp = new RegExp(subpropNamePattern);
-  const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|[)])`);
-  // console.log(`${subpropNamePattern}|(\\))`);
 
-  const strArr = rowIndex > 0
-    ? value.split(subpropNameOrClosingParenRegexp)
-      .filter( part => part.length )
-    : [];
+  const [strArr, setStrArr] = useState([]);
+  
+  useEffect( 
+    () => {
+      const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|[)])`);
+      setStrArr(rowIndex > 0
+      ? value.split(subpropNameOrClosingParenRegexp)
+        .filter( part => part.length )
+      : [])
+    }, 
+    [value, rowIndex, setStrArr]
+  );
 
-  console.log("strArr =", strArr);
-
-  // const tooltipArr = strArr.map( (_, idx) => 
-  //   idx > 0 && subpropNameRegexp.test(strArr[idx - 1])
-  //     ? strArr[idx - 1].slice(0, -2)
-  //     : ""
-  // );
+  // console.log("strArr =", strArr);
 
   const tooltipArr = [];
   const nameStack = [];
@@ -57,14 +52,6 @@ function UsersGridItem(props) {
   }
 
   function handleMouseEnter(event) {
-    // if (isBriefResults) {
-    //   // console.log("mouse enter");
-    //   const tooltipStr = event.target.dataset.tip;
-    //   if (tooltipStr && tooltipStr.length) {
-    //     ReactTooltip.show(event.target);
-    //   }
-    // }
-
     const tooltipStr = event.target.dataset.tip;
     if (tooltipStr && tooltipStr.length) {
       ReactTooltip.show(event.target);
