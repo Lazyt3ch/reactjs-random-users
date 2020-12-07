@@ -1,4 +1,5 @@
 import React from "react";
+import ReactTooltip from 'react-tooltip';
 
 function UsersGridItem(props) {
   const {
@@ -23,21 +24,19 @@ function UsersGridItem(props) {
       : ""
   );
 
-  // const [currentTooltip, setCurrentTooltip] = useState(null);
-
   function handleMouseEnter(event) {
-    // console.log("event.target =", event.target);
-    const tooltipStr = event.target.dataset.userSubpropertyName;
-    // console.log("popupStr =", popupStr);
-    if (tooltipStr && tooltipStr.length) {
-      // console.log(popupStr);
-      event.target.dataset.tip = tooltipStr;
+    if (isBriefResults) {
+      // console.log("mouse enter");
+      const tooltipStr = event.target.dataset.tip;
+      if (tooltipStr && tooltipStr.length) {
+        ReactTooltip.show(event.target);
+      }
     }
   }
 
   function handleMouseLeave(event) {
-    // setCurrentTooltip(null);
-    event.target.dataset.tip = "";
+    // console.log("mouse leave");
+    ReactTooltip.hide()
   }
 
   return (
@@ -54,7 +53,7 @@ function UsersGridItem(props) {
                       {part}
                     </span> 
                   : <span className="subproperty-value"
-                      data-user-subproperty-name={tooltipArr[partIdx]}
+                      data-tip={tooltipArr[partIdx]}
                       key={partIdx}
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
@@ -68,7 +67,10 @@ function UsersGridItem(props) {
             {value}
           </div>
       }
+
+      <ReactTooltip />
     </>
+    
   );
 
 }
