@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 function UsersGridItem(props) {
   const {
@@ -13,13 +13,29 @@ function UsersGridItem(props) {
     ? value.split(subpropertyNameRegexp).filter(part => part.length)
     : [];
 
-  const popupArr = strArr.forEach( (_, idx) => 
+  const popupArr = strArr.map( (_, idx) => 
     idx > 0 && subpropertyNameRegexp.test(strArr[idx - 1])
-      ? strArr[idx - 1]
+      ? strArr[idx - 1].slice(0, -2)
       : ""
   );
 
-  console.log("popupArr =", popupArr);
+  const [currentPopup, setCurrentPopup] = useState(null);
+
+  function handleMouseEnter(event) {
+    // console.log("event.target =", event.target);
+    const popupStr = event.target.dataset.userSubpropertyName;
+    // console.log("popupStr =", popupStr);
+    if (popupStr && popupStr.length) {
+      // console.log(popupStr);
+
+    }
+  }
+
+  function handleMouseLeave(event) {
+    setCurrentPopup(null);
+  }
+
+  // console.log("popupArr =", popupArr);
 
   return (
     <>
@@ -34,7 +50,10 @@ function UsersGridItem(props) {
                   {part}
                 </span> 
               : <span className="subproperty-value"
+                  data-user-subproperty-name={popupArr[idx]}
                   key={idx}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   {part}
                 </span>
