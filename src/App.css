@@ -43,3 +43,15 @@
 .grid-item {
     overflow-wrap: break-word;
 }
+
+.property-name, .subproperty-name {
+    font-weight: 700;
+}
+
+.subproperty-name {
+    font-size: .85rem;
+}
+
+.margin-left {
+    margin-left: 2rem;
+}

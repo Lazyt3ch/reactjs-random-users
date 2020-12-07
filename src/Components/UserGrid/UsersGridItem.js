@@ -2,7 +2,11 @@ import React, {useState, useEffect, useCallback} from "react";
 // import React from "react";
 
 function UsersGridItem(props) {
-  const {value, rowIndex} = props;
+  const {
+    value, 
+    rowIndex, 
+    isBriefResults,
+  } = props;
 
   // const getSpannedItem = () => {
   //   console.log("value =", value);        
@@ -31,13 +35,6 @@ function UsersGridItem(props) {
       : []
   );
 
-  // const {spannedItem, setSpannedItem} = useState(getSpannedItem(value));
-
-  // useEffect( () => {
-  //   const spannedItemNew = getSpannedItem();
-  //   setSpannedItem(spannedItemNew);
-  // }, [value, setSpannedItem, getSpannedItem]);
-
   return (
     <>
       { rowIndex > 0
@@ -45,7 +42,12 @@ function UsersGridItem(props) {
               {strArr.map (part => 
               regexp.test(part) 
                 ? <span className="subproperty-name">{part}</span> 
-                : <span className="subproperty-value">{part}</span>
+                : <span 
+                    className="subproperty-value" 
+                    style={isBriefResults ? {display: "none"} : null}
+                  >
+                    {part}
+                  </span>
               )}
             </div>
           : <div className="property-name">
