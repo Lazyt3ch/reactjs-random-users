@@ -3,6 +3,9 @@ import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import UsersGridItem from "./UsersGridItem.js";
 
+import ReactTooltip from 'react-tooltip';
+
+
 function UsersGrid(props) {
   const {
     results,
@@ -106,6 +109,9 @@ function UsersGrid(props) {
           : ""
         }
       </div>
+
+      
+
     </React.Fragment>
   );
 }

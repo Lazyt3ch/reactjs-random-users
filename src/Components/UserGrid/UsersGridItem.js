@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 function UsersGridItem(props) {
   const {
@@ -9,11 +9,10 @@ function UsersGridItem(props) {
 
   console.log("value =", value);
 
-  const subpropertyNameRegexp = new RegExp("([a-z]+:\\s)", "g");
+  const subpropertyNameRegexp = new RegExp("([a-z]+:\\s)");
 
-  // Do not filter out empty strings as it breaks parts order!
   const strArr = rowIndex > 0
-    ? value.split(subpropertyNameRegexp) 
+    ? value.split(subpropertyNameRegexp).filter( part => part.length )
     : [];
 
   console.log("strArr =", strArr);
@@ -24,7 +23,7 @@ function UsersGridItem(props) {
       : ""
   );
 
-  const [currentTooltip, setCurrentTooltip] = useState(null);
+  // const [currentTooltip, setCurrentTooltip] = useState(null);
 
   function handleMouseEnter(event) {
     // console.log("event.target =", event.target);
@@ -32,40 +31,37 @@ function UsersGridItem(props) {
     // console.log("popupStr =", popupStr);
     if (tooltipStr && tooltipStr.length) {
       // console.log(popupStr);
-
+      event.target.dataset.tip = tooltipStr;
     }
   }
 
   function handleMouseLeave(event) {
-    setCurrentTooltip(null);
+    // setCurrentTooltip(null);
+    event.target.dataset.tip = "";
   }
-
-
-
-  // console.log("popupArr =", popupArr);
 
   return (
     <>
       { rowIndex > 0
         ? <div className="property-content">
             {strArr.map ( (part, partIdx) => 
-            part.length 
-              ? subpropertyNameRegexp.test(part) 
-                ? <span className="subproperty-name"
-                    style={{display: (isBriefResults ? "none" : "inline")}}
-                    key={partIdx}
-                  >
-                    {part}
-                  </span> 
-                : <span className="subproperty-value"
-                    data-user-subproperty-name={tooltipArr[partIdx]}
-                    key={partIdx}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {part}
-                  </span>
-              : <></>
+              part.length 
+                ? subpropertyNameRegexp.test(part) 
+                  ? <span className="subproperty-name"
+                      style={{display: (isBriefResults ? "none" : "inline")}}
+                      key={partIdx}
+                    >
+                      {part}
+                    </span> 
+                  : <span className="subproperty-value"
+                      data-user-subproperty-name={tooltipArr[partIdx]}
+                      key={partIdx}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      {part}
+                    </span>
+                : <span></span>
             )}
           </div>
         : <div className="property-name">
