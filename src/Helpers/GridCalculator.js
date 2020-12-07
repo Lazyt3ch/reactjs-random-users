@@ -1,4 +1,7 @@
 const getColumnWidths = results => {
+  if (!results || !results.length) {
+    return null;
+  }
   let columnWidths = new Array(results[0].length).fill(0);
 
   results.forEach( rowArr => {
@@ -21,6 +24,10 @@ const getColumnWidths = results => {
 };
 
 const getGridColumnsFormula = (results2D, validProperties) => {
+  if (!results2D || !results2D.length || !validProperties || !validProperties.length) {
+    return "";
+  }
+  
   const columnWidths = getColumnWidths(results2D);
   const gridColumnsFormula = columnWidths.map( (w, idx) => 
     `minmax(${validProperties[idx].length}rem, ${w}%)` )
