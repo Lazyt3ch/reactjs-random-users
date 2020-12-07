@@ -1,17 +1,18 @@
 import React, {useEffect} from "react";
 import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
+import UsersGridItem from "./UsersGridItem.js";
 
 function UsersGrid(props) {
   const {
     results,
-    resultsFetchCount,
+    // resultsFetchCount,
 
     results2D,
     setResults2D,
 
-    briefResults2D,
-    setBriefResults2D,
+    // briefResults2D,
+    // setBriefResults2D,
 
     validProperties,
     
@@ -24,8 +25,8 @@ function UsersGrid(props) {
     isBriefResults, 
     setIsBriefResults,
 
-    displayedResults, 
-    setDisplayedResults,
+    // displayedResults, 
+    // setDisplayedResults,
   } = props;
   
   // TODO:
@@ -39,38 +40,38 @@ function UsersGrid(props) {
     setResults2D(results2DNew);
   }, [results, validProperties, setResults2D]);
 
-  useEffect( () => {
-    const briefResults2DNew = Array.isArray(results2D) && results2D.length > 1
-      ? getBriefResults(results2D, validProperties)
-      : [];
-    setBriefResults2D(briefResults2DNew);
-  }, [results2D, validProperties, setBriefResults2D]);
+  // useEffect( () => {
+  //   const briefResults2DNew = Array.isArray(results2D) && results2D.length > 1
+  //     ? getBriefResults(results2D, validProperties)
+  //     : [];
+  //   setBriefResults2D(briefResults2DNew);
+  // }, [results2D, validProperties, setBriefResults2D]);
 
-  useEffect( () => {
-    const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
-      ? getGridColumnsFormula(results2D, validProperties)
-      : "";
-    setGridColumnsFormula(gridColumnsFormulaNew);
-  }, [results2D, validProperties, setGridColumnsFormula]);
+  // useEffect( () => {
+  //   const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
+  //     ? getGridColumnsFormula(results2D, validProperties)
+  //     : "";
+  //   setGridColumnsFormula(gridColumnsFormulaNew);
+  // }, [results2D, validProperties, setGridColumnsFormula]);
   
-  useEffect( () => {
-    const briefGridColumnsFormulaNew = Array.isArray(briefResults2D) && briefResults2D.length > 1
-      ? getGridColumnsFormula(briefResults2D, validProperties)
-      : "";
-    setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
-  }, [briefResults2D, validProperties, setBriefGridColumnsFormula]);
+  // useEffect( () => {
+  //   const briefGridColumnsFormulaNew = Array.isArray(briefResults2D) && briefResults2D.length > 1
+  //     ? getGridColumnsFormula(briefResults2D, validProperties)
+  //     : "";
+  //   setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
+  // }, [briefResults2D, validProperties, setBriefGridColumnsFormula]);
 
 
   function handleBriefResultsChange(event) {
     setIsBriefResults(event.target.checked);    
   }
 
-  useEffect( () => {
-    const displayedResultsNew = isBriefResults
-      ? briefResults2D
-      : results2D;
-    setDisplayedResults(displayedResultsNew);
-  }, [briefResults2D, results2D, isBriefResults, setDisplayedResults]);
+  // useEffect( () => {
+  //   const displayedResultsNew = isBriefResults
+  //     ? briefResults2D
+  //     : results2D;
+  //   setDisplayedResults(displayedResultsNew);
+  // }, [briefResults2D, results2D, isBriefResults, setDisplayedResults]);
 
   return (
     <React.Fragment>
@@ -94,17 +95,16 @@ function UsersGrid(props) {
             : gridColumnsFormula
         }}
       >
-        {displayedResults && displayedResults.length > 1
-          ? displayedResults.map( (userObj, idx) => 
+        {results2D && results2D.length > 1
+          ? results2D.map( (userObj, idx) => 
             <React.Fragment key={idx}>
               {Object.values(userObj).map( value => 
-                <div 
+                <UsersGridItem 
                   key={value} 
+                  value={value}
                   className="grid-item" 
-                  style={idx === 0 ? {fontWeight: 700} : null}
-                >
-                  {value}
-                </div>
+                  style={idx === 0 ? {fontWeight: 700} : null}              
+                />
               )}
             </React.Fragment>
             )                
