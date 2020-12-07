@@ -13,11 +13,11 @@ function UsersGridItem(props) {
     ? value.split(subpropertyNameRegexp).filter(part => part.length)
     : [];
 
-  const popupArr = strArr.forEach( (part, idx) => {
+  const popupArr = strArr.forEach( (_, idx) => 
     idx > 0 && subpropertyNameRegexp.test(strArr[idx - 1])
-      ? strArr[idx - 1];
-      "";    
-  });
+      ? strArr[idx - 1]
+      : ""
+  );
 
   console.log("popupArr =", popupArr);
 
