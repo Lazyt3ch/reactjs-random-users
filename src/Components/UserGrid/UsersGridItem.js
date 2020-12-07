@@ -19,20 +19,20 @@ function UsersGridItem(props) {
       : ""
   );
 
-  const [currentPopup, setCurrentPopup] = useState(null);
+  const [currentTooltip, setCurrentTooltip] = useState(null);
 
   function handleMouseEnter(event) {
     // console.log("event.target =", event.target);
-    const popupStr = event.target.dataset.userSubpropertyName;
+    const tooltipStr = event.target.dataset.userSubpropertyName;
     // console.log("popupStr =", popupStr);
-    if (popupStr && popupStr.length) {
+    if (tooltipStr && tooltipStr.length) {
       // console.log(popupStr);
 
     }
   }
 
   function handleMouseLeave(event) {
-    setCurrentPopup(null);
+    setCurrentTooltip(null);
   }
 
   // console.log("popupArr =", popupArr);
