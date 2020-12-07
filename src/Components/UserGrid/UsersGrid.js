@@ -48,12 +48,12 @@ function UsersGrid(props) {
   //   setBriefResults2D(briefResults2DNew);
   // }, [results2D, validProperties, setBriefResults2D]);
 
-  // useEffect( () => {
-  //   const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
-  //     ? getGridColumnsFormula(results2D, validProperties)
-  //     : "";
-  //   setGridColumnsFormula(gridColumnsFormulaNew);
-  // }, [results2D, validProperties, setGridColumnsFormula]);
+  useEffect( () => {
+    const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
+      ? getGridColumnsFormula(results2D, validProperties)
+      : "";
+    setGridColumnsFormula(gridColumnsFormulaNew);
+  }, [results2D, validProperties, setGridColumnsFormula]);
   
   // useEffect( () => {
   //   const briefGridColumnsFormulaNew = Array.isArray(briefResults2D) && briefResults2D.length > 1
@@ -97,13 +97,14 @@ function UsersGrid(props) {
         }}
       >
         {results2D && results2D.length > 1
-          ? results2D.map( (userObj, idx) => 
-            <React.Fragment key={idx}>
+          ? results2D.map( (userObj, rowIndex) => 
+            <React.Fragment key={rowIndex}>
               {Object.values(userObj).map( value => 
                 <UsersGridItem 
                   key={value} 
                   value={value}
-                  style={idx === 0 ? {fontWeight: 700} : null}              
+                  rowIndex={rowIndex}
+                  style={rowIndex === 0 ? {fontWeight: 700} : null}              
                 />
               )}
             </React.Fragment>

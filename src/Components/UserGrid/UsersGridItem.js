@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from "react";
 // import React from "react";
 
 function UsersGridItem(props) {
-  const {value} = props;
+  const {value, rowIndex} = props;
 
   // const getSpannedItem = () => {
   //   console.log("value =", value);        
@@ -25,7 +25,11 @@ function UsersGridItem(props) {
   // }
 
   const regexp = new RegExp("([a-z]+:\\s)", "g");
-  const [strArr, setStrArr] = useState(value.split(regexp).filter(part => part.length));
+  const [strArr, setStrArr] = useState(
+    rowIndex > 0
+      ? value.split(regexp).filter(part => part.length)
+      : []
+  );
 
   // const {spannedItem, setSpannedItem} = useState(getSpannedItem(value));
 
@@ -35,14 +39,20 @@ function UsersGridItem(props) {
   // }, [value, setSpannedItem, getSpannedItem]);
 
   return (
-    <div>
-      { strArr.map (part => 
-        regexp.test(part) 
-          ? <span className="grid-item">{part}</span> 
-          : <>{part}</>
-        )
+    <>
+      { rowIndex > 0
+          ? <div className="property-content">
+              {strArr.map (part => 
+              regexp.test(part) 
+                ? <span className="subproperty-name">{part}</span> 
+                : <span className="subproperty-value">{part}</span>
+              )}
+            </div>
+          : <div className="property-name">
+              {value}
+            </div>
       }
-    </div>
+    </>
   );
 
 }
