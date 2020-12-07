@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useCallback} from "react";
-// import React from "react";
+// import React, {useState, useEffect} from "react";
+import React from "react";
 
 function UsersGridItem(props) {
   const {
@@ -9,35 +9,36 @@ function UsersGridItem(props) {
   } = props;
 
   const regexp = new RegExp("([a-z]+:\\s)", "g");
-  const [strArr, setStrArr] = useState(
-    rowIndex > 0
-      ? value.split(regexp).filter(part => part.length)
-      : []
-  );
+
+  const strArr = rowIndex > 0
+    ? value.split(regexp).filter(part => part.length)
+    : [];
+
+  console.log("value =", value);
+  console.log("isBriefResults =", isBriefResults);
 
   return (
     <>
       { rowIndex > 0
-          ? <div className="property-content">
-              {strArr.map ( (part, idx) => 
-              regexp.test(part) 
-                ? <span className="subproperty-name"
-                    style={{display: isBriefResults ? "none" : "inline"}}
-                    key={idx}
-                  >
-                    {part}
-                  </span> 
-                : <span 
-                    className="subproperty-value"
-                    key={idx}
-                  >
-                    {part}
-                  </span>
-              )}
-            </div>
-          : <div className="property-name">
-              {value}
-            </div>
+        ? <div className="property-content">
+            {strArr.map ( (part, idx) => 
+            regexp.test(part) 
+              ? <span className="subproperty-name"
+                  style={{display: (isBriefResults ? "none" : "inline")}}
+                  key={idx}
+                >
+                  {part}
+                </span> 
+              : <span className="subproperty-value"
+                  key={idx}
+                >
+                  {part}
+                </span>
+            )}
+          </div>
+        : <div className="property-name">
+            {value}
+          </div>
       }
     </>
   );

@@ -67,6 +67,8 @@ function UsersGrid(props) {
     setIsBriefResults(event.target.checked);    
   }
 
+  // console.log("USERS GRID: isBriefResults =", isBriefResults);
+
   // useEffect( () => {
   //   const displayedResultsNew = isBriefResults
   //     ? briefResults2D
@@ -104,6 +106,7 @@ function UsersGrid(props) {
                   key={value} 
                   value={value}
                   rowIndex={rowIndex}
+                  isBriefResults={isBriefResults}
                   style={rowIndex === 0 ? {fontWeight: 700} : null}              
                 />
               )}
