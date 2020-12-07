@@ -22,7 +22,6 @@ function UsersGridItem(props) {
 
   const strArr = rowIndex > 0
     ? value.split(subpropNameOrClosingParenRegexp)
-    // ? value.split(subpropNameRegexp)
       .filter( part => part.length )
     : [];
 
@@ -38,18 +37,17 @@ function UsersGridItem(props) {
   const nameStack = [];
 
   for (let i = 0; i < strArr.length; i++) {
-    if ( subpropNameRegexp.test(strArr[i]) ) {
-      nameStack.push(strArr[i]); // Maybe add later: slice(0, -2)
+    if ( strArr[i] === "(" ) {
+      if (i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
+        nameStack.push(strArr[i - 1]);
+      }
       tooltipArr.push("");
     } else if ( strArr[i] === ")" ) {
       if (nameStack.length) {
         nameStack.pop();
       }
-
       tooltipArr.push("");
-    }
-
-    if ( i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
+    } else if ( i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
       tooltipArr.push( `${
         nameStack.length ? nameStack[nameStack.length - 1] : ""
       }${strArr[i - 1].slice(0, -2)}` );
@@ -59,12 +57,17 @@ function UsersGridItem(props) {
   }
 
   function handleMouseEnter(event) {
-    if (isBriefResults) {
-      // console.log("mouse enter");
-      const tooltipStr = event.target.dataset.tip;
-      if (tooltipStr && tooltipStr.length) {
-        ReactTooltip.show(event.target);
-      }
+    // if (isBriefResults) {
+    //   // console.log("mouse enter");
+    //   const tooltipStr = event.target.dataset.tip;
+    //   if (tooltipStr && tooltipStr.length) {
+    //     ReactTooltip.show(event.target);
+    //   }
+    // }
+
+    const tooltipStr = event.target.dataset.tip;
+    if (tooltipStr && tooltipStr.length) {
+      ReactTooltip.show(event.target);
     }
   }
 
@@ -94,8 +97,9 @@ function UsersGridItem(props) {
                     >
                       {part}
                     </span>
-                : <span></span>
+                : <span></span>              
             )}
+            
           </div>
         : <div className="property-name">
             {value}
