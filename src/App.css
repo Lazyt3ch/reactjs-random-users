@@ -37,7 +37,7 @@
     display: grid;
     grid-gap: .3rem 1rem;
     width: 100%;
-    margin: 0 1rem 0 2rem;
+    margin: 0 1rem;
 }
 
 .grid-item {

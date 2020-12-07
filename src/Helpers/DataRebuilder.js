@@ -8,9 +8,7 @@ const addTrailingCommaSpace = str => {
 
 const getBriefItem = item => {
   // Simply removes any text fragments like "name: "
-  // console.log("item =", item);
   const briefItem = item.replace(/[a-z]+:\s/g, "");
-  // console.log("briefItem =", briefItem);
   return briefItem;
 };
 

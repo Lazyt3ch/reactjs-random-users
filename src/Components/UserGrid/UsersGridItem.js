@@ -1,4 +1,3 @@
-// import React, {useState, useEffect} from "react";
 import React from "react";
 
 function UsersGridItem(props) {
@@ -13,9 +12,6 @@ function UsersGridItem(props) {
   const strArr = rowIndex > 0
     ? value.split(regexp).filter(part => part.length)
     : [];
-
-  console.log("value =", value);
-  console.log("isBriefResults =", isBriefResults);
 
   return (
     <>

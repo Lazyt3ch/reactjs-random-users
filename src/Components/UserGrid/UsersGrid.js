@@ -67,15 +67,6 @@ function UsersGrid(props) {
     setIsBriefResults(event.target.checked);    
   }
 
-  // console.log("USERS GRID: isBriefResults =", isBriefResults);
-
-  // useEffect( () => {
-  //   const displayedResultsNew = isBriefResults
-  //     ? briefResults2D
-  //     : results2D;
-  //   setDisplayedResults(displayedResultsNew);
-  // }, [briefResults2D, results2D, isBriefResults, setDisplayedResults]);
-
   return (
     <React.Fragment>
       <div style={{marginLeft: "2rem", marginBottom: "1rem"}}>
