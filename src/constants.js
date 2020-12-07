@@ -1,7 +1,7 @@
 const constants = {
   numResultsLowerLimit: 1,
   numResultsUpperLimit: 1000,
-  numResultsDefault: 50,
+  numResultsDefault: 5,
   allPropertiesUnorderedString: `
     gender
     name

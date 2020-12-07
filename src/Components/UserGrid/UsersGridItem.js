@@ -8,26 +8,6 @@ function UsersGridItem(props) {
     isBriefResults,
   } = props;
 
-  // const getSpannedItem = () => {
-  //   console.log("value =", value);        
-  //   const regexp = new RegExp("([a-z]+:\\s)", "g");
-  //   const strArr = value
-  //     .split(regexp)
-  //     .filter(part => part.length);
-  //   console.log("strArr =", strArr);  
-  //   const spannedArr = strArr.map( part => 
-  //     regexp.test(part) 
-  //       ? <span className="grid-item">{part}</span> 
-  //       : <>{part}</>
-  //   );
-  //   console.log("spannedArr =", spannedArr);
-  //   return spannedArr;
-  // };
-
-  // const getStrArr = () => {
-
-  // }
-
   const regexp = new RegExp("([a-z]+:\\s)", "g");
   const [strArr, setStrArr] = useState(
     rowIndex > 0
@@ -39,12 +19,17 @@ function UsersGridItem(props) {
     <>
       { rowIndex > 0
           ? <div className="property-content">
-              {strArr.map (part => 
+              {strArr.map ( (part, idx) => 
               regexp.test(part) 
-                ? <span className="subproperty-name">{part}</span> 
+                ? <span className="subproperty-name"
+                    style={{display: isBriefResults ? "none" : "inline"}}
+                    key={idx}
+                  >
+                    {part}
+                  </span> 
                 : <span 
-                    className="subproperty-value" 
-                    style={isBriefResults ? {display: "none"} : null}
+                    className="subproperty-value"
+                    key={idx}
                   >
                     {part}
                   </span>
