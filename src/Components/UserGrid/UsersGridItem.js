@@ -10,19 +10,53 @@ function UsersGridItem(props) {
 
   console.log("value =", value);
 
-  const subpropertyNameRegexp = new RegExp("([a-z]+:\\s)");
+  // const subpropNamePattern = "([a-z]+:\\s)";
+  // const subpropNameRegexp = new RegExp(subpropNamePattern);
+  // const subpropNameOrClosingParenRegexp = new RegExp(`${subpropNamePattern}|([)])`);
+  // console.log(`${subpropNamePattern}|(\\))`);
+
+  const subpropNamePattern = "[a-z]+:\\s";
+  const subpropNameRegexp = new RegExp(subpropNamePattern);
+  const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|[)])`);
+  // console.log(`${subpropNamePattern}|(\\))`);
 
   const strArr = rowIndex > 0
-    ? value.split(subpropertyNameRegexp).filter( part => part.length )
+    ? value.split(subpropNameOrClosingParenRegexp)
+    // ? value.split(subpropNameRegexp)
+      .filter( part => part.length )
     : [];
 
   console.log("strArr =", strArr);
 
-  const tooltipArr = strArr.map( (_, idx) => 
-    idx > 0 && subpropertyNameRegexp.test(strArr[idx - 1])
-      ? strArr[idx - 1].slice(0, -2)
-      : ""
-  );
+  // const tooltipArr = strArr.map( (_, idx) => 
+  //   idx > 0 && subpropNameRegexp.test(strArr[idx - 1])
+  //     ? strArr[idx - 1].slice(0, -2)
+  //     : ""
+  // );
+
+  const tooltipArr = [];
+  const nameStack = [];
+
+  for (let i = 0; i < strArr.length; i++) {
+    if ( subpropNameRegexp.test(strArr[i]) ) {
+      nameStack.push(strArr[i]); // Maybe add later: slice(0, -2)
+      tooltipArr.push("");
+    } else if ( strArr[i] === ")" ) {
+      if (nameStack.length) {
+        nameStack.pop();
+      }
+
+      tooltipArr.push("");
+    }
+
+    if ( i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
+      tooltipArr.push( `${
+        nameStack.length ? nameStack[nameStack.length - 1] : ""
+      }${strArr[i - 1].slice(0, -2)}` );
+    } else {
+      tooltipArr.push("");
+    }
+  }
 
   function handleMouseEnter(event) {
     if (isBriefResults) {
@@ -45,7 +79,7 @@ function UsersGridItem(props) {
         ? <div className="property-content">
             {strArr.map ( (part, partIdx) => 
               part.length 
-                ? subpropertyNameRegexp.test(part) 
+                ? subpropNameRegexp.test(part) 
                   ? <span className="subproperty-name"
                       style={{display: (isBriefResults ? "none" : "inline")}}
                       key={partIdx}
