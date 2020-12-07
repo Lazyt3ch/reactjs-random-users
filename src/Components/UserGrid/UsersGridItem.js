@@ -7,18 +7,26 @@ function UsersGridItem(props) {
     isBriefResults,
   } = props;
 
-  const regexp = new RegExp("([a-z]+:\\s)", "g");
+  const subpropertyNameRegexp = new RegExp("([a-z]+:\\s)", "g");
 
   const strArr = rowIndex > 0
-    ? value.split(regexp).filter(part => part.length)
+    ? value.split(subpropertyNameRegexp).filter(part => part.length)
     : [];
+
+  const popupArr = strArr.forEach( (part, idx) => {
+    idx > 0 && subpropertyNameRegexp.test(strArr[idx - 1])
+      ? strArr[idx - 1];
+      "";    
+  });
+
+  console.log("popupArr =", popupArr);
 
   return (
     <>
       { rowIndex > 0
         ? <div className="property-content">
             {strArr.map ( (part, idx) => 
-            regexp.test(part) 
+            subpropertyNameRegexp.test(part) 
               ? <span className="subproperty-name"
                   style={{display: (isBriefResults ? "none" : "inline")}}
                   key={idx}
