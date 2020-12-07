@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import ReactTooltip from 'react-tooltip';
+import React, {useState, useEffect, useMemo} from "react";
+// import ReactTooltip from 'react-tooltip';
 
 function UsersGridItem(props) {
   const {
@@ -11,7 +11,7 @@ function UsersGridItem(props) {
   console.log("value =", value);
 
   const subpropNamePattern = "[a-z]+:\\s";
-  const subpropNameRegexp = new RegExp(subpropNamePattern);
+  const subpropNameRegexp = useMemo( () => new RegExp(subpropNamePattern), [] );
 
   const [strArr, setStrArr] = useState([]);
   
@@ -28,39 +28,49 @@ function UsersGridItem(props) {
 
   // console.log("strArr =", strArr);
 
-  const tooltipArr = [];
-  const nameStack = [];
-
-  for (let i = 0; i < strArr.length; i++) {
-    if ( strArr[i] === "(" ) {
-      if (i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
-        nameStack.push(strArr[i - 1]);
-      }
-      tooltipArr.push("");
-    } else if ( strArr[i] === ")" ) {
-      if (nameStack.length) {
-        nameStack.pop();
-      }
-      tooltipArr.push("");
-    } else if ( i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
-      tooltipArr.push( `${
-        nameStack.length ? nameStack[nameStack.length - 1] : ""
-      }${strArr[i - 1].slice(0, -2)}` );
-    } else {
-      tooltipArr.push("");
-    }
-  }
+  const [tooltipArr, setTooltipArr] = useState([]);
+  
+  useEffect( 
+    () => {
+      const tooltipArrNew = [];
+      const nameStack = [];
+      for (let i = 0; i < strArr.length; i++) {
+        if ( strArr[i] === "(" ) {
+          if (i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
+            nameStack.push(strArr[i - 1]);
+          }
+          tooltipArrNew.push("");
+        } else if ( strArr[i] === ")" ) {
+          if (nameStack.length) {
+            nameStack.pop();
+          }
+          tooltipArrNew.push("");
+        } else if ( i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
+          tooltipArrNew.push( `${
+            nameStack.length ? nameStack[nameStack.length - 1] : ""
+          }${strArr[i - 1].slice(0, -2)}` );
+        } else {
+          tooltipArrNew.push("");
+        }
+      }    
+      setTooltipArr(tooltipArrNew);
+      // setTooltipArr("");
+      console.log("tooltipArrNew =", tooltipArrNew)
+    }, 
+    [value, strArr, subpropNameRegexp]
+  );  
 
   function handleMouseEnter(event) {
-    const tooltipStr = event.target.dataset.tip;
-    if (tooltipStr && tooltipStr.length) {
-      ReactTooltip.show(event.target);
-    }
+    // const tooltipStr = event.target.dataset.userSubpropName;
+    // event.target.dataset.tip = tooltipStr;
+    // if (tooltipStr && tooltipStr.length) {
+    //   ReactTooltip.show(event.target);
+    // }
   }
 
   function handleMouseLeave(event) {
     // console.log("mouse leave");
-    ReactTooltip.hide()
+    // ReactTooltip.hide()
   }
 
   return (
@@ -77,7 +87,7 @@ function UsersGridItem(props) {
                       {part}
                     </span> 
                   : <span className="subproperty-value"
-                      data-tip={tooltipArr[partIdx]}
+                      data-user-subprop-name={tooltipArr[partIdx]}
                       key={partIdx}
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
@@ -93,7 +103,6 @@ function UsersGridItem(props) {
           </div>
       }
 
-      <ReactTooltip />
     </>
     
   );
