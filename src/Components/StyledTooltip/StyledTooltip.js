@@ -1,7 +1,9 @@
-import { Tooltip, withStyles } from "@material-ui/core";
+import { Tooltip, withStyles } from "@material-ui/core"; // v 4.x
+// import { Tooltip, makeStyles } from "@material-ui/core"; // v 5 alpha
 
 const StyledTooltip = withStyles({
-  tooltip: {
+// const StyledTooltip = makeStyles({
+    tooltip: {
     backgroundColor: "black",
     color: "white",
     fontSize: ".9rem",
