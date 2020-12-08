@@ -1,6 +1,7 @@
 const constants = {
   numResultsLowerLimit: 1,
-  numResultsUpperLimit: 1000,
+  // numResultsUpperLimit: 1000,
+  numResultsUpperLimit: 100, // The whole app becomes very slow when displaying lots of results :(
   numResultsDefault: 5,
   allPropertiesUnorderedString: `
     gender
