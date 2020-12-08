@@ -1,6 +1,7 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useCallback} from "react";
 import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
+import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
 
 function UsersGrid(props) {
@@ -31,6 +32,10 @@ function UsersGrid(props) {
   // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
 
   useEffect( () => {
+    if (isBadData(results, validPropertiesCopy)) {
+      return;
+    }
+
     const results2DNew = Array.isArray(results) && results.length > 1
       ? getRebuiltResults(results, validPropertiesCopy)
       : [];
@@ -39,6 +44,10 @@ function UsersGrid(props) {
   }, [results, validPropertiesCopy, setResults2D]);
 
   useEffect( () => {
+    if (isBadData(results2D, validPropertiesCopy)) {
+      return;
+    }
+        
     const briefResults2DNew = Array.isArray(results2D) && results2D.length > 1
       ? getBriefResults(results2D, validPropertiesCopy)
       : [];
@@ -46,6 +55,10 @@ function UsersGrid(props) {
   }, [results2D, validPropertiesCopy, setBriefResults2D]);
 
   useEffect( () => {
+    if (isBadData(results2D, validPropertiesCopy)) {
+      return;
+    }
+
     const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
       ? getGridColumnsFormula(results2D, validPropertiesCopy)
       : "";
@@ -53,12 +66,15 @@ function UsersGrid(props) {
   }, [results2D, validPropertiesCopy, setGridColumnsFormula]);
   
   useEffect( () => {
+    if (isBadData(briefResults2D, validPropertiesCopy)) {
+      return;
+    }
+
     const briefGridColumnsFormulaNew = Array.isArray(briefResults2D) && briefResults2D.length > 1
       ? getGridColumnsFormula(briefResults2D, validPropertiesCopy)
       : "";
     setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
   }, [briefResults2D, validPropertiesCopy, setBriefGridColumnsFormula]);
-
 
   function handleBriefResultsChange(event) {
     setIsBriefResults(event.target.checked);    
