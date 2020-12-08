@@ -86,7 +86,7 @@ function UsersGrid(props) {
         <input type="checkbox" 
           id="brief-checkbox"
           name="brief-checkbox"
-          selected={isBriefResults}           
+          checked={isBriefResults}           
           onChange={handleBriefResultsChange}
         />
         <label htmlFor="brief-checkbox" 
