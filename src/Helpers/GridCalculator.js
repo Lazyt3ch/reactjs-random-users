@@ -1,4 +1,5 @@
-const maxTotalWidth = 90; // Reserve 10% just in case
+// Reserve some horizontal space to prevent overflow
+const maxTotalWidth = 90; 
 
 const getColumnWidths = results => {
   if (!results || !results.length) {
@@ -44,7 +45,7 @@ const getGridColumnsFormula = (results2D, validProperties) => {
     return "";
   }
 
-  if (!columnWidths) {
+  if (!columnWidths || !columnWidths.length) {
     return "";
   }
 

@@ -63,7 +63,7 @@ function UsersGridItem(props) {
   return (
     <>
       { rowIndex > 0
-        ? <div className="property-content">
+        ? <div className="grid-item property-content">
             {strArr.map ( (part, partIdx) => 
               part.length 
                 ? subpropNameRegexp.test(part) 
@@ -88,7 +88,7 @@ function UsersGridItem(props) {
             )}
             
           </div>
-        : <div className="property-name">
+        : <div className="grid-item property-name">
             {value}
           </div>
       }
