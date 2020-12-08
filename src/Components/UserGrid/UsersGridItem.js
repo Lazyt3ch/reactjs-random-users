@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useMemo} from "react";
-// import StyledTooltip from "../StyledTooltip/StyledTooltip.js";
+import StyledTooltip from "../StyledTooltip/StyledTooltip.js";
+// Also tried using react-tooltip, which seems to be buggy :(
 
 function UsersGridItem(props) {
   // console.log("StyledTooltip =", StyledTooltip);
