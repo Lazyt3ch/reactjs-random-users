@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo} from "react";
-import StyledTooltip from "../StyledTooltip/StyledTooltip.js";
+// import StyledTooltip from "../StyledTooltip/StyledTooltip.js";
 
 function UsersGridItem(props) {
   // console.log("StyledTooltip =", StyledTooltip);
