@@ -24,9 +24,6 @@ function UsersGrid(props) {
     
     isBriefResults, 
     setIsBriefResults,
-
-    // displayedResults, 
-    // setDisplayedResults,
   } = props;
   
   // TODO:
@@ -37,7 +34,7 @@ function UsersGrid(props) {
     const results2DNew = Array.isArray(results) && results.length > 1
       ? getRebuiltResults(results, validProperties)
       : [];
-    console.log("results2DNew =", results2DNew);
+    // console.log("results2DNew =", results2DNew);
     setResults2D(results2DNew);
   }, [results, validProperties, setResults2D]);
 

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useMemo} from "react";
-// import ReactTooltip from 'react-tooltip';
+import { Tooltip } from "@material-ui/core";
+import styled from 'styled-components';
 
 function UsersGridItem(props) {
   const {
@@ -54,24 +55,10 @@ function UsersGridItem(props) {
         }
       }    
       setTooltipArr(tooltipArrNew);
-      // setTooltipArr("");
-      console.log("tooltipArrNew =", tooltipArrNew)
+      // console.log("tooltipArrNew =", tooltipArrNew)
     }, 
     [value, strArr, subpropNameRegexp]
   );  
-
-  function handleMouseEnter(event) {
-    // const tooltipStr = event.target.dataset.userSubpropName;
-    // event.target.dataset.tip = tooltipStr;
-    // if (tooltipStr && tooltipStr.length) {
-    //   ReactTooltip.show(event.target);
-    // }
-  }
-
-  function handleMouseLeave(event) {
-    // console.log("mouse leave");
-    // ReactTooltip.hide()
-  }
 
   return (
     <>
@@ -86,14 +73,20 @@ function UsersGridItem(props) {
                     >
                       {part}
                     </span> 
-                  : <span className="subproperty-value"
-                      data-user-subprop-name={tooltipArr[partIdx]}
-                      key={partIdx}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                  : <Tooltip title={<span 
+                        style={{color: "white", fontSize: ".8rem"}}
+                      >
+                        {tooltipArr[partIdx]}
+                      </span>} 
+                      placement="top"
+                      arrow={true}
                     >
-                      {part}
-                    </span>
+                      <span className="subproperty-value"
+                        key={partIdx}
+                      >
+                        {part}
+                      </span>
+                    </Tooltip>
                 : <span></span>              
             )}
             
