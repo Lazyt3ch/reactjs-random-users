@@ -8,7 +8,7 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
   try {
     const response = await fetch(completeUrl);
     const data = await response.json();
-    console.log("data =", data);
+    // console.log("data =", data);
 
     if (data.error || !data.results || !data.results.length) {
       errorMessage = "The server returned an unspecified error.";

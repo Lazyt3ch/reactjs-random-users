@@ -1,15 +1,15 @@
 import React, {useState, useEffect, useMemo} from "react";
-import { Tooltip } from "@material-ui/core";
-import styled from 'styled-components';
+import StyledTooltip from "../StyledTooltip/StyledTooltip.js";
 
 function UsersGridItem(props) {
+  // console.log("StyledTooltip =", StyledTooltip);
   const {
     value, 
     rowIndex, 
     isBriefResults,
   } = props;
 
-  console.log("value =", value);
+  // console.log("value =", value);
 
   const subpropNamePattern = "[a-z]+:\\s";
   const subpropNameRegexp = useMemo( () => new RegExp(subpropNamePattern), [] );
@@ -73,20 +73,17 @@ function UsersGridItem(props) {
                     >
                       {part}
                     </span> 
-                  : <Tooltip title={<span 
-                        style={{color: "white", fontSize: ".8rem"}}
-                      >
-                        {tooltipArr[partIdx]}
-                      </span>} 
+                  : <StyledTooltip 
+                      title={tooltipArr[partIdx] || ""}     
+                      aria-label={tooltipArr[partIdx] || "no subproperty name"}               
                       placement="top"
-                      arrow={true}
+                      key={partIdx}
                     >
                       <span className="subproperty-value"
-                        key={partIdx}
                       >
                         {part}
                       </span>
-                    </Tooltip>
+                    </StyledTooltip>
                 : <span></span>              
             )}
             
