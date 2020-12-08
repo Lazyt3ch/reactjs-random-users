@@ -7,6 +7,7 @@ function FetcherLaunch(props) {
     numResults, 
 
     validProperties, 
+    setValidPropertiesCopy,
     
     setResults,
     
@@ -27,6 +28,7 @@ function FetcherLaunch(props) {
     setFetchAttempted(true);
 
     if (resultsArr && resultsArr.length) {
+      setValidPropertiesCopy(validProperties.slice());
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setResultsFetchCount(resultsFetchCount + 1);

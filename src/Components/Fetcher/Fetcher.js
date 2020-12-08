@@ -26,6 +26,7 @@ function Fetcher(props) {
     resultsFetchCount, 
     setResultsFetchCount,
 
+    setValidPropertiesCopy,
   } = props;
 
 
@@ -56,6 +57,8 @@ function Fetcher(props) {
 
         resultsFetchCount={resultsFetchCount} 
         setResultsFetchCount={setResultsFetchCount}    
+
+        setValidPropertiesCopy={setValidPropertiesCopy}
       />
     </div>
   );
