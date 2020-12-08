@@ -36,7 +36,7 @@ function UsersGrid(props) {
       return;
     }
 
-    const results2DNew = Array.isArray(results) && results.length > 1
+    const results2DNew = results.length > 1
       ? getRebuiltResults(results, validPropertiesCopy)
       : [];
     // console.log("results2DNew =", results2DNew);
@@ -48,7 +48,7 @@ function UsersGrid(props) {
       return;
     }
         
-    const briefResults2DNew = Array.isArray(results2D) && results2D.length > 1
+    const briefResults2DNew = results2D.length > 1
       ? getBriefResults(results2D, validPropertiesCopy)
       : [];
     setBriefResults2D(briefResults2DNew);
@@ -59,7 +59,7 @@ function UsersGrid(props) {
       return;
     }
 
-    const gridColumnsFormulaNew = Array.isArray(results2D) && results2D.length > 1
+    const gridColumnsFormulaNew = results2D.length > 1
       ? getGridColumnsFormula(results2D, validPropertiesCopy)
       : "";
     setGridColumnsFormula(gridColumnsFormulaNew);
@@ -70,7 +70,7 @@ function UsersGrid(props) {
       return;
     }
 
-    const briefGridColumnsFormulaNew = Array.isArray(briefResults2D) && briefResults2D.length > 1
+    const briefGridColumnsFormulaNew = briefResults2D.length > 1
       ? getGridColumnsFormula(briefResults2D, validPropertiesCopy)
       : "";
     setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
