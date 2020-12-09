@@ -23,7 +23,7 @@ function UsersGridItem(props) {
   useEffect( 
     () => {
       // const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|[)])`);
-      const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|[]])`);
+      const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|\\])`);
       setStrArr(rowIndex > 0
       ? value.split(subpropNameOrClosingParenRegexp)
         .filter( part => part.length )
