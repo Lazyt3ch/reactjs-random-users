@@ -19,6 +19,10 @@
 }
 
 .nav-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
     display: block;
     margin-bottom: 2rem;
 }
@@ -36,6 +40,19 @@
 
 .right-margin-span {
     margin-right: 1rem;
+}
+
+.grid-header {
+    position: fixed;
+    left: 0;
+    top: 4rem;
+    width: 100%;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.grid-container-wrapper {
+    margin-top: 6rem;
 }
 
 .grid-container {

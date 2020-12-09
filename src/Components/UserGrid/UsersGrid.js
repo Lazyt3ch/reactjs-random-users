@@ -82,7 +82,7 @@ function UsersGrid(props) {
 
   return (
     <React.Fragment>
-      <div style={{marginLeft: "2rem", marginBottom: "1rem"}}>
+      <div className="grid-header">
         <input type="checkbox" 
           id="brief-checkbox"
           name="brief-checkbox"
@@ -95,30 +95,32 @@ function UsersGrid(props) {
         </label>
       </div>
 
-      <div className="grid-container" 
-        style={{gridTemplateColumns: 
-          isBriefResults
-            ? briefGridColumnsFormula
-            : gridColumnsFormula
-        }}
-      >
-        {results2D && results2D.length > 1
-          ? results2D.map( (userObj, rowIndex) => 
-            <React.Fragment key={rowIndex}>
-              {Object.values(userObj).map( value => 
-                <UsersGridItem 
-                  key={value} 
-                  value={value}
-                  rowIndex={rowIndex}
-                  isBriefResults={isBriefResults}
-                  style={rowIndex === 0 ? {fontWeight: 700} : null}              
-                />
-              )}
-            </React.Fragment>
-            )                
-          : ""
-        }
-      </div>      
+      <div className="grid-container-wrapper">
+        <div className="grid-container" 
+          style={{gridTemplateColumns: 
+            isBriefResults
+              ? briefGridColumnsFormula
+              : gridColumnsFormula
+          }}
+        >
+          {results2D && results2D.length > 1
+            ? results2D.map( (userObj, rowIndex) => 
+              <React.Fragment key={rowIndex}>
+                {Object.values(userObj).map( value => 
+                  <UsersGridItem 
+                    key={value} 
+                    value={value}
+                    rowIndex={rowIndex}
+                    isBriefResults={isBriefResults}
+                    style={rowIndex === 0 ? {fontWeight: 700} : null}              
+                  />
+                )}
+              </React.Fragment>
+              )                
+            : ""
+          }
+        </div>      
+      </div>
 
     </React.Fragment>
   );
