@@ -70,7 +70,9 @@ function UsersGridItem(props) {
   return (
     <>
       { rowIndex > 0
-        ? <div className="grid-item property-content">
+        ? <div className="grid-item property-content"
+            dir="ltr"
+          >
             {strArr.map ( (part, partIdx) => 
               part.length 
                 ? subpropNameRegexp.test(part) 
@@ -83,6 +85,7 @@ function UsersGridItem(props) {
                   : <span className={ `subproperty-value 
                       ${tooltipArr[partIdx] && tooltipArr[partIdx].length ? "tooltip" : ""}` }
                       key={partIdx}
+                      dir="ltr"
                     >
                       {part}
                       {tooltipArr[partIdx] && tooltipArr[partIdx].length
