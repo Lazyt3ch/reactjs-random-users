@@ -40,7 +40,10 @@ function UsersGrid(props) {
       ? getRebuiltResults(results, validPropertiesCopy)
       : [];
     // console.log("results2DNew =", results2DNew);
-    setResults2D(results2DNew);
+
+    if (!isBadData(results2DNew) && results2DNew.length) {
+      setResults2D(results2DNew);
+    }
   }, [results, validPropertiesCopy, setResults2D]);
 
   useEffect( () => {
@@ -51,7 +54,10 @@ function UsersGrid(props) {
     const briefResults2DNew = results2D.length > 1
       ? getBriefResults(results2D, validPropertiesCopy)
       : [];
-    setBriefResults2D(briefResults2DNew);
+
+    if (!isBadData(briefResults2DNew) && briefResults2DNew.length) {
+      setBriefResults2D(briefResults2DNew);
+    }      
   }, [results2D, validPropertiesCopy, setBriefResults2D]);
 
   useEffect( () => {

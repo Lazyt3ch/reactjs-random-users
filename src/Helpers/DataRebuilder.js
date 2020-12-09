@@ -34,6 +34,8 @@ const getBriefResults = results2D => {
 };
 
 const getRebuiltData = (userObj, addTags) => {
+  // Now using brackets instead of parentheses as subproperty grouping characters,
+  // because parentheses sometimes occur in retrieved users data
   const builtObj = {};
   let builtStr;
 
