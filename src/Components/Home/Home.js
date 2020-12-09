@@ -15,6 +15,13 @@ function Home() {
           <p>In such cases, when displayed in the Data Viewer, the empty name and null value are replaced 
           with a &lt;null&gt;&mdash;&lt;/null&gt; pair.</p>
         </li>
+
+        <li>
+          <p>It is not advisable to select too many properties at once as the resulting table 
+            may be cluttered with retrieved data, and some indivisible pieces of data 
+            (e.g. a phone number, an email address, or a web address) 
+            may have to be broken up and displayed in a few rows.</p>
+        </li>
       </ul>
     </div>
   )

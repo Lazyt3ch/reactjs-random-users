@@ -11,6 +11,11 @@
 
 .home-page {
     margin-left: 1rem;
+    max-width: 60rem;
+}
+
+.home-page p {
+    font-size: 1.1rem;
 }
 
 .nav-container {
