@@ -66,17 +66,17 @@
   
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    font-size: 1rem;
+    padding: 5px 5px;
+    width: auto;
     background-color: black;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 150%;
-    left: 50%;
-    margin-left: -60px;
+    bottom: 120%;
+    left: 0%;
 }
   
 .tooltip .tooltiptext::after {
