@@ -3,7 +3,7 @@ import React from "react";
 function Home() {
   return (
     <div className="home-page">
-      <h1>Hello!</h1>
+      <h1>Users Data Retriever and Viewer</h1>
       <p>You can use this simple web app to retrieve and view users data from RandomUser.me</p>
 
       <p><strong>Technical notes</strong></p>
