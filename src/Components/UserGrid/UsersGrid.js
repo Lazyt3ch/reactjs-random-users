@@ -62,7 +62,10 @@ function UsersGrid(props) {
     const gridColumnsFormulaNew = results2D.length > 1
       ? getGridColumnsFormula(results2D, validPropertiesCopy)
       : "";
-    setGridColumnsFormula(gridColumnsFormulaNew);
+    
+    if (gridColumnsFormulaNew) {
+      setGridColumnsFormula(gridColumnsFormulaNew);
+    }
   }, [results2D, validPropertiesCopy, setGridColumnsFormula]);
   
   useEffect( () => {
@@ -73,7 +76,10 @@ function UsersGrid(props) {
     const briefGridColumnsFormulaNew = briefResults2D.length > 1
       ? getGridColumnsFormula(briefResults2D, validPropertiesCopy)
       : "";
-    setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
+
+    if (briefGridColumnsFormulaNew) {
+      setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
+    }
   }, [briefResults2D, validPropertiesCopy, setBriefGridColumnsFormula]);
 
   function handleBriefResultsChange(event) {

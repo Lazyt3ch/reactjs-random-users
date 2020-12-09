@@ -46,7 +46,8 @@ const getRebuiltData = (userObj, addTags) => {
 
     Object.entries(currentObj).forEach( ([key, value]) => {
       if (value !== null && typeof value === 'object') {
-        builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
+        // builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
+        builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
         extractData(value, level + 1);
       } else {
         // <undefined> will replace an empry string, and <null> will replace a null value
@@ -57,7 +58,8 @@ const getRebuiltData = (userObj, addTags) => {
 
     if (hitBottom) {
       if (level > 1) {
-        builtStr = `${removeTrailingCommaSpace(builtStr)}${")".repeat(level - 1)}, `;
+        // builtStr = `${removeTrailingCommaSpace(builtStr)}${")".repeat(level - 1)}, `;
+        builtStr = `${removeTrailingCommaSpace(builtStr)}${"]".repeat(level - 1)}, `;
       }
     }
     
