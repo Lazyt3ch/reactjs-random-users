@@ -51,7 +51,7 @@ function FetcherLaunch(props) {
   }
 
   return (
-    <div style={{marginLeft: "2rem"}}>
+    <div>
       <button 
         onClick={handleFetchUsers} 
         disabled={isFetching || !validProperties.length}

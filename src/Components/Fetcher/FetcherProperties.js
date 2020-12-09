@@ -64,11 +64,11 @@ function FetcherProperties(props) {
 
   return (
     <div style={{marginTop: "1rem"}}>
-      <p style={{marginLeft: "2rem"}}>
+      <p>
         Select user properties to retrieve
       </p>
       
-      <div style={{marginLeft: "2rem"}}>
+      <div>
         <button 
           className="properties-button" 
           disabled={numSelectedProperties === 0}
@@ -93,7 +93,7 @@ function FetcherProperties(props) {
         </button>
       </div>
 
-      <ul style={{listStyleType: "none"}}>
+      <ul style={{listStyleType: "none", paddingLeft: 0}}>
         {allProperties.map( (property) => 
           <li key={property} style={{marginBottom: ".5rem"}}>            
             <input 

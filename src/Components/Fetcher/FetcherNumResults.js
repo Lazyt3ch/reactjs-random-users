@@ -24,7 +24,7 @@ function FetcherNumResults(props) {
   }
 
   return (
-    <div style={{marginLeft: "2rem", marginTop: "1rem"}}>
+    <div style={{marginTop: "1rem"}}>
       <label htmlFor="num_results_range" className="input-label">
         Number of users to retrieve data for 
         ({numResultsLowerLimit} &mdash; {numResultsUpperLimit})
