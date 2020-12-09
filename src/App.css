@@ -143,6 +143,10 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.tooltip:hover {
+    background-color: yellow;
+}
 /* tooltip END */
 
 
