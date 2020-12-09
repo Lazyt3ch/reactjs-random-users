@@ -31,7 +31,7 @@ function FetcherLaunch(props) {
     setIsFetching(false);
     setFetchAttempted(true);
 
-    if (resultsArr && Array.isArray(resultsArr) && resultsArr.length) {
+    if (!errorMessage && resultsArr && Array.isArray(resultsArr) && resultsArr.length) {
       setValidPropertiesCopy(validProperties.slice());
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
