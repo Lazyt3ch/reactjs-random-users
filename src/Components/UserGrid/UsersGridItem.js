@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo} from "react";
-import StyledTooltip from "../StyledTooltip/StyledTooltip.js";
+// import StyledTooltip from "../StyledTooltip/StyledTooltip.js";
 // Also tried using react-tooltip, which seems to be buggy :(
 
 function UsersGridItem(props) {
@@ -16,6 +16,7 @@ function UsersGridItem(props) {
   const subpropNameRegexp = useMemo( () => new RegExp(subpropNamePattern), [] );
 
   const [strArr, setStrArr] = useState([]);
+  // const [isTooltipVisibleArr, setIsTooltipVisibleArr] = useState([]);
   
   useEffect( 
     () => {
@@ -61,6 +62,12 @@ function UsersGridItem(props) {
     [value, strArr, subpropNameRegexp]
   );  
 
+  // Finally, using a CSS-only tooltip from here:
+  // https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_bottom
+  // 
+  // Material-UI tooltips slowed down page rendering;
+  // react-tooltip seems to be buggy. 
+
   return (
     <>
       { rowIndex > 0
@@ -74,17 +81,15 @@ function UsersGridItem(props) {
                     >
                       {part}
                     </span> 
-                  : <StyledTooltip 
-                      title={tooltipArr[partIdx] || ""}     
-                      aria-label={tooltipArr[partIdx] || "no subproperty name"}               
-                      placement="top"
-                      key={partIdx}
+                  : <span className="subproperty-value" class="tooltip"
                     >
-                      <span className="subproperty-value"
+                      {part}
+                      <span class="tooltiptext"                        
+                        aria-label={tooltipArr[partIdx] || "no subproperty name"}   
                       >
-                        {part}
+                        {tooltipArr[partIdx] || "no subproperty name"}
                       </span>
-                    </StyledTooltip>
+                    </span>
                 : <span></span>              
             )}
             
@@ -97,6 +102,43 @@ function UsersGridItem(props) {
     </>
     
   );
+
+  // return (
+  //   <>
+  //     { rowIndex > 0
+  //       ? <div className="grid-item property-content">
+  //           {strArr.map ( (part, partIdx) => 
+  //             part.length 
+  //               ? subpropNameRegexp.test(part) 
+  //                 ? <span className="subproperty-name"
+  //                     style={{display: (isBriefResults ? "none" : "inline")}}
+  //                     key={partIdx}
+  //                   >
+  //                     {part}
+  //                   </span> 
+  //                 : <StyledTooltip 
+  //                     title={tooltipArr[partIdx] || ""}     
+  //                     aria-label={tooltipArr[partIdx] || "no subproperty name"}               
+  //                     placement="top"
+  //                     key={partIdx}
+  //                   >
+  //                     <span className="subproperty-value"
+  //                     >
+  //                       {part}
+  //                     </span>
+  //                   </StyledTooltip>
+  //               : <span></span>              
+  //           )}
+            
+  //         </div>
+  //       : <div className="grid-item property-name">
+  //           {value}
+  //         </div>
+  //     }
+
+  //   </>
+    
+  // );  
 
 }
 
