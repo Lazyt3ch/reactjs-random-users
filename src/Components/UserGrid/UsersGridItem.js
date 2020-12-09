@@ -77,13 +77,12 @@ function UsersGridItem(props) {
                     >
                       {part}
                     </span> 
-                  : <span className="subproperty-value" 
-                      class="tooltip"
+                  : <span className="subproperty-value tooltip" 
                       key={partIdx}
                     >
                       {part}
                       {tooltipArr[partIdx] && tooltipArr[partIdx].length
-                        ? <span class="tooltiptext"                        
+                        ? <span className="tooltiptext"                        
                             aria-label={tooltipArr[partIdx]}   
                           >
                             {tooltipArr[partIdx]}

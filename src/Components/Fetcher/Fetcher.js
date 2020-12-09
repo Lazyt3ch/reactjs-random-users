@@ -31,7 +31,7 @@ function Fetcher(props) {
 
 
   return (
-    <div>
+    <div className="fetcher">
       <FetcherNumResults 
         numResults={numResults} 
         setNumResults={setNumResults}

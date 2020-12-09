@@ -18,12 +18,20 @@
 
 /* home page */
 .home-page {
+    margin-top: 4rem;
     margin-left: 1rem;
     max-width: 60rem;
 }
 
 .home-page p {
     font-size: 1.1rem;
+}
+
+
+/* fetcher setup */
+.fetcher {
+    margin-top: 4rem;
+    margin-left: 1rem;
 }
 
 
