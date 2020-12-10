@@ -211,7 +211,7 @@
     border: 1px solid #4CAF50;
 }
   
-.pagination span:hover:not(.active-page) {
+.pagination span:hover:not(.active-page):not(.no-hover-effect) {
     background-color: #ddd;
 }
   
