@@ -6,6 +6,7 @@ import Fetcher from "./Components/Fetcher/Fetcher.js";
 import UsersGrid from "./Components/UserGrid/UsersGrid.js";
 
 import constants from "./constants.js";
+
 import { 
   getAllProperties, 
   getUpdatedStatuses,
@@ -22,7 +23,7 @@ import {
 
 
 function App() {
-  const {numResultsDefault} = constants;
+  const {numResultsDefault, usersPerPage} = constants;
   const [numResults, setNumResults] = useState(numResultsDefault);
 
   const allProperties = getAllProperties(constants);
@@ -40,6 +41,8 @@ function App() {
   const [isBriefResults, setIsBriefResults] = useState(false);
   // const [displayedResults, setDisplayedResults] = useState([]);
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [activePageNumber, setActivePageNumber] = useState(0);
 
   return (
     <Router>
@@ -93,6 +96,11 @@ function App() {
 
             isBriefResults={isBriefResults}
             setIsBriefResults={setIsBriefResults}
+
+            activePageNumber={activePageNumber}
+            setActivePageNumber={setActivePageNumber}
+            totalPages={totalPages}
+            setTotalPages={setTotalPages}
           />
         </Route>
 

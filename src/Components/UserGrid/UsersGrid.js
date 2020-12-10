@@ -3,6 +3,7 @@ import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
+import Pagination from "../Pagination/Pagination.js";
 
 function UsersGrid(props) {
   const {
@@ -25,6 +26,12 @@ function UsersGrid(props) {
     
     isBriefResults, 
     setIsBriefResults,
+
+    activePageNumber, 
+    setActivePageNumber,
+
+    totalPages, 
+    setTotalPages,
   } = props;
   
   // TODO:
@@ -133,6 +140,13 @@ function UsersGrid(props) {
           }
         </div>      
       </div>
+
+      <Pagination 
+        totalPages={totalPages} 
+
+        activePageNumber={activePageNumber} 
+        setActivePageNumber={setActivePageNumber}    
+      />
 
     </React.Fragment>
   );
