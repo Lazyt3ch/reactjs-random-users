@@ -205,7 +205,7 @@
 }
   
 .pagination span.active-page {
-    color: blue;
+    color: black;
     background-color: white;
     font-weight: 700;
     border: 1px solid #4CAF50;
