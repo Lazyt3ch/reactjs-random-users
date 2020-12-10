@@ -37,51 +37,6 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  // useEffect( () => {
-  //   if (isBadData(results, validPropertiesCopy)) {
-  //     return;
-  //   }
-
-  //   const results2DNew = results.length > 1
-  //     ? getRebuiltResults(results, validPropertiesCopy)
-  //     : [];
-  //   // console.log("results2DNew =", results2DNew);
-
-  //   const getActivePageRows = (allResults) => {
-  //     if (!totalPages || !allResults || !Array.isArray(allResults) || !allResults.length) {
-  //       return [];
-  //     }
-  
-  //     const {usersPerPage} = constants;
-  
-  //     // Row 0 is used for table header, so content rows numbering starts from 1
-  //     const contentRowsStart = (activePageNumber * usersPerPage) + 1;
-  //     const contentRowsEnd = contentRowsStart + usersPerPage;
-  //     const activePageRowsNew = [ allResults[0] ].concat(
-  //       allResults.slice(contentRowsStart, contentRowsEnd + 1) );
-  //     // console.log("activePageRowsNew =", activePageRowsNew);
-      
-  //     return activePageRowsNew;
-  //   }    
-
-  //   if (!isBadData(results2DNew) && results2DNew.length) {
-  //     setResults2D(results2DNew);
-
-  //     const {usersPerPage} = constants;
-  //     // console.log("usersPerPage =", usersPerPage);
-
-  //     // Row 0 is used for table header, so content rows numbering starts from 1
-  //     const totalUsers = results2DNew.length - 1;
-  //     // console.log("totalUsers =", totalUsers);
-
-  //     if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-  //       const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
-  //       setTotalPages(totalPagesNew);  
-  //       setActivePageRows(getActivePageRows(results2DNew));
-  //     }
-  //   }
-  // }, [results, validPropertiesCopy, setResults2D, setTotalPages, activePageNumber, totalPages]);
-
   useEffect( () => {
     if (isBadData(results, validPropertiesCopy)) {
       return;
@@ -94,8 +49,11 @@ function UsersGrid(props) {
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
+
+      // Important, otherwise no rows will be displayed in certain cases
+      setActivePageNumber(0);
     }
-  }, [results, validPropertiesCopy, setResults2D]);
+  }, [results, validPropertiesCopy, setResults2D, setActivePageNumber]);
 
   useEffect( () => {
     if (isBadData(results2D, validPropertiesCopy)) {
@@ -129,7 +87,8 @@ function UsersGrid(props) {
       if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
         const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
         setTotalPages(totalPagesNew);  
-        setActivePageRows(getActivePageRows(results2D));
+        const activePageRowsNew = getActivePageRows(results2D);
+        setActivePageRows(activePageRowsNew);
       }
     }
   }, [results2D, validPropertiesCopy, setTotalPages, activePageNumber, totalPages]);
