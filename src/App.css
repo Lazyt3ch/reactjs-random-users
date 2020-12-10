@@ -47,17 +47,20 @@
 .nav-link {
     text-decoration: none;
     background-color: #eeeeee;
+    color: black;
     padding: .5rem;
-}
-
-.nav-link:hover {
-    background-color: #ddd;
 }
 
 .nav-link-active {
     font-weight: 700;
     color: black;
+    background-color: white;
 }
+
+.nav-link:hover:not(.nav-link-active) {
+    background-color: #ddd;
+}
+
 
 .nav-container {
     position: fixed;
