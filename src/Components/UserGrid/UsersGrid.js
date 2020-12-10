@@ -11,7 +11,7 @@ function UsersGrid(props) {
     results,
     // resultsFetchCount,
 
-    results2D,
+    // results2D,
     setResults2D,
 
     briefResults2D,
@@ -43,22 +43,6 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  const getActivePageRows = (allResults) => {
-    if (!totalPages || !allResults || !Array.isArray(allResults) || allResults.length) {
-      return [];
-    }
-
-    const {usersPerPage} = constants;
-
-    // Row 0 is used for table header, so content rows numbering starts from 1
-    const contentRowsStart = (activePageNumber * usersPerPage) + 1;
-    const contentRowsEnd = contentRowsStart + usersPerPage;
-    const activePageRowsNew = allResults[0].concat(
-      allResults.slice(contentRowsStart, contentRowsEnd + 1) );
-    
-    return activePageRowsNew;
-  }
-
   useEffect( () => {
     if (isBadData(results, validPropertiesCopy)) {
       return;
@@ -68,6 +52,22 @@ function UsersGrid(props) {
       ? getRebuiltResults(results, validPropertiesCopy)
       : [];
     // console.log("results2DNew =", results2DNew);
+
+    const getActivePageRows = (allResults) => {
+      if (!totalPages || !allResults || !Array.isArray(allResults) || !allResults.length) {
+        return [];
+      }
+  
+      const {usersPerPage} = constants;
+  
+      // Row 0 is used for table header, so content rows numbering starts from 1
+      const contentRowsStart = (activePageNumber * usersPerPage) + 1;
+      const contentRowsEnd = contentRowsStart + usersPerPage;
+      const activePageRowsNew = allResults[0].concat(
+        allResults.slice(contentRowsStart, contentRowsEnd + 1) );
+      
+      return activePageRowsNew;
+    }    
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
@@ -85,36 +85,78 @@ function UsersGrid(props) {
         setActivePageRows(getActivePageRows(results2DNew));
       }
     }
-  }, [results, validPropertiesCopy, setResults2D, setTotalPages, getActivePageRows]);
+  }, [results, validPropertiesCopy, setResults2D, setTotalPages, activePageNumber, totalPages]);
+
+  // useEffect( () => {
+  //   if (isBadData(results2D, validPropertiesCopy)) {
+  //     return;
+  //   }
+        
+  //   const briefResults2DNew = results2D.length > 1
+  //     ? getBriefResults(results2D, validPropertiesCopy)
+  //     : [];
+
+  //   if (!isBadData(briefResults2DNew) && briefResults2DNew.length) {
+  //     setBriefResults2D(briefResults2DNew);
+  //   }      
+  // }, [results2D, validPropertiesCopy, setBriefResults2D]);
 
   useEffect( () => {
-    if (isBadData(results2D, validPropertiesCopy)) {
+    if (isBadData(activePageRows, validPropertiesCopy)) {
       return;
     }
         
-    const briefResults2DNew = results2D.length > 1
-      ? getBriefResults(results2D, validPropertiesCopy)
+    const briefResults2DNew = activePageRows.length > 1
+      ? getBriefResults(activePageRows, validPropertiesCopy)
       : [];
 
     if (!isBadData(briefResults2DNew) && briefResults2DNew.length) {
       setBriefResults2D(briefResults2DNew);
     }      
-  }, [results2D, validPropertiesCopy, setBriefResults2D]);
+  }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
+
+  // useEffect( () => {
+  //   if (isBadData(results2D, validPropertiesCopy)) {
+  //     return;
+  //   }
+
+  //   const gridColumnsFormulaNew = results2D.length > 1
+  //     ? getGridColumnsFormula(results2D, validPropertiesCopy)
+  //     : "";
+    
+  //   if (gridColumnsFormulaNew) {
+  //     setGridColumnsFormula(gridColumnsFormulaNew);
+  //   }
+  // }, [results2D, validPropertiesCopy, setGridColumnsFormula]);
 
   useEffect( () => {
-    if (isBadData(results2D, validPropertiesCopy)) {
+    if (isBadData(activePageRows, validPropertiesCopy)) {
       return;
     }
 
-    const gridColumnsFormulaNew = results2D.length > 1
-      ? getGridColumnsFormula(results2D, validPropertiesCopy)
+    const gridColumnsFormulaNew = activePageRows.length > 1
+      ? getGridColumnsFormula(activePageRows, validPropertiesCopy)
       : "";
     
     if (gridColumnsFormulaNew) {
       setGridColumnsFormula(gridColumnsFormulaNew);
     }
-  }, [results2D, validPropertiesCopy, setGridColumnsFormula]);
+  }, [activePageRows, validPropertiesCopy, setGridColumnsFormula]);
   
+  // useEffect( () => {
+  //   if (isBadData(briefResults2D, validPropertiesCopy)) {
+  //     return;
+  //   }
+
+  //   const briefGridColumnsFormulaNew = briefResults2D.length > 1
+  //     ? getGridColumnsFormula(briefResults2D, validPropertiesCopy)
+  //     : "";
+
+  //   if (briefGridColumnsFormulaNew) {
+  //     setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
+  //   }
+  // }, [briefResults2D, validPropertiesCopy, setBriefGridColumnsFormula]);
+
   useEffect( () => {
     if (isBadData(briefResults2D, validPropertiesCopy)) {
       return;
@@ -135,6 +177,13 @@ function UsersGrid(props) {
 
   return (
     <React.Fragment>
+      <Pagination 
+        totalPages={totalPages} 
+
+        activePageNumber={activePageNumber} 
+        setActivePageNumber={setActivePageNumber}    
+      />
+
       <div className="grid-header">
         <input type="checkbox" 
           id="brief-checkbox"
@@ -156,8 +205,8 @@ function UsersGrid(props) {
               : gridColumnsFormula
           }}
         >
-          {results2D && results2D.length > 1
-            ? results2D.map( (userObj, rowIndex) => 
+          {activePageRows && activePageRows.length > 1
+            ? activePageRows.map( (userObj, rowIndex) => 
               <React.Fragment key={rowIndex}>
                 {Object.values(userObj).map( value => 
                   <UsersGridItem 
@@ -174,13 +223,6 @@ function UsersGrid(props) {
           }
         </div>      
       </div>
-
-      <Pagination 
-        totalPages={totalPages} 
-
-        activePageNumber={activePageNumber} 
-        setActivePageNumber={setActivePageNumber}    
-      />
 
     </React.Fragment>
   );

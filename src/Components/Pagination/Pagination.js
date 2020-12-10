@@ -35,10 +35,10 @@ function Pagination(props) {
     let pageNumber;
 
     switch (text) {
-      case "«":
+      case "<<":
         pageNumber = 0;
         break;
-      case "»":
+      case ">>":
         pageNumber = totalPages - 1;
         break;
       case "<":
@@ -61,7 +61,7 @@ function Pagination(props) {
   return (
     <div class="pagination">
       <span onClick={handlePageNumberClick}>
-        &laquo;
+        &lt;&lt;
       </span>
 
       <span onClick={handlePageNumberClick}>
@@ -81,7 +81,7 @@ function Pagination(props) {
       </span>  
 
       <span onClick={handlePageNumberClick}>
-        &raquo;
+        &gt;&gt;
       </span>    
     </div>
   );
