@@ -11,7 +11,7 @@ function UsersGrid(props) {
     results,
     // resultsFetchCount,
 
-    // results2D,
+    results2D,
     setResults2D,
 
     briefResults2D,
@@ -37,6 +37,51 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
+  // useEffect( () => {
+  //   if (isBadData(results, validPropertiesCopy)) {
+  //     return;
+  //   }
+
+  //   const results2DNew = results.length > 1
+  //     ? getRebuiltResults(results, validPropertiesCopy)
+  //     : [];
+  //   // console.log("results2DNew =", results2DNew);
+
+  //   const getActivePageRows = (allResults) => {
+  //     if (!totalPages || !allResults || !Array.isArray(allResults) || !allResults.length) {
+  //       return [];
+  //     }
+  
+  //     const {usersPerPage} = constants;
+  
+  //     // Row 0 is used for table header, so content rows numbering starts from 1
+  //     const contentRowsStart = (activePageNumber * usersPerPage) + 1;
+  //     const contentRowsEnd = contentRowsStart + usersPerPage;
+  //     const activePageRowsNew = [ allResults[0] ].concat(
+  //       allResults.slice(contentRowsStart, contentRowsEnd + 1) );
+  //     // console.log("activePageRowsNew =", activePageRowsNew);
+      
+  //     return activePageRowsNew;
+  //   }    
+
+  //   if (!isBadData(results2DNew) && results2DNew.length) {
+  //     setResults2D(results2DNew);
+
+  //     const {usersPerPage} = constants;
+  //     // console.log("usersPerPage =", usersPerPage);
+
+  //     // Row 0 is used for table header, so content rows numbering starts from 1
+  //     const totalUsers = results2DNew.length - 1;
+  //     // console.log("totalUsers =", totalUsers);
+
+  //     if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
+  //       const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+  //       setTotalPages(totalPagesNew);  
+  //       setActivePageRows(getActivePageRows(results2DNew));
+  //     }
+  //   }
+  // }, [results, validPropertiesCopy, setResults2D, setTotalPages, activePageNumber, totalPages]);
+
   useEffect( () => {
     if (isBadData(results, validPropertiesCopy)) {
       return;
@@ -46,6 +91,16 @@ function UsersGrid(props) {
       ? getRebuiltResults(results, validPropertiesCopy)
       : [];
     // console.log("results2DNew =", results2DNew);
+
+    if (!isBadData(results2DNew) && results2DNew.length) {
+      setResults2D(results2DNew);
+    }
+  }, [results, validPropertiesCopy, setResults2D]);
+
+  useEffect( () => {
+    if (isBadData(results2D, validPropertiesCopy)) {
+      return;
+    }
 
     const getActivePageRows = (allResults) => {
       if (!totalPages || !allResults || !Array.isArray(allResults) || !allResults.length) {
@@ -64,23 +119,20 @@ function UsersGrid(props) {
       return activePageRowsNew;
     }    
 
-    if (!isBadData(results2DNew) && results2DNew.length) {
-      setResults2D(results2DNew);
-
+    if (!isBadData(results2D) && results2D.length) {
       const {usersPerPage} = constants;
-      // console.log("usersPerPage =", usersPerPage);
 
       // Row 0 is used for table header, so content rows numbering starts from 1
-      const totalUsers = results2DNew.length - 1;
+      const totalUsers = results2D.length - 1;
       // console.log("totalUsers =", totalUsers);
 
       if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
         const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
         setTotalPages(totalPagesNew);  
-        setActivePageRows(getActivePageRows(results2DNew));
+        setActivePageRows(getActivePageRows(results2D));
       }
     }
-  }, [results, validPropertiesCopy, setResults2D, setTotalPages, activePageNumber, totalPages]);
+  }, [results2D, validPropertiesCopy, setTotalPages, activePageNumber, totalPages]);
 
   useEffect( () => {
     if (isBadData(activePageRows, validPropertiesCopy)) {
