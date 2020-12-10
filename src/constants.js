@@ -6,8 +6,8 @@ const constants = {
   // Limit the number of results as otherwise the users view page rendering may become 
   // very slow when switching from page to page with lots of results displayed at once.
   // Alternatively, implement pagination (say, 50 users per page, or less).
-  numResultsUpperLimit: 100, 
-  // numResultsUpperLimit: 1000,
+  // numResultsUpperLimit: 100, 
+  numResultsUpperLimit: 1000,
   
   numResultsDefault: 5,
   allPropertiesUnorderedString: `
