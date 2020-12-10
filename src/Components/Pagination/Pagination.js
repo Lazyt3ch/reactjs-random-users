@@ -22,7 +22,7 @@ function Pagination(props) {
   function handlePageNumberClick(event) {
     const pageNumber = event.target.value - 1;
     if (pageNumber !== activePageNumber) {
-
+      setActivePageNumber(pageNumber);
     }
   }
 

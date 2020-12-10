@@ -23,7 +23,7 @@ import {
 
 
 function App() {
-  const {numResultsDefault, usersPerPage} = constants;
+  const {numResultsDefault} = constants;
   const [numResults, setNumResults] = useState(numResultsDefault);
 
   const allProperties = getAllProperties(constants);
@@ -99,6 +99,7 @@ function App() {
 
             activePageNumber={activePageNumber}
             setActivePageNumber={setActivePageNumber}
+            
             totalPages={totalPages}
             setTotalPages={setTotalPages}
           />

@@ -4,6 +4,7 @@ import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
 import Pagination from "../Pagination/Pagination.js";
+import constants from "../../constants.js";
 
 function UsersGrid(props) {
   const {
@@ -33,6 +34,8 @@ function UsersGrid(props) {
     totalPages, 
     setTotalPages,
   } = props;
+
+  const usersPerPage = {constants};
   
   // TODO:
   // const usersPerPageDefault = 20;
@@ -50,8 +53,9 @@ function UsersGrid(props) {
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
+      setTotalPages(Math.ceil(results2DNew.length / usersPerPage));
     }
-  }, [results, validPropertiesCopy, setResults2D]);
+  }, [results, validPropertiesCopy, setResults2D, usersPerPage, setTotalPages]);
 
   useEffect( () => {
     if (isBadData(results2D, validPropertiesCopy)) {

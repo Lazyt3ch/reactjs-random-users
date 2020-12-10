@@ -195,14 +195,14 @@
     background-color: #EEEEEE;
 }
   
-.pagination span.active {
+.pagination span.active-page {
     color: blue;
     background-color: white;
     font-weight: 700;
     border: 1px solid #4CAF50;
 }
   
-.pagination span:hover:not(.active) {
+.pagination span:hover:not(.active-page) {
     background-color: #ddd;
 }
   
