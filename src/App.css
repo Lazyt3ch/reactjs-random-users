@@ -16,7 +16,7 @@
 }
 
 
-/* home page */
+/* home page START */
 .home-page {
     margin-top: 4rem;
     margin-left: 1rem;
@@ -26,13 +26,15 @@
 .home-page p {
     font-size: 1.1rem;
 }
+/* home page END */
 
 
-/* fetcher setup */
+/* fetcher setup START */
 .fetcher {
     margin-top: 4rem;
     margin-left: 1rem;
 }
+/* fetcher setup END */
 
 
 /* nav START */
@@ -117,8 +119,8 @@
 }
 
 
-/* https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_bottom */
 /* tooltip START */
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_bottom */
 .tooltip {
     position: relative;
     display: inline;
@@ -158,6 +160,7 @@
     background-color: yellow;
 }
 /* tooltip END */
+
 
 /* pagination START */
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round */
