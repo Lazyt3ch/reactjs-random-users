@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round
 
 // Row 0 is used for table header, so content row numbering starts from 1
@@ -21,16 +22,13 @@ function Pagination(props) {
       }
 
       const pageNumbersNew = Array.from(new Array(totalPages), (_, idx) => idx);
-      console.log("PAGINATION: pageNumbersNew =", pageNumbersNew);
+      // console.log("PAGINATION: pageNumbersNew =", pageNumbersNew);
       setPageNumbers(pageNumbersNew);
     },
     [totalPages]
   );
 
   function handlePageNumberClick(event) {
-    console.log("event.target =", event.target);
-    console.log("event.target.textContent =", event.target.textContent);
-
     const text = event.target.textContent;
     let pageNumber;
 
@@ -51,7 +49,7 @@ function Pagination(props) {
         pageNumber = parseInt(text) - 1;
     }
 
-    console.log("pageNumber =", pageNumber);
+    // console.log("pageNumber =", pageNumber);
 
     if (pageNumber !== activePageNumber) {
       setActivePageNumber(pageNumber);

@@ -35,12 +35,6 @@ function UsersGrid(props) {
     setTotalPages,
   } = props;
 
-  // const usersPerPage = {constants};
-  
-  // TODO:
-  // const usersPerPageDefault = 20;
-  // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
-
   const [activePageRows, setActivePageRows] = useState([]);
 
   useEffect( () => {
@@ -65,7 +59,7 @@ function UsersGrid(props) {
       const contentRowsEnd = contentRowsStart + usersPerPage;
       const activePageRowsNew = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
-      console.log("activePageRowsNew =", activePageRowsNew);
+      // console.log("activePageRowsNew =", activePageRowsNew);
       
       return activePageRowsNew;
     }    
@@ -74,11 +68,11 @@ function UsersGrid(props) {
       setResults2D(results2DNew);
 
       const {usersPerPage} = constants;
-      console.log("usersPerPage =", usersPerPage);
+      // console.log("usersPerPage =", usersPerPage);
 
       // Row 0 is used for table header, so content rows numbering starts from 1
       const totalUsers = results2DNew.length - 1;
-      console.log("totalUsers =", totalUsers);
+      // console.log("totalUsers =", totalUsers);
 
       if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
         const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
@@ -87,20 +81,6 @@ function UsersGrid(props) {
       }
     }
   }, [results, validPropertiesCopy, setResults2D, setTotalPages, activePageNumber, totalPages]);
-
-  // useEffect( () => {
-  //   if (isBadData(results2D, validPropertiesCopy)) {
-  //     return;
-  //   }
-        
-  //   const briefResults2DNew = results2D.length > 1
-  //     ? getBriefResults(results2D, validPropertiesCopy)
-  //     : [];
-
-  //   if (!isBadData(briefResults2DNew) && briefResults2DNew.length) {
-  //     setBriefResults2D(briefResults2DNew);
-  //   }      
-  // }, [results2D, validPropertiesCopy, setBriefResults2D]);
 
   useEffect( () => {
     if (isBadData(activePageRows, validPropertiesCopy)) {
@@ -116,20 +96,6 @@ function UsersGrid(props) {
     }      
   }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
 
-  // useEffect( () => {
-  //   if (isBadData(results2D, validPropertiesCopy)) {
-  //     return;
-  //   }
-
-  //   const gridColumnsFormulaNew = results2D.length > 1
-  //     ? getGridColumnsFormula(results2D, validPropertiesCopy)
-  //     : "";
-    
-  //   if (gridColumnsFormulaNew) {
-  //     setGridColumnsFormula(gridColumnsFormulaNew);
-  //   }
-  // }, [results2D, validPropertiesCopy, setGridColumnsFormula]);
-
   useEffect( () => {
     if (isBadData(activePageRows, validPropertiesCopy)) {
       return;
@@ -144,20 +110,6 @@ function UsersGrid(props) {
     }
   }, [activePageRows, validPropertiesCopy, setGridColumnsFormula]);
   
-  // useEffect( () => {
-  //   if (isBadData(briefResults2D, validPropertiesCopy)) {
-  //     return;
-  //   }
-
-  //   const briefGridColumnsFormulaNew = briefResults2D.length > 1
-  //     ? getGridColumnsFormula(briefResults2D, validPropertiesCopy)
-  //     : "";
-
-  //   if (briefGridColumnsFormulaNew) {
-  //     setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
-  //   }
-  // }, [briefResults2D, validPropertiesCopy, setBriefGridColumnsFormula]);
-
   useEffect( () => {
     if (isBadData(briefResults2D, validPropertiesCopy)) {
       return;
@@ -185,7 +137,7 @@ function UsersGrid(props) {
         setActivePageNumber={setActivePageNumber}    
       />
 
-      <div className="grid-header">
+      <div className="grid-settings">
         <input type="checkbox" 
           id="brief-checkbox"
           name="brief-checkbox"
@@ -193,7 +145,7 @@ function UsersGrid(props) {
           onChange={handleBriefResultsChange}
         />
         <label htmlFor="brief-checkbox" 
-          style={{display: "inline", paddingLeft: ".3rem"}}>
+          style={{display: "inline", paddingLeft: ".3rem", paddingBottom: "1rem"}}>
           Hide subproperty names
         </label>
       </div>
