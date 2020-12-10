@@ -23,6 +23,10 @@
     max-width: 60rem;
 }
 
+.home-page h1 {
+    font-size: 1.25rem;
+}
+
 .home-page p {
     font-size: 1.1rem;
 }
