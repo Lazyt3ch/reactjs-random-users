@@ -35,11 +35,21 @@
 }
 
 
-/* nav */
+/* nav START */
 .nav-ul li {
     display: inline;
     margin-right: 1rem;
     text-decoration: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    background-color: #eeeeee;
+    padding: .5rem;
+}
+
+.nav-link:hover {
+    background-color: #ddd;
 }
 
 .nav-link-active {
@@ -59,9 +69,9 @@
 
     background-color: white;
 }
+/* nav END */
 
-
-/* grid */
+/* users view START */
 .grid-header {
     position: fixed;
     left: 0;
@@ -99,7 +109,7 @@
 .subproperty-name {
     font-size: .85rem;
 }
-
+/* users view END */
 
 
 .margin-left {

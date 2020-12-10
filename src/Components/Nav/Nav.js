@@ -4,11 +4,11 @@ import {
 } from "react-router-dom";
 
 function Nav(props) {
-  const navLinkStyle = {
-    textDecoration: "none",
-    backgroundColor: "#EEEEEE",
-    padding: ".5rem",
-  };
+  // const navLinkStyle = {
+  //   textDecoration: "none",
+  //   backgroundColor: "#EEEEEE",
+  //   padding: ".5rem",
+  // };
 
   return (
     <nav className="nav-container">
@@ -16,7 +16,8 @@ function Nav(props) {
         <li>
           <NavLink 
             to="/get" 
-            style={navLinkStyle}
+            // style={navLinkStyle}
+            className="nav-link"
             activeClassName="nav-link-active"
           >
             Data Retriever
@@ -26,7 +27,8 @@ function Nav(props) {
         <li>
           <NavLink 
             to="/view" 
-            style={navLinkStyle}
+            // style={navLinkStyle}
+            className="nav-link"
             activeClassName="nav-link-active"
           >
             Data Viewer
@@ -36,7 +38,8 @@ function Nav(props) {
         <li>
           <NavLink 
             exact to="/" 
-            style={navLinkStyle}
+            // style={navLinkStyle}
+            className="nav-link"
             activeClassName="nav-link-active"
           >
             Home Page
