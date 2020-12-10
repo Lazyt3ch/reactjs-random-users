@@ -6,11 +6,11 @@ import {
 function Nav(props) {
   return (
     <nav className="nav-container">
-      <ul className="nav-ul">
+      <ul className="nav-ul unselectable">
         <li>
           <NavLink 
             to="/get" 
-            className="nav-link"
+            className="nav-link unselectable"
             activeClassName="nav-link-active"
           >
             Data Retriever
@@ -20,7 +20,7 @@ function Nav(props) {
         <li>
           <NavLink 
             to="/view" 
-            className="nav-link"
+            className="nav-link unselectable"
             activeClassName="nav-link-active"
           >
             Data Viewer
@@ -30,7 +30,7 @@ function Nav(props) {
         <li>
           <NavLink 
             exact to="/" 
-            className="nav-link"
+            className="nav-link unselectable"
             activeClassName="nav-link-active"
           >
             Home Page
