@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
@@ -35,11 +35,29 @@ function UsersGrid(props) {
     setTotalPages,
   } = props;
 
-  const usersPerPage = {constants};
+  // const usersPerPage = {constants};
   
   // TODO:
   // const usersPerPageDefault = 20;
   // const [usersPerPage, setUsersPerPage] = useState(usersPerPageDefault);
+
+  const [activePageRows, setActivePageRows] = useState([]);
+
+  const getActivePageRows = (allResults) => {
+    if (!totalPages || !allResults || !Array.isArray(allResults) || allResults.length) {
+      return [];
+    }
+
+    const {usersPerPage} = constants;
+
+    // Row 0 is used for table header, so content rows numbering starts from 1
+    const contentRowsStart = (activePageNumber * usersPerPage) + 1;
+    const contentRowsEnd = contentRowsStart + usersPerPage;
+    const activePageRowsNew = allResults[0].concat(
+      allResults.slice(contentRowsStart, contentRowsEnd + 1) );
+    
+    return activePageRowsNew;
+  }
 
   useEffect( () => {
     if (isBadData(results, validPropertiesCopy)) {
@@ -53,9 +71,21 @@ function UsersGrid(props) {
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
-      setTotalPages(Math.ceil(results2DNew.length / usersPerPage));
+
+      const {usersPerPage} = constants;
+      console.log("usersPerPage =", usersPerPage);
+
+      // Row 0 is used for table header, so content rows numbering starts from 1
+      const totalUsers = results2DNew.length - 1;
+      console.log("totalUsers =", totalUsers);
+
+      if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
+        const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+        setTotalPages(totalPagesNew);  
+        setActivePageRows(getActivePageRows(results2DNew));
+      }
     }
-  }, [results, validPropertiesCopy, setResults2D, usersPerPage, setTotalPages]);
+  }, [results, validPropertiesCopy, setResults2D, setTotalPages, getActivePageRows]);
 
   useEffect( () => {
     if (isBadData(results2D, validPropertiesCopy)) {
