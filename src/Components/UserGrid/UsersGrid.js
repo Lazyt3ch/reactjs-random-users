@@ -63,8 +63,9 @@ function UsersGrid(props) {
       // Row 0 is used for table header, so content rows numbering starts from 1
       const contentRowsStart = (activePageNumber * usersPerPage) + 1;
       const contentRowsEnd = contentRowsStart + usersPerPage;
-      const activePageRowsNew = allResults[0].concat(
+      const activePageRowsNew = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
+      console.log("activePageRowsNew =", activePageRowsNew);
       
       return activePageRowsNew;
     }    
