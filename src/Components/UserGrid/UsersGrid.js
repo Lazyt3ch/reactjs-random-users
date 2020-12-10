@@ -141,24 +141,27 @@ function UsersGrid(props) {
 
   return (
     <React.Fragment>
-      <Pagination 
-        totalPages={totalPages} 
 
-        activePageNumber={activePageNumber} 
-        setActivePageNumber={setActivePageNumber}    
-      />
+      <div className="users-view-top-wrapper"> 
+        <Pagination 
+          totalPages={totalPages} 
 
-      <div className="grid-settings">
-        <input type="checkbox" 
-          id="brief-checkbox"
-          name="brief-checkbox"
-          checked={isBriefResults}           
-          onChange={handleBriefResultsChange}
+          activePageNumber={activePageNumber} 
+          setActivePageNumber={setActivePageNumber}    
         />
-        <label htmlFor="brief-checkbox" 
-          style={{display: "inline", paddingLeft: ".3rem", paddingBottom: "1rem"}}>
-          Hide subproperty names
-        </label>
+
+        <div className="grid-settings">
+          <input type="checkbox" 
+            id="brief-checkbox"
+            name="brief-checkbox"
+            checked={isBriefResults}           
+            onChange={handleBriefResultsChange}
+          />
+          <label htmlFor="brief-checkbox" 
+            style={{display: "inline", paddingLeft: ".3rem", paddingBottom: "1rem"}}>
+            Hide subproperty names
+          </label>
+        </div>
       </div>
 
       <div className="grid-container-wrapper">
