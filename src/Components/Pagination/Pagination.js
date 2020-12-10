@@ -16,7 +16,7 @@ function Pagination(props) {
 
   useEffect(
     () => {
-      console.log("PAGINATION: totalPages =", totalPages);
+      // console.log("PAGINATION: totalPages =", totalPages);
       if (totalPages < 1) {
         return;
       }
