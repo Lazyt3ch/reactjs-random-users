@@ -12,6 +12,8 @@ function Pagination(props) {
     setActivePageNumber,
   } = props;
 
+  // console.log("activePageNumber =", activePageNumber);
+
   const [pageNumbers, setPageNumbers] = useState([0]);
 
   useEffect(
@@ -31,6 +33,7 @@ function Pagination(props) {
   function handlePageNumberClick(event) {
     const text = event.target.textContent;
     let pageNumber;
+    // console.log("handlePageNumberClick");
 
     switch (text) {
       case "<<":

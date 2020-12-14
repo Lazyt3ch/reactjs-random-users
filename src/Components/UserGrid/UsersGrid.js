@@ -51,7 +51,7 @@ function UsersGrid(props) {
       setResults2D(results2DNew);
 
       // Important, otherwise no rows will be displayed in certain cases
-      setActivePageNumber(0);
+      // setActivePageNumber(0);
     }
   }, [results, validPropertiesCopy, setResults2D, setActivePageNumber]);
 

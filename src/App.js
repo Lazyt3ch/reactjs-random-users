@@ -44,6 +44,9 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [activePageNumber, setActivePageNumber] = useState(0);
 
+  // console.log("App: totalPages =", totalPages);
+  // console.log("App: activePageNumber =", activePageNumber);
+
   return (
     <Router>
       <Nav />
@@ -69,6 +72,8 @@ function App() {
             setResultsFetchCount={setResultsFetchCount}
 
             setValidPropertiesCopy={setValidPropertiesCopy}
+
+            setActivePageNumber={setActivePageNumber}
           />
         </Route>
 

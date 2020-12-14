@@ -13,6 +13,8 @@ function FetcherLaunch(props) {
     
     resultsFetchCount, 
     setResultsFetchCount,
+
+    setActivePageNumber,
   } = props;
 
   const [isFetching, setIsFetching] = useState(false);
@@ -36,6 +38,8 @@ function FetcherLaunch(props) {
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setResultsFetchCount(resultsFetchCount + 1);
+      // Important, otherwise no rows will be displayed in certain cases
+      setActivePageNumber(0);
       setTimeout( () => {
         history.push("view");
         setFetchAttempted(false);
