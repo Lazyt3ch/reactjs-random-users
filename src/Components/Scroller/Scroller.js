@@ -13,6 +13,7 @@ function Scroller(props) {
   const {pathname} = useLocation();
 
   useEffect(() => {
+    console.log("SCROLL TO: pathname =", pathname);
     if (pathname === "/view") {
       // console.log("SCROLLER");
       setTimeout( () => {  // setTimeout is vital here!!!
@@ -22,16 +23,29 @@ function Scroller(props) {
   }, [pathname]);
 
   useEffect(() => {    
+    let scrollTop;
+    // let pathnameNew;
+    console.log("SAVE SCROLL: pathname =", pathname);
     const onScroll = e => {
-      console.log("e.target.documentElement.scrollTop =", e.target.documentElement.scrollTop);
+      console.log(">>>>>>>>");
+      // pathnameNew == useLocation().pathname;
+      console.log("pathname =", pathname);
+      scrollTop = e.target.documentElement.scrollTop;
+      console.log("scrollTop =", scrollTop);
+      console.log("<<<<<<<<<");
       if (pathname === "/view") {
-        setScrollTop(e.target.documentElement.scrollTop);
-      }
+        setScrollTop(scrollTop);
+      }  
+      // setTimeout( () => {
+      //   if (pathname === "/view") {
+      //     setScrollTop(e.target.documentElement.scrollTop);
+      //   }  
+      // }, 20);
     };
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollTop, setScrollTop]);    
+  }, [scrollTop, setScrollTop, pathname]);    
  
   return children;
 }
