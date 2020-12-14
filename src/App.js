@@ -45,12 +45,18 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [activePageNumber, setActivePageNumber] = useState(0);
 
+  const [scrollTop, setScrollTop] = useState(0);
+
+
   return (
     <Router>
       <Nav 
       />
       
-      <Scroller>
+      <Scroller
+        scrollTop={scrollTop}
+        setScrollTop={setScrollTop}
+      >
         <Switch>
           <Route path="/get" exact>
             <Fetcher 
@@ -107,6 +113,9 @@ function App() {
               
               totalPages={totalPages}
               setTotalPages={setTotalPages}
+
+              scrollTop={scrollTop}
+              setScrollTop={setScrollTop}
             />
           </Route>
 

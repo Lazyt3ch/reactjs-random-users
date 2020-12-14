@@ -6,6 +6,8 @@ import UsersGridItem from "./UsersGridItem.js";
 import Pagination from "../Pagination/Pagination.js";
 import constants from "../../constants.js";
 
+// import {useLocation} from "react-router-dom";
+
 function UsersGrid(props) {
   const {
     results,
@@ -34,9 +36,25 @@ function UsersGrid(props) {
     totalPages, 
     setTotalPages,
 
+    scrollTop, 
+    setScrollTop,
+
   } = props;
 
   const [activePageRows, setActivePageRows] = useState([]);
+
+  // const {pathname} = useLocation();
+
+  // useEffect(() => {
+    
+  //   const onScroll = e => {
+  //     console.log("e.target.documentElement.scrollTop =", e.target.documentElement.scrollTop);
+  //     setScrollPosition(e.target.documentElement.scrollTop);
+  //   };
+  //   window.addEventListener("scroll", onScroll);
+
+  //   return () => window.removeEventListener("scroll", onScroll);
+  // }, [scrollPosition, setScrollPosition]);  
 
   useEffect( () => {
     if (isBadData(results, validPropertiesCopy)) {
