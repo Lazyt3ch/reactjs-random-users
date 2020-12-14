@@ -57,7 +57,7 @@ function Pagination(props) {
   }
 
   return (
-    <div class="pagination unselectable">
+    <div className="pagination unselectable">
       <span onClick={handlePageNumberClick}
         className={activePageNumber === 0 ? "no-hover-effect" : ""}
       >
