@@ -9,10 +9,7 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
     const response = await fetch(completeUrl);
 
     // https://www.tjvantoll.com/2015/09/13/fetch-and-errors/
-    if (!response.ok) {
-      errorMessage = `An error occurred: ${response.statusText}`;
-      console.log(errorMessage);
-    } else {
+    if (response.ok) {
       const data = await response.json();
       // console.log("data =", data);
   
@@ -22,6 +19,9 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
       } else {
         resultsArr = data.results;
       }  
+    } else {
+      errorMessage = `An error occurred: ${response.statusText}`;
+      console.log(errorMessage);
     }
   } catch(err) {
     errorMessage = `An error occurred: ${err}`;
