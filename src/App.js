@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 
+import Scroller from './Components/Scroller/Scroller.js';
 import Nav from "./Components/Nav/Nav.js";
 import Home from "./Components/Home/Home.js";
 import Fetcher from "./Components/Fetcher/Fetcher.js";
@@ -49,69 +50,71 @@ function App() {
       <Nav 
       />
       
-      <Switch>
-        <Route path="/get" exact>
-          <Fetcher 
-            numResults={numResults}
-            setNumResults={setNumResults}
+      <Scroller>
+        <Switch>
+          <Route path="/get" exact>
+            <Fetcher 
+              numResults={numResults}
+              setNumResults={setNumResults}
 
-            allProperties={allProperties}
-            
-            statusesString={statusesString}
-            setStatusesString={setStatusesString}
-            
-            validProperties={validProperties}
-            setValidProperties={setValidProperties}
-            
-            results={results}
-            setResults={setResults}
+              allProperties={allProperties}
+              
+              statusesString={statusesString}
+              setStatusesString={setStatusesString}
+              
+              validProperties={validProperties}
+              setValidProperties={setValidProperties}
+              
+              results={results}
+              setResults={setResults}
 
-            resultsFetchCount={resultsFetchCount}
-            setResultsFetchCount={setResultsFetchCount}
+              resultsFetchCount={resultsFetchCount}
+              setResultsFetchCount={setResultsFetchCount}
 
-            setValidPropertiesCopy={setValidPropertiesCopy}
+              setValidPropertiesCopy={setValidPropertiesCopy}
 
-            setActivePageNumber={setActivePageNumber}
-          />
-        </Route>
+              setActivePageNumber={setActivePageNumber}
+            />
+          </Route>
 
-        <Route path="/view" exact>
-          <UsersGrid 
-            validPropertiesCopy={validPropertiesCopy}
+          <Route path="/view" exact>
+            <UsersGrid 
+              validPropertiesCopy={validPropertiesCopy}
 
-            results={results} 
-            resultsFetchCount={resultsFetchCount}
+              results={results} 
+              resultsFetchCount={resultsFetchCount}
 
-            results2D={results2D} 
-            setResults2D={setResults2D} 
+              results2D={results2D} 
+              setResults2D={setResults2D} 
 
-            briefResults2D={briefResults2D} 
-            setBriefResults2D={setBriefResults2D} 
+              briefResults2D={briefResults2D} 
+              setBriefResults2D={setBriefResults2D} 
 
-            gridColumnsFormula={gridColumnsFormula}
-            setGridColumnsFormula={setGridColumnsFormula}
+              gridColumnsFormula={gridColumnsFormula}
+              setGridColumnsFormula={setGridColumnsFormula}
 
-            briefGridColumnsFormula={briefGridColumnsFormula}
-            setBriefGridColumnsFormula={setBriefGridColumnsFormula}
-            
-            // displayedResults={displayedResults}
-            // setDisplayedResults={setDisplayedResults}
+              briefGridColumnsFormula={briefGridColumnsFormula}
+              setBriefGridColumnsFormula={setBriefGridColumnsFormula}
+              
+              // displayedResults={displayedResults}
+              // setDisplayedResults={setDisplayedResults}
 
-            isBriefResults={isBriefResults}
-            setIsBriefResults={setIsBriefResults}
+              isBriefResults={isBriefResults}
+              setIsBriefResults={setIsBriefResults}
 
-            activePageNumber={activePageNumber}
-            setActivePageNumber={setActivePageNumber}
-            
-            totalPages={totalPages}
-            setTotalPages={setTotalPages}
-          />
-        </Route>
+              activePageNumber={activePageNumber}
+              setActivePageNumber={setActivePageNumber}
+              
+              totalPages={totalPages}
+              setTotalPages={setTotalPages}
+            />
+          </Route>
 
-        <Route path="/" exact>
-          <Home />
-        </Route>
-      </Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+        </Switch>
+      </Scroller>
     </Router>
   );
 }
