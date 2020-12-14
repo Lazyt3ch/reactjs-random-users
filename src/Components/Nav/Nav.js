@@ -1,22 +1,7 @@
-import {React, useEffect} from "react";
-import {NavLink, useLocation} from "react-router-dom";
+import {React} from "react";
+import {NavLink} from "react-router-dom";
 
 function Nav(props) {
-  let location = useLocation();
-  // console.log("location =", location);
-
-  useEffect(
-    () => {
-      const linkNames = {
-        "/get": "Data Retriever",
-        "/view": "Data Viewer",
-        "/": "Home Page",
-      };      
-      document.title = `Random Users — ${ linkNames[location.pathname] }`;
-    },
-    [location]
-  )
-
   return (
     <nav className="nav-container">
       <ul className="nav-ul unselectable">

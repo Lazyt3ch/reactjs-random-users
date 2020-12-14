@@ -44,12 +44,10 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [activePageNumber, setActivePageNumber] = useState(0);
 
-  // console.log("App: totalPages =", totalPages);
-  // console.log("App: activePageNumber =", activePageNumber);
-
   return (
     <Router>
-      <Nav />
+      <Nav 
+      />
       
       <Switch>
         <Route path="/get" exact>
@@ -111,8 +109,6 @@ function App() {
         </Route>
 
         <Route path="/" exact>
-          {/* The slash-only path must always be the last one, or navigation will not work!
-              Alternatively, add `exact` directive to Route. */}
           <Home />
         </Route>
       </Switch>

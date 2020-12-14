@@ -33,6 +33,7 @@ function UsersGrid(props) {
 
     totalPages, 
     setTotalPages,
+
   } = props;
 
   const [activePageRows, setActivePageRows] = useState([]);
@@ -49,9 +50,6 @@ function UsersGrid(props) {
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
-
-      // Important, otherwise no rows will be displayed in certain cases
-      // setActivePageNumber(0);
     }
   }, [results, validPropertiesCopy, setResults2D, setActivePageNumber]);
 
@@ -140,7 +138,7 @@ function UsersGrid(props) {
   }
 
   return (
-    <React.Fragment>
+    <div>
 
       <div className="users-view-top-wrapper"> 
         <Pagination 
@@ -165,7 +163,7 @@ function UsersGrid(props) {
       </div>
 
       <div className="grid-container-wrapper">
-        <div className="grid-container" 
+        <div className="grid-container" id="users-grid-container"
           style={{gridTemplateColumns: 
             isBriefResults
               ? briefGridColumnsFormula
@@ -191,7 +189,7 @@ function UsersGrid(props) {
         </div>      
       </div>
 
-    </React.Fragment>
+    </div>
   );
 }
 
