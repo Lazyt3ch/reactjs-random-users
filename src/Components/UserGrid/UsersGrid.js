@@ -43,19 +43,6 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  // const {pathname} = useLocation();
-
-  // useEffect(() => {
-    
-  //   const onScroll = e => {
-  //     console.log("e.target.documentElement.scrollTop =", e.target.documentElement.scrollTop);
-  //     setScrollPosition(e.target.documentElement.scrollTop);
-  //   };
-  //   window.addEventListener("scroll", onScroll);
-
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, [scrollPosition, setScrollPosition]);  
-
   useEffect( () => {
     if (isBadData(results, validPropertiesCopy)) {
       return;
@@ -164,6 +151,9 @@ function UsersGrid(props) {
 
           activePageNumber={activePageNumber} 
           setActivePageNumber={setActivePageNumber}    
+
+          // scrollTop={scrollTop}
+          setScrollTop={setScrollTop}
         />
 
         <div className="grid-settings">

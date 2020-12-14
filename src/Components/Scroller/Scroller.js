@@ -33,7 +33,7 @@ function Scroller(props) {
       scrollTop = e.target.documentElement.scrollTop;
       console.log("scrollTop =", scrollTop);
       console.log("<<<<<<<<<");
-      if (pathname === "/view") {
+      if (pathname === "/view" && scrollTop > 0) {
         setScrollTop(scrollTop);
       }  
       // setTimeout( () => {
@@ -44,7 +44,10 @@ function Scroller(props) {
     };
     window.addEventListener("scroll", onScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      // console.log("pathname, scrollTop =", pathname, scrollTop);
+    };
   }, [scrollTop, setScrollTop, pathname]);    
  
   return children;

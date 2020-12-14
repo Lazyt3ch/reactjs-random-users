@@ -10,6 +10,8 @@ function Pagination(props) {
 
     activePageNumber,
     setActivePageNumber,
+
+    setScrollTop,
   } = props;
 
   // console.log("activePageNumber =", activePageNumber);
@@ -51,6 +53,8 @@ function Pagination(props) {
       default:
         pageNumber = parseInt(text) - 1;
     }
+
+    setScrollTop(0);
 
     // console.log("pageNumber =", pageNumber);
 
