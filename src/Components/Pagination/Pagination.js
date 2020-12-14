@@ -72,6 +72,7 @@ function Pagination(props) {
 
       {pageNumbers.map(num =>
         <span className={num === activePageNumber ? "active-page" : ""}
+          key={num}          
           onClick={handlePageNumberClick}
         >
           {num + 1}
