@@ -3,14 +3,14 @@ import {NavLink, useLocation} from "react-router-dom";
 
 function Nav(props) {
   let location = useLocation();
-  console.log("location =", location);
+  // console.log("location =", location);
 
   useEffect(
     () => {
       const linkNames = {
-        "/": "Home Page",
         "/get": "Data Retriever",
         "/view": "Data Viewer",
+        "/": "Home Page",
       };      
       document.title = `Random Users — ${ linkNames[location.pathname] }`;
     },
