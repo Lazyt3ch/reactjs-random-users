@@ -35,7 +35,6 @@ function Pagination(props) {
   function handlePageNumberClick(event) {
     const text = event.target.textContent;
     let pageNumber;
-    // console.log("handlePageNumberClick");
 
     switch (text) {
       case "<<":
@@ -55,8 +54,6 @@ function Pagination(props) {
     }
 
     setScrollTop(0);
-
-    // console.log("pageNumber =", pageNumber);
 
     if (pageNumber !== activePageNumber) {
       setActivePageNumber(pageNumber);
