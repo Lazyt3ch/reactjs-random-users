@@ -8,7 +8,10 @@ function Scroller({ children }) {
  
   useEffect(() => {
     if (pathname === "/view") {
-      window.scrollTo(0, 500);
+      console.log("SCROLLER");
+      setTimeout( () => {  // setTimeout is vital here!!!
+        window.scrollTo(0, 500);
+      }, 50);      
     }
   }, [pathname]);
  
