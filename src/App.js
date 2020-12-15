@@ -40,7 +40,6 @@ function App() {
   const [gridColumnsFormula, setGridColumnsFormula] = useState("");
   const [briefGridColumnsFormula, setBriefGridColumnsFormula] = useState("");
   const [isBriefResults, setIsBriefResults] = useState(false);
-  // const [displayedResults, setDisplayedResults] = useState([]);
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [activePageNumber, setActivePageNumber] = useState(0);
@@ -101,9 +100,6 @@ function App() {
 
               briefGridColumnsFormula={briefGridColumnsFormula}
               setBriefGridColumnsFormula={setBriefGridColumnsFormula}
-              
-              // displayedResults={displayedResults}
-              // setDisplayedResults={setDisplayedResults}
 
               isBriefResults={isBriefResults}
               setIsBriefResults={setIsBriefResults}

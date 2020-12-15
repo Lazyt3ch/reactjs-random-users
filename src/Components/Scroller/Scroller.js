@@ -13,7 +13,7 @@ function Scroller(props) {
   const {pathname} = useLocation();
 
   useEffect(() => {
-    console.log("SCROLL TO: pathname =", pathname);
+    // console.log("SCROLL TO: pathname =", pathname);
     if (pathname === "/view") {
       // console.log("SCROLLER");
       setTimeout( () => {  // setTimeout is vital here!!!
@@ -32,7 +32,7 @@ function Scroller(props) {
       // console.log("scrollTop =", scrollTop);
       // console.log("<<<<<<<<<");
       if (pathname === "/view" && scrollTop > 0) {
-        setScrollTop(scrollTop);
+        setScrollTop(Math.floor(scrollTop));
       }  
     };
     window.addEventListener("scroll", onScroll);
