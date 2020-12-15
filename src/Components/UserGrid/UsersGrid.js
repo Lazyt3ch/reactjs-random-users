@@ -8,10 +8,10 @@ import constants from "../../constants.js";
 
 function UsersGrid(props) {
   const {
-    results,
+    // results,
 
     results2D,
-    setResults2D,
+    // setResults2D,
 
     briefResults2D,
     setBriefResults2D,
@@ -31,7 +31,7 @@ function UsersGrid(props) {
     setActivePageNumber,
 
     totalPages, 
-    setTotalPages,
+    // setTotalPages,
 
     scrollTopArr, 
     setScrollTopArr,
@@ -40,45 +40,33 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  useEffect( () => {
-    if (isBadData(results, validPropertiesCopy)) {
-      return;
-    }
+  // useEffect( () => {
+  //   if (isBadData(results, validPropertiesCopy)) {
+  //     return;
+  //   }
 
-    const results2DNew = results.length > 1
-      ? getRebuiltResults(results, validPropertiesCopy)
-      : [];
+  //   const results2DNew = results.length > 1
+  //     ? getRebuiltResults(results, validPropertiesCopy)
+  //     : [];
 
-    if (!isBadData(results2DNew) && results2DNew.length) {
-      setResults2D(results2DNew);
-    }
-  }, [results, validPropertiesCopy, setResults2D]);
+  //   if (!isBadData(results2DNew) && results2DNew.length) {
+  //     setResults2D(results2DNew);
+  //   }
+  // }, [results, validPropertiesCopy, setResults2D]);
 
-  useEffect( () => {
-    const {usersPerPage} = constants;
 
-    // Row 0 is used for table header, so content rows numbering starts from 1
-    const totalUsers = results.length - 1;
+  // useEffect( () => {
+  //   const {usersPerPage} = constants;
 
-    if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-      const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
-      setTotalPages(totalPagesNew);  
+  //   // Row 0 is used for table header, so content rows numbering starts from 1
+  //   const totalUsers = results.length - 1;
 
-      // const scrollTopArrNew = new Array(totalPagesNew).fill(0);
-      // setScrollTopArr(scrollTopArrNew);
-    }    
-  }, [results, setTotalPages]);
+  //   if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
+  //     const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+  //     setTotalPages(totalPagesNew);  
+  //   }    
+  // }, [results, setTotalPages]);
 
-  useEffect( () => {
-    if (!totalPages || isBadData(results)) {
-      return;
-    }
-    // console.log("Users Grid: totalPages =", totalPages);
-    // console.log("Users Grid: results =", results);
-    const scrollTopArrNew = new Array(totalPages).fill(0);
-    console.log("Users grid: scrollTopArrNew =", scrollTopArrNew);
-    setScrollTopArr(scrollTopArrNew);
-  }, [results, totalPages, setScrollTopArr]);
 
   useEffect( () => {
     if (isBadData(results2D, validPropertiesCopy)) {
@@ -104,21 +92,13 @@ function UsersGrid(props) {
     if (!isBadData(results2D) && results2D.length) {
       const {usersPerPage} = constants;
 
-      // // Row 0 is used for table header, so content rows numbering starts from 1
-      // const totalUsers = results2D.length - 1;
-
       if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-        // const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
-        // setTotalPages(totalPagesNew);  
         const activePageRowsNew = getActivePageRows(results2D);
         setActivePageRows(activePageRowsNew);
-
-        // const scrollTopArrNew = new Array(totalPagesNew).fill(0);
-        // setScrollTopArr(scrollTopArrNew);
       }
     }
-  }, [results2D, validPropertiesCopy, activePageNumber]);
-  // }, [results2D, validPropertiesCopy, setTotalPages, totalPages, setScrollTopArr, activePageNumber]);
+  }, [results2D, validPropertiesCopy, activePageNumber, totalPages]);
+
 
   useEffect( () => {
     if (isBadData(activePageRows, validPropertiesCopy)) {
@@ -134,6 +114,7 @@ function UsersGrid(props) {
     }      
   }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
 
+
   useEffect( () => {
     if (isBadData(activePageRows, validPropertiesCopy)) {
       return;
@@ -148,6 +129,7 @@ function UsersGrid(props) {
     }
   }, [activePageRows, validPropertiesCopy, setGridColumnsFormula]);
   
+
   useEffect( () => {
     if (isBadData(briefResults2D, validPropertiesCopy)) {
       return;
@@ -161,6 +143,7 @@ function UsersGrid(props) {
       setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
     }
   }, [briefResults2D, validPropertiesCopy, setBriefGridColumnsFormula]);
+
 
   function handleBriefResultsChange(event) {
     setIsBriefResults(event.target.checked);    

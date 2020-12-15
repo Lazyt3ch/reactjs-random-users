@@ -10,24 +10,17 @@ function Pagination(props) {
 
     activePageNumber,
     setActivePageNumber,
-
-    // scrollTopArr,
-    // setScrollTopArr,
   } = props;
-
-  // console.log("activePageNumber =", activePageNumber);
 
   const [pageNumbers, setPageNumbers] = useState([0]);
 
   useEffect(
     () => {
-      // console.log("PAGINATION: totalPages =", totalPages);
       if (totalPages < 1) {
         return;
       }
 
       const pageNumbersNew = Array.from(new Array(totalPages), (_, idx) => idx);
-      // console.log("PAGINATION: pageNumbersNew =", pageNumbersNew);
       setPageNumbers(pageNumbersNew);
     },
     [totalPages]
@@ -55,7 +48,6 @@ function Pagination(props) {
     }
 
     if (pageNumber !== activePageNumber) {
-      console.log("setting activePageNumber...");
       setActivePageNumber(pageNumber);
     }
   }

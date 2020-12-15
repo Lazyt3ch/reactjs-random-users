@@ -28,11 +28,8 @@ function Scroller(props) {
     const onScroll = e => {
       const scrollPos = e.target.documentElement.scrollTop;
       if (pathname === "/view" && scrollPos > 0) {
-        console.log("Scroller: scrollTopArr =", scrollTopArr);
         const scrollTopArrNew = scrollTopArr.slice();
         scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
-        console.log("Scroller: activePageNumber =", activePageNumber);
-        console.log("Scroller: scrollTopArrNew =", scrollTopArrNew);
         setScrollTopArr(scrollTopArrNew);
       }  
     };

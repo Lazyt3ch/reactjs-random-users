@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import Scroller from './Components/Scroller/Scroller.js';
 import Nav from "./Components/Nav/Nav.js";
 import Home from "./Components/Home/Home.js";
 import Fetcher from "./Components/Fetcher/Fetcher.js";
 import UsersGrid from "./Components/UserGrid/UsersGrid.js";
+
+import getRebuiltResults from "./Helpers/DataRebuilder.js";
+import isBadData from "./Helpers/BadDataChecker.js";
 
 import constants from "./constants.js";
 
@@ -43,9 +46,44 @@ function App() {
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [activePageNumber, setActivePageNumber] = useState(0);
-
-  // const [scrollTop, setScrollTop] = useState(0);
   const [scrollTopArr, setScrollTopArr] = useState([]);
+
+
+  useEffect( () => {
+    if (isBadData(results, validPropertiesCopy)) {
+      return;
+    }
+
+    const results2DNew = results.length > 1
+      ? getRebuiltResults(results, validPropertiesCopy)
+      : [];
+
+    if (!isBadData(results2DNew) && results2DNew.length) {
+      setResults2D(results2DNew);
+    }
+  }, [results, validPropertiesCopy, setResults2D]);
+
+
+  useEffect( () => {
+    const {usersPerPage} = constants;
+
+    // Row 0 is used for table header, so content rows numbering starts from 1
+    const totalUsers = results.length - 1;
+
+    if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
+      const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+      setTotalPages(totalPagesNew);  
+    }    
+  }, [results, setTotalPages]);
+  
+  
+  useEffect( () => {
+    if (!totalPages) {
+      return;
+    }
+    const scrollTopArrNew = new Array(totalPages).fill(0);
+    setScrollTopArr(scrollTopArrNew);
+  }, [totalPages, setScrollTopArr]);
 
 
   return (
