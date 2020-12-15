@@ -36,8 +36,8 @@ function UsersGrid(props) {
     totalPages, 
     setTotalPages,
 
-    scrollTop, 
-    setScrollTop,
+    scrollTopArr, 
+    setScrollTopArr,
 
   } = props;
 
@@ -92,6 +92,9 @@ function UsersGrid(props) {
         setTotalPages(totalPagesNew);  
         const activePageRowsNew = getActivePageRows(results2D);
         setActivePageRows(activePageRowsNew);
+
+        const scrollTopNew = new Array(totalPagesNew).fill(0);
+        setScrollTopArr(scrollTopNew);
       }
     }
   }, [results2D, validPropertiesCopy, setTotalPages, activePageNumber, totalPages]);
@@ -152,8 +155,8 @@ function UsersGrid(props) {
           activePageNumber={activePageNumber} 
           setActivePageNumber={setActivePageNumber}    
 
-          // scrollTop={scrollTop}
-          setScrollTop={setScrollTop}
+          scrollTopArr={scrollTopArr}
+          setScrollTopArr={setScrollTopArr}
         />
 
         <div className="grid-settings">

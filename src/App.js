@@ -44,7 +44,8 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [activePageNumber, setActivePageNumber] = useState(0);
 
-  const [scrollTop, setScrollTop] = useState(0);
+  // const [scrollTop, setScrollTop] = useState(0);
+  const [scrollTopArr, setScrollTopArr] = useState([]);
 
 
   return (
@@ -53,8 +54,10 @@ function App() {
       />
       
       <Scroller
-        scrollTop={scrollTop}
-        setScrollTop={setScrollTop}
+        scrollTopArr={scrollTopArr}
+        setScrollTopArr={setScrollTopArr}
+
+        activePageNumber={activePageNumber} 
       >
         <Switch>
           <Route path="/get" exact>

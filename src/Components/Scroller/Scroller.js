@@ -6,8 +6,11 @@ import {useLocation} from "react-router-dom";
 function Scroller(props) { 
   const { 
     children, 
-    scrollTop, 
-    setScrollTop 
+
+    scrollTopArr, 
+    setScrollTopArr,
+
+    activePageNumber,
   } = props;
 
   const {pathname} = useLocation();
@@ -17,22 +20,25 @@ function Scroller(props) {
     if (pathname === "/view") {
       // console.log("SCROLLER");
       setTimeout( () => {  // setTimeout is vital here!!!
-        window.scrollTo(0, scrollTop || 0);
+        window.scrollTo(0, scrollTopArr[activePageNumber] || 0);
       }, 50);      
     }
   }, [pathname]);
 
   useEffect(() => {    
-    let scrollTop;
+    let scrollPos;
     // console.log("SAVE SCROLL: pathname =", pathname);
     const onScroll = e => {
       // console.log(">>>>>>>>");
       // console.log("pathname =", pathname);
-      scrollTop = e.target.documentElement.scrollTop;
+      scrollPos = e.target.documentElement.scrollTop;
       // console.log("scrollTop =", scrollTop);
       // console.log("<<<<<<<<<");
-      if (pathname === "/view" && scrollTop > 0) {
-        setScrollTop(Math.floor(scrollTop));
+      if (pathname === "/view" && scrollPos > 0) {
+        // setScrollTop(Math.floor(scrollTopNew));
+        const scrollTopArrNew = scrollTopArr.slice();
+        scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
+        setScrollTopArr(Math.floor(scrollTopArrNew));
       }  
     };
     window.addEventListener("scroll", onScroll);
@@ -40,7 +46,7 @@ function Scroller(props) {
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, [scrollTop, setScrollTop, pathname]);    
+  }, [scrollTopArr, setScrollTopArr, pathname, activePageNumber]);    
  
   return children;
 }
