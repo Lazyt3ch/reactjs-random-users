@@ -11,8 +11,8 @@ function Pagination(props) {
     activePageNumber,
     setActivePageNumber,
 
-    scrollTopArr,
-    setScrollTopArr,
+    // scrollTopArr,
+    // setScrollTopArr,
   } = props;
 
   // console.log("activePageNumber =", activePageNumber);
@@ -55,8 +55,8 @@ function Pagination(props) {
     }
 
     // setScrollTop(0);
-    const scrollTopArrNew = scrollTopArr[pageNumber] || 0;
-    setScrollTopArr(scrollTopArrNew);
+    // const scrollTopArrNew = scrollTopArr[pageNumber] || 0;
+    // setScrollTopArr(scrollTopArrNew);
 
     if (pageNumber !== activePageNumber) {
       setActivePageNumber(pageNumber);

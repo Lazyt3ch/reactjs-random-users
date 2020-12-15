@@ -35,10 +35,12 @@ function Scroller(props) {
       // console.log("scrollTop =", scrollTop);
       // console.log("<<<<<<<<<");
       if (pathname === "/view" && scrollPos > 0) {
+        console.log("scrollTopArr =", scrollTopArr);
         // setScrollTop(Math.floor(scrollTopNew));
         const scrollTopArrNew = scrollTopArr.slice();
+        console.log("scrollTopArrNew =", scrollTopArrNew);
         scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
-        setScrollTopArr(Math.floor(scrollTopArrNew));
+        setScrollTopArr(scrollTopArrNew);
       }  
     };
     window.addEventListener("scroll", onScroll);

@@ -93,11 +93,12 @@ function UsersGrid(props) {
         const activePageRowsNew = getActivePageRows(results2D);
         setActivePageRows(activePageRowsNew);
 
-        const scrollTopNew = new Array(totalPagesNew).fill(0);
-        setScrollTopArr(scrollTopNew);
+        const scrollTopArrNew = new Array(totalPagesNew).fill(0);
+        console.log("scrollTopArrNew =", scrollTopArrNew);
+        setScrollTopArr(scrollTopArrNew);
       }
     }
-  }, [results2D, validPropertiesCopy, setTotalPages, activePageNumber, totalPages]);
+  }, [results2D, validPropertiesCopy, setTotalPages, activePageNumber, totalPages, setScrollTopArr]);
 
   useEffect( () => {
     if (isBadData(activePageRows, validPropertiesCopy)) {

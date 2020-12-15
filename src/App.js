@@ -113,8 +113,8 @@ function App() {
               totalPages={totalPages}
               setTotalPages={setTotalPages}
 
-              scrollTop={scrollTop}
-              setScrollTop={setScrollTop}
+              scrollTopArr={scrollTopArr}
+              setScrollTopArr={setScrollTopArr}
             />
           </Route>
 
