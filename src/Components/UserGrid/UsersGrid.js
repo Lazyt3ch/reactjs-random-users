@@ -6,12 +6,9 @@ import UsersGridItem from "./UsersGridItem.js";
 import Pagination from "../Pagination/Pagination.js";
 import constants from "../../constants.js";
 
-// import {useLocation} from "react-router-dom";
-
 function UsersGrid(props) {
   const {
     results,
-    // resultsFetchCount,
 
     results2D,
     setResults2D,
@@ -51,12 +48,19 @@ function UsersGrid(props) {
     const results2DNew = results.length > 1
       ? getRebuiltResults(results, validPropertiesCopy)
       : [];
-    // console.log("results2DNew =", results2DNew);
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
     }
-  }, [results, validPropertiesCopy, setResults2D, setActivePageNumber]);
+  }, [results, validPropertiesCopy, setResults2D]);
+
+  useEffect( () => {
+    if (!totalPages || isBadData(results)) {
+      return;
+    }
+    const scrollTopArrNew = new Array(totalPages).fill(0);
+    setScrollTopArr(scrollTopArrNew);
+  }, [results, totalPages, setScrollTopArr]);
 
   useEffect( () => {
     if (isBadData(results2D, validPropertiesCopy)) {
@@ -75,7 +79,6 @@ function UsersGrid(props) {
       const contentRowsEnd = contentRowsStart + usersPerPage;
       const activePageRowsNew = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
-      // console.log("activePageRowsNew =", activePageRowsNew);
       
       return activePageRowsNew;
     }    
@@ -85,7 +88,6 @@ function UsersGrid(props) {
 
       // Row 0 is used for table header, so content rows numbering starts from 1
       const totalUsers = results2D.length - 1;
-      // console.log("totalUsers =", totalUsers);
 
       if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
         const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
@@ -93,12 +95,12 @@ function UsersGrid(props) {
         const activePageRowsNew = getActivePageRows(results2D);
         setActivePageRows(activePageRowsNew);
 
-        const scrollTopArrNew = new Array(totalPagesNew).fill(0);
-        console.log("scrollTopArrNew =", scrollTopArrNew);
-        setScrollTopArr(scrollTopArrNew);
+        // const scrollTopArrNew = new Array(totalPagesNew).fill(0);
+        // setScrollTopArr(scrollTopArrNew);
       }
     }
-  }, [results2D, validPropertiesCopy, setTotalPages, activePageNumber, totalPages, setScrollTopArr]);
+  }, [results2D, validPropertiesCopy, setTotalPages, totalPages, activePageNumber]);
+  // }, [results2D, validPropertiesCopy, setTotalPages, totalPages, setScrollTopArr, activePageNumber]);
 
   useEffect( () => {
     if (isBadData(activePageRows, validPropertiesCopy)) {

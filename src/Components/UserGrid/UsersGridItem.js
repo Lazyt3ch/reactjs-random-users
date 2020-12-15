@@ -62,7 +62,6 @@ function UsersGridItem(props) {
         }
       }    
       setTooltipArr(tooltipArrNew);
-      // console.log("tooltipArrNew =", tooltipArrNew)
     }, 
     [value, strArr, subpropNameRegexp]
   );  
