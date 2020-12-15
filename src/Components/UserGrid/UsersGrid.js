@@ -55,10 +55,28 @@ function UsersGrid(props) {
   }, [results, validPropertiesCopy, setResults2D]);
 
   useEffect( () => {
+    const {usersPerPage} = constants;
+
+    // Row 0 is used for table header, so content rows numbering starts from 1
+    const totalUsers = results.length - 1;
+
+    if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
+      const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+      setTotalPages(totalPagesNew);  
+
+      // const scrollTopArrNew = new Array(totalPagesNew).fill(0);
+      // setScrollTopArr(scrollTopArrNew);
+    }    
+  }, [results, setTotalPages]);
+
+  useEffect( () => {
     if (!totalPages || isBadData(results)) {
       return;
     }
+    // console.log("Users Grid: totalPages =", totalPages);
+    // console.log("Users Grid: results =", results);
     const scrollTopArrNew = new Array(totalPages).fill(0);
+    console.log("Users grid: scrollTopArrNew =", scrollTopArrNew);
     setScrollTopArr(scrollTopArrNew);
   }, [results, totalPages, setScrollTopArr]);
 
@@ -86,12 +104,12 @@ function UsersGrid(props) {
     if (!isBadData(results2D) && results2D.length) {
       const {usersPerPage} = constants;
 
-      // Row 0 is used for table header, so content rows numbering starts from 1
-      const totalUsers = results2D.length - 1;
+      // // Row 0 is used for table header, so content rows numbering starts from 1
+      // const totalUsers = results2D.length - 1;
 
       if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-        const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
-        setTotalPages(totalPagesNew);  
+        // const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+        // setTotalPages(totalPagesNew);  
         const activePageRowsNew = getActivePageRows(results2D);
         setActivePageRows(activePageRowsNew);
 
@@ -99,7 +117,7 @@ function UsersGrid(props) {
         // setScrollTopArr(scrollTopArrNew);
       }
     }
-  }, [results2D, validPropertiesCopy, setTotalPages, totalPages, activePageNumber]);
+  }, [results2D, validPropertiesCopy, activePageNumber]);
   // }, [results2D, validPropertiesCopy, setTotalPages, totalPages, setScrollTopArr, activePageNumber]);
 
   useEffect( () => {
