@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
+// import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
+import {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
@@ -39,34 +40,6 @@ function UsersGrid(props) {
   } = props;
 
   const [activePageRows, setActivePageRows] = useState([]);
-
-  // useEffect( () => {
-  //   if (isBadData(results, validPropertiesCopy)) {
-  //     return;
-  //   }
-
-  //   const results2DNew = results.length > 1
-  //     ? getRebuiltResults(results, validPropertiesCopy)
-  //     : [];
-
-  //   if (!isBadData(results2DNew) && results2DNew.length) {
-  //     setResults2D(results2DNew);
-  //   }
-  // }, [results, validPropertiesCopy, setResults2D]);
-
-
-  // useEffect( () => {
-  //   const {usersPerPage} = constants;
-
-  //   // Row 0 is used for table header, so content rows numbering starts from 1
-  //   const totalUsers = results.length - 1;
-
-  //   if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-  //     const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
-  //     setTotalPages(totalPagesNew);  
-  //   }    
-  // }, [results, setTotalPages]);
-
 
   useEffect( () => {
     if (isBadData(results2D, validPropertiesCopy)) {
