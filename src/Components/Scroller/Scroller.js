@@ -18,12 +18,14 @@ function Scroller(props) {
   useEffect(() => {
     // console.log("SCROLL TO: pathname =", pathname);
     if (pathname === "/view") {
-      // console.log("SCROLLER");
+      console.log("SCROLLER");
+      console.log("scrollTopArr =", scrollTopArr);
+
       setTimeout( () => {  // setTimeout is vital here!!!
         window.scrollTo(0, scrollTopArr[activePageNumber] || 0);
       }, 50);      
     }
-  }, [pathname]);
+  }, [pathname, activePageNumber]);
 
   useEffect(() => {    
     let scrollPos;
@@ -36,10 +38,11 @@ function Scroller(props) {
       // console.log("<<<<<<<<<");
       if (pathname === "/view" && scrollPos > 0) {
         console.log("scrollTopArr =", scrollTopArr);
+        console.log("scrollPos =", scrollPos);
         // setScrollTop(Math.floor(scrollTopNew));
         const scrollTopArrNew = scrollTopArr.slice();
-        console.log("scrollTopArrNew =", scrollTopArrNew);
         scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
+        console.log("scrollTopArrNew =", scrollTopArrNew);
         setScrollTopArr(scrollTopArrNew);
       }  
     };
