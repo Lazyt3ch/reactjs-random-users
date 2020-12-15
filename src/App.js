@@ -78,12 +78,12 @@ function App() {
   
   
   useEffect( () => {
-    if (!totalPages) {
+    if (!totalPages && !isBadData(results)) {
       return;
     }
     const scrollTopArrNew = new Array(totalPages).fill(0);
     setScrollTopArr(scrollTopArrNew);
-  }, [totalPages, setScrollTopArr]);
+  }, [totalPages, results, setScrollTopArr]);
 
 
   return (
