@@ -16,8 +16,8 @@ function Scroller(props) {
   const {pathname} = useLocation();
 
   useEffect(() => {
-    if (pathname === "/view") {
-      setTimeout( () => {  // setTimeout is vital here!!!
+    if (pathname.startsWith("/view/")) {
+        setTimeout( () => {  // setTimeout is vital here!!!
         window.scrollTo(0, scrollTopArr[activePageNumber] || 0);
       }, 50);      
     }
@@ -27,7 +27,7 @@ function Scroller(props) {
   useEffect(() => {    
     const onScroll = e => {
       const scrollPos = e.target.documentElement.scrollTop;
-      if (pathname === "/view" && scrollPos > 0) {
+      if (pathname.startsWith("/view/") && scrollPos > 0) {
         const scrollTopArrNew = scrollTopArr.slice();
         scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
         setScrollTopArr(scrollTopArrNew);
