@@ -1,9 +1,11 @@
+import isBadData from "./BadDataChecker.js";
+
 // Reserve some horizontal space to prevent overflow
 const maxTotalWidth = 90; 
 
 const getColumnWidths = results => {
-  if (!results || !results.length) {
-    return null;
+  if (isBadData(results)) {
+    return [];
   }
 
   let columnWidths = new Array(results[0].length).fill(0);
@@ -14,26 +16,18 @@ const getColumnWidths = results => {
     });
   });
 
-  // console.log("columnWidths =", columnWidths);
-
   columnWidths.forEach( (w, idx, arr) => 
-    // arr[idx] = Math.max(1, Math.log(w)) );
     arr[idx] = Math.max(1, Math.sqrt(w)) );
   
   const sumOfWidths = columnWidths.reduce( (acc, w) => acc + w, 0 );
   columnWidths.forEach( (w, idx, arr) => 
     arr[idx] = Math.max(1, Math.floor(maxTotalWidth * w / sumOfWidths)) );
 
-  // console.log("columnWidths =", columnWidths);
   return columnWidths;
 };
 
 const getGridColumnsFormula = (results2D, validProperties) => {
-  if (!results2D || !results2D.length) {
-    return "";
-  }
-
-  if (!validProperties || !validProperties.length) {
+  if (isBadData(results2D, validProperties)) {
     return "";
   }
 
@@ -45,14 +39,13 @@ const getGridColumnsFormula = (results2D, validProperties) => {
     return "";
   }
 
-  if (!columnWidths || !columnWidths.length) {
+  if (isBadData(columnWidths)) {
     return "";
   }
 
   const gridColumnsFormula = columnWidths.map( (w, idx) => 
     `minmax(${validProperties[idx].length}rem, ${w}%)` )
     .join(" ");
-  // console.log("gridColumnsFormula =", gridColumnsFormula);
   return gridColumnsFormula;
 };
 

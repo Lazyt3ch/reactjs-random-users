@@ -42,7 +42,7 @@ function UsersGrid(props) {
     }
 
     const getActivePageRows = (allResults) => {
-      if (!totalPages || !allResults || !Array.isArray(allResults) || !allResults.length) {
+      if (!totalPages || isBadData(allResults)) {
         return [];
       }
   
@@ -53,17 +53,24 @@ function UsersGrid(props) {
       const contentRowsEnd = contentRowsStart + usersPerPage;
       const activePageRowsNew = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
-      
+
+      if (isBadData(activePageRowsNew)) {
+        return [];
+      }        
+
       return activePageRowsNew;
     }    
 
-    if (!isBadData(results2D) && results2D.length) {
-      const {usersPerPage} = constants;
+    const {usersPerPage} = constants;
 
-      if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-        const activePageRowsNew = getActivePageRows(results2D);
-        setActivePageRows(activePageRowsNew);
+    if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
+      const activePageRowsNew = getActivePageRows(results2D);
+
+      if (isBadData(activePageRowsNew)) {
+        return;
       }
+
+      setActivePageRows(activePageRowsNew);
     }
   }, [results2D, validPropertiesCopy, activePageNumber, totalPages]);
 
@@ -77,9 +84,11 @@ function UsersGrid(props) {
       ? getBriefResults(activePageRows, validPropertiesCopy)
       : [];
 
-    if (!isBadData(briefResults2DNew) && briefResults2DNew.length) {
-      setBriefResults2D(briefResults2DNew);
-    }      
+    if (isBadData(briefResults2DNew)) {
+      return;
+    }
+
+    setBriefResults2D(briefResults2DNew);          
   }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
 
 
@@ -92,7 +101,7 @@ function UsersGrid(props) {
       ? getGridColumnsFormula(activePageRows, validPropertiesCopy)
       : "";
     
-    if (gridColumnsFormulaNew) {
+    if (typeof gridColumnsFormulaNew === "string") {
       setGridColumnsFormula(gridColumnsFormulaNew);
     }
   }, [activePageRows, validPropertiesCopy, setGridColumnsFormula]);
@@ -107,7 +116,7 @@ function UsersGrid(props) {
       ? getGridColumnsFormula(briefResults2D, validPropertiesCopy)
       : "";
 
-    if (briefGridColumnsFormulaNew) {
+    if (typeof briefGridColumnsFormulaNew === "string") {
       setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
     }
   }, [briefResults2D, validPropertiesCopy, setBriefGridColumnsFormula]);
