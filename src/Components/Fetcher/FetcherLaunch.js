@@ -40,10 +40,11 @@ function FetcherLaunch(props) {
       setResultsFetchCount(resultsFetchCount + 1);
 
       // Important, otherwise no rows will be displayed in certain cases
-      setActivePageNumber(0);
+      setActivePageNumber(0); // 0 is first page's index
 
       setTimeout( () => {
-        history.push("view");
+        // history.push("/view");
+        history.push("/view/1"); // 1 is first page's displayed number
         setFetchAttempted(false);
         setMessageAfterFetch("");
       }, 2000 );

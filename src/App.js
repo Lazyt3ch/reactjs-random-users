@@ -89,6 +89,7 @@ function App() {
   return (
     <Router>
       <Nav 
+        activePageNumber={activePageNumber}
       />
       
       <Scroller
@@ -97,6 +98,7 @@ function App() {
 
         activePageNumber={activePageNumber} 
       >
+
         <Switch>
           <Route path="/get" exact>
             <Fetcher 
@@ -123,7 +125,7 @@ function App() {
             />
           </Route>
 
-          <Route path="/view" exact>
+          <Route path="/view/">
             <UsersGrid 
               validPropertiesCopy={validPropertiesCopy}
 

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {useHistory} from "react-router-dom";
 
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round
 
@@ -13,6 +14,8 @@ function Pagination(props) {
   } = props;
 
   const [pageNumbers, setPageNumbers] = useState([0]);
+
+  const history = useHistory();  
 
   useEffect(
     () => {
@@ -49,6 +52,7 @@ function Pagination(props) {
 
     if (pageNumber !== activePageNumber) {
       setActivePageNumber(pageNumber);
+      history.push(`/view/${pageNumber + 1}`);
     }
   }
 

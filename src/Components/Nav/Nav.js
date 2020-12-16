@@ -2,6 +2,8 @@ import {React} from "react";
 import {NavLink} from "react-router-dom";
 
 function Nav(props) {
+  const {activePageNumber} = props;
+
   return (
     <nav className="nav-container">
       <ul className="nav-ul unselectable">
@@ -17,7 +19,7 @@ function Nav(props) {
 
         <li>
           <NavLink 
-            to="/view" 
+            to={`/view/${activePageNumber + 1}`} 
             className="nav-link unselectable"
             activeClassName="nav-link-active"
           >

@@ -9,10 +9,7 @@ import constants from "../../constants.js";
 
 function UsersGrid(props) {
   const {
-    // results,
-
     results2D,
-    // setResults2D,
 
     briefResults2D,
     setBriefResults2D,
@@ -32,7 +29,6 @@ function UsersGrid(props) {
     setActivePageNumber,
 
     totalPages, 
-    // setTotalPages,
 
     scrollTopArr, 
     setScrollTopArr,
