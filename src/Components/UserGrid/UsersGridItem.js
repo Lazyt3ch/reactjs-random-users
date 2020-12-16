@@ -13,8 +13,6 @@ function UsersGridItem(props) {
     isBriefResults,
   } = props;
 
-  // console.log("value =", value);
-
   const subpropNamePattern = "[a-z]+:\\s";
   const subpropNameRegexp = useMemo( () => new RegExp(subpropNamePattern), [] );
 
@@ -22,7 +20,6 @@ function UsersGridItem(props) {
   
   useEffect( 
     () => {
-      // const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|[)])`);
       const subpropNameOrClosingParenRegexp = new RegExp(`(${subpropNamePattern}|\\])`);
       setStrArr(rowIndex > 0
       ? value.split(subpropNameOrClosingParenRegexp)
@@ -32,8 +29,6 @@ function UsersGridItem(props) {
     [value, rowIndex, setStrArr]
   );
 
-  // console.log("strArr =", strArr);
-
   const [tooltipArr, setTooltipArr] = useState([]);
   
   useEffect( 
@@ -41,13 +36,11 @@ function UsersGridItem(props) {
       const tooltipArrNew = [];
       const nameStack = [];
       for (let i = 0; i < strArr.length; i++) {
-        // if ( strArr[i] === "(" ) {
         if ( strArr[i] === "[" ) {
           if (i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
             nameStack.push(strArr[i - 1]);
           }
           tooltipArrNew.push("");
-        // } else if ( strArr[i] === ")" ) {
         } else if ( strArr[i] === "]" ) {
           if (nameStack.length) {
             nameStack.pop();
