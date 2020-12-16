@@ -1,8 +1,19 @@
 import {React} from "react";
 import {NavLink} from "react-router-dom";
+// import {React, useEffect} from "react";
+// import {NavLink, useHistory} from "react-router-dom";
 
 function Nav(props) {
   const {activePageNumber} = props;
+
+  // const history = useHistory();  
+
+  // useEffect(() => {
+  //   return history.listen((location) => { 
+  //      console.log(`You changed the page to: ${location.pathname}`) 
+  //   }) 
+  // }, [history]);
+
 
   return (
     <nav className="nav-container">

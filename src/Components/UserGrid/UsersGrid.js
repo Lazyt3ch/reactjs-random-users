@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-// import getRebuiltResults, {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
