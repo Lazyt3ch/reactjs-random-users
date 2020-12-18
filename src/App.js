@@ -33,8 +33,10 @@ function App() {
   const allProperties = getAllProperties(constants);
 
   // const [statusesString, setStatusesString] = useState(getUpdatedStatuses(true, allProperties));
-  const [statusesString, setStatusesString] = useState(getUpdatedStatuses(false, allProperties));
-  const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
+  // const [statusesString, setStatusesString] = useState(getUpdatedStatuses(false, allProperties));
+  const [statuses, setStatuses] = useState(getUpdatedStatuses(false, allProperties));
+  // const [validProperties, setValidProperties] = useState(getValidProperties(statusesString));
+  const [validProperties, setValidProperties] = useState(getValidProperties(statuses));
   const [validPropertiesCopy, setValidPropertiesCopy] = useState([]);
 
   const [results, setResults] = useState([]);
@@ -108,8 +110,10 @@ function App() {
 
               allProperties={allProperties}
               
-              statusesString={statusesString}
-              setStatusesString={setStatusesString}
+              // statusesString={statusesString}
+              // setStatusesString={setStatusesString}
+              statuses={statuses}
+              setStatuses={setStatuses}
               
               validProperties={validProperties}
               setValidProperties={setValidProperties}
