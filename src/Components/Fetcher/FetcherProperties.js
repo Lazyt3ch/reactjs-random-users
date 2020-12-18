@@ -13,6 +13,9 @@ function FetcherProperties(props) {
     setStatusesString,
 
     setValidProperties,
+
+    numSelectedProperties, 
+    setNumSelectedProperties,    
   } = props;
 
   const handleUnselectAll = (event) => {
@@ -59,7 +62,11 @@ function FetcherProperties(props) {
 
   const propertiesStatuses = JSON.parse(statusesString);
   const numTotalProperties = allProperties.length;
-  const numSelectedProperties = Object.values(propertiesStatuses)
+
+  // const numSelectedProperties = Object.values(propertiesStatuses)
+  //   .reduce( (acc, value) => acc + value, 0 );  
+
+  const getNumSelectedProperties = () => Object.values(propertiesStatuses)
     .reduce( (acc, value) => acc + value, 0 );  
 
   return (

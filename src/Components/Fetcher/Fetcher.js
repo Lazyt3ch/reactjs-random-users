@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import FetcherNumResults from "./FetcherNumResults.js";
 import FetcherProperties from "./FetcherProperties.js";
@@ -18,6 +18,9 @@ function Fetcher(props) {
     
     validProperties,
     setValidProperties,
+
+    numSelectedProperties, 
+    setNumSelectedProperties,
     
     // FetcherLaunch:
     results, 
@@ -31,6 +34,7 @@ function Fetcher(props) {
     setActivePageNumber,
   } = props;
 
+  const [numSelectedProperties, setNumSelectedProperties] = useState(0);
 
   return (
     <div className="fetcher">

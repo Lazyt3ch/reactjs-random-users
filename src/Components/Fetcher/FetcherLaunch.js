@@ -36,7 +36,7 @@ function FetcherLaunch(props) {
       } else {
         if (fetchAttempted) {
           if (messageAfterFetch.length) {
-            setMessage("Trying to retrieve users data...");
+            setMessage(messageAfterFetch);
             setSeverity("success");
           } else {
             setMessage("An error occurred.");
@@ -53,7 +53,7 @@ function FetcherLaunch(props) {
         }
       }
     },
-    [isFetching, fetchAttempted, messageAfterFetch, validProperties]
+    [isFetching, fetchAttempted, messageAfterFetch, validProperties.length]
   );
 
 
