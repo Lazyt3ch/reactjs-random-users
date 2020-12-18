@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
 
 import {getUpdatedStatuses} from "../../Helpers/PropertiesFixer.js";
@@ -11,9 +11,6 @@ function FetcherProperties(props) {
     setStatusesString,
 
     setValidProperties,
-
-    numSelectedProperties, 
-    setNumSelectedProperties,    
   } = props;
 
   const handleUnselectAll = (event) => {
@@ -33,6 +30,12 @@ function FetcherProperties(props) {
     setValidProperties(validPropertiesNew);
   };
 
+  const updateProperties = statusesNew => {
+    const statusesNewString = JSON.stringify(statusesNew);
+    setStatusesString(statusesNewString);
+    updateValidProperties(statusesNew);
+  };
+
   const handleInvertSelection = (event) => {
     const statusesNew = Object.assign({}, JSON.parse(statusesString));
 
@@ -40,7 +43,7 @@ function FetcherProperties(props) {
       statusesNew[property] = !statusesNew[property];
     }
 
-    setStatusesString(JSON.stringify(statusesNew));
+    updateProperties(statusesNew);
   };
   
   const handleSingleCheck = (event) => {
@@ -54,36 +57,15 @@ function FetcherProperties(props) {
       }
     }
 
-    const statusesNewString = JSON.stringify(statusesNew);
-    setStatusesString(statusesNewString);
-    updateValidProperties(statusesNew);
+    updateProperties(statusesNew);
   };
 
   const propertiesStatuses = JSON.parse(statusesString);
   const numTotalProperties = allProperties.length;
 
-  // const numSelectedProperties = Object.values(propertiesStatuses)
-  //   .reduce( (acc, value) => acc + value, 0 );  
+  const numSelectedProperties = Object.values(propertiesStatuses)
+    .reduce( (acc, value) => acc + value, 0 );  
 
-  useEffect(
-    () => {
-      // const propertiesStatuses = JSON.parse(statusesString);
-      const numSelectedPropertiesNew = Object.values(propertiesStatuses)
-        .reduce( (acc, value) => acc + value, 0 );  
-
-      setNumSelectedProperties(numSelectedPropertiesNew);
-    },
-    [statusesString, setNumSelectedProperties, propertiesStatuses]
-  );
-
-  // const getNumSelectedProperties = () => {
-  //   const propertiesStatuses = JSON.parse(statusesString);
-  //   // const numTotalProperties = allProperties.length;  
-  //   return Object.values(propertiesStatuses)
-  //     .reduce( (acc, value) => acc + value, 0 );  
-  // };
-
-  
 
   return (
     <div style={{marginTop: "1rem"}}>
