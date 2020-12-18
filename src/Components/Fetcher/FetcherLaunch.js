@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import fetchUsers from "../../Helpers/UsersFetcher.js";
 import {useHistory} from "react-router-dom";
+import SpacedButton from "../SpacedButton/SpacedButton.js";
 
 function FetcherLaunch(props) {
   const {
@@ -59,12 +60,14 @@ function FetcherLaunch(props) {
 
   return (
     <div>
-      <button 
+      <SpacedButton variant="contained"
+        color="secondary"
+        m="5px"
         onClick={handleFetchUsers} 
         disabled={isFetching || !validProperties.length}
       >
-        Retrieve users data
-      </button>
+        Retrieve data
+      </SpacedButton>
 
       <p style={ fetchAttempted ? {fontWeight: 700} : null }>
         { isFetching 
