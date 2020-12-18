@@ -13,8 +13,6 @@ function Fetcher(props) {
     // FetcherProperties:
     allProperties,
 
-    // statusesString,
-    // setStatusesString,
     statuses,
     setStatuses,
     
@@ -44,8 +42,6 @@ function Fetcher(props) {
       <FetcherProperties 
         allProperties={allProperties}
 
-        // statusesString={statusesString}
-        // setStatusesString={setStatusesString}
         statuses={statuses}
         setStatuses={setStatuses}
         

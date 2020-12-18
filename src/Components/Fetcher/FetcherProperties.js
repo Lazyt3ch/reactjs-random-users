@@ -7,8 +7,6 @@ function FetcherProperties(props) {
   const {
     allProperties,
 
-    // statusesString,     
-    // setStatusesString,
     statuses,     
     setStatuses,
 
@@ -16,13 +14,11 @@ function FetcherProperties(props) {
   } = props;
 
   const handleUnselectAll = (event) => {
-    // setStatusesString(getUpdatedStatuses(false, allProperties));
     setStatuses(getUpdatedStatuses(false, allProperties));
     setValidProperties([]);
   };
 
   const handleSelectAll = (event) => {
-    // setStatusesString(getUpdatedStatuses(true, allProperties));
     setStatuses(getUpdatedStatuses(true, allProperties));
     setValidProperties(allProperties);
   };
@@ -35,14 +31,11 @@ function FetcherProperties(props) {
   };
 
   const updateProperties = statusesNew => {
-    // const statusesNewString = JSON.stringify(statusesNew);
-    // setStatusesString(statusesNewString);
     setStatuses(statusesNew);
     updateValidProperties(statusesNew);
   };
 
   const handleInvertSelection = (event) => {
-    // const statusesNew = Object.assign({}, JSON.parse(statusesString));
     const statusesNew = Object.assign({}, statuses);
 
     for (const property of allProperties) {
@@ -54,7 +47,6 @@ function FetcherProperties(props) {
   
   const handleSingleCheck = (event) => {
     const {checked, name} = event.target;
-    // const statusesNew = Object.assign({}, JSON.parse(statusesString));
     const statusesNew = Object.assign({}, statuses);
 
     for (const property of allProperties) {
@@ -67,7 +59,6 @@ function FetcherProperties(props) {
     updateProperties(statusesNew);
   };
 
-  // const propertiesStatuses = JSON.parse(statusesString);
   const propertiesStatuses = statuses;
   const numTotalProperties = allProperties.length;
 
