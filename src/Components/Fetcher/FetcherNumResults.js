@@ -1,23 +1,23 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import constants from "../../constants.js";
 import fixNumResults from "../../Helpers/NumResultsFixer.js";
-
-import {Autocomplete, TextField} from '@material-ui/lab';
+import {TextField} from '@material-ui/core';
+import {Autocomplete} from '@material-ui/lab';
+import fixProperties from "../../Helpers/PropertiesFixer.js";
 
 function FetcherNumResults(props) {
   const {
     numResultsLowerLimit,
     numResultsUpperLimit,
+    numResultsDefault,
   } = constants;
 
   const {
-    numResults, 
     setNumResults,
   } = props;
 
-  const inputTextSize = numResultsUpperLimit.toString().length;
-
-  const numUsersArr = [
+  const options = [
+    20,
     50,
     100,
     200,
@@ -25,43 +25,49 @@ function FetcherNumResults(props) {
     1000,
   ];
 
-  function handleRangeValueChange(event) {
-    setNumResults(event.target.value);
-  }
+  const [value, setValue] = useState(numResultsDefault);
+  const [inputValue, setInputValue] = useState(numResultsDefault.toString());
 
-  function handleTextValueChange(event) {
-    setNumResults(fixNumResults(event.target.value));
-  }
+  useEffect( 
+    () => {
+      console.log("value =", value);
+      const fixedNum = fixNumResults(value);
+      console.log("fixedNum =", fixedNum);
+      // setValue(fixedNum);
+      setNumResults(fixedNum);
+    }, [value, setNumResults]
+  );
+
+  useEffect( 
+    () => {
+      console.log("inputValue =", inputValue);
+      const fixedNum = fixNumResults(inputValue);
+      console.log("fixedNum =", fixedNum);
+      // setInputValue(fixedNum.toString());
+      setNumResults(fixedNum);
+    }, [inputValue, setNumResults]
+  );
 
   return (
     <div style={{marginTop: "1rem"}}>
+      <p>Select the number of users  
+        ({numResultsLowerLimit} &mdash; {numResultsUpperLimit})</p>
+
       <Autocomplete
         id="num_results"
-        options={numUsersArr}
-        getOptionLabel={(option) => option.title}
-        style={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
-      />
-
-      <label htmlFor="num_results_range" className="input-label">
-        Number of users to retrieve data for 
-        ({numResultsLowerLimit} &mdash; {numResultsUpperLimit})
-      </label>
-
-      <input type="range" 
-        id="num_results_range" 
-        name="num_results_range" 
-        min={numResultsLowerLimit} 
-        max={numResultsUpperLimit}
-        value={numResults}
-        onChange={handleRangeValueChange}
-      />
-
-      <input type="text" 
-        id="num_results_text" 
-        size={inputTextSize}
-        value={numResults}
-        onChange={handleTextValueChange}
+        options={options}
+        getOptionLabel={(option) => option.toString()}
+        style={{ width: "12rem" }}
+        freeSolo={true}
+        value={value}
+        inputValue={inputValue}
+        onChange={(event, valueNew) => setValue(valueNew)}
+        onInputChange={(event, inputValueNew) => setInputValue(inputValueNew)}
+        renderInput={(params) => 
+          <TextField {...params} 
+            label="Number of users" variant="outlined" 
+          />
+        }
       />
     </div>
   );
