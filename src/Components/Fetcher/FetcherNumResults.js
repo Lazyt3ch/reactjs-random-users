@@ -3,7 +3,6 @@ import constants from "../../constants.js";
 import fixNumResults from "../../Helpers/NumResultsFixer.js";
 import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
-import fixProperties from "../../Helpers/PropertiesFixer.js";
 
 function FetcherNumResults(props) {
   const {
@@ -30,27 +29,23 @@ function FetcherNumResults(props) {
 
   useEffect( 
     () => {
-      console.log("value =", value);
       const fixedNum = fixNumResults(value);
-      console.log("fixedNum =", fixedNum);
-      // setValue(fixedNum);
+      setValue(fixedNum);
       setNumResults(fixedNum);
     }, [value, setNumResults]
   );
 
   useEffect( 
     () => {
-      console.log("inputValue =", inputValue);
       const fixedNum = fixNumResults(inputValue);
-      console.log("fixedNum =", fixedNum);
-      // setInputValue(fixedNum.toString());
+      setInputValue(fixedNum.toString());
       setNumResults(fixedNum);
     }, [inputValue, setNumResults]
   );
 
   return (
     <div style={{marginTop: "1rem"}}>
-      <p>Select the number of users  
+      <p>Select or enter the number of users  
         ({numResultsLowerLimit} &mdash; {numResultsUpperLimit})</p>
 
       <Autocomplete
@@ -65,6 +60,7 @@ function FetcherNumResults(props) {
         onInputChange={(event, inputValueNew) => setInputValue(inputValueNew)}
         renderInput={(params) => 
           <TextField {...params} 
+            type="number"
             label="Number of users" variant="outlined" 
           />
         }
