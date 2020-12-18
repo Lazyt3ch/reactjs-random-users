@@ -30,7 +30,7 @@ function FetcherProperties(props) {
     setValidProperties(validPropertiesNew);
   };
 
-  const updateProperties = statusesNew => {
+  const updateStatusesAndProperties = statusesNew => {
     setStatuses(statusesNew);
     updateValidProperties(statusesNew);
   };
@@ -42,7 +42,7 @@ function FetcherProperties(props) {
       statusesNew[property] = !statusesNew[property];
     }
 
-    updateProperties(statusesNew);
+    updateStatusesAndProperties(statusesNew);
   };
   
   const handleSingleCheck = (event) => {
@@ -56,7 +56,7 @@ function FetcherProperties(props) {
       }
     }
 
-    updateProperties(statusesNew);
+    updateStatusesAndProperties(statusesNew);
   };
 
   const propertiesStatuses = statuses;
