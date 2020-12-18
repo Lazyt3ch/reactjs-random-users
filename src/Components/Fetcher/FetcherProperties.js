@@ -1,9 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
 
-import {
-  getUpdatedStatuses,
-} from "../../Helpers/PropertiesFixer.js";
+import {getUpdatedStatuses} from "../../Helpers/PropertiesFixer.js";
 
 function FetcherProperties(props) {
   const {
@@ -30,7 +28,8 @@ function FetcherProperties(props) {
 
   const updateValidProperties = (statusesNew) => {
     const validPropertiesNew = allProperties.reduce( (acc, p) =>
-      statusesNew[p] ? [...acc, p] : acc, [] );      
+      statusesNew[p] ? [...acc, p] : acc, 
+      [] );      
     setValidProperties(validPropertiesNew);
   };
 
@@ -66,8 +65,25 @@ function FetcherProperties(props) {
   // const numSelectedProperties = Object.values(propertiesStatuses)
   //   .reduce( (acc, value) => acc + value, 0 );  
 
-  const getNumSelectedProperties = () => Object.values(propertiesStatuses)
-    .reduce( (acc, value) => acc + value, 0 );  
+  useEffect(
+    () => {
+      // const propertiesStatuses = JSON.parse(statusesString);
+      const numSelectedPropertiesNew = Object.values(propertiesStatuses)
+        .reduce( (acc, value) => acc + value, 0 );  
+
+      setNumSelectedProperties(numSelectedPropertiesNew);
+    },
+    [statusesString, setNumSelectedProperties, propertiesStatuses]
+  );
+
+  // const getNumSelectedProperties = () => {
+  //   const propertiesStatuses = JSON.parse(statusesString);
+  //   // const numTotalProperties = allProperties.length;  
+  //   return Object.values(propertiesStatuses)
+  //     .reduce( (acc, value) => acc + value, 0 );  
+  // };
+
+  
 
   return (
     <div style={{marginTop: "1rem"}}>
