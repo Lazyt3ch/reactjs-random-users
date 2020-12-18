@@ -101,19 +101,6 @@ function FetcherLaunch(props) {
         Retrieve data
       </SpacedButton>
 
-      <p style={ fetchAttempted ? {fontWeight: 700} : null }>
-        { isFetching 
-          ? "Trying to retrieve users data..."
-          : fetchAttempted
-            ? messageAfterFetch.length 
-              ? messageAfterFetch 
-              : "An error occurred."
-            : validProperties.length 
-              ? "You can request users data now." 
-              : "Select at least one user property."
-        }
-      </p>
-
       {message.length && 
         <Alert severity={severity}>
           {message}
