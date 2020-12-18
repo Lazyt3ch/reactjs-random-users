@@ -12,7 +12,6 @@ function FetcherProperties(props) {
     statusesString,     
     setStatusesString,
 
-    // validProperties,
     setValidProperties,
   } = props;
 
@@ -69,31 +68,6 @@ function FetcherProperties(props) {
         Select user properties to retrieve
       </p>
       
-      <div>
-        <button 
-          className="properties-button" 
-          disabled={numSelectedProperties === 0}
-          onClick={handleUnselectAll}
-        >
-          Unselect all
-        </button>
-        
-        <button 
-          className="properties-button" 
-          disabled={numSelectedProperties === numTotalProperties}
-          onClick={handleSelectAll}
-        >
-          Select all
-        </button>
-
-        <button 
-          className="properties-button" 
-          onClick={handleInvertSelection}
-        >
-          Invert Selection
-        </button>
-      </div>
-
       <ul style={{listStyleType: "none", paddingLeft: 0}}>
         {allProperties.map( (property) => 
           <li key={property} style={{marginBottom: ".5rem"}}>            
