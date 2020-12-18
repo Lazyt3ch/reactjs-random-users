@@ -44,7 +44,6 @@ function FetcherLaunch(props) {
       setActivePageNumber(0); // 0 is first page's index
 
       setTimeout( () => {
-        // history.push("/view");
         history.push("/view/1"); // 1 is first page's displayed number
         setFetchAttempted(false);
         setMessageAfterFetch("");
@@ -59,7 +58,7 @@ function FetcherLaunch(props) {
   }
 
   return (
-    <div>
+    <>
       <SpacedButton variant="contained"
         color="secondary"
         m="5px"
@@ -81,7 +80,7 @@ function FetcherLaunch(props) {
               : "Select at least one user property."
         }
       </p>
-    </div>
+    </>
   );
 }
 
