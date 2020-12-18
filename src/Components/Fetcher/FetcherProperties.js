@@ -1,7 +1,5 @@
 import React from "react";
-import {Button} from '@material-ui/core';
-import {spacing} from '@material-ui/system';
-import {styled} from "@material-ui/core/styles";
+import SpacedButton from "../SpacedButton/SpacedButton.js";
 
 import {
   getUpdatedStatuses,
@@ -17,8 +15,6 @@ function FetcherProperties(props) {
     // validProperties,
     setValidProperties,
   } = props;
-
-  const SpacedButton = styled(Button)(spacing);
 
   const handleUnselectAll = (event) => {
     setStatusesString(getUpdatedStatuses(false, allProperties));
@@ -72,8 +68,6 @@ function FetcherProperties(props) {
       <p>
         Select user properties to retrieve
       </p>
-
-
       
       <div>
         <button 
@@ -137,20 +131,11 @@ function FetcherProperties(props) {
       <SpacedButton variant="contained"
         color="primary"
         mx="5px"
-        disabled={numSelectedProperties === 0}
-        onClick={handleUnselectAll}
+        onClick={handleInvertSelection}
       >
-        Unselect all
+        Invert Selection
       </SpacedButton>
 
-      <SpacedButton variant="contained"
-        color="primary"
-        mx="5px"
-        disabled={numSelectedProperties === numTotalProperties}
-        onClick={handleSelectAll}
-      >
-        Select all
-      </SpacedButton>  
     </div>
   );
 }
