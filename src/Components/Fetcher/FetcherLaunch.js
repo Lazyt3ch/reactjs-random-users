@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import fetchUsers from "../../Helpers/UsersFetcher.js";
 import {useHistory} from "react-router-dom";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
+import {Alert} from '@material-ui/lab';
 
 function FetcherLaunch(props) {
   const {
@@ -23,6 +24,38 @@ function FetcherLaunch(props) {
   const [messageAfterFetch, setMessageAfterFetch] = useState("");
   
   const history = useHistory();
+
+  const [message, setMessage] = useState("");
+  const [severity, setSeverity] = useState("");
+
+  useEffect(
+    () => {
+      if (isFetching) {
+        setMessage("Trying to retrieve users data...");
+        setSeverity("info");
+      } else {
+        if (fetchAttempted) {
+          if (messageAfterFetch.length) {
+            setMessage("Trying to retrieve users data...");
+            setSeverity("success");
+          } else {
+            setMessage("An error occurred.");
+            setSeverity("error");
+          }
+        } else {
+          if (validProperties.length) {
+            setMessage("You can request users data now.");
+            setSeverity("info");
+          } else {
+            setMessage("Select at least one user property.");
+            setSeverity("warning");
+          }
+        }
+      }
+    },
+    [isFetching, fetchAttempted, messageAfterFetch, validProperties]
+  );
+
 
   async function handleFetchUsers() {    
     if (numResults < 1 || validProperties < 1) {
@@ -80,6 +113,12 @@ function FetcherLaunch(props) {
               : "Select at least one user property."
         }
       </p>
+
+      {message.length && 
+        <Alert severity={severity}>
+          {message}
+        </Alert>                
+      }
     </>
   );
 }
