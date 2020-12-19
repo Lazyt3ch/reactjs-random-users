@@ -54,9 +54,10 @@ function App() {
       return;
     }
 
-    const results2DNew = results.length > 1
+    const results2DNew = results.length // fixed a bug!
       ? getRebuiltResults(results, validPropertiesCopy)
       : [];
+    // console.log("results2DNew =", results2DNew);
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
@@ -68,7 +69,8 @@ function App() {
     const {usersPerPage} = constants;
 
     // Row 0 is used for table header, so content rows numbering starts from 1
-    const totalUsers = results.length - 1;
+    // const totalUsers = results.length - 1;
+    const totalUsers = results.length; // fixed a bug!
 
     if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
       const totalPagesNew = Math.ceil(totalUsers / usersPerPage);

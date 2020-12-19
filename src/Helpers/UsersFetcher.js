@@ -2,6 +2,7 @@ import buildUrl from "./UrlBuilder.js";
 
 async function fetchUsers(numResults, properties=[], isToInclude=true) {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
+  // console.log("completeUrl =", completeUrl);
   let resultsArr = null;
   let errorMessage = "";
 
@@ -18,6 +19,7 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
         console.log(errorMessage);      
       } else {
         resultsArr = data.results;
+        // console.log("resultsArr =", resultsArr);
       }  
     } else {
       errorMessage = `An error occurred: ${response.statusText}`;

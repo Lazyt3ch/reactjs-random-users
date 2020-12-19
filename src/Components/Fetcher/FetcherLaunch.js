@@ -64,6 +64,7 @@ function FetcherLaunch(props) {
 
     setIsFetching(true);
     const { resultsArr, errorMessage } = await fetchUsers(numResults, validProperties);
+    // console.log("resultsArr =", resultsArr);
     setIsFetching(false);
     setFetchAttempted(true);
 

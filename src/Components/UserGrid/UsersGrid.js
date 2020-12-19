@@ -38,6 +38,7 @@ function UsersGrid(props) {
   const [activePageRows, setActivePageRows] = useState([]);
 
   useEffect( () => {
+    // console.log("results2D =", results2D);
     if (isBadData(results2D, validPropertiesCopy)) {
       return;
     }
@@ -46,7 +47,7 @@ function UsersGrid(props) {
       if (!totalPages || isBadData(allResults)) {
         return [];
       }
-  
+
       const {usersPerPage} = constants;
   
       // Row 0 is used for table header, so content rows numbering starts from 1
@@ -54,6 +55,7 @@ function UsersGrid(props) {
       const contentRowsEnd = contentRowsStart + usersPerPage;
       const activePageRowsNew = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
+      // console.log("activePageRowsNew =", activePageRowsNew);
 
       if (isBadData(activePageRowsNew)) {
         return [];
