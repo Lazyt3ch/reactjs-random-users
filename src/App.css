@@ -87,7 +87,7 @@
 
 
 /* nav START */
-.nav-ul {
+/* .nav-ul {
     display: flex;
     flex-direction: row;
     margin-bottom: 1.5rem;
@@ -97,18 +97,18 @@
     display: inline;
     margin-right: 1rem;
     text-decoration: none;
-}
+} */
 
 .nav-link {
     text-decoration: none;
-    background-color: #eeeeee;
-    color: black;
+    /* background-color: #eeeeee; */
+    color: white;
     padding: .5rem;
 }
 
 .nav-link-active {
     font-weight: 700;
-    color: black;
+    color: navy;
     background-color: white;
 }
 
@@ -117,6 +117,12 @@
 }
 
 .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+}
+
+/* .nav-container {
     position: fixed;
     left: 0;
     top: 0;
@@ -128,7 +134,7 @@
     justify-items: flex-start;
 
     margin-bottom: 2rem;
-}
+} */
 /* nav END */
 
 
