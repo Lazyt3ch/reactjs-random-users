@@ -26,6 +26,19 @@
 }
 
 
+.fetcher-properties-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.fetcher-properties-buttons-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
 .users-view-top-wrapper {
     display: flex;
     flex-direction: column;

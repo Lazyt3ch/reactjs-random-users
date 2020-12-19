@@ -71,49 +71,51 @@ function FetcherProperties(props) {
       <p>
         Select user properties to retrieve
       </p>
-      
-      <ul style={{listStyleType: "none", paddingLeft: 0}}>
-        {allProperties.map( (property) => 
-          <li key={property} style={{marginBottom: ".5rem"}}>            
-            <input 
-              type="checkbox" 
-              name={property}
-              checked={propertiesStatuses[property]} 
-              onChange={handleSingleCheck}
-            />
-            <span style={{marginLeft: "1rem"}}>
-              {property}
-            </span>
-          </li>)
-        } 
-      </ul>
 
-      <SpacedButton variant="outlined"
-        color="primary"
-        m="5px"
-        disabled={numSelectedProperties === 0}
-        onClick={handleUnselectAll}
-      >
-        Unselect all
-      </SpacedButton>
+      <div className="fetcher-properties-wrapper">      
+        <ul style={{listStyleType: "none", paddingLeft: 0, marginRight: "3rem"}}>
+          {allProperties.map( (property) => 
+            <li key={property} style={{marginBottom: ".5rem"}}>            
+              <input 
+                type="checkbox" 
+                name={property}
+                checked={propertiesStatuses[property]} 
+                onChange={handleSingleCheck}
+              />
+              <span style={{marginLeft: "1rem"}}>
+                {property}
+              </span>
+            </li>)
+          } 
+        </ul>
+        
+        <div className="fetcher-properties-buttons-wrapper">
+          <SpacedButton variant="outlined"
+            color="primary"
+            mb={"20px"}
+            disabled={numSelectedProperties === 0}
+            onClick={handleUnselectAll}
+          >
+            Unselect all
+          </SpacedButton>
 
-      <SpacedButton variant="outlined"
-        color="primary"
-        m="5px"
-        disabled={numSelectedProperties === numTotalProperties}
-        onClick={handleSelectAll}
-      >
-        Select all
-      </SpacedButton>  
+          <SpacedButton variant="outlined"
+            color="primary"
+            mb={"20px"}
+            disabled={numSelectedProperties === numTotalProperties}
+            onClick={handleSelectAll}
+          >
+            Select all
+          </SpacedButton>  
 
-      <SpacedButton variant="outlined"
-        color="primary"
-        mx="5px"
-        onClick={handleInvertSelection}
-      >
-        Invert Selection
-      </SpacedButton>
-
+          <SpacedButton variant="outlined"
+            color="primary"
+            onClick={handleInvertSelection}
+          >
+            Invert Selection
+          </SpacedButton>
+        </div>
+      </div>
     </div>
   );
 }
