@@ -88,7 +88,7 @@ function FetcherProperties(props) {
         } 
       </ul>
 
-      <SpacedButton variant="contained"
+      <SpacedButton variant="outlined"
         color="primary"
         m="5px"
         disabled={numSelectedProperties === 0}
@@ -97,7 +97,7 @@ function FetcherProperties(props) {
         Unselect all
       </SpacedButton>
 
-      <SpacedButton variant="contained"
+      <SpacedButton variant="outlined"
         color="primary"
         m="5px"
         disabled={numSelectedProperties === numTotalProperties}
@@ -106,7 +106,7 @@ function FetcherProperties(props) {
         Select all
       </SpacedButton>  
 
-      <SpacedButton variant="contained"
+      <SpacedButton variant="outlined"
         color="primary"
         mx="5px"
         onClick={handleInvertSelection}
