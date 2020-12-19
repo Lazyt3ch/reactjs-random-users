@@ -15,7 +15,7 @@ function Nav(props) {
             activeClassName="nav-link-active" 
           >
             Data Retriever
-            </NavLink>
+          </NavLink>
 
           <NavLink
             to={`/view/${activePageNumber + 1}`} exact
@@ -34,31 +34,6 @@ function Nav(props) {
           </NavLink>  
         </div>
       </AppBar>
-
-
-
-      {/* <nav className="nav-container">
-        <ListItem button component={NavLink} 
-          to="/get" exact
-          activeClassName="Mui-selected" 
-        >
-          Data Retriever
-        </ListItem>
-
-        <ListItem button component={NavLink} 
-          to={`/view/${activePageNumber + 1}`} 
-          activeClassName="Mui-selected" 
-        >
-          Data Viewer
-        </ListItem>
-
-        <ListItem button component={NavLink} 
-          to="/" exact
-          activeClassName="Mui-selected" 
-        >
-          Home Page
-        </ListItem>        
-      </nav>     */}
     </>
   );
 }
