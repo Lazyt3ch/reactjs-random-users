@@ -114,10 +114,8 @@
 /* users view START */
 .grid-settings {
     padding-left: 1rem;
-    padding-bottom: 1rem;
-
-    padding-top: 1rem;
-
+    padding-bottom: .5rem;
+    padding-top: .5rem;
     background-color: white;
 }
 
