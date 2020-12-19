@@ -58,10 +58,11 @@
 .users-view-top-wrapper {
     display: flex;
     flex-direction: column;
+    background-color: white;
 
     position: fixed;
     left: 0;
-    top: 2rem;
+    top: 1rem;
     /* top: 3rem; */
     width: 100%;
     z-index: 15;
