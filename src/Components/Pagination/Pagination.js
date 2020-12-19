@@ -59,13 +59,13 @@ function Pagination(props) {
   return (
     <div className="pagination unselectable">
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === 0 ? "no-hover-effect" : ""}
+        className={activePageNumber === 0 ? "active-page" : ""}
       >
         &lt;&lt;
       </span>
 
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === 0 ? "no-hover-effect" : ""}
+        className={activePageNumber === 0 ? "active-page" : ""}
       >
         &lt;
       </span> 
@@ -80,13 +80,13 @@ function Pagination(props) {
       )}
 
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === totalPages - 1 ? "no-hover-effect" : ""}      
+        className={activePageNumber === totalPages - 1 ? "active-page" : ""}      
       >
         &gt;
       </span>  
 
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === totalPages - 1 ? "no-hover-effect" : ""}      
+        className={activePageNumber === totalPages - 1 ? "active-page" : ""}      
       >
         &gt;&gt;
       </span>    
