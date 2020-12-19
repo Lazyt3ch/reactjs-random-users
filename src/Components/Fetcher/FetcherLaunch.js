@@ -97,7 +97,9 @@ function FetcherLaunch(props) {
   return (
     <>
       {message.length && 
-        <Alert severity={severity}>
+        <Alert severity={severity}
+          variant="filled"
+        >
           {message}
         </Alert>                
       }
