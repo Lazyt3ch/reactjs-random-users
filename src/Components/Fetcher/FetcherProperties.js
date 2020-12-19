@@ -67,7 +67,7 @@ function FetcherProperties(props) {
 
   return (
     <div style={{marginTop: "1rem"}}>
-      <p>
+      <p style={{marginBlockEnd: 0}}>
         Select user properties to retrieve
       </p>
 
