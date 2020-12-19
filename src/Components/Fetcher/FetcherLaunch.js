@@ -99,7 +99,7 @@ function FetcherLaunch(props) {
       {message.length && 
         <Alert severity={severity}
           variant="filled"
-          style={{width: "30rem"}} 
+          style={{width: "35rem"}} 
         >
           {message}
         </Alert>                
