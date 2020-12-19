@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import fetchUsers from "../../Helpers/UsersFetcher.js";
 import {useHistory} from "react-router-dom";
+import SpacedButton from "../SpacedButton/SpacedButton.js";
+import {Alert} from '@material-ui/lab';
 
 function FetcherLaunch(props) {
   const {
@@ -23,6 +25,38 @@ function FetcherLaunch(props) {
   
   const history = useHistory();
 
+  const [message, setMessage] = useState("");
+  const [severity, setSeverity] = useState("");
+
+  useEffect(
+    () => {
+      if (isFetching) {
+        setMessage("Trying to retrieve users data...");
+        setSeverity("info");
+      } else {
+        if (fetchAttempted) {
+          if (messageAfterFetch.length) {
+            setMessage(messageAfterFetch);
+            // setSeverity("success");
+          } else {
+            setMessage("An error occurred.");
+            // setSeverity("error");
+          }
+        } else {
+          if (validProperties.length) {
+            setMessage("You can request data now.");
+            setSeverity("info");
+          } else {
+            setMessage("Select at least one user property.");
+            setSeverity("warning");
+          }
+        }
+      }
+    },
+    [isFetching, fetchAttempted, messageAfterFetch, validProperties.length]
+  );
+
+
   async function handleFetchUsers() {    
     if (numResults < 1 || validProperties < 1) {
       return;
@@ -37,48 +71,49 @@ function FetcherLaunch(props) {
       setValidPropertiesCopy(validProperties.slice());
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
+      setSeverity("success");
       setResultsFetchCount(resultsFetchCount + 1);
 
       // Important, otherwise no rows will be displayed in certain cases
       setActivePageNumber(0); // 0 is first page's index
 
       setTimeout( () => {
-        // history.push("/view");
         history.push("/view/1"); // 1 is first page's displayed number
         setFetchAttempted(false);
         setMessageAfterFetch("");
+        setSeverity("info");
       }, 2000 );
     } else {
       setMessageAfterFetch(errorMessage);
+      setSeverity("error");
       setTimeout( () => {
         setFetchAttempted(false);
         setMessageAfterFetch("");
+        setSeverity("info");
       }, 3000 );
     }
   }
 
   return (
-    <div>
-      <button 
+    <>
+      {message.length && 
+        <Alert severity={severity}
+          variant="filled"
+          style={{width: "35rem"}} 
+        >
+          {message}
+        </Alert>                
+      }
+
+      <SpacedButton variant="contained"
+        color="primary"
+        mt="15px"
         onClick={handleFetchUsers} 
         disabled={isFetching || !validProperties.length}
       >
-        Retrieve users data
-      </button>
-
-      <p style={ fetchAttempted ? {fontWeight: 700} : null }>
-        { isFetching 
-          ? "Trying to retrieve users data..."
-          : fetchAttempted
-            ? messageAfterFetch.length 
-              ? messageAfterFetch 
-              : "An error occurred."
-            : validProperties.length 
-              ? "You can request users data now." 
-              : "Select at least one user property."
-        }
-      </p>
-    </div>
+        Retrieve data
+      </SpacedButton>      
+    </>
   );
 }
 

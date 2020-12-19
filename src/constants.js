@@ -9,7 +9,7 @@ const constants = {
   // numResultsUpperLimit: 100, 
   numResultsUpperLimit: 1000, // Implemented pagination
   
-  numResultsDefault: 5,
+  numResultsDefault: 20,
   allPropertiesUnorderedString: `
     gender
     name

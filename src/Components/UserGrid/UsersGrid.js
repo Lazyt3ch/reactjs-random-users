@@ -5,6 +5,7 @@ import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
 import Pagination from "../Pagination/Pagination.js";
 import constants from "../../constants.js";
+import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 
 function UsersGrid(props) {
   const {
@@ -141,9 +142,9 @@ function UsersGrid(props) {
         />
 
         <div className="grid-settings">
-          <input type="checkbox" 
-            id="brief-checkbox"
-            name="brief-checkbox"
+          <SpacedCheckbox 
+            color="primary"
+            mb={"0px"}          
             checked={isBriefResults}           
             onChange={handleBriefResultsChange}
           />

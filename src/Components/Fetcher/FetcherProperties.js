@@ -1,49 +1,53 @@
 import React from "react";
-
-import {
-  getUpdatedStatuses,
-} from "../../Helpers/PropertiesFixer.js";
+import {getUpdatedStatuses} from "../../Helpers/PropertiesFixer.js";
+import SpacedButton from "../SpacedButton/SpacedButton.js";
+import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 
 function FetcherProperties(props) {
   const {
     allProperties,
 
-    statusesString,     
-    setStatusesString,
+    statuses,     
+    setStatuses,
 
-    // validProperties,
     setValidProperties,
   } = props;
 
   const handleUnselectAll = (event) => {
-    setStatusesString(getUpdatedStatuses(false, allProperties));
+    setStatuses(getUpdatedStatuses(false, allProperties));
     setValidProperties([]);
   };
 
   const handleSelectAll = (event) => {
-    setStatusesString(getUpdatedStatuses(true, allProperties));
+    setStatuses(getUpdatedStatuses(true, allProperties));
     setValidProperties(allProperties);
   };
 
   const updateValidProperties = (statusesNew) => {
     const validPropertiesNew = allProperties.reduce( (acc, p) =>
-      statusesNew[p] ? [...acc, p] : acc, [] );      
+      statusesNew[p] ? [...acc, p] : acc, 
+      [] );      
     setValidProperties(validPropertiesNew);
   };
 
+  const updateStatusesAndProperties = statusesNew => {
+    setStatuses(statusesNew);
+    updateValidProperties(statusesNew);
+  };
+
   const handleInvertSelection = (event) => {
-    const statusesNew = Object.assign({}, JSON.parse(statusesString));
+    const statusesNew = Object.assign({}, statuses);
 
     for (const property of allProperties) {
       statusesNew[property] = !statusesNew[property];
     }
 
-    setStatusesString(JSON.stringify(statusesNew));
+    updateStatusesAndProperties(statusesNew);
   };
   
   const handleSingleCheck = (event) => {
     const {checked, name} = event.target;
-    const statusesNew = Object.assign({}, JSON.parse(statusesString));
+    const statusesNew = Object.assign({}, statuses);
 
     for (const property of allProperties) {
       if (property === name) {
@@ -52,62 +56,70 @@ function FetcherProperties(props) {
       }
     }
 
-    const statusesNewString = JSON.stringify(statusesNew);
-    setStatusesString(statusesNewString);
-    updateValidProperties(statusesNew);
+    updateStatusesAndProperties(statusesNew);
   };
 
-  const propertiesStatuses = JSON.parse(statusesString);
+  const propertiesStatuses = statuses;
   const numTotalProperties = allProperties.length;
+
   const numSelectedProperties = Object.values(propertiesStatuses)
     .reduce( (acc, value) => acc + value, 0 );  
 
+
   return (
-    <div style={{marginTop: "1rem"}}>
-      <p>
+    <div>
+      <p style={{marginBlockStart: "1.5rem", marginBlockEnd: 0}}>
         Select user properties to retrieve
       </p>
-      
-      <div>
-        <button 
-          className="properties-button" 
-          disabled={numSelectedProperties === 0}
-          onClick={handleUnselectAll}
-        >
-          Unselect all
-        </button>
+
+      <div className="fetcher-properties-wrapper">      
+        <ul className="fetcher-properties-checkboxes-wrapper"
+          style={{listStyleType: "none", paddingLeft: 0}}
         
-        <button 
-          className="properties-button" 
-          disabled={numSelectedProperties === numTotalProperties}
-          onClick={handleSelectAll}
         >
-          Select all
-        </button>
+          {allProperties.map( (property) => 
+            <li key={property} >            
+              <SpacedCheckbox 
+                name={property}
+                color="primary"
+                mb={"0px"}
+                checked={propertiesStatuses[property]} 
+                onChange={handleSingleCheck}
+              />
+              <span>
+                {property}
+              </span>
+            </li>)
+          } 
+        </ul>
+        
+        <div className="fetcher-properties-buttons-wrapper">
+          <SpacedButton variant="outlined"
+            color="primary"
+            mb={"20px"}
+            disabled={numSelectedProperties === 0}
+            onClick={handleUnselectAll}
+          >
+            Unselect all
+          </SpacedButton>
 
-        <button 
-          className="properties-button" 
-          onClick={handleInvertSelection}
-        >
-          Invert Selection
-        </button>
+          <SpacedButton variant="outlined"
+            color="primary"
+            mb={"20px"}
+            disabled={numSelectedProperties === numTotalProperties}
+            onClick={handleSelectAll}
+          >
+            Select all
+          </SpacedButton>  
+
+          <SpacedButton variant="outlined"
+            color="primary"
+            onClick={handleInvertSelection}
+          >
+            Invert Selection
+          </SpacedButton>
+        </div>
       </div>
-
-      <ul style={{listStyleType: "none", paddingLeft: 0}}>
-        {allProperties.map( (property) => 
-          <li key={property} style={{marginBottom: ".5rem"}}>            
-            <input 
-              type="checkbox" 
-              name={property}
-              checked={propertiesStatuses[property]} 
-              onChange={handleSingleCheck}
-            />
-            <span style={{marginLeft: "1rem"}}>
-              {property}
-            </span>
-          </li>)
-        } 
-      </ul>
     </div>
   );
 }
