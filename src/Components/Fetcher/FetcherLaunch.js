@@ -96,6 +96,12 @@ function FetcherLaunch(props) {
 
   return (
     <>
+      {message.length && 
+        <Alert severity={severity}>
+          {message}
+        </Alert>                
+      }
+
       <SpacedButton variant="contained"
         color="primary"
         m="5px"
@@ -103,13 +109,7 @@ function FetcherLaunch(props) {
         disabled={isFetching || !validProperties.length}
       >
         Retrieve data
-      </SpacedButton>
-
-      {message.length && 
-        <Alert severity={severity}>
-          {message}
-        </Alert>                
-      }
+      </SpacedButton>      
     </>
   );
 }
