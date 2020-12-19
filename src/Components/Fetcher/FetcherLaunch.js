@@ -37,10 +37,10 @@ function FetcherLaunch(props) {
         if (fetchAttempted) {
           if (messageAfterFetch.length) {
             setMessage(messageAfterFetch);
-            setSeverity("success");
+            // setSeverity("success");
           } else {
             setMessage("An error occurred.");
-            setSeverity("error");
+            // setSeverity("error");
           }
         } else {
           if (validProperties.length) {
@@ -71,6 +71,7 @@ function FetcherLaunch(props) {
       setValidPropertiesCopy(validProperties.slice());
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
+      setSeverity("success");
       setResultsFetchCount(resultsFetchCount + 1);
 
       // Important, otherwise no rows will be displayed in certain cases
@@ -80,12 +81,15 @@ function FetcherLaunch(props) {
         history.push("/view/1"); // 1 is first page's displayed number
         setFetchAttempted(false);
         setMessageAfterFetch("");
+        setSeverity("info");
       }, 2000 );
     } else {
       setMessageAfterFetch(errorMessage);
+      setSeverity("error");
       setTimeout( () => {
         setFetchAttempted(false);
         setMessageAfterFetch("");
+        setSeverity("info");
       }, 3000 );
     }
   }
