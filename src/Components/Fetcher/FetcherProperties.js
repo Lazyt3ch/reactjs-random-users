@@ -67,15 +67,18 @@ function FetcherProperties(props) {
 
 
   return (
-    <div style={{marginTop: "1rem"}}>
-      <p style={{marginBlockEnd: 0}}>
+    <div>
+      <p style={{marginBlockStart: "1.5rem", marginBlockEnd: 0}}>
         Select user properties to retrieve
       </p>
 
       <div className="fetcher-properties-wrapper">      
-        <ul style={{listStyleType: "none", paddingLeft: 0, marginRight: "4rem"}}>
+        <ul className="fetcher-properties-checkboxes-wrapper"
+          style={{listStyleType: "none", paddingLeft: 0}}
+        
+        >
           {allProperties.map( (property) => 
-            <li key={property} style={{marginBottom: 0}}>            
+            <li key={property} >            
               <SpacedCheckbox 
                 name={property}
                 color="primary"
@@ -83,7 +86,7 @@ function FetcherProperties(props) {
                 checked={propertiesStatuses[property]} 
                 onChange={handleSingleCheck}
               />
-              <span style={{marginLeft: "1rem"}}>
+              <span>
                 {property}
               </span>
             </li>)

@@ -31,8 +31,17 @@
     flex-direction: row;
 }
 
+.fetcher-properties-checkboxes-wrapper {
+    width: 24rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 .fetcher-properties-buttons-wrapper {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
