@@ -204,23 +204,25 @@
 }
   
 .pagination span {
-    color: black;
     float: left;
     padding: 6px 14px;
     text-decoration: none;
     border: 1px solid #ddd;
-    background-color: #EEEEEE;
+    background-color: #3f51b5;
+    color: white;
+    font-weight: 500;
 }
   
 .pagination span.active-page {
-    color: black;
+    color: navy;
     background-color: white;
     font-weight: 700;
-    border: 1px solid #4CAF50;
+    border: 1px solid navy;
 }
   
 .pagination span:hover:not(.active-page):not(.no-hover-effect) {
-    background-color: #ddd;
+    background-color: yellow;
+    color: black;
 }
   
 .pagination span:first-child {
