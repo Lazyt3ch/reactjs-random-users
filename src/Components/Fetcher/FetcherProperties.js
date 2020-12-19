@@ -1,6 +1,5 @@
 import React from "react";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
-
 import {getUpdatedStatuses} from "../../Helpers/PropertiesFixer.js";
 
 function FetcherProperties(props) {

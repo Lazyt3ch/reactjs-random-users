@@ -44,7 +44,7 @@ function FetcherLaunch(props) {
           }
         } else {
           if (validProperties.length) {
-            setMessage("You can request users data now.");
+            setMessage("You can request data now.");
             setSeverity("info");
           } else {
             setMessage("Select at least one user property.");
