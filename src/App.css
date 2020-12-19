@@ -87,6 +87,12 @@
 
 
 /* nav START */
+.nav-ul {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5rem;
+}
+
 .nav-ul li {
     display: inline;
     margin-right: 1rem;
