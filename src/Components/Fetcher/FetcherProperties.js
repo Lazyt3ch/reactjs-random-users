@@ -1,7 +1,7 @@
 import React from "react";
-import SpacedButton from "../SpacedButton/SpacedButton.js";
 import {getUpdatedStatuses} from "../../Helpers/PropertiesFixer.js";
-import {Checkbox} from '@material-ui/core';
+import SpacedButton from "../SpacedButton/SpacedButton.js";
+import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 
 function FetcherProperties(props) {
   const {
@@ -73,11 +73,13 @@ function FetcherProperties(props) {
       </p>
 
       <div className="fetcher-properties-wrapper">      
-        <ul style={{listStyleType: "none", paddingLeft: 0, marginRight: "3rem"}}>
+        <ul style={{listStyleType: "none", paddingLeft: 0, marginRight: "4rem"}}>
           {allProperties.map( (property) => 
-            <li key={property} style={{marginBottom: ".5rem"}}>            
-              <Checkbox 
+            <li key={property} style={{marginBottom: 0}}>            
+              <SpacedCheckbox 
                 name={property}
+                color="primary"
+                mb={"0px"}
                 checked={propertiesStatuses[property]} 
                 onChange={handleSingleCheck}
               />
