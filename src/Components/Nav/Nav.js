@@ -7,7 +7,7 @@ function Nav(props) {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <div className="nav-container">
           <NavLink 
             to="/get" exact
@@ -18,7 +18,7 @@ function Nav(props) {
             </NavLink>
 
           <NavLink
-            to={`/view/${activePageNumber + 1}`} 
+            to={`/view/${activePageNumber + 1}`} exact
             className="nav-link"
             activeClassName="nav-link-active" 
           >

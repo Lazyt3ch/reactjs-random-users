@@ -63,7 +63,6 @@
 
 /* home page START */
 .home-page {
-    margin-top: 4rem;
     margin-left: 1rem;
     max-width: 60rem;
 }
@@ -80,61 +79,36 @@
 
 /* fetcher setup START */
 .fetcher {
-    margin-top: 4rem;
+    margin-top: 1rem;
     margin-left: 1rem;
 }
 /* fetcher setup END */
 
 
 /* nav START */
-/* .nav-ul {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1.5rem;
-}
-
-.nav-ul li {
-    display: inline;
-    margin-right: 1rem;
-    text-decoration: none;
-} */
-
-.nav-link {
-    text-decoration: none;
-    /* background-color: #eeeeee; */
-    color: white;
-    padding: .5rem;
-}
-
-.nav-link-active {
-    font-weight: 700;
-    color: navy;
-    background-color: white;
-}
-
-.nav-link:hover:not(.nav-link-active) {
-    background-color: #ddd;
-}
-
 .nav-container {
     display: flex;
     flex-direction: row;
     justify-items: flex-start;
 }
 
-/* .nav-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 32rem;
-    z-index: 100;
+.nav-link {
+    text-decoration: none;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-weight: 500;
+}
 
-    display: flex;
-    flex-direction: row;
-    justify-items: flex-start;
+.nav-link-active {
+    color: navy;
+    background-color: white;
+}
 
-    margin-bottom: 2rem;
-} */
+.nav-link:hover:not(.nav-link-active) {
+    color: black;
+    background-color: yellow;
+}
+
 /* nav END */
 
 
