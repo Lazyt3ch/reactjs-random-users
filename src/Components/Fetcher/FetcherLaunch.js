@@ -97,7 +97,7 @@ function FetcherLaunch(props) {
   return (
     <>
       <SpacedButton variant="contained"
-        color="secondary"
+        color="primary"
         m="5px"
         onClick={handleFetchUsers} 
         disabled={isFetching || !validProperties.length}
