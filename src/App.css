@@ -116,35 +116,27 @@
     background-color: #ddd;
 }
 
-
 .nav-container {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 32rem;
     z-index: 100;
 
-    display: block;
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
 
-    background-color: white;
+    margin-bottom: 2rem;
 }
 /* nav END */
 
+
 /* users view START */
 .grid-settings {
-    /*
-    position: fixed;
-    left: 0;
-    top: 5.5rem;
-    width: 100%;
-    z-index: 8;
-    */
-
     padding-left: 1rem;
     padding-bottom: 1rem;
 
-    /* padding-top: 2rem; */
     padding-top: 1rem;
 
     background-color: white;
