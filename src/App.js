@@ -51,7 +51,7 @@ function App() {
 
   useEffect( () => {
     // if (isBadData(results, validPropertiesCopy)) {
-    if (isBadData(results, validProperties)) {
+    if (isBadData(results)) {
       return;
     }
 

@@ -81,12 +81,14 @@ function UsersGrid(props) {
 
 
   useEffect( () => {
-    if (isBadData(activePageRows, validPropertiesCopy)) {
-      return;
+    // if (isBadData(activePageRows, validPropertiesCopy)) {
+    if (isBadData(activePageRows)) {
+        return;
     }
         
     const briefResults2DNew = activePageRows.length > 1
-      ? getBriefResults(activePageRows, validPropertiesCopy)
+      // ? getBriefResults(activePageRows, validPropertiesCopy)
+      ? getBriefResults(activePageRows)
       : [];
 
     if (isBadData(briefResults2DNew)) {
@@ -94,7 +96,8 @@ function UsersGrid(props) {
     }
 
     setBriefResults2D(briefResults2DNew);          
-  }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
+  }, [activePageRows, setBriefResults2D]);
+  // }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
 
 
   useEffect( () => {

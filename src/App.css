@@ -127,6 +127,7 @@
 .grid-container {
     display: grid;
     grid-gap: .3rem 1rem;
+    /* width: auto; */
     /* width: 100%; */    
     margin: 0 1rem;
 }
