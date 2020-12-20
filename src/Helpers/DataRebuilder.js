@@ -80,6 +80,9 @@ const getRebuiltData = (userObj, addTags) => {
 }
 
 const getRebuiltResults = (results, validProperties) => {
+  console.log("getRebuiltResults: results =", results);
+  console.log("getRebuiltResults: validProperties =", validProperties);
+
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
 
   // Row 0 contains property names (it's like a table header)

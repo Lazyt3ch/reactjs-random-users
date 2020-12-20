@@ -39,8 +39,9 @@ function UsersGrid(props) {
 
   useEffect( () => {
     // console.log("results2D =", results2D);
-    if (isBadData(results2D, validPropertiesCopy)) {
-      return;
+    // if (isBadData(results2D, validPropertiesCopy)) {
+    if (isBadData(results2D)) {
+        return;
     }
 
     const getActivePageRows = (allResults) => {
@@ -61,6 +62,7 @@ function UsersGrid(props) {
         return [];
       }        
 
+      console.log("activePageRowsNew =", activePageRowsNew);
       return activePageRowsNew;
     }    
 
@@ -75,7 +77,7 @@ function UsersGrid(props) {
 
       setActivePageRows(activePageRowsNew);
     }
-  }, [results2D, validPropertiesCopy, activePageNumber, totalPages]);
+  }, [results2D, activePageNumber, totalPages]);
 
 
   useEffect( () => {

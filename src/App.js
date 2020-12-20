@@ -50,19 +50,23 @@ function App() {
 
 
   useEffect( () => {
-    if (isBadData(results, validPropertiesCopy)) {
+    // if (isBadData(results, validPropertiesCopy)) {
+    if (isBadData(results, validProperties)) {
       return;
     }
 
     const results2DNew = results.length // fixed a bug!
-      ? getRebuiltResults(results, validPropertiesCopy)
+      // ? getRebuiltResults(results, validPropertiesCopy)
+      ? getRebuiltResults(results, validProperties)
       : [];
     // console.log("results2DNew =", results2DNew);
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
     }
-  }, [results, validPropertiesCopy, setResults2D]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [results, setResults2D]);
+  // }, [results, validPropertiesCopy, setResults2D]);
 
 
   useEffect( () => {

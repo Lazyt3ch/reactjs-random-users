@@ -64,13 +64,13 @@ function FetcherLaunch(props) {
 
     setIsFetching(true);
     const { resultsArr, errorMessage } = await fetchUsers(numResults, validProperties);
-    // console.log("resultsArr =", resultsArr);
+    console.log("resultsArr =", resultsArr);
     setIsFetching(false);
     setFetchAttempted(true);
 
     if (!errorMessage && resultsArr && Array.isArray(resultsArr) && resultsArr.length) {
-      setValidPropertiesCopy(validProperties.slice());
       setResults(resultsArr);
+      setValidPropertiesCopy(validProperties.slice());
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
       setResultsFetchCount(resultsFetchCount + 1);
