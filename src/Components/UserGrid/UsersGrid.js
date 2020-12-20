@@ -76,50 +76,30 @@ function UsersGrid(props) {
 
 
   useEffect( () => {
-    if (isBadData(activePageRows)) {
-        return;
-    }
-        
     const briefResults2DNew = activePageRows.length > 1
       ? getBriefResults(activePageRows)
       : [];
-
-    if (isBadData(briefResults2DNew)) {
-      return;
-    }
 
     setBriefResults2D(briefResults2DNew);          
   }, [activePageRows, setBriefResults2D]);
 
 
   useEffect( () => {
-    if (isBadData(activePageRows, validPropertiesCopy)) {
-      return;
-    }
-
     const gridColumnsFormulaNew = activePageRows.length > 1
-      ? getGridColumnsFormula(activePageRows, validPropertiesCopy)
+      ? getGridColumnsFormula(activePageRows)
       : "";
     
-    if (typeof gridColumnsFormulaNew === "string") {
-      setGridColumnsFormula(gridColumnsFormulaNew);
-    }
-  }, [activePageRows, validPropertiesCopy, setGridColumnsFormula]);
+    setGridColumnsFormula(gridColumnsFormulaNew);
+  }, [activePageRows, setGridColumnsFormula]);
   
 
   useEffect( () => {
-    if (isBadData(briefResults2D, validPropertiesCopy)) {
-      return;
-    }
-
     const briefGridColumnsFormulaNew = briefResults2D.length > 1
-      ? getGridColumnsFormula(briefResults2D, validPropertiesCopy)
+      ? getGridColumnsFormula(briefResults2D)
       : "";
 
-    if (typeof briefGridColumnsFormulaNew === "string") {
-      setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
-    }
-  }, [briefResults2D, validPropertiesCopy, setBriefGridColumnsFormula]);
+    setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
+  }, [briefResults2D, setBriefGridColumnsFormula]);
 
 
   function handleBriefResultsChange(event) {
