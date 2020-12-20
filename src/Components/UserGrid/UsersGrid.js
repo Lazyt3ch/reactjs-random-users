@@ -13,8 +13,6 @@ function UsersGrid(props) {
 
     briefResults2D,
     setBriefResults2D,
-
-    validPropertiesCopy,
     
     gridColumnsFormula,
     setGridColumnsFormula,
