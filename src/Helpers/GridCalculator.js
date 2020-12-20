@@ -43,9 +43,28 @@ const getGridColumnsFormula = (results2D, validProperties) => {
     return "";
   }
 
-  const gridColumnsFormula = columnWidths.map( (w, idx) => 
-    `minmax(${validProperties[idx].length}rem, ${w}%)` )
-    .join(" ");
+  // const gridColumnsFormula = columnWidths.map( (w, idx) => 
+  //   `minmax(${validProperties[idx].length}rem, ${w}%)` )
+  //   .join(" ");
+
+  const gridColumnsFormulaArr = columnWidths.map( (w, idx) => {
+    const property = validProperties[idx];
+    if (property === undefined) {
+      console.log("undefined property detected!");
+      console.log("columnWidths =", columnWidths);
+      console.log("validProperties =", validProperties);
+      console.log("w =", w);
+      console.log("idx =", idx);
+    }
+    const minLen = (property === undefined || typeof property !== "string")
+      ? 0.5 // Arbitrary value
+      : property.length;
+
+    return `minmax(${minLen}rem, ${w}%)`;
+  });
+
+  const gridColumnsFormula = gridColumnsFormulaArr.join(" ");
+
   return gridColumnsFormula;
 };
 
