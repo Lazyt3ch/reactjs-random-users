@@ -37,14 +37,26 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
+  const getGridWidth = pageRows => {
+    let gridWidth = 0;
+    let rowLen;
+
+    pageRows.forEach( (row, idx) => {
+      rowLen = row.reduce( (acc, item) => acc + item.length, 0);
+      gridWidth = Math.max(gridWidth, rowLen);
+    });
+
+    return gridWidth;
+  }  
+
   useEffect( () => {
     // console.log("results2D =", results2D);
     // if (isBadData(results2D, validPropertiesCopy)) {
     if (isBadData(results2D)) {
-        return;
+      return;
     }
 
-    const getActivePageRows = (allResults) => {
+    const getActivePageRows = allResults => {
       if (!totalPages || isBadData(allResults)) {
         return [];
       }
@@ -65,7 +77,7 @@ function UsersGrid(props) {
       console.log("activePageRowsNew =", activePageRowsNew);
       return activePageRowsNew;
     }    
-
+    
     const {usersPerPage} = constants;
 
     if (Number.isInteger(usersPerPage) && usersPerPage > 0) {

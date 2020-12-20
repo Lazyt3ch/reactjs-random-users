@@ -48,6 +48,8 @@ function App() {
   const [activePageNumber, setActivePageNumber] = useState(0);
   const [scrollTopArr, setScrollTopArr] = useState([]);
 
+  const [gridWidth, setGridWidth] = useState(100);
+  const [briefGridWidth, setBriefGridWidth] = useState(100);
 
   useEffect( () => {
     // if (isBadData(results, validPropertiesCopy)) {
@@ -161,6 +163,13 @@ function App() {
 
               scrollTopArr={scrollTopArr}
               setScrollTopArr={setScrollTopArr}
+
+              gridWidth={gridWidth} 
+              setGridWidth={setGridWidth}
+
+              briefGridWidth={briefGridWidth}
+              setBriefGridWidth={setBriefGridWidth}
+              
             />
           </Route>
 

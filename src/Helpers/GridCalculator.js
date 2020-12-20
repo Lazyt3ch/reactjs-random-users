@@ -101,15 +101,17 @@ const getGridColumnsFormula = (results2D) => {
     // return `minmax(${relWidth}%, max-content)`;
     // return `minmax(10%, max-content)`;
 
-    // if (idx < columnWidths.length - 1) {
-    //   return `minmax(${relWidth}%, max-content)`;
-    //   // return `minmax(${relWidth}vw, max-content)`;
-    // } else {
-    //   // return `minmax(${relWidth}%, 100%)`;
-    //   return `1fr`;
-    // }
+    if (idx < columnWidths.length - 1) {
+      // return `minmax(${relWidth}%, max-content)`;
+      // return `minmax(0, max-content)`;
+      // return `minmax(0, ${relWidth}%)`;
+      return `minmax(${relWidth}vw, max-content)`;
+    } else {
+      // return `minmax(${relWidth}%, 100%)`;
+      return `1fr`;
+    }
 
-    return `minmax(${relWidth}%, max-content)`;
+    // return `minmax(${relWidth}%, max-content)`;
     
 
   });
