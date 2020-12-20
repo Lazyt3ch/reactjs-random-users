@@ -8,11 +8,17 @@ const getColumnWidths = results => {
     return [];
   }
 
-  let columnWidths = new Array(results[0].length).fill(0);
+  // let columnWidths = new Array(results[0].length).fill(0);
+
+  // Let 1% be the minimum allowed column width
+  let columnWidths = new Array(results[0].length).fill(1); 
 
   results.forEach( rowArr => {
     rowArr.forEach( (cellStr, cellIdx) => {
-      columnWidths[cellIdx] = Math.max(columnWidths[cellIdx], cellStr.length);
+      let columnWidth = columnWidths[cellIdx] || 1;
+      let cellStrLen = typeof cellStr === "string" ? cellStr.length : 1;
+      // columnWidths[cellIdx] = Math.max(columnWidths[cellIdx], cellStr.length);
+      columnWidths[cellIdx] = Math.max(columnWidth, cellStrLen);
     });
   });
 
