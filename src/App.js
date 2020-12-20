@@ -48,27 +48,20 @@ function App() {
   const [activePageNumber, setActivePageNumber] = useState(0);
   const [scrollTopArr, setScrollTopArr] = useState([]);
 
-  // const [gridWidth, setGridWidth] = useState(100);
-  // const [briefGridWidth, setBriefGridWidth] = useState(100);
-
   useEffect( () => {
-    // if (isBadData(results, validPropertiesCopy)) {
     if (isBadData(results)) {
       return;
     }
 
-    const results2DNew = results.length // fixed a bug!
-      // ? getRebuiltResults(results, validPropertiesCopy)
+    const results2DNew = results.length
       ? getRebuiltResults(results, validProperties)
       : [];
-    // console.log("results2DNew =", results2DNew);
 
     if (!isBadData(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results, setResults2D]);
-  // }, [results, validPropertiesCopy, setResults2D]);
 
 
   useEffect( () => {
@@ -89,6 +82,7 @@ function App() {
     if (!totalPages && !isBadData(results)) {
       return;
     }
+
     const scrollTopArrNew = new Array(totalPages).fill(0);
     setScrollTopArr(scrollTopArrNew);
   }, [totalPages, results, setScrollTopArr]);
@@ -162,14 +156,7 @@ function App() {
               setTotalPages={setTotalPages}
 
               scrollTopArr={scrollTopArr}
-              setScrollTopArr={setScrollTopArr}
-
-              // gridWidth={gridWidth} 
-              // setGridWidth={setGridWidth}
-
-              // briefGridWidth={briefGridWidth}
-              // setBriefGridWidth={setBriefGridWidth}
-              
+              setScrollTopArr={setScrollTopArr}             
             />
           </Route>
 
