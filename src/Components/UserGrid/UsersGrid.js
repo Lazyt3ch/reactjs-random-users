@@ -33,20 +33,27 @@ function UsersGrid(props) {
     scrollTopArr, 
     setScrollTopArr,
 
+    gridWidth, 
+    setGridWidth,
+
+    briefGridWidth, 
+    setBriefGridWidth,
+
   } = props;
 
   const [activePageRows, setActivePageRows] = useState([]);
 
   const getGridWidth = pageRows => {
-    let gridWidth = 0;
+    const scalingFactor = 0.8;
+    let gridWidthNew = 0;
     let rowLen;
 
     pageRows.forEach( (row, idx) => {
       rowLen = row.reduce( (acc, item) => acc + item.length, 0);
-      gridWidth = Math.max(gridWidth, rowLen);
+      gridWidthNew = Math.max(gridWidthNew, rowLen);
     });
 
-    return gridWidth;
+    return Math.floor(scalingFactor * gridWidthNew);
   }  
 
   useEffect( () => {
@@ -77,7 +84,7 @@ function UsersGrid(props) {
       console.log("activePageRowsNew =", activePageRowsNew);
       return activePageRowsNew;
     }    
-    
+
     const {usersPerPage} = constants;
 
     if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
@@ -88,8 +95,11 @@ function UsersGrid(props) {
       }
 
       setActivePageRows(activePageRowsNew);
+
+      const gridWidthNew = getGridWidth(activePageRowsNew);
+      setGridWidth(gridWidthNew);
     }
-  }, [results2D, activePageNumber, totalPages]);
+  }, [results2D, activePageNumber, totalPages, setGridWidth]);
 
 
   useEffect( () => {
@@ -107,8 +117,12 @@ function UsersGrid(props) {
       return;
     }
 
-    setBriefResults2D(briefResults2DNew);          
-  }, [activePageRows, setBriefResults2D]);
+    setBriefResults2D(briefResults2DNew);         
+    
+    const briefGridWidthNew = getGridWidth(briefResults2DNew);
+    setBriefGridWidth(briefGridWidthNew);
+  
+  }, [activePageRows, setBriefResults2D, setBriefGridWidth]);
   // }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
 
 
@@ -176,10 +190,13 @@ function UsersGrid(props) {
 
       <div className="grid-container-wrapper">
         <div className="grid-container" id="users-grid-container"
-          style={{gridTemplateColumns: 
-            isBriefResults
-              ? briefGridColumnsFormula
-              : gridColumnsFormula
+          style={{
+            gridTemplateColumns: 
+              (isBriefResults
+                ? briefGridColumnsFormula
+                : gridColumnsFormula),
+            maxWidth: 
+              `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,
           }}
         >
           {activePageRows && activePageRows.length > 1

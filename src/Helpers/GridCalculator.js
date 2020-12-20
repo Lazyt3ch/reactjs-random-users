@@ -104,8 +104,8 @@ const getGridColumnsFormula = (results2D) => {
     if (idx < columnWidths.length - 1) {
       // return `minmax(${relWidth}%, max-content)`;
       // return `minmax(0, max-content)`;
-      // return `minmax(0, ${relWidth}%)`;
-      return `minmax(${relWidth}vw, max-content)`;
+      return `minmax(0, ${relWidth}%)`;
+      // return `minmax(${relWidth}vw, max-content)`;
     } else {
       // return `minmax(${relWidth}%, 100%)`;
       return `1fr`;
