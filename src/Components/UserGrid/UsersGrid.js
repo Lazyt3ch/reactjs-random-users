@@ -191,12 +191,12 @@ function UsersGrid(props) {
       <div className="grid-container-wrapper">
         <div className="grid-container" id="users-grid-container"
           style={{
+            maxWidth: 
+              `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,            
             gridTemplateColumns: 
               (isBriefResults
                 ? briefGridColumnsFormula
-                : gridColumnsFormula),
-            maxWidth: 
-              `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,
+                : gridColumnsFormula), 
           }}
         >
           {activePageRows && activePageRows.length > 1
