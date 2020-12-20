@@ -14,7 +14,6 @@ const getBriefItem = item => {
 
 const getBriefResults = results2D => {
   const briefResults = [ results2D[0] ]; // Row 0 contains property names, preserving them as is
-  // console.log("HEADER ROW ONLY: briefResults =", briefResults);
   let briefRowArr;
 
   results2D.forEach( (rowArr, idx) => {
@@ -29,7 +28,6 @@ const getBriefResults = results2D => {
     }
   });
 
-  // console.log("ALL ROWS: briefResults =", briefResults);
   return briefResults;
 };
 
@@ -48,7 +46,6 @@ const getRebuiltData = (userObj, addTags) => {
 
     Object.entries(currentObj).forEach( ([key, value]) => {
       if (value !== null && typeof value === 'object') {
-        // builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: (`;
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
         extractData(value, level + 1);
       } else {
@@ -60,7 +57,6 @@ const getRebuiltData = (userObj, addTags) => {
 
     if (hitBottom) {
       if (level > 1) {
-        // builtStr = `${removeTrailingCommaSpace(builtStr)}${")".repeat(level - 1)}, `;
         builtStr = `${removeTrailingCommaSpace(builtStr)}${"]".repeat(level - 1)}, `;
       }
     }
@@ -75,20 +71,15 @@ const getRebuiltData = (userObj, addTags) => {
       : value;
   });
   
-  // console.log("builtObj =", builtObj);
   return builtObj;
 }
 
 const getRebuiltResults = (results, validProperties) => {
-  console.log("getRebuiltResults: results =", results);
-  console.log("getRebuiltResults: validProperties =", validProperties);
-
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
 
   // Row 0 contains property names (it's like a table header)
   const results2D = [validProperties]; 
 
-  // console.log("results2D =", results2D);
   let rowArr;
   
   for (const rowObj of rebuiltResults) {
@@ -101,7 +92,6 @@ const getRebuiltResults = (results, validProperties) => {
     results2D.push(rowArr);
   }
 
-  // console.log("results2D =", results2D);
   return results2D;
 };
 
