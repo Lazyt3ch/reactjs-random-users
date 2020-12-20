@@ -5,9 +5,7 @@ const getGridColumnsFormula = (results2D) => {
     return "";
   }
 
-  return results2D[0]
-    .map( _ => "minmax(min-content, max-content)" )
-    .join(" ");
+  return `repeat( ${results2D[0].length}, minmax(min-content, max-content) )`;
 };
 
 export default getGridColumnsFormula;
