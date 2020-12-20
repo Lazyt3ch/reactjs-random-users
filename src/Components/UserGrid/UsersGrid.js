@@ -32,33 +32,11 @@ function UsersGrid(props) {
 
     scrollTopArr, 
     setScrollTopArr,
-
-    // gridWidth, 
-    // setGridWidth,
-
-    // briefGridWidth, 
-    // setBriefGridWidth,
-
   } = props;
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  // const getGridWidth = pageRows => {
-  //   const scalingFactor = 0.8;
-  //   let gridWidthNew = 0;
-  //   let rowLen;
-
-  //   pageRows.forEach( (row, idx) => {
-  //     rowLen = row.reduce( (acc, item) => acc + item.length, 0);
-  //     gridWidthNew = Math.max(gridWidthNew, rowLen);
-  //   });
-
-  //   return Math.floor(scalingFactor * gridWidthNew);
-  // }  
-
   useEffect( () => {
-    // console.log("results2D =", results2D);
-    // if (isBadData(results2D, validPropertiesCopy)) {
     if (isBadData(results2D)) {
       return;
     }
@@ -75,13 +53,12 @@ function UsersGrid(props) {
       const contentRowsEnd = contentRowsStart + usersPerPage;
       const activePageRowsNew = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
-      // console.log("activePageRowsNew =", activePageRowsNew);
 
       if (isBadData(activePageRowsNew)) {
         return [];
       }        
 
-      console.log("activePageRowsNew =", activePageRowsNew);
+      // console.log("activePageRowsNew =", activePageRowsNew);
       return activePageRowsNew;
     }    
 
@@ -95,21 +72,16 @@ function UsersGrid(props) {
       }
 
       setActivePageRows(activePageRowsNew);
-
-      // const gridWidthNew = getGridWidth(activePageRowsNew);
-      // setGridWidth(gridWidthNew);
     }
   }, [results2D, activePageNumber, totalPages,]);
 
 
   useEffect( () => {
-    // if (isBadData(activePageRows, validPropertiesCopy)) {
     if (isBadData(activePageRows)) {
         return;
     }
         
     const briefResults2DNew = activePageRows.length > 1
-      // ? getBriefResults(activePageRows, validPropertiesCopy)
       ? getBriefResults(activePageRows)
       : [];
 
@@ -117,13 +89,8 @@ function UsersGrid(props) {
       return;
     }
 
-    setBriefResults2D(briefResults2DNew);         
-    
-    // const briefGridWidthNew = getGridWidth(briefResults2DNew);
-    // setBriefGridWidth(briefGridWidthNew);
-  
+    setBriefResults2D(briefResults2DNew);          
   }, [activePageRows, setBriefResults2D,]);
-  // }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
 
 
   useEffect( () => {
@@ -188,16 +155,9 @@ function UsersGrid(props) {
         </div>
       </div>
 
-      <div className="grid-container-wrapper"
-        // style={{
-        //   width: 
-        //     `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,
-        // }}      
-      >
+      <div className="grid-container-wrapper">
         <div className="grid-container" id="users-grid-container"
           style={{
-            // maxWidth: 
-            //   `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,            
             gridTemplateColumns: 
               (isBriefResults
                 ? briefGridColumnsFormula
