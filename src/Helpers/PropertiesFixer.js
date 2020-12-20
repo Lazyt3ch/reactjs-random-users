@@ -13,17 +13,15 @@ const getAllProperties = constants => {
     .trim()
     .toLowerCase()
     .split(/\s+/);
+    
   return allProperties;
 }
 
-// const getValidProperties = statusesString => {
 const getValidProperties = statuses => {
-    // if (statusesString.length < 5) {
   if (!Object.keys(statuses).length) {
     return [];
   }
 
-  // const selectedProperties = Object.entries(JSON.parse(statusesString))
   const selectedProperties = Object.entries(statuses)
     .filter( ([_, value]) => value === true )
     .map( ([key, value]) => key );
@@ -34,7 +32,7 @@ const getValidProperties = statuses => {
 const getUpdatedStatuses = (status, allProperties) => {
   const statusProperties = allProperties.reduce( (acc, property) => 
     ({...acc, [property]: status}), {});
-  // return JSON.stringify(statusProperties);
+
   return statusProperties;
 };
 
