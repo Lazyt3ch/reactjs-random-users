@@ -58,7 +58,6 @@ function UsersGrid(props) {
         return [];
       }        
 
-      // console.log("activePageRowsNew =", activePageRowsNew);
       return activePageRowsNew;
     }    
 
@@ -73,7 +72,7 @@ function UsersGrid(props) {
 
       setActivePageRows(activePageRowsNew);
     }
-  }, [results2D, activePageNumber, totalPages,]);
+  }, [results2D, activePageNumber, totalPages]);
 
 
   useEffect( () => {
@@ -90,7 +89,7 @@ function UsersGrid(props) {
     }
 
     setBriefResults2D(briefResults2DNew);          
-  }, [activePageRows, setBriefResults2D,]);
+  }, [activePageRows, setBriefResults2D]);
 
 
   useEffect( () => {
