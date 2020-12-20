@@ -33,28 +33,28 @@ function UsersGrid(props) {
     scrollTopArr, 
     setScrollTopArr,
 
-    gridWidth, 
-    setGridWidth,
+    // gridWidth, 
+    // setGridWidth,
 
-    briefGridWidth, 
-    setBriefGridWidth,
+    // briefGridWidth, 
+    // setBriefGridWidth,
 
   } = props;
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  const getGridWidth = pageRows => {
-    const scalingFactor = 0.8;
-    let gridWidthNew = 0;
-    let rowLen;
+  // const getGridWidth = pageRows => {
+  //   const scalingFactor = 0.8;
+  //   let gridWidthNew = 0;
+  //   let rowLen;
 
-    pageRows.forEach( (row, idx) => {
-      rowLen = row.reduce( (acc, item) => acc + item.length, 0);
-      gridWidthNew = Math.max(gridWidthNew, rowLen);
-    });
+  //   pageRows.forEach( (row, idx) => {
+  //     rowLen = row.reduce( (acc, item) => acc + item.length, 0);
+  //     gridWidthNew = Math.max(gridWidthNew, rowLen);
+  //   });
 
-    return Math.floor(scalingFactor * gridWidthNew);
-  }  
+  //   return Math.floor(scalingFactor * gridWidthNew);
+  // }  
 
   useEffect( () => {
     // console.log("results2D =", results2D);
@@ -96,10 +96,10 @@ function UsersGrid(props) {
 
       setActivePageRows(activePageRowsNew);
 
-      const gridWidthNew = getGridWidth(activePageRowsNew);
-      setGridWidth(gridWidthNew);
+      // const gridWidthNew = getGridWidth(activePageRowsNew);
+      // setGridWidth(gridWidthNew);
     }
-  }, [results2D, activePageNumber, totalPages, setGridWidth]);
+  }, [results2D, activePageNumber, totalPages,]);
 
 
   useEffect( () => {
@@ -119,10 +119,10 @@ function UsersGrid(props) {
 
     setBriefResults2D(briefResults2DNew);         
     
-    const briefGridWidthNew = getGridWidth(briefResults2DNew);
-    setBriefGridWidth(briefGridWidthNew);
+    // const briefGridWidthNew = getGridWidth(briefResults2DNew);
+    // setBriefGridWidth(briefGridWidthNew);
   
-  }, [activePageRows, setBriefResults2D, setBriefGridWidth]);
+  }, [activePageRows, setBriefResults2D,]);
   // }, [activePageRows, validPropertiesCopy, setBriefResults2D]);
 
 
@@ -188,11 +188,16 @@ function UsersGrid(props) {
         </div>
       </div>
 
-      <div className="grid-container-wrapper">
+      <div className="grid-container-wrapper"
+        // style={{
+        //   width: 
+        //     `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,
+        // }}      
+      >
         <div className="grid-container" id="users-grid-container"
           style={{
-            maxWidth: 
-              `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,            
+            // maxWidth: 
+            //   `minmax(${ isBriefResults ? briefGridWidth : gridWidth }rem, 100%)`,            
             gridTemplateColumns: 
               (isBriefResults
                 ? briefGridColumnsFormula
