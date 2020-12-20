@@ -123,15 +123,15 @@
 }
 
 .grid-container-wrapper {
-    margin: 10rem 0 0 0;    
+    padding: 10rem 0 0 0;   
     width: 100%;   
 }
 
 .grid-container {
     display: grid;
     grid-gap: .3rem 1rem;
-    width: 90%;    
-    margin: 0 1rem;
+    width: 100%;    
+    padding: 0 1rem;
 }
 
 .grid-item {
