@@ -105,7 +105,7 @@ function UsersGrid(props) {
   }
 
   return (
-    <div>
+    <>
 
       <div className="users-view-top-wrapper"> 
         <Pagination 
@@ -160,7 +160,7 @@ function UsersGrid(props) {
         </div>      
       </div>
 
-    </div>
+    </>
   );
 }
 
