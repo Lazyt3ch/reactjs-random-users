@@ -17,8 +17,10 @@ function Scroller(props) {
 
   useEffect(() => {
     if (pathname.startsWith("/view/")) {
-        setTimeout( () => {  // setTimeout is vital here!!!
-        window.scrollTo(0, scrollTopArr[activePageNumber] || 0);
+      setTimeout( () => {  // setTimeout is vital here!!!
+        if (scrollTopArr[activePageNumber]) {
+          window.scrollTo(0, scrollTopArr[activePageNumber]);
+        }
       }, 50);      
     }
   // eslint-disable-next-line    
