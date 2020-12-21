@@ -37,10 +37,8 @@ function FetcherLaunch(props) {
         if (fetchAttempted) {
           if (messageAfterFetch.length) {
             setMessage(messageAfterFetch);
-            // setSeverity("success");
           } else {
             setMessage("An error occurred.");
-            // setSeverity("error");
           }
         } else {
           if (validProperties.length) {
@@ -64,7 +62,6 @@ function FetcherLaunch(props) {
 
     setIsFetching(true);
     const { resultsArr, errorMessage } = await fetchUsers(numResults, validProperties);
-    console.log("resultsArr =", resultsArr);
     setIsFetching(false);
     setFetchAttempted(true);
 
