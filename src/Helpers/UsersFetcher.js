@@ -5,6 +5,11 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
   let resultsArr = null;
   let errorMessage = "";
 
+  const getErrorText = text => 
+    text
+      ? `An error occurred: ${text}`
+      : "An unspecified error occurred";
+
   try {
     const response = await fetch(completeUrl);
 
@@ -14,17 +19,17 @@ async function fetchUsers(numResults, properties=[], isToInclude=true) {
   
       if (data.error || !data.results || !data.results.length) {
         errorMessage = "The server returned an unspecified error.";
-        console.log(errorMessage);      
+        // console.log(errorMessage);      
       } else {
         resultsArr = data.results;
       }  
     } else {
-      errorMessage = `An error occurred: ${response.statusText}`;
-      console.log(errorMessage);
+      errorMessage = getErrorText(response.statusText);
+      // console.log(errorMessage);
     }
   } catch(err) {
-    errorMessage = `An error occurred: ${err}`;
-    console.log(errorMessage);
+    errorMessage = getErrorText(err);
+    // console.log(errorMessage);
   } finally {
     return { 
       resultsArr, 
