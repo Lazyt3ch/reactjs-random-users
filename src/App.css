@@ -1,7 +1,5 @@
 * {
     box-sizing: border-box;
-    /* margin: 0;
-    padding: 0; */
 }
 
 /* miscellaneous */
@@ -15,21 +13,8 @@
     user-select: none;
 }
 
-.input-label {
-    display: block;
-    margin-bottom: .5rem;
-}
-
-.properties-button {
-    margin-right: 1rem;
-}
-
-.right-margin-span {
-    margin-right: 1rem;
-}
 
 /* fetcher START */
-
 .fetcher {
     margin-top: 3.5rem;
     margin-left: 1rem;
@@ -56,19 +41,6 @@
     justify-content: flex-start;
 }
 /* fetcher END */
-
-
-.users-view-top-wrapper {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-
-    position: fixed;
-    left: 0;
-    top: 1rem;
-    width: 100%;
-    z-index: 15;
-}
 
 
 /* home page START */
@@ -115,6 +87,18 @@
 
 
 /* users view START */
+.users-view-top-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+    position: fixed;
+    left: 0;
+    top: 1rem;
+    width: 100%;
+    z-index: 15;
+}
+
 .grid-settings {
     padding-left: 1rem;
     padding-bottom: .5rem;
@@ -146,11 +130,6 @@
     font-size: .85rem;
 }
 /* users view END */
-
-
-.margin-left {
-    margin-left: 2rem;
-}
 
 
 /* tooltip START */
