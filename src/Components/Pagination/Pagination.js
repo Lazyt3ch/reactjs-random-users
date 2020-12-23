@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
+import PropTypes from "prop-types";
 
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round
 
@@ -93,5 +94,12 @@ function Pagination(props) {
     </div>
   );
 }
+
+Pagination.propTypes = {
+  totalPages: PropTypes.number.isRequired,
+
+  activePageNumber: PropTypes.number.isRequired,
+  setActivePageNumber: PropTypes.func.isRequired,
+};
 
 export default Pagination;
