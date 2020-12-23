@@ -3,6 +3,7 @@ import fetchUsers from "../../Helpers/UsersFetcher.js";
 import {useHistory} from "react-router-dom";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
 import {Alert} from '@material-ui/lab';
+import PropTypes from "prop-types";
 
 function FetcherLaunch(props) {
   const {
@@ -114,5 +115,18 @@ function FetcherLaunch(props) {
     </>
   );
 }
+
+FetcherLaunch.propTypes = {
+  numResults: PropTypes.number.isRequired,
+
+  validProperties: PropTypes.array.isRequired,
+  
+  setResults: PropTypes.func.isRequired,
+  
+  resultsFetchCount: PropTypes.number,
+  setResultsFetchCount: PropTypes.func,
+
+  setActivePageNumber: PropTypes.func.isRequired,
+};
 
 export default FetcherLaunch;
