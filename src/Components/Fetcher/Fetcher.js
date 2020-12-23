@@ -27,8 +27,6 @@ function Fetcher(props) {
     resultsFetchCount, 
     setResultsFetchCount,
 
-    // setValidPropertiesCopy,
-
     setActivePageNumber,
   } = props;
 
@@ -60,8 +58,6 @@ function Fetcher(props) {
 
         resultsFetchCount={resultsFetchCount} 
         setResultsFetchCount={setResultsFetchCount}    
-
-        // setValidPropertiesCopy={setValidPropertiesCopy}
 
         setActivePageNumber={setActivePageNumber}
       />
