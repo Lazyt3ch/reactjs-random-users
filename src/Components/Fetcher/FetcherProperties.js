@@ -2,6 +2,7 @@ import React from "react";
 import {getUpdatedStatuses} from "../../Helpers/PropertiesFixer.js";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
+import PropTypes from "prop-types";
 
 function FetcherProperties(props) {
   const {
@@ -123,5 +124,14 @@ function FetcherProperties(props) {
     </div>
   );
 }
+
+FetcherProperties.propTypes = {
+  allProperties: PropTypes.array.isRequired,
+
+  statuses: PropTypes.object.isRequired,
+  setStatuses: PropTypes.func.isRequired,
+
+  setValidProperties: PropTypes.func.isRequired,
+};
 
 export default FetcherProperties;
