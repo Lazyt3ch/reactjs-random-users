@@ -47,6 +47,13 @@ function App() {
   const [scrollTopArr, setScrollTopArr] = useState([]);
 
   useEffect( () => {
+    document.body.style.overflowY = "scroll";
+    // return () => {
+    //   document.body.style.overflowY = "auto";
+    // };
+  }, []);  
+
+  useEffect( () => {
     if (isBadData(results)) {
       return;
     }
