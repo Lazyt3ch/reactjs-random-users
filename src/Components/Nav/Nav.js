@@ -1,6 +1,7 @@
 import {React} from "react";
 import {NavLink} from "react-router-dom";
 import {AppBar} from '@material-ui/core';
+import PropTypes from "prop-types";
 
 function Nav(props) {
   const {activePageNumber} = props;
@@ -37,5 +38,9 @@ function Nav(props) {
     </>
   );
 }
+
+Nav.propTypes = {
+  activePageNumber: PropTypes.number.isRequired,
+};
 
 export default Nav;
