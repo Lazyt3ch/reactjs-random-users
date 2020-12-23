@@ -5,6 +5,7 @@ import UsersGridItem from "./UsersGridItem.js";
 import Pagination from "../Pagination/Pagination.js";
 import constants from "../../constants.js";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
+import PropTypes from "prop-types";
 
 function UsersGrid(props) {
   const {
@@ -139,5 +140,23 @@ function UsersGrid(props) {
     </>
   );
 }
+
+UsersGrid.propTypes = {
+  results2D: PropTypes.array.isRequired,
+    
+  gridColumnsFormula: PropTypes.string.isRequired,
+  setGridColumnsFormula: PropTypes.func.isRequired,
+
+  isBriefResults: PropTypes.bool.isRequired,
+  setIsBriefResults: PropTypes.func.isRequired,
+
+  activePageNumber: PropTypes.number.isRequired,
+  setActivePageNumber: PropTypes.func.isRequired,
+
+  totalPages: PropTypes.number.isRequired,
+
+  scrollTopArr: PropTypes.array.isRequired,
+  setScrollTopArr: PropTypes.func.isRequired,
+};
 
 export default UsersGrid;
