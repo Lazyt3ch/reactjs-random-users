@@ -6,30 +6,30 @@ const addTrailingCommaSpace = str => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-const getBriefItem = item => {
-  // Simply removes any text fragments like "name: "
-  const briefItem = item.replace(/[a-z]+:\s/g, "");
-  return briefItem;
-};
+// const getBriefItem = item => {
+//   // Simply removes any text fragments like "name: "
+//   const briefItem = item.replace(/[a-z]+:\s/g, "");
+//   return briefItem;
+// };
 
-const getBriefResults = results2D => {
-  const briefResults = [ results2D[0] ]; // Row 0 contains property names, preserving them as is
-  let briefRowArr;
+// const getBriefResults = results2D => {
+//   const briefResults = [ results2D[0] ]; // Row 0 contains property names, preserving them as is
+//   let briefRowArr;
 
-  results2D.forEach( (rowArr, idx) => {
-    if (idx > 0) {
-      briefRowArr = [];
+//   results2D.forEach( (rowArr, idx) => {
+//     if (idx > 0) {
+//       briefRowArr = [];
 
-      rowArr.forEach( item => {
-        briefRowArr.push(getBriefItem(item));
-      });
+//       rowArr.forEach( item => {
+//         briefRowArr.push(getBriefItem(item));
+//       });
 
-      briefResults.push( briefRowArr.slice() ); // Always push a copy of the array!
-    }
-  });
+//       briefResults.push( briefRowArr.slice() ); // Always push a copy of the array!
+//     }
+//   });
 
-  return briefResults;
-};
+//   return briefResults;
+// };
 
 const getRebuiltData = (userObj, addTags) => {
   // Now using brackets instead of parentheses as subproperty grouping characters,
@@ -96,4 +96,4 @@ const getRebuiltResults = (results, validProperties) => {
 };
 
 export default getRebuiltResults;
-export {getBriefResults};
+// export {getBriefResults};

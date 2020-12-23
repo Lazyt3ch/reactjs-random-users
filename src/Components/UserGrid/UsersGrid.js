@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import {getBriefResults} from "../../Helpers/DataRebuilder.js";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
@@ -10,16 +9,10 @@ import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 function UsersGrid(props) {
   const {
     results2D,
-
-    briefResults2D,
-    setBriefResults2D,
     
     gridColumnsFormula,
     setGridColumnsFormula,
 
-    briefGridColumnsFormula,
-    setBriefGridColumnsFormula,
-    
     isBriefResults, 
     setIsBriefResults,
 
@@ -72,16 +65,6 @@ function UsersGrid(props) {
     }
   }, [results2D, activePageNumber, totalPages]);
 
-
-  useEffect( () => {
-    const briefResults2DNew = activePageRows.length > 1
-      ? getBriefResults(activePageRows)
-      : [];
-
-    setBriefResults2D(briefResults2DNew);          
-  }, [activePageRows, setBriefResults2D]);
-
-
   useEffect( () => {
     const gridColumnsFormulaNew = activePageRows.length > 1
       ? getGridColumnsFormula(activePageRows)
@@ -90,15 +73,6 @@ function UsersGrid(props) {
     setGridColumnsFormula(gridColumnsFormulaNew);
   }, [activePageRows, setGridColumnsFormula]);
   
-
-  useEffect( () => {
-    const briefGridColumnsFormulaNew = briefResults2D.length > 1
-      ? getGridColumnsFormula(briefResults2D)
-      : "";
-
-    setBriefGridColumnsFormula(briefGridColumnsFormulaNew);
-  }, [briefResults2D, setBriefGridColumnsFormula]);
-
 
   function handleBriefResultsChange(event) {
     setIsBriefResults(event.target.checked);    
@@ -135,10 +109,7 @@ function UsersGrid(props) {
       <div className="grid-container-wrapper">
         <div className="grid-container" id="users-grid-container"
           style={{
-            gridTemplateColumns: 
-              (isBriefResults
-                ? briefGridColumnsFormula
-                : gridColumnsFormula), 
+            gridTemplateColumns: gridColumnsFormula,
           }}
         >
           {activePageRows && activePageRows.length > 1

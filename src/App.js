@@ -39,9 +39,7 @@ function App() {
   const [results, setResults] = useState([]);
 
   const [results2D, setResults2D] = useState([]);
-  const [briefResults2D, setBriefResults2D] = useState([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState("");
-  const [briefGridColumnsFormula, setBriefGridColumnsFormula] = useState("");
   const [isBriefResults, setIsBriefResults] = useState(false);
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -68,8 +66,7 @@ function App() {
     const {usersPerPage} = constants;
 
     // Row 0 is used for table header, so content rows numbering starts from 1
-    // const totalUsers = results.length - 1;
-    const totalUsers = results.length; // fixed a bug!
+    const totalUsers = results.length; 
 
     if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
       const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
@@ -137,14 +134,8 @@ function App() {
               results2D={results2D} 
               setResults2D={setResults2D} 
 
-              briefResults2D={briefResults2D} 
-              setBriefResults2D={setBriefResults2D} 
-
               gridColumnsFormula={gridColumnsFormula}
               setGridColumnsFormula={setGridColumnsFormula}
-
-              briefGridColumnsFormula={briefGridColumnsFormula}
-              setBriefGridColumnsFormula={setBriefGridColumnsFormula}
 
               isBriefResults={isBriefResults}
               setIsBriefResults={setIsBriefResults}
