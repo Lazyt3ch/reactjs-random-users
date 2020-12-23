@@ -28,6 +28,10 @@ function UsersGrid(props) {
   const [activePageRows, setActivePageRows] = useState([]);
 
   useEffect( () => {
+    document.body.style.overflowY = "scroll";
+  }, []);
+
+  useEffect( () => {
       if (isBadData(results2D)) {
       return;
     }
