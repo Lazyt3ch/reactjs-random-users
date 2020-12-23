@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useMemo} from "react";
+import PropTypes from "prop-types";
 
 // Finally, using a very fast pure CSS tooltip from here:
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_bottom
@@ -103,6 +104,12 @@ function UsersGridItem(props) {
   );
 
 }
+
+UsersGridItem.propTypes = {
+  value: PropTypes.string.isRequired,
+  rowIndex: PropTypes.number.isRequired,
+  isBriefResults: PropTypes.bool.isRequired,
+};
 
 export default UsersGridItem;
 
