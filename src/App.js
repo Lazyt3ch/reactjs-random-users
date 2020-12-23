@@ -34,7 +34,7 @@ function App() {
 
   const [statuses, setStatuses] = useState(getUpdatedStatuses(false, allProperties));
   const [validProperties, setValidProperties] = useState(getValidProperties(statuses));
-  const [validPropertiesCopy, setValidPropertiesCopy] = useState([]);
+  // const [validPropertiesCopy, setValidPropertiesCopy] = useState([]);
 
   const [results, setResults] = useState([]);
 
@@ -117,7 +117,7 @@ function App() {
               resultsFetchCount={resultsFetchCount}
               setResultsFetchCount={setResultsFetchCount}
 
-              setValidPropertiesCopy={setValidPropertiesCopy}
+              // setValidPropertiesCopy={setValidPropertiesCopy}
 
               setActivePageNumber={setActivePageNumber}
             />
@@ -125,7 +125,7 @@ function App() {
 
           <Route path="/view/">
             <UsersGrid 
-              validPropertiesCopy={validPropertiesCopy}
+              // validPropertiesCopy={validPropertiesCopy}
 
               results={results} 
               resultsFetchCount={resultsFetchCount}

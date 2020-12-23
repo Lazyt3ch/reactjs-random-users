@@ -3,6 +3,7 @@ import React from "react";
 import FetcherNumResults from "./FetcherNumResults.js";
 import FetcherProperties from "./FetcherProperties.js";
 import FetcherLaunch from "./FetcherLaunch.js";
+import PropTypes from "prop-types";
 
 function Fetcher(props) {
   const {
@@ -26,7 +27,7 @@ function Fetcher(props) {
     resultsFetchCount, 
     setResultsFetchCount,
 
-    setValidPropertiesCopy,
+    // setValidPropertiesCopy,
 
     setActivePageNumber,
   } = props;
@@ -60,12 +61,36 @@ function Fetcher(props) {
         resultsFetchCount={resultsFetchCount} 
         setResultsFetchCount={setResultsFetchCount}    
 
-        setValidPropertiesCopy={setValidPropertiesCopy}
+        // setValidPropertiesCopy={setValidPropertiesCopy}
 
         setActivePageNumber={setActivePageNumber}
       />
     </div>
   );
 }
+
+Fetcher.propTypes = {
+    // FetcherNumResults:
+    numResults: PropTypes.number.isRequired,
+    setNumResults: PropTypes.func.isRequired,
+
+    // FetcherProperties:
+    allProperties: PropTypes.array.isRequired,
+
+    statuses: PropTypes.object.isRequired,
+    setStatuses: PropTypes.func.isRequired,
+    
+    validProperties: PropTypes.array.isRequired,
+    setValidProperties: PropTypes.func.isRequired,
+    
+    // FetcherLaunch:
+    results: PropTypes.array.isRequired,
+    setResults: PropTypes.func.isRequired,
+
+    resultsFetchCount: PropTypes.number,
+    setResultsFetchCount: PropTypes.func,
+
+    setActivePageNumber: PropTypes.func.isRequired,
+};
 
 export default Fetcher;

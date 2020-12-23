@@ -9,7 +9,7 @@ function FetcherLaunch(props) {
     numResults, 
 
     validProperties, 
-    setValidPropertiesCopy,
+    // setValidPropertiesCopy,
     
     setResults,
     
@@ -67,7 +67,7 @@ function FetcherLaunch(props) {
 
     if (!errorMessage && resultsArr && Array.isArray(resultsArr) && resultsArr.length) {
       setResults(resultsArr);
-      setValidPropertiesCopy(validProperties.slice());
+      // setValidPropertiesCopy(validProperties.slice());
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
       setResultsFetchCount(resultsFetchCount + 1);
