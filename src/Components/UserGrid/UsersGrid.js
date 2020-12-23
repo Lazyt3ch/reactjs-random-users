@@ -29,6 +29,9 @@ function UsersGrid(props) {
 
   useEffect( () => {
     document.body.style.overflowY = "scroll";
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
   }, []);
 
   useEffect( () => {
