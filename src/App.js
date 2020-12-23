@@ -84,7 +84,6 @@ function App() {
     setScrollTopArr(scrollTopArrNew);
   }, [totalPages, results, setScrollTopArr]);
 
-
   return (
     <Router>
       <Nav 
