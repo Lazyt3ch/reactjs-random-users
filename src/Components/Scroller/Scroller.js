@@ -2,6 +2,7 @@
 
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
+import PropTypes from "prop-types";
  
 function Scroller(props) { 
   const { 
@@ -48,4 +49,13 @@ function Scroller(props) {
   return children;
 }
  
+Scroller.propTypes = {
+  children: PropTypes.array.isRequired,
+
+  scrollTopArr: PropTypes.array.isRequired, 
+  setScrollTopArr: PropTypes.func.isRequired,
+
+  activePageNumber: PropTypes.number.isRequired,
+};
+
 export default Scroller;
