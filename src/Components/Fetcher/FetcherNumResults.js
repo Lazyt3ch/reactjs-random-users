@@ -3,6 +3,7 @@ import constants from "../../constants.js";
 import fixNumResults from "../../Helpers/NumResultsFixer.js";
 import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
+import PropTypes from "prop-types";
 
 function FetcherNumResults(props) {
   const {
@@ -69,5 +70,10 @@ function FetcherNumResults(props) {
     </div>
   );
 }
+
+FetcherNumResults.propTypes = {
+  numResults: PropTypes.number.isRequired,
+  setNumResults: PropTypes.func.isRequired,
+};
 
 export default FetcherNumResults;
