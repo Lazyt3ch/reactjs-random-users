@@ -28,7 +28,7 @@ function UsersGrid(props) {
   const [activePageRows, setActivePageRows] = useState([]);
 
   useEffect( () => {
-    if (isBadData(results2D)) {
+      if (isBadData(results2D)) {
       return;
     }
 
@@ -62,16 +62,14 @@ function UsersGrid(props) {
       }
 
       setActivePageRows(activePageRowsNew);
-    }
-  }, [results2D, activePageNumber, totalPages]);
 
-  useEffect( () => {
-    const gridColumnsFormulaNew = activePageRows.length > 1
-      ? getGridColumnsFormula(activePageRows)
-      : "";
-    
-    setGridColumnsFormula(gridColumnsFormulaNew);
-  }, [activePageRows, setGridColumnsFormula]);
+      const gridColumnsFormulaNew = activePageRowsNew.length > 1
+        ? getGridColumnsFormula(activePageRowsNew)
+        : "";
+      
+      setGridColumnsFormula(gridColumnsFormulaNew);
+    }
+  }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
   
 
   function handleBriefResultsChange(event) {

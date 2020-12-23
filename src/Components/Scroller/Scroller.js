@@ -16,12 +16,15 @@ function Scroller(props) {
   const {pathname} = useLocation();
 
   useEffect(() => {
-    if (pathname.startsWith("/view/")) {
+      if (pathname.startsWith("/view/")) {
       setTimeout( () => {  // setTimeout is vital here!!!
         if (scrollTopArr[activePageNumber]) {
-          window.scrollTo(0, scrollTopArr[activePageNumber]);
+          window.scrollTo({
+            top: scrollTopArr[activePageNumber],
+            behavior: 'auto',
+          });
         }
-      }, 50);      
+      }, 20);      
     }
   // eslint-disable-next-line    
   }, [pathname, activePageNumber]);
