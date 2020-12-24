@@ -63,7 +63,7 @@ function Scroller(props) {
 }
  
 Scroller.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.object.isRequired,
 
   scrollTopArr: PropTypes.array.isRequired, 
   setScrollTopArr: PropTypes.func.isRequired,
