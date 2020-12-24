@@ -32,10 +32,11 @@ function UsersGrid(props) {
   const {pathname} = useLocation();
 
   useEffect( () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'auto',
-    });        
+    console.log("BLANK OP");
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'auto',
+    // });        
   }, [pathname]);
 
 

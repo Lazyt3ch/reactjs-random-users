@@ -12,11 +12,24 @@ function Scroller(props) {
     setScrollTopArr,
 
     activePageNumber,
+
+    prevPagePath, 
+    setPrevPagePath,
   } = props;
 
   const {pathname} = useLocation();
 
   useEffect(() => {
+    // The piece of code below is part of the flickering-reduction solution
+    if (prevPagePath.startsWith("/view/")) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto',
+      });            
+    }
+
+    setPrevPagePath(pathname);
+
     if (pathname.startsWith("/view/")) {
       setTimeout( () => {  // setTimeout is vital here!!!
         if (scrollTopArr[activePageNumber]) {

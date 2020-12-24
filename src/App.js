@@ -45,6 +45,8 @@ function App() {
   const [activePageNumber, setActivePageNumber] = useState(0);
   const [scrollTopArr, setScrollTopArr] = useState([]);
 
+  const [prevPagePath, setPrevPagePath] = useState("");
+
   useEffect( () => {
     if (isBadData(results)) {
       return;
@@ -94,6 +96,9 @@ function App() {
         setScrollTopArr={setScrollTopArr}
 
         activePageNumber={activePageNumber} 
+
+        prevPagePath={prevPagePath} 
+        setPrevPagePath={setPrevPagePath}
       >
 
         <Switch>
