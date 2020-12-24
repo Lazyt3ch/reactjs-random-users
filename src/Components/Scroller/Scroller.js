@@ -20,6 +20,7 @@ function Scroller(props) {
     if (pathname.startsWith("/view/")) {
       setTimeout( () => {  // setTimeout is vital here!!!
         if (scrollTopArr[activePageNumber]) {
+          // console.log("SCROLLING: ", scrollTopArr);
           window.scrollTo({
             top: scrollTopArr[activePageNumber],
             behavior: 'auto',
@@ -37,6 +38,7 @@ function Scroller(props) {
         const scrollTopArrNew = scrollTopArr.slice();
         scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
         setScrollTopArr(scrollTopArrNew);
+        // console.log("SAVING SCROLL TOP: ", scrollTopArrNew);
       }  
     };
     window.addEventListener("scroll", onScroll);
