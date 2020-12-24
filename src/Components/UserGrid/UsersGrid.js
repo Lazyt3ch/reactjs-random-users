@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useLayoutEffect} from "react";
+// import React, {useState, useEffect} from "react";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
@@ -28,7 +29,8 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  useEffect( () => {
+  // useEffect( () => {
+  useLayoutEffect( () => {
       if (isBadData(results2D)) {
       return;
     }
