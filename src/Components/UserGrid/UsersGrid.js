@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect, useEffect} from "react";
+import React, {useState, useLayoutEffect} from "react";
 import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
 import isBadData from "../../Helpers/BadDataChecker.js";
 import UsersGridItem from "./UsersGridItem.js";
@@ -6,7 +6,6 @@ import Pagination from "../Pagination/Pagination.js";
 import constants from "../../constants.js";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 import PropTypes from "prop-types";
-import {useLocation} from "react-router-dom";
 
 function UsersGrid(props) {
   const {
@@ -29,17 +28,7 @@ function UsersGrid(props) {
 
   const [activePageRows, setActivePageRows] = useState([]);
 
-  const {pathname} = useLocation();
-
-  useEffect( () => {
-    console.log("BLANK OP");
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: 'auto',
-    // });        
-  }, [pathname]);
-
-
+  
   useLayoutEffect( () => {
       if (isBadData(results2D)) {
       return;
