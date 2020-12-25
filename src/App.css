@@ -100,8 +100,8 @@
 }
 
 .grid-settings {
-    padding-left: 1rem;
-    padding-bottom: .5rem;
+    margin-top: 1.5rem;
+    padding-left: .5rem;
     padding-top: .5rem;
     background-color: white;
 }
@@ -167,8 +167,8 @@
     border-color: black transparent transparent transparent;
 }
 
+/* Dummy class to prevent displaying an arrow for a tooltip */
 /* .no-arrow {
-
 } */
   
 .tooltip:hover .tooltiptext {
@@ -186,9 +186,11 @@
 .pagination {
     display: inline-block;
     margin-left: 1rem;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     background-color: white;
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
 }
   
 .pagination span {

@@ -82,16 +82,6 @@ function UsersGrid(props) {
     <>
 
       <div className="users-view-top-wrapper"> 
-        <Pagination 
-          totalPages={totalPages} 
-
-          activePageNumber={activePageNumber} 
-          setActivePageNumber={setActivePageNumber}    
-
-          scrollTopArr={scrollTopArr}
-          setScrollTopArr={setScrollTopArr}
-        />
-
         <div className="grid-settings">
           <SpacedCheckbox 
             color="primary"
@@ -104,6 +94,16 @@ function UsersGrid(props) {
             Hide subproperty names
           </label>
         </div>
+
+        <Pagination 
+          totalPages={totalPages} 
+
+          activePageNumber={activePageNumber} 
+          setActivePageNumber={setActivePageNumber}    
+
+          scrollTopArr={scrollTopArr}
+          setScrollTopArr={setScrollTopArr}
+        />        
       </div>
 
       <div className="grid-container-wrapper">
