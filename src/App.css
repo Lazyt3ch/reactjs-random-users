@@ -202,13 +202,20 @@
     border: 1px solid navy;
 }
 
-.pagination span.page-interval {
+.pagination span.page-ellipsis {
     color: navy;
     background-color: white;
     font-weight: 700;
 }
-  
-.pagination span:hover:not(.active-page):not(.no-hover-effect):not(.page-interval) {
+
+.pagination span.page-spacer {
+    color: white;
+    background-color: white;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.pagination span:hover:not(.no-hover-effect) {
     background-color: yellow;
     color: black;
 }

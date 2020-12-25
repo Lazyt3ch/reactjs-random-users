@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 
 // Row 0 is used for table header, so content row numbering starts from 1
 
+// The "page-spacer" span keeps the ">" and ">>" span elements in the same positions
+
 function Pagination(props) {
   const {
     totalPages, 
@@ -64,32 +66,32 @@ function Pagination(props) {
   return (
     <div className="pagination unselectable">
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === 0 ? "active-page" : ""}
+        className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
       >
         &lt;&lt;
       </span>
 
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === 0 ? "active-page" : ""}
+        className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
       >
         &lt;
       </span> 
 
-      <span className={activePageNumber === 0 ? "active-page" : ""}
+      <span className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
         onClick={handlePageNumberClick}
       >
         1
       </span>      
 
       { totalPages > 5 && activePageNumber >= 3 &&
-        <span className="page-interval"
+        <span className="page-ellipsis no-hover-effect"
         >
           &#8230;
         </span>   
       }        
 
       {displayedPageNumbers.map(num =>
-        <span className={num === activePageNumber ? "active-page" : ""}
+        <span className={num === activePageNumber ? "active-page no-hover-effect" : ""}
           key={num}          
           onClick={handlePageNumberClick}
         >
@@ -98,7 +100,7 @@ function Pagination(props) {
       )}      
 
       { totalPages > 5 && activePageNumber < totalPages - 3 &&
-        <span className="page-interval"
+        <span className="page-ellipsis no-hover-effect"
         >
           &#8230;
         </span>   
@@ -106,21 +108,27 @@ function Pagination(props) {
 
 
       {totalPages > 1 && 
-        <span className={activePageNumber === totalPages - 1 ? "active-page" : ""}
+        <span className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}
           onClick={handlePageNumberClick}
         >
           {totalPages}
         </span>
       }
 
+      { totalPages > 5 && !(activePageNumber >= 3 && activePageNumber < totalPages - 3) &&
+        <span className="page-spacer no-hover-effect">
+          &nbsp;&nbsp;
+        </span>
+      }
+
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === totalPages - 1 ? "active-page" : ""}      
+        className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}      
       >
         &gt;
       </span>  
 
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === totalPages - 1 ? "active-page" : ""}      
+        className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}      
       >
         &gt;&gt;
       </span>    
