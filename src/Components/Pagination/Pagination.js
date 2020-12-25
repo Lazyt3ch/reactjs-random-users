@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 
 // Row 0 is used for table header, so content row numbering starts from 1
 
-// The "page-spacer" span keeps the ">" and ">>" span elements in the same positions
+// The "page-spacer" span keeps the ">" and ">>" span elements in the same positions.
+// Otherwise in certain cases they are displaced to the right when clicking on ">" span repeatedly.
 
 function Pagination(props) {
   const {
@@ -22,7 +23,6 @@ function Pagination(props) {
 
   useEffect(
     () => {
-      console.log("activePageNumber =", activePageNumber);
       const pageNumbers = Array.from(new Array(totalPages), (_, idx) => idx);
 
       const displayedPageNumbersNew = pageNumbers.length <= 5 
