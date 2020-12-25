@@ -145,7 +145,6 @@
     font-weight: 400;
     padding: 5px 5px;
     width: auto;
-    /* min-width: 5rem; */
     background-color: black;
     color: #fff;
     text-align: center;
@@ -186,13 +185,11 @@
 .pagination {
     display: inline-block;
     margin-left: 1rem;
-    /* margin-top: 2rem; */
     margin-top: 1rem;
     margin-bottom: 1rem;
     background-color: white;
-    /* padding-top: 1rem; */
 }
-  
+
 .pagination span {
     float: left;
     padding: 6px 14px;
@@ -200,7 +197,8 @@
     border: 1px solid #ddd;
     background-color: #3f51b5;
     color: white;
-    font-weight: 500;
+    font-family: Courier, Monaco, monospace;
+    font-weight: bold;
 }
   
 .pagination span.active-page {

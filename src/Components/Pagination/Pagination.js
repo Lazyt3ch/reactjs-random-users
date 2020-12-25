@@ -45,12 +45,12 @@ function Pagination(props) {
       pageNumber = 0;
     } else if (text.startsWith(">>")) {
       pageNumber = totalPages - 1;
-    } else if (text.startsWith("<")) {
+    } else if (text.trim().startsWith("<")) {
       pageNumber = Math.max(activePageNumber - 1, 0);
-    } else if (text.startsWith(">")) {
+    } else if (text.trim().startsWith(">")) {
       pageNumber = Math.min(activePageNumber + 1, totalPages - 1);
     } else {
-      pageNumber = parseInt(text) - 1;
+      pageNumber = parseInt(text.trim()) - 1;
     }
 
     if (pageNumber !== activePageNumber) {
@@ -76,7 +76,7 @@ function Pagination(props) {
         <span onClick={handlePageNumberClick}
           className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip no-arrow"}
         >
-          &lt;
+          &nbsp;&lt;
           {activePageNumber > 0 &&
             <span className="tooltiptext" style={{minWidth: "10rem"}}>
               {`Go to Page ${activePageNumber}`}
@@ -87,13 +87,13 @@ function Pagination(props) {
         <span className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
           onClick={handlePageNumberClick}
         >
-          1
+          &nbsp;1
         </span>      
 
         { totalPages > 5 && activePageNumber >= 3 &&
           <span className="page-ellipsis no-hover-effect"
           >
-            &#8230;
+            &nbsp;&#8230;
           </span>   
         }        
 
@@ -102,14 +102,14 @@ function Pagination(props) {
             key={num}          
             onClick={handlePageNumberClick}
           >
-            {num + 1}
+            {num < 9 ? "\u00A0" : ""}{num + 1}
           </span>
         )}      
 
         { totalPages > 5 && activePageNumber < totalPages - 3 &&
           <span className="page-ellipsis no-hover-effect"
           >
-            &#8230;
+            &nbsp;&#8230;
           </span>   
         }        
 
@@ -117,7 +117,7 @@ function Pagination(props) {
           <span className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}
             onClick={handlePageNumberClick}
           >
-            {totalPages}
+            {totalPages < 10 ? "\u00A0" : ""}{totalPages}
           </span>
         }
 
@@ -132,7 +132,7 @@ function Pagination(props) {
             ? "active-page no-hover-effect" 
             : "tooltip no-arrow"}      
         >
-          &gt;
+          &nbsp;&gt;
           {activePageNumber < totalPages - 1 &&
             <span className="tooltiptext" style={{minWidth: "10rem"}}>
               {`Go to Page ${activePageNumber + 2}`}
