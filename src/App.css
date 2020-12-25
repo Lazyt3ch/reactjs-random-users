@@ -208,7 +208,7 @@
     font-weight: 700;
 }
   
-.pagination span:hover:not(.active-page):not(.no-hover-effect) {
+.pagination span:hover:not(.active-page):not(.no-hover-effect):not(.page-interval) {
     background-color: yellow;
     color: black;
 }

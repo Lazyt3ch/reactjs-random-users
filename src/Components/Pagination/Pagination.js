@@ -14,22 +14,9 @@ function Pagination(props) {
     setActivePageNumber,
   } = props;
 
-  // const [pageNumbers, setPageNumbers] = useState([0]);
   const [displayedPageNumbers, setDisplayedPageNumbers] = useState([0]);
 
   const history = useHistory();  
-
-  // useEffect(
-  //   () => {
-  //     if (totalPages < 1) {
-  //       return;
-  //     }
-
-  //     const pageNumbersNew = Array.from(new Array(totalPages), (_, idx) => idx);
-  //     setPageNumbers(pageNumbersNew);
-  //   },
-  //   [totalPages]
-  // );
 
   useEffect(
     () => {
@@ -42,19 +29,6 @@ function Pagination(props) {
           : activePageNumber >= totalPages - 2
             ? pageNumbers.slice(-4, -1)
             : pageNumbers.slice(activePageNumber - 1, activePageNumber + 2);    
-
-      // const displayedPageNumbersNew = pageNumbers.length <= 5 
-      //   ? pageNumbers.slice(1, totalPages - 1) // All pages except for first and last ones
-      //   : activePageNumber < 5
-      //     ? pageNumbers.slice(1, 4)
-      //     : activePageNumber >= totalPages - 5
-      //       ? pageNumbers.slice(-4, -1)
-      //       : pageNumbers.slice(activePageNumber - 1, activePageNumber + 2);    
-      //       // : pageNumbers.slice(activePageNumber - 2, activePageNumber + 3);    
-
-      console.log("activePageNumber =", activePageNumber);
-      console.log("totalPages =", totalPages);
-      console.log("displayedPageNumbersNew =", displayedPageNumbersNew);
       setDisplayedPageNumbers(displayedPageNumbersNew);
     }, 
     [totalPages, activePageNumber]
@@ -100,15 +74,6 @@ function Pagination(props) {
       >
         &lt;
       </span> 
-
-      {/* {pageNumbers.map(num =>
-        <span className={num === activePageNumber ? "active-page" : ""}
-          key={num}          
-          onClick={handlePageNumberClick}
-        >
-          {num + 1}
-        </span>
-      )} */}
 
       <span className={activePageNumber === 0 ? "active-page" : ""}
         onClick={handlePageNumberClick}
