@@ -106,7 +106,6 @@ function Pagination(props) {
         </span>   
       }        
 
-
       {totalPages > 1 && 
         <span className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}
           onClick={handlePageNumberClick}
@@ -122,13 +121,13 @@ function Pagination(props) {
       }
 
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}      
+        className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : ""}      
       >
         &gt;
       </span>  
 
       <span onClick={handlePageNumberClick}
-        className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}      
+        className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : ""}      
       >
         &gt;&gt;
       </span>    
