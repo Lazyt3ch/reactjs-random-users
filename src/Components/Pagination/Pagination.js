@@ -34,13 +34,26 @@ function Pagination(props) {
   useEffect(
     () => {
       const pageNumbers = Array.from(new Array(totalPages), (_, idx) => idx);
+
       const displayedPageNumbersNew = pageNumbers.length <= 5 
-        ? pageNumbers.slice(1, totalPages - 1)
-        : activePageNumber < 5
+        ? pageNumbers.slice(1, totalPages - 1) // All pages except for first and last ones
+        : activePageNumber <= 1
           ? pageNumbers.slice(1, 4)
-          : activePageNumber >= totalPages - 5
+          : activePageNumber >= totalPages - 2
             ? pageNumbers.slice(-4, -1)
-            : pageNumbers.slice(activePageNumber - 2, activePageNumber + 3);    
+            : pageNumbers.slice(activePageNumber - 1, activePageNumber + 2);    
+
+      // const displayedPageNumbersNew = pageNumbers.length <= 5 
+      //   ? pageNumbers.slice(1, totalPages - 1) // All pages except for first and last ones
+      //   : activePageNumber < 5
+      //     ? pageNumbers.slice(1, 4)
+      //     : activePageNumber >= totalPages - 5
+      //       ? pageNumbers.slice(-4, -1)
+      //       : pageNumbers.slice(activePageNumber - 1, activePageNumber + 2);    
+      //       // : pageNumbers.slice(activePageNumber - 2, activePageNumber + 3);    
+
+      console.log("activePageNumber =", activePageNumber);
+      console.log("totalPages =", totalPages);
       console.log("displayedPageNumbersNew =", displayedPageNumbersNew);
       setDisplayedPageNumbers(displayedPageNumbersNew);
     }, 
@@ -106,7 +119,7 @@ function Pagination(props) {
       { totalPages > 5 && activePageNumber >= 3 &&
         <span className="page-interval"
         >
-          ...
+          &#8230;
         </span>   
       }        
 
@@ -122,7 +135,7 @@ function Pagination(props) {
       { totalPages > 5 && activePageNumber < totalPages - 3 &&
         <span className="page-interval"
         >
-          ...
+          &#8230;
         </span>   
       }        
 
