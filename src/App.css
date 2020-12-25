@@ -208,16 +208,23 @@
     border: 1px solid navy;
 }
 
+.pagination span.switched-off {
+    color: navy;
+    background-color: lightgray;
+    font-weight: bold;
+    border: 1px solid navy;
+}
+
 .pagination span.page-ellipsis {
     color: navy;
-    background-color: white;
-    font-weight: 700;
+    background-color: lightgray;
+    font-weight: bold;
 }
 
 .pagination span.page-spacer {
     color: white;
-    background-color: white;
-    font-weight: 700;
+    background-color: lightgray;
+    font-weight: bold;
     z-index: 10;
 }
 

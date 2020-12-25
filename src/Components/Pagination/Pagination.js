@@ -63,22 +63,22 @@ function Pagination(props) {
     <>
       <div className="pagination unselectable">
         <span onClick={handlePageNumberClick}
-          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip no-arrow"}
+          className={activePageNumber === 0 ? "switched-off no-hover-effect" : "tooltip no-arrow"}
         >
           &lt;&lt;
           {activePageNumber > 0 &&
-            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+            <span className="tooltiptext" style={{minWidth: "11rem"}}>
               Go to First Page
             </span>           
           }
         </span>
 
         <span onClick={handlePageNumberClick}
-          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip no-arrow"}
+          className={activePageNumber === 0 ? "switched-off no-hover-effect" : "tooltip no-arrow"}
         >
           &nbsp;&lt;
           {activePageNumber > 0 &&
-            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+            <span className="tooltiptext" style={{minWidth: "11rem"}}>
               {`Go to Page ${activePageNumber}`}
             </span>           
           }          
@@ -129,12 +129,12 @@ function Pagination(props) {
 
         <span onClick={handlePageNumberClick}
           className={activePageNumber >= totalPages - 1 
-            ? "active-page no-hover-effect" 
+            ? "switched-off no-hover-effect" 
             : "tooltip no-arrow"}      
         >
           &nbsp;&gt;
           {activePageNumber < totalPages - 1 &&
-            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+            <span className="tooltiptext" style={{minWidth: "11rem"}}>
               {`Go to Page ${activePageNumber + 2}`}
             </span>           
           }             
@@ -142,12 +142,12 @@ function Pagination(props) {
 
         <span onClick={handlePageNumberClick}
           className={activePageNumber >= totalPages - 1 
-            ? "active-page no-hover-effect" 
+            ? "switched-off no-hover-effect" 
             : "tooltip no-arrow"}      
         >
           &gt;&gt;
           {activePageNumber < totalPages - 1 &&
-            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+            <span className="tooltiptext" style={{minWidth: "11rem"}}>
               Go to Last Page
             </span>           
           }
