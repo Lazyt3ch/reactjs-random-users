@@ -201,6 +201,12 @@
     font-weight: 700;
     border: 1px solid navy;
 }
+
+.pagination span.page-interval {
+    color: navy;
+    background-color: white;
+    font-weight: 700;
+}
   
 .pagination span:hover:not(.active-page):not(.no-hover-effect) {
     background-color: yellow;

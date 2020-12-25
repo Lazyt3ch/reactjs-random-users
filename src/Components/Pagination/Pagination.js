@@ -14,21 +14,38 @@ function Pagination(props) {
     setActivePageNumber,
   } = props;
 
-  const [pageNumbers, setPageNumbers] = useState([0]);
+  // const [pageNumbers, setPageNumbers] = useState([0]);
+  const [displayedPageNumbers, setDisplayedPageNumbers] = useState([0]);
 
   const history = useHistory();  
 
+  // useEffect(
+  //   () => {
+  //     if (totalPages < 1) {
+  //       return;
+  //     }
+
+  //     const pageNumbersNew = Array.from(new Array(totalPages), (_, idx) => idx);
+  //     setPageNumbers(pageNumbersNew);
+  //   },
+  //   [totalPages]
+  // );
+
   useEffect(
     () => {
-      if (totalPages < 1) {
-        return;
-      }
-
-      const pageNumbersNew = Array.from(new Array(totalPages), (_, idx) => idx);
-      setPageNumbers(pageNumbersNew);
-    },
-    [totalPages]
-  );
+      const pageNumbers = Array.from(new Array(totalPages), (_, idx) => idx);
+      const displayedPageNumbersNew = pageNumbers.length <= 5 
+        ? pageNumbers.slice(1, totalPages - 1)
+        : activePageNumber < 5
+          ? pageNumbers.slice(1, 4)
+          : activePageNumber >= totalPages - 5
+            ? pageNumbers.slice(-4, -1)
+            : pageNumbers.slice(activePageNumber - 2, activePageNumber + 3);    
+      console.log("displayedPageNumbersNew =", displayedPageNumbersNew);
+      setDisplayedPageNumbers(displayedPageNumbersNew);
+    }, 
+    [totalPages, activePageNumber]
+  )
 
   function handlePageNumberClick(event) {
     const text = event.target.textContent;
@@ -71,14 +88,52 @@ function Pagination(props) {
         &lt;
       </span> 
 
-      {pageNumbers.map(num =>
+      {/* {pageNumbers.map(num =>
         <span className={num === activePageNumber ? "active-page" : ""}
           key={num}          
           onClick={handlePageNumberClick}
         >
           {num + 1}
         </span>
-      )}
+      )} */}
+
+      <span className={activePageNumber === 0 ? "active-page" : ""}
+        onClick={handlePageNumberClick}
+      >
+        1
+      </span>      
+
+      { totalPages > 5 && activePageNumber >= 3 &&
+        <span className="page-interval"
+        >
+          ...
+        </span>   
+      }        
+
+      {displayedPageNumbers.map(num =>
+        <span className={num === activePageNumber ? "active-page" : ""}
+          key={num}          
+          onClick={handlePageNumberClick}
+        >
+          {num + 1}
+        </span>
+      )}      
+
+      { totalPages > 5 && activePageNumber < totalPages - 3 &&
+        <span className="page-interval"
+        >
+          ...
+        </span>   
+      }        
+
+
+      {totalPages > 1 && 
+        <span className={activePageNumber === totalPages - 1 ? "active-page" : ""}
+          onClick={handlePageNumberClick}
+        >
+          {totalPages}
+        </span>
+      }
 
       <span onClick={handlePageNumberClick}
         className={activePageNumber === totalPages - 1 ? "active-page" : ""}      
