@@ -22,6 +22,7 @@ function Pagination(props) {
 
   useEffect(
     () => {
+      console.log("activePageNumber =", activePageNumber);
       const pageNumbers = Array.from(new Array(totalPages), (_, idx) => idx);
 
       const displayedPageNumbersNew = pageNumbers.length <= 5 
@@ -52,6 +53,7 @@ function Pagination(props) {
         break;
       case ">":
         pageNumber = Math.min(activePageNumber + 1, totalPages - 1);
+        console.log("> : pageNumber =", pageNumber);
         break;
       default:
         pageNumber = parseInt(text) - 1;
@@ -64,74 +66,96 @@ function Pagination(props) {
   }
 
   return (
-    <div className="pagination unselectable">
-      <span onClick={handlePageNumberClick}
-        className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
-      >
-        &lt;&lt;
-      </span>
-
-      <span onClick={handlePageNumberClick}
-        className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
-      >
-        &lt;
-      </span> 
-
-      <span className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
-        onClick={handlePageNumberClick}
-      >
-        1
-      </span>      
-
-      { totalPages > 5 && activePageNumber >= 3 &&
-        <span className="page-ellipsis no-hover-effect"
+    <>
+      <div className="pagination unselectable">
+        <span onClick={handlePageNumberClick}
+          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip"}
         >
-          &#8230;
-        </span>   
-      }        
+          &lt;&lt;
+          {activePageNumber > 0 &&
+            <span className="tooltiptext" style={{minWidth: "6rem"}}>
+              First Page
+            </span>           
+          }
+        </span>
 
-      {displayedPageNumbers.map(num =>
-        <span className={num === activePageNumber ? "active-page no-hover-effect" : ""}
-          key={num}          
+        <span onClick={handlePageNumberClick}
+          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip"}
+        >
+          &lt;
+          {activePageNumber > 0 &&
+            <span className="tooltiptext" style={{minWidth: "5rem"}}>
+              {`Page ${activePageNumber}`}
+            </span>           
+          }          
+        </span> 
+
+        <span className={activePageNumber === 0 ? "active-page no-hover-effect" : ""}
           onClick={handlePageNumberClick}
         >
-          {num + 1}
-        </span>
-      )}      
+          1
+        </span>      
 
-      { totalPages > 5 && activePageNumber < totalPages - 3 &&
-        <span className="page-ellipsis no-hover-effect"
+        { totalPages > 5 && activePageNumber >= 3 &&
+          <span className="page-ellipsis no-hover-effect"
+          >
+            &#8230;
+          </span>   
+        }        
+
+        {displayedPageNumbers.map(num =>
+          <span className={num === activePageNumber ? "active-page no-hover-effect" : ""}
+            key={num}          
+            onClick={handlePageNumberClick}
+          >
+            {num + 1}
+          </span>
+        )}      
+
+        { totalPages > 5 && activePageNumber < totalPages - 3 &&
+          <span className="page-ellipsis no-hover-effect"
+          >
+            &#8230;
+          </span>   
+        }        
+
+        {totalPages > 1 && 
+          <span className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}
+            onClick={handlePageNumberClick}
+          >
+            {totalPages}
+          </span>
+        }
+
+        { totalPages > 5 && !(activePageNumber >= 3 && activePageNumber < totalPages - 3) &&
+          <span className="page-spacer no-hover-effect">
+            &nbsp;&nbsp;
+          </span>
+        }
+
+        <span onClick={handlePageNumberClick}
+          className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : "tooltip"}      
         >
-          &#8230;
-        </span>   
-      }        
+          &gt;
+          {activePageNumber < totalPages - 1 &&
+            <span className="tooltiptext" style={{minWidth: "5rem"}}>
+              {`Page ${activePageNumber + 2}`}
+            </span>           
+          }             
+        </span>  
 
-      {totalPages > 1 && 
-        <span className={activePageNumber === totalPages - 1 ? "active-page no-hover-effect" : ""}
-          onClick={handlePageNumberClick}
+        <span onClick={handlePageNumberClick}
+          className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : "tooltip"}      
         >
-          {totalPages}
-        </span>
-      }
-
-      { totalPages > 5 && !(activePageNumber >= 3 && activePageNumber < totalPages - 3) &&
-        <span className="page-spacer no-hover-effect">
-          &nbsp;&nbsp;
-        </span>
-      }
-
-      <span onClick={handlePageNumberClick}
-        className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : ""}      
-      >
-        &gt;
-      </span>  
-
-      <span onClick={handlePageNumberClick}
-        className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : ""}      
-      >
-        &gt;&gt;
-      </span>    
-    </div>
+          &gt;&gt;
+          {activePageNumber < totalPages - 1 &&
+            <span className="tooltiptext" style={{minWidth: "6rem"}}>
+              Last Page
+            </span>           
+          }
+        </span>    
+      </div>
+    </>
   );
 }
 
