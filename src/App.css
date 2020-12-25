@@ -156,7 +156,7 @@
     left: 0%;
 }
   
-.tooltip .tooltiptext::after {
+.tooltip:not(.no-arrow) .tooltiptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -166,6 +166,10 @@
     border-style: solid;
     border-color: black transparent transparent transparent;
 }
+
+/* .no-arrow {
+
+} */
   
 .tooltip:hover .tooltiptext {
     visibility: visible;

@@ -38,25 +38,19 @@ function Pagination(props) {
   )
 
   function handlePageNumberClick(event) {
-    const text = event.target.textContent;
-    let pageNumber;
+    const text = event.target.textContent;    
+    let pageNumber;    
 
-    switch (text) {
-      case "<<":
-        pageNumber = 0;
-        break;
-      case ">>":
-        pageNumber = totalPages - 1;
-        break;
-      case "<":
-        pageNumber = Math.max(activePageNumber - 1, 0);
-        break;
-      case ">":
-        pageNumber = Math.min(activePageNumber + 1, totalPages - 1);
-        console.log("> : pageNumber =", pageNumber);
-        break;
-      default:
-        pageNumber = parseInt(text) - 1;
+    if (text.startsWith("<<")) {
+      pageNumber = 0;
+    } else if (text.startsWith(">>")) {
+      pageNumber = totalPages - 1;
+    } else if (text.startsWith("<")) {
+      pageNumber = Math.max(activePageNumber - 1, 0);
+    } else if (text.startsWith(">")) {
+      pageNumber = Math.min(activePageNumber + 1, totalPages - 1);
+    } else {
+      pageNumber = parseInt(text) - 1;
     }
 
     if (pageNumber !== activePageNumber) {
@@ -69,23 +63,23 @@ function Pagination(props) {
     <>
       <div className="pagination unselectable">
         <span onClick={handlePageNumberClick}
-          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip"}
+          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip no-arrow"}
         >
           &lt;&lt;
           {activePageNumber > 0 &&
-            <span className="tooltiptext" style={{minWidth: "6rem"}}>
-              First Page
+            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+              Go to First Page
             </span>           
           }
         </span>
 
         <span onClick={handlePageNumberClick}
-          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip"}
+          className={activePageNumber === 0 ? "active-page no-hover-effect" : "tooltip no-arrow"}
         >
           &lt;
           {activePageNumber > 0 &&
-            <span className="tooltiptext" style={{minWidth: "5rem"}}>
-              {`Page ${activePageNumber}`}
+            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+              {`Go to Page ${activePageNumber}`}
             </span>           
           }          
         </span> 
@@ -134,23 +128,27 @@ function Pagination(props) {
         }
 
         <span onClick={handlePageNumberClick}
-          className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : "tooltip"}      
+          className={activePageNumber >= totalPages - 1 
+            ? "active-page no-hover-effect" 
+            : "tooltip no-arrow"}      
         >
           &gt;
           {activePageNumber < totalPages - 1 &&
-            <span className="tooltiptext" style={{minWidth: "5rem"}}>
-              {`Page ${activePageNumber + 2}`}
+            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+              {`Go to Page ${activePageNumber + 2}`}
             </span>           
           }             
         </span>  
 
         <span onClick={handlePageNumberClick}
-          className={activePageNumber >= totalPages - 1 ? "active-page no-hover-effect" : "tooltip"}      
+          className={activePageNumber >= totalPages - 1 
+            ? "active-page no-hover-effect" 
+            : "tooltip no-arrow"}      
         >
           &gt;&gt;
           {activePageNumber < totalPages - 1 &&
-            <span className="tooltiptext" style={{minWidth: "6rem"}}>
-              Last Page
+            <span className="tooltiptext" style={{minWidth: "10rem"}}>
+              Go to Last Page
             </span>           
           }
         </span>    
