@@ -90,11 +90,22 @@ function Pagination(props) {
           &nbsp;1
         </span>      
 
-        { totalPages > 5 && activePageNumber >= 3 &&
-          <span className="page-ellipsis no-hover-effect"
-          >
-            &nbsp;&#8230;
-          </span>   
+        { (totalPages > 5 && activePageNumber >= 3)
+          ? displayedPageNumbers[0] > 2
+            ? (
+                <span className="page-ellipsis no-hover-effect"
+                >
+                  &nbsp;&#8230;
+                </span>   
+              )
+            : (
+              <span className={activePageNumber === 1 ? "active-page no-hover-effect" : ""}
+                onClick={handlePageNumberClick}
+              >
+                &nbsp;2
+              </span>
+              )
+          : <></>
         }        
 
         {displayedPageNumbers.map(num =>
