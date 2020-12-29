@@ -129,7 +129,7 @@ function Pagination(props) {
                 <span className={activePageNumber === totalPages - 2 ? "active-page no-hover-effect" : ""}
                   onClick={handlePageNumberClick}
                 >
-                  {"\u00A0"}{totalPages - 1}
+                  {totalPages < 11 ? "\u00A0" : ""}{totalPages - 1}
                 </span>
               )
           : null
