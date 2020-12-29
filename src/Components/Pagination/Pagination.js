@@ -105,7 +105,7 @@ function Pagination(props) {
                 &nbsp;2
               </span>
               )
-          : <></>
+          : null
         }        
 
         {displayedPageNumbers.map(num =>
@@ -117,11 +117,22 @@ function Pagination(props) {
           </span>
         )}      
 
-        { totalPages > 5 && activePageNumber < totalPages - 3 &&
-          <span className="page-ellipsis no-hover-effect"
-          >
-            &nbsp;&#8230;
-          </span>   
+        { (totalPages > 5 && activePageNumber < totalPages - 3) 
+          ? totalPages - displayedPageNumbers[displayedPageNumbers.length - 1] > 3
+            ? (
+                <span className="page-ellipsis no-hover-effect"
+                >
+                  &nbsp;&#8230;
+                </span>   
+              )
+            : (
+                <span className={activePageNumber === totalPages - 2 ? "active-page no-hover-effect" : ""}
+                  onClick={handlePageNumberClick}
+                >
+                  {"\u00A0"}{totalPages - 1}
+                </span>
+              )
+          : null
         }        
 
         {totalPages > 1 && 
