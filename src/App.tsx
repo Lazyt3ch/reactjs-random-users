@@ -9,7 +9,7 @@ import UsersGrid from "./Components/UserGrid/UsersGrid.js";
 import getRebuiltResults from "./Helpers/dataRebuilder";
 import isBadData from "./Helpers/badDataChecker";
 
-import constants from "./constants.ts";
+import constants from "./constants";
 
 import { 
   getAllProperties, 
@@ -27,7 +27,7 @@ import {
 
 
 function App() {
-  const {numResultsDefault}: {numResultsDefault: number} = constants;
+  const {numResultsDefault} = constants;
   const [numResults, setNumResults] = useState(numResultsDefault);
 
   const allProperties = getAllProperties(constants);
