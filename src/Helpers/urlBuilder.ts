@@ -1,7 +1,7 @@
 import fixProperties from "./propertiesFixer";
 import fixNumResults from "./numResultsFixer";
 
-const buildUrl = (numResults, properties, isToInclude) => {
+const buildUrl = (numResults: number, properties: string[], isInclude=true): string => {
   const baseUrlSlash = "https://randomuser.me/api/";
   const urlParams = [];
 
@@ -11,7 +11,7 @@ const buildUrl = (numResults, properties, isToInclude) => {
 
   const propertiesToUse = fixProperties(properties);
   const propertiesSubstr = propertiesToUse.length
-    ? `${isToInclude ? "inc" : "exc"}=${propertiesToUse.join(",")}`
+    ? `${isInclude ? "inc" : "exc"}=${propertiesToUse.join(",")}`
     : "";
   urlParams.push(propertiesSubstr);
 
