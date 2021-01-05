@@ -1,6 +1,6 @@
 import isBadData from "./badDataChecker";
 
-const getGridColumnsFormula = (results2D) => {
+const getGridColumnsFormula = (results2D: [][]): string => {
   if (isBadData(results2D) || isBadData(results2D[0])) {
     return "";
   }
