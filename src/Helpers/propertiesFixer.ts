@@ -1,14 +1,14 @@
-import constants from "../constants.js";
+import constants from "../constants.ts";
 
 const fixProperties = (properties) => {
-  const allProperties = getAllProperties(constants: Constants);
+  const allProperties = getAllProperties(constants);
   return properties
     .map( p => p.toLowerCase() )
     .filter( p => allProperties.includes(p) );
 };
 
 const getAllProperties = (constants: object) => {
-  const {allPropertiesString}: {allPropertiesString: string;} = constants;
+  const {allPropertiesString} = constants;
   
   const allProperties = allPropertiesString
     .trim()
