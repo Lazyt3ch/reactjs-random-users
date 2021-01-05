@@ -30,7 +30,7 @@ function App() {
   const {numResultsDefault} = constants;
   const [numResults, setNumResults] = useState(numResultsDefault);
 
-  const allProperties = getAllProperties(constants);
+  const allProperties = getAllProperties();
 
   const [statuses, setStatuses] = useState(getUpdatedStatuses(allProperties, false));
   const [validProperties, setValidProperties] = useState(getValidProperties(statuses));
