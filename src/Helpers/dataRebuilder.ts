@@ -6,9 +6,9 @@ const addTrailingCommaSpace = (str: string): string => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-const getRebuiltData = (userObj: object | null) => {
+const getRebuiltData = (userObj: object | null): object => {
   // Now using brackets instead of parentheses as subproperty grouping characters,
-  // because parentheses sometimes occur in retrieved users data
+  // because parentheses sometimes are present in retrieved users data
   let builtStr: string;
 
   if (userObj === null) {
@@ -38,36 +38,34 @@ const getRebuiltData = (userObj: object | null) => {
     return builtStr;
   }
 
-  const builtObj = {};
+  const builtObj: object = {};
   // const builtObj = Object.create(null);
   let tempValue;
 
-  if (typeof userObj === 'object') {
-    Object.entries(userObj).forEach( ([key, value]) => {
-      builtStr = "";
-      tempValue = value;
+  Object.entries(userObj).forEach( ([key, value]) => {
+    builtStr = "";
+    tempValue = value;
 
-      if (tempValue !== null && typeof tempValue === 'object') {
-        tempValue = removeTrailingCommaSpace(extractData(tempValue));
-      }
+    if (tempValue !== null && typeof tempValue === 'object') {
+      tempValue = removeTrailingCommaSpace(extractData(tempValue));
+    }
 
-      if (typeof key === "string") {
-        builtObj[key] = tempValue;
-      }
+    if (typeof key === "string" && typeof tempValue === "string") {
+      builtObj[key] = tempValue;
+    }
 
-      // if (value !== null && typeof value === 'object') {
-      //   builtObj[key] = removeTrailingCommaSpace(extractData(value))
-      // } else {
-      //   builtObj[key] = value;
-      // }
+    // if (value !== null && typeof value === 'object') {
+    //   builtObj[key] = removeTrailingCommaSpace(extractData(value))
+    // } else {
+    //   builtObj[key] = value;
+    // }
 
-      // builtObj[key] = (value !== null && typeof value === 'object')
-      //   ? removeTrailingCommaSpace(extractData(value))
-      //   : value;
-    });
-    
-    return builtObj;
-  }
+    // builtObj[key] = (value !== null && typeof value === 'object')
+    //   ? removeTrailingCommaSpace(extractData(value))
+    //   : value;
+  });
+  
+  return builtObj;
 }
 
 const getRebuiltResults = (results: [], validProperties: string[]): [] => {
