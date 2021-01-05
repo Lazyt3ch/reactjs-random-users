@@ -13,10 +13,19 @@ interface Props {
 }
 
 function FetcherProperties(props: Props) {
-  const {allProperties}: {allProperties: string[]} = props;
-  const {statuses}: {statuses: [string, boolean][]} = props;
-  const {setStatuses} = props;
-  const {setValidProperties} = props;
+  // const {allProperties}: {allProperties: string[]} = props;
+  // const {statuses}: {statuses: [string, boolean][]} = props;
+  // const {setStatuses} = props;
+  // const {setValidProperties} = props;
+
+  const {
+    allProperties,
+
+    statuses, 
+    setStatuses,
+
+    setValidProperties,
+  } = props;
 
   const handleUnselectAll = () => {
     setStatuses(getUpdatedStatuses(allProperties, false));
