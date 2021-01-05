@@ -1,4 +1,4 @@
-import constants from "../constants";
+import constants, {Constants} from "../constants";
 
 const fixProperties = (properties) => {
   const allProperties = getAllProperties(constants);
@@ -7,7 +7,7 @@ const fixProperties = (properties) => {
     .filter( p => allProperties.includes(p) );
 };
 
-const getAllProperties = (constants: object) => {
+const getAllProperties = (constants: Constants) => {
   const {allPropertiesString} = constants;
   
   const allProperties = allPropertiesString
