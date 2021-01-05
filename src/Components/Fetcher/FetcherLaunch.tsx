@@ -10,12 +10,12 @@ interface Props {
 
   validProperties: string[];
   
-  setResults: object;
+  setResults: (arg: []) => void;
   
   resultsFetchCount: number; 
-  setResultsFetchCount: object;
+  setResultsFetchCount: (arg: number) => void;
 
-  setActivePageNumber: object;
+  setActivePageNumber: (arg: number) => void;
 }
 
 
