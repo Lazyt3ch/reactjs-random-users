@@ -10,20 +10,20 @@ const constants = {
   numResultsUpperLimit: 1000, // Implemented pagination
   
   numResultsDefault: 20,
-  allPropertiesUnorderedString: `
-    gender
-    name
-    location
-    email
-    login
-    registered
-    dob
-    phone
-    cell
-    id
-    picture
-    nat
-  `,
+  // allPropertiesUnorderedString: `
+  //   gender
+  //   name
+  //   location
+  //   email
+  //   login
+  //   registered
+  //   dob
+  //   phone
+  //   cell
+  //   id
+  //   picture
+  //   nat
+  // `,
   allPropertiesString: `
     name
     gender
