@@ -39,16 +39,27 @@ const getRebuiltData = (userObj: object | null) => {
   }
 
   const builtObj = {};
+  // const builtObj = Object.create(null);
+  let tempValue;
 
   if (typeof userObj === 'object') {
     Object.entries(userObj).forEach( ([key, value]) => {
       builtStr = "";
+      tempValue = value;
 
-      if (value !== null && typeof value === 'object') {
-        builtObj[key] = removeTrailingCommaSpace(extractData(value))
-      } else {
-        builtObj[key] = value;
+      if (tempValue !== null && typeof tempValue === 'object') {
+        tempValue = removeTrailingCommaSpace(extractData(tempValue));
       }
+
+      if (typeof key === "string") {
+        builtObj[key] = tempValue;
+      }
+
+      // if (value !== null && typeof value === 'object') {
+      //   builtObj[key] = removeTrailingCommaSpace(extractData(value))
+      // } else {
+      //   builtObj[key] = value;
+      // }
 
       // builtObj[key] = (value !== null && typeof value === 'object')
       //   ? removeTrailingCommaSpace(extractData(value))
