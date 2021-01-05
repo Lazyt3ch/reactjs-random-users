@@ -15,18 +15,16 @@ const getAllProperties = (constants: Constants): string[] => {
     .split(/\s+/);
 }
 
-// interface Statuses {
-//   [key: string]: boolean;
-// }
-
-const getValidProperties = (statuses) => {
-  if (!Object.keys(statuses).length) {
-    return [];
+const getValidProperties = (statuses: [string, boolean][]) => {
+  // if (!Object.keys(statuses).length) {
+  if (!statuses.length) {
+      return [];
   }
 
-  const selectedProperties = Object.entries(statuses)
-    .filter( ([_, value]) => value === true )
-    .map( ([key, value]) => key );
+  // const selectedProperties = Object.entries(statuses)
+  const selectedProperties = statuses
+    .filter( ([_, value]) => value)
+    .map( ([key, _]) => key );
   
   return fixProperties(selectedProperties);
 };
