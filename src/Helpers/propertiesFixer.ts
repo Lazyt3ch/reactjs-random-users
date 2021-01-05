@@ -15,11 +15,11 @@ const getAllProperties = (constants: Constants): string[] => {
     .split(/\s+/);
 }
 
-interface Statuses {
+// interface Statuses {
+//   [key: string]: boolean;
+// }
 
-}
-
-const getValidProperties = statuses => {
+const getValidProperties = (statuses) => {
   if (!Object.keys(statuses).length) {
     return [];
   }
