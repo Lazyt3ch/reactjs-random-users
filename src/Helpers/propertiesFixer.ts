@@ -1,14 +1,15 @@
-import constants, {Constants} from "../constants";
+import constants from "../constants";
+
+const {allPropertiesString} = constants;
 
 const fixProperties = (properties: string[]): string[] => {
-  const allProperties = getAllProperties(constants);
+  const allProperties = getAllProperties();
   return properties
     .map( p => p.toLowerCase() )
     .filter( p => allProperties.includes(p) );
 };
 
-const getAllProperties = (constants: Constants): string[] => {
-  const {allPropertiesString} = constants;
+const getAllProperties = (): string[] => {
   return allPropertiesString
     .trim()
     .toLowerCase()
