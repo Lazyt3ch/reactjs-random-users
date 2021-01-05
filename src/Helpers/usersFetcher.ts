@@ -1,5 +1,10 @@
 import buildUrl from "./urlBuilder";
 
+// interface Results {
+//   resultsArr?: [];
+//   errorMessage?: string;
+// }
+
 async function fetchUsers(numResults: number, properties=[], isToInclude=true) {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
   let resultsArr = null;
