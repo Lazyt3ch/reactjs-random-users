@@ -10,14 +10,15 @@ interface UserObj {
   [key: string]: string | object;
 }
 
-const getRebuiltData = (userObj: UserObj | null): object => {
-  // Now using brackets instead of parentheses as subproperty grouping characters,
+// const getRebuiltData = (userObj: UserObj | null): object => {
+const getRebuiltData = (userObj: UserObj): object => {
+    // Now using brackets instead of parentheses as subproperty grouping characters,
   // because parentheses sometimes are present in retrieved users data
   let builtStr: string;
 
-  if (userObj === null) {
-    return {};
-  }
+  // if (userObj === null) {
+  //   return {};
+  // }
 
   const extractData = (currentObj: object, level=1): string => {
     let hitBottom = false;
@@ -42,21 +43,23 @@ const getRebuiltData = (userObj: UserObj | null): object => {
     return builtStr;
   }
 
-  const builtObj: object = {};
-  // const builtObj = Object.create(null);
+  // const builtObj: object = { dummyValue: 0 };
+  const builtObj = {};
   let tempValue;
 
   Object.entries(userObj).forEach( ([key, value]) => {
     builtStr = "";
     tempValue = value;
 
-    if (tempValue !== null && typeof tempValue === 'object') {
+    if (typeof tempValue !== 'string') {
       tempValue = removeTrailingCommaSpace(extractData(tempValue));
     }
 
-    if (typeof tempValue === "string") {
-      builtObj[key] = tempValue;
-    }
+    builtObj[key] = tempValue;
+
+    // if (typeof tempValue === "string") {
+    //   builtObj[key] = tempValue;
+    // }
 
     // if (value !== null && typeof value === 'object') {
     //   builtObj[key] = removeTrailingCommaSpace(extractData(value))
@@ -72,7 +75,7 @@ const getRebuiltData = (userObj: UserObj | null): object => {
   return builtObj;
 }
 
-const getRebuiltResults = (results: [], validProperties: string[]): [] => {
+const getRebuiltResults = (results: UserObj[], validProperties: string[]): [] => {
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
 
   // Row 0 contains property names (it's like a table header)
