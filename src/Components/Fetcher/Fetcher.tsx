@@ -1,7 +1,7 @@
 import React from "react";
 
 import FetcherNumResults from "./FetcherNumResults.js";
-import FetcherProperties from "./FetcherProperties.tsx";
+import FetcherProperties from "./FetcherProperties";
 import FetcherLaunch from "./FetcherLaunch.js";
 import PropTypes from "prop-types";
 
