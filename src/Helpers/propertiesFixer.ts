@@ -1,6 +1,6 @@
 import constants, {Constants} from "../constants";
 
-const fixProperties = (properties: string[]) => {
+const fixProperties = (properties: string[]): string[] => {
   const allProperties = getAllProperties(constants);
   return properties
     .map( p => p.toLowerCase() )
