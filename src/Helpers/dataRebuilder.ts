@@ -6,40 +6,37 @@ const addTrailingCommaSpace = (str: string): string => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-
-const extractData = (currentObj: object, level=1): string => {
-  let hitBottom = false;
-
-  Object.entries(currentObj).forEach( ([key, value]) => {
-    if (value !== null && typeof value === 'object') {
-      builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
-      extractData(value, level + 1);
-    } else {
-      // <undefined> will replace an empry string, and <null> will replace a null value
-      builtStr = `${builtStr}${key.length ? key : "<undefined>"}: ${value ? value: "<null>"}, `;
-      hitBottom = true;
-    }
-  });
-
-  if (hitBottom) {
-    if (level > 1) {
-      builtStr = `${removeTrailingCommaSpace(builtStr)}${"]".repeat(level - 1)}, `;
-    }
-  }
-  
-  return builtStr;
-}
-
-const getRebuiltData = (userObj: object | null | undefined) => {
+const getRebuiltData = (userObj: object | null) => {
   // Now using brackets instead of parentheses as subproperty grouping characters,
   // because parentheses sometimes occur in retrieved users data
   let builtStr: string;
 
-  if (userObj === null || userObj === undefined) {
+  if (userObj === null) {
     return {};
   }
 
+  const extractData = (currentObj: object, level=1): string => {
+    let hitBottom = false;
 
+    Object.entries(currentObj).forEach( ([key, value]) => {
+      if (value !== null && typeof value === 'object') {
+        builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
+        extractData(value, level + 1);
+      } else {
+        // <undefined> will replace an empry string, and <null> will replace a null value
+        builtStr = `${builtStr}${key.length ? key : "<undefined>"}: ${value ? value: "<null>"}, `;
+        hitBottom = true;
+      }
+    });
+
+    if (hitBottom) {
+      if (level > 1) {
+        builtStr = `${removeTrailingCommaSpace(builtStr)}${"]".repeat(level - 1)}, `;
+      }
+    }
+    
+    return builtStr;
+  }
 
   const builtObj = {};
 
@@ -62,7 +59,7 @@ const getRebuiltData = (userObj: object | null | undefined) => {
   }
 }
 
-const getRebuiltResults = (results, validProperties) => {
+const getRebuiltResults = (results: [], validProperties: string[]): [] => {
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
 
   // Row 0 contains property names (it's like a table header)
