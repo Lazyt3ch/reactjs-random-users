@@ -15,7 +15,7 @@ const getAllProperties = (constants: Constants): string[] => {
     .split(/\s+/);
 }
 
-const getValidProperties = (statuses: [string, boolean][]) => {
+const getValidProperties = (statuses: [string, boolean][]): string[] => {
   // if (!Object.keys(statuses).length) {
   if (!statuses.length) {
       return [];
@@ -29,7 +29,7 @@ const getValidProperties = (statuses: [string, boolean][]) => {
   return fixProperties(selectedProperties);
 };
 
-const getUpdatedStatuses = (allProperties: string[], status: boolean) => {
+const getUpdatedStatuses = (allProperties: string[], status: boolean): [string, boolean][] => {
   // return allProperties.reduce( (acc, property) => ({...acc, [property]: status}), {});
   // return allProperties.reduce( (acc, property) => [ ...acc, [property, status] ], []);
   return allProperties.map( property => [property, status] );
