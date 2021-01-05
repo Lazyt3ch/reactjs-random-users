@@ -4,22 +4,18 @@ import SpacedButton from "../SpacedButton/SpacedButton.js";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 import PropTypes from "prop-types";
 
-function FetcherProperties(props) {
-  const {
-    allProperties,
+function FetcherProperties(props: object) {
+  const {allProperties}: {allProperties: string[]} = props;
+  const {statuses}: {statuses: [string, boolean][]} = props;
+  const {setStatuses} = props;
+  const {setValidProperties} = props;
 
-    statuses,     
-    setStatuses,
-
-    setValidProperties,
-  } = props;
-
-  const handleUnselectAll = (event) => {
+  const handleUnselectAll = () => {
     setStatuses(getUpdatedStatuses(allProperties, false));
     setValidProperties([]);
   };
 
-  const handleSelectAll = (event) => {
+  const handleSelectAll = () => {
     setStatuses(getUpdatedStatuses(allProperties, true));
     setValidProperties(allProperties);
   };
