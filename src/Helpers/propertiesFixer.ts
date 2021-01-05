@@ -32,8 +32,7 @@ const getValidProperties = statuses => {
 };
 
 const getUpdatedStatuses = (allProperties: string[], status: boolean) => {
-  return allProperties.reduce( (acc, property) => 
-    ({...acc, [property]: status}), {});
+  return allProperties.reduce( (acc, property) => ({...acc, [property]: status}), {});
 };
 
 export default fixProperties;
