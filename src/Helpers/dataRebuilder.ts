@@ -71,7 +71,9 @@ const getRebuiltResults = (results: [], validProperties: string[]): [] => {
     rowArr = [];
 
     for (const p of validProperties) {
-      rowArr.push(rowObj[p]);
+      if (rowObj !== undefined && rowObj !== null) {
+        rowArr.push(rowObj[p]);
+      }
     }
 
     results2D.push(rowArr);
