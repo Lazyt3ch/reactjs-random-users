@@ -27,7 +27,7 @@ import {
 
 
 function App() {
-  const {numResultsDefault} = constants;
+  const {numResultsDefault}: {numResultsDefault: number} = constants;
   const [numResults, setNumResults] = useState(numResultsDefault);
 
   const allProperties = getAllProperties(constants);
