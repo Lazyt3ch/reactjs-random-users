@@ -6,17 +6,17 @@ const addTrailingCommaSpace = (str: string): string => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-const getRebuiltData = (userObj, addTags) => {
+const getRebuiltData = (userObj: object | null | undefined): object => {
   // Now using brackets instead of parentheses as subproperty grouping characters,
   // because parentheses sometimes occur in retrieved users data
   const builtObj = {};
-  let builtStr;
+  let builtStr: string;
 
   if (typeof userObj !== 'object') {
-    return builtObj;
+    return {};
   }
 
-  const extractData = (currentObj, level=1) => {
+  const extractData = (currentObj: object, level=1): string => {
     let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
@@ -39,14 +39,16 @@ const getRebuiltData = (userObj, addTags) => {
     return builtStr;
   }
 
-  Object.entries(userObj).forEach( ([key, value]) => {
-    builtStr = "";
-    builtObj[key] = typeof value === 'object' 
-      ? removeTrailingCommaSpace(extractData(value))
-      : value;
-  });
-  
-  return builtObj;
+  if (typeof userObj === 'object') {
+    Object.entries(userObj).forEach( ([key, value]) => {
+      builtStr = "";
+      builtObj[key] = typeof value === 'object' 
+        ? removeTrailingCommaSpace(extractData(value))
+        : value;
+    });
+    
+    return builtObj;
+  }
 }
 
 const getRebuiltResults = (results, validProperties) => {
