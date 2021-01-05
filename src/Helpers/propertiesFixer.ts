@@ -16,12 +16,10 @@ const getAllProperties = (constants: Constants): string[] => {
 }
 
 const getValidProperties = (statuses: [string, boolean][]): string[] => {
-  // if (!Object.keys(statuses).length) {
   if (!statuses.length) {
       return [];
   }
 
-  // const selectedProperties = Object.entries(statuses)
   const selectedProperties = statuses
     .filter( ([_, value]) => value)
     .map( ([key, _]) => key );
@@ -30,8 +28,6 @@ const getValidProperties = (statuses: [string, boolean][]): string[] => {
 };
 
 const getUpdatedStatuses = (allProperties: string[], status: boolean): [string, boolean][] => {
-  // return allProperties.reduce( (acc, property) => ({...acc, [property]: status}), {});
-  // return allProperties.reduce( (acc, property) => [ ...acc, [property, status] ], []);
   return allProperties.map( property => [property, status] );
 };
 
