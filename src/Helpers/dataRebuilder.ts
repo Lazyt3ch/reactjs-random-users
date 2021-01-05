@@ -1,8 +1,8 @@
-const removeTrailingCommaSpace = str => {
+const removeTrailingCommaSpace = (str: string): string => {
   return str.endsWith(", ") ? str.slice(0, -2) : str;
 };
 
-const addTrailingCommaSpace = str => {
+const addTrailingCommaSpace = (str: string): string => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
