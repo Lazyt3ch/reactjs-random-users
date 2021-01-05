@@ -5,7 +5,21 @@ import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
-function FetcherLaunch(props) {
+interface Props {
+  numResults: number; 
+
+  validProperties: string[];
+  
+  setResults: object;
+  
+  resultsFetchCount: number; 
+  setResultsFetchCount: object;
+
+  setActivePageNumber: object;
+}
+
+
+function FetcherLaunch(props: Props) {
   const {
     numResults, 
 
@@ -56,7 +70,7 @@ function FetcherLaunch(props) {
 
 
   async function handleFetchUsers() {    
-    if (numResults < 1 || validProperties < 1) {
+    if (numResults < 1 || validProperties.length < 1) {
       return;
     }
 
