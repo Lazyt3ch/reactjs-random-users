@@ -1,4 +1,12 @@
-const constants = {
+interface Constants {
+  usersPerPage: number;
+  numResultsLowerLimit: number;
+  numResultsUpperLimit: number;
+  numResultsDefault: number;
+  allPropertiesString: string;
+}
+
+const constants: Constants = {
   usersPerPage: 50,
 
   numResultsLowerLimit: 1,
