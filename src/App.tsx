@@ -32,7 +32,7 @@ function App() {
 
   const allProperties = getAllProperties(constants);
 
-  const [statuses, setStatuses] = useState(getUpdatedStatuses(false, allProperties));
+  const [statuses, setStatuses] = useState(getUpdatedStatuses(allProperties, false));
   const [validProperties, setValidProperties] = useState(getValidProperties(statuses));
 
   const [results, setResults] = useState([]);

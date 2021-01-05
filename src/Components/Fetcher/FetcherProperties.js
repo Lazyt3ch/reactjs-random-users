@@ -15,12 +15,12 @@ function FetcherProperties(props) {
   } = props;
 
   const handleUnselectAll = (event) => {
-    setStatuses(getUpdatedStatuses(false, allProperties));
+    setStatuses(getUpdatedStatuses(allProperties, false));
     setValidProperties([]);
   };
 
   const handleSelectAll = (event) => {
-    setStatuses(getUpdatedStatuses(true, allProperties));
+    setStatuses(getUpdatedStatuses(allProperties, true));
     setValidProperties(allProperties);
   };
 

@@ -16,7 +16,7 @@ const getAllProperties = (constants: Constants): string[] => {
 }
 
 interface Statuses {
-  
+
 }
 
 const getValidProperties = statuses => {
@@ -31,11 +31,9 @@ const getValidProperties = statuses => {
   return fixProperties(selectedProperties);
 };
 
-const getUpdatedStatuses = (status, allProperties) => {
-  const statusProperties = allProperties.reduce( (acc, property) => 
+const getUpdatedStatuses = (allProperties: string[], status: boolean) => {
+  return allProperties.reduce( (acc, property) => 
     ({...acc, [property]: status}), {});
-
-  return statusProperties;
 };
 
 export default fixProperties;
