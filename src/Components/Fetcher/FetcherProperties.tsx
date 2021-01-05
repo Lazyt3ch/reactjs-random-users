@@ -4,7 +4,15 @@ import SpacedButton from "../SpacedButton/SpacedButton.js";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 import PropTypes from "prop-types";
 
-function FetcherProperties(props: object) {
+interface Props {
+  allProperties: string[];
+
+  statuses: [string, boolean][];
+  setStatuses: function;
+  setValidProperties: function;
+}
+
+function FetcherProperties(props: Props) {
   const {allProperties}: {allProperties: string[]} = props;
   const {statuses}: {statuses: [string, boolean][]} = props;
   const {setStatuses} = props;
