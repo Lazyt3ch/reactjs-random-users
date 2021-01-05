@@ -1,4 +1,4 @@
-interface Constants {
+export interface Constants {
   usersPerPage: number;
   numResultsLowerLimit: number;
   numResultsUpperLimit: number;
