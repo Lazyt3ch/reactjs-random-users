@@ -1,6 +1,6 @@
 import React, {useState, useLayoutEffect} from "react";
-import getGridColumnsFormula from "../../Helpers/GridCalculator.js";
-import isBadData from "../../Helpers/BadDataChecker.js";
+import getGridColumnsFormula from "../../Helpers/gridCalculator";
+import isBadData from "../../Helpers/badDataChecker";
 import UsersGridItem from "./UsersGridItem.js";
 import Pagination from "../Pagination/Pagination.js";
 import constants from "../../constants.js";

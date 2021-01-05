@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import fetchUsers from "../../Helpers/UsersFetcher.js";
+import fetchUsers from "../../Helpers/usersFetcher";
 import {useHistory} from "react-router-dom";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
 import {Alert} from '@material-ui/lab';

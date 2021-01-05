@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import constants from "../../constants.js";
-import fixNumResults from "../../Helpers/NumResultsFixer.js";
+import fixNumResults from "../../Helpers/numResultsFixer";
 import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
 import PropTypes from "prop-types";

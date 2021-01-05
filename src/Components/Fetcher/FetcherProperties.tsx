@@ -1,5 +1,5 @@
 import React from "react";
-import {getUpdatedStatuses} from "../../Helpers/PropertiesFixer";
+import {getUpdatedStatuses} from "../../Helpers/propertiesFixer";
 import SpacedButton from "../SpacedButton/SpacedButton.js";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 import PropTypes from "prop-types";

@@ -3,19 +3,19 @@ import React, {useState, useEffect} from "react";
 import Scroller from './Components/Scroller/Scroller.js';
 import Nav from "./Components/Nav/Nav.js";
 import Home from "./Components/Home/Home.js";
-import Fetcher from "./Components/Fetcher/Fetcher.js";
+import Fetcher from "./Components/Fetcher/Fetcher";
 import UsersGrid from "./Components/UserGrid/UsersGrid.js";
 
-import getRebuiltResults from "./Helpers/DataRebuilder.js";
-import isBadData from "./Helpers/BadDataChecker.js";
+import getRebuiltResults from "./Helpers/dataRebuilder";
+import isBadData from "./Helpers/badDataChecker";
 
-import constants from "./constants.js";
+import constants from "./constants.ts";
 
 import { 
   getAllProperties, 
   getUpdatedStatuses,
   getValidProperties,
-} from "./Helpers/PropertiesFixer.js";
+} from "./Helpers/propertiesFixer";
 
 import './App.css';
 
