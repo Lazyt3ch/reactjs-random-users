@@ -1,8 +1,8 @@
 import React from "react";
 
-import FetcherNumResults from "./FetcherNumResults.js";
+import FetcherNumResults from "./FetcherNumResults";
 import FetcherProperties from "./FetcherProperties";
-import FetcherLaunch from "./FetcherLaunch.js";
+import FetcherLaunch from "./FetcherLaunch";
 import PropTypes from "prop-types";
 
 function Fetcher(props) {
