@@ -7,15 +7,12 @@ const fixProperties = (properties) => {
     .filter( p => allProperties.includes(p) );
 };
 
-const getAllProperties = (constants: Constants) => {
+const getAllProperties = (constants: Constants): string[] => {
   const {allPropertiesString} = constants;
-  
-  const allProperties = allPropertiesString
+  return allPropertiesString
     .trim()
     .toLowerCase()
     .split(/\s+/);
-    
-  return allProperties;
 }
 
 const getValidProperties = statuses => {
