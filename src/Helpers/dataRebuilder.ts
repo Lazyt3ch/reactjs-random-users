@@ -6,7 +6,11 @@ const addTrailingCommaSpace = (str: string): string => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-const getRebuiltData = (userObj: object | null): object => {
+interface UserObj {
+  [key: string]: string | object;
+}
+
+const getRebuiltData = (userObj: UserObj | null): object => {
   // Now using brackets instead of parentheses as subproperty grouping characters,
   // because parentheses sometimes are present in retrieved users data
   let builtStr: string;
@@ -50,7 +54,7 @@ const getRebuiltData = (userObj: object | null): object => {
       tempValue = removeTrailingCommaSpace(extractData(tempValue));
     }
 
-    if (typeof key === "string" && typeof tempValue === "string") {
+    if (typeof tempValue === "string") {
       builtObj[key] = tempValue;
     }
 
