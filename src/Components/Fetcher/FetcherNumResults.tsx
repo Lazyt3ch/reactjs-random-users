@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import constants from "../../constants.js";
+import constants from "../../constants";
 import fixNumResults from "../../Helpers/numResultsFixer";
 import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';

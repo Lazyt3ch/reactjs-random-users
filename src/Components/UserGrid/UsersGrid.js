@@ -3,7 +3,7 @@ import getGridColumnsFormula from "../../Helpers/gridCalculator";
 import isBadData from "../../Helpers/badDataChecker";
 import UsersGridItem from "./UsersGridItem.js";
 import Pagination from "../Pagination/Pagination.js";
-import constants from "../../constants.js";
+import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
 import PropTypes from "prop-types";
 
