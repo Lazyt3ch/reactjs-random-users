@@ -1,11 +1,11 @@
 import buildUrl from "./urlBuilder";
 
-async function fetchUsers(numResults, properties=[], isToInclude=true) {
+async function fetchUsers(numResults: number, properties=[], isToInclude=true) {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
   let resultsArr = null;
   let errorMessage = "";
 
-  const getErrorText = text => 
+  const getErrorText = (text: string) => 
     text
       ? `An error occurred: ${text}`
       : "An unspecified error occurred";
