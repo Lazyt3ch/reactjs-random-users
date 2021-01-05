@@ -1,4 +1,4 @@
-import isBadData from "./BadDataChecker.js";
+import isBadData from "./badDataChecker";
 
 const getGridColumnsFormula = (results2D) => {
   if (isBadData(results2D) || isBadData(results2D[0])) {
