@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import fetchUsers from "../../Helpers/usersFetcher";
 import {useHistory} from "react-router-dom";
-import SpacedButton from "../SpacedButton/SpacedButton.js";
+import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
 import PropTypes from "prop-types";
 

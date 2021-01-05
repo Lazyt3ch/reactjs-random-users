@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 
-import Scroller from './Components/Scroller/Scroller.js';
-import Nav from "./Components/Nav/Nav.js";
-import Home from "./Components/Home/Home.js";
+import Scroller from './Components/Scroller/Scroller';
+import Nav from "./Components/Nav/Nav";
+import Home from "./Components/Home/Home";
 import Fetcher from "./Components/Fetcher/Fetcher";
-import UsersGrid from "./Components/UserGrid/UsersGrid.js";
+import UsersGrid from "./Components/UserGrid/UsersGrid";
 
 import getRebuiltResults from "./Helpers/dataRebuilder";
 import isBadData from "./Helpers/badDataChecker";

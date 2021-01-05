@@ -1,7 +1,7 @@
 import React from "react";
 import {getUpdatedStatuses} from "../../Helpers/propertiesFixer";
-import SpacedButton from "../SpacedButton/SpacedButton.js";
-import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
+import SpacedButton from "../SpacedButton/SpacedButton";
+import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 
 interface Props {

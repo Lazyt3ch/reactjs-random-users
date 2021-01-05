@@ -1,10 +1,10 @@
 import React, {useState, useLayoutEffect} from "react";
 import getGridColumnsFormula from "../../Helpers/gridCalculator";
 import isBadData from "../../Helpers/badDataChecker";
-import UsersGridItem from "./UsersGridItem.js";
-import Pagination from "../Pagination/Pagination.js";
+import UsersGridItem from "./UsersGridItem";
+import Pagination from "../Pagination/Pagination";
 import constants from "../../constants";
-import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox.js";
+import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 
 function UsersGrid(props) {
