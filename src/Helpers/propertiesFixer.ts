@@ -1,6 +1,6 @@
 import constants, {Constants} from "../constants";
 
-const fixProperties = (properties) => {
+const fixProperties = (properties: string[]) => {
   const allProperties = getAllProperties(constants);
   return properties
     .map( p => p.toLowerCase() )
@@ -13,6 +13,10 @@ const getAllProperties = (constants: Constants): string[] => {
     .trim()
     .toLowerCase()
     .split(/\s+/);
+}
+
+interface Statuses {
+  
 }
 
 const getValidProperties = statuses => {
