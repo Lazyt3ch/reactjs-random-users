@@ -94,10 +94,11 @@ function UsersGrid(props: Props) {
   
 
   function handleBriefResultsChange(event: React.SyntheticEvent<EventTarget>): void {
-    const targetElement: HTMLInputElement = event.target; 
-    // setIsBriefResults(event.target.checked);    
-    setIsBriefResults(targetElement.checked);   
+    // const targetElement: EventTarget = event.target; 
+    setIsBriefResults(event.target.checked);    
+    // setIsBriefResults(targetElement.checked);   
   }
+
 
   return (
     <>
