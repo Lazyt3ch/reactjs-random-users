@@ -1,8 +1,10 @@
 import buildUrl from "./urlBuilder";
+import {DeepObj} from "./dataRebuilder";
+
 
 interface DeserializedData {
   error?: string;
-  results?: object[];
+  results?: DeepObj[];
 }
 
 interface Results {
