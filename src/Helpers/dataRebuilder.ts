@@ -83,3 +83,4 @@ const getRebuiltResults = (results: DeepObj[], validProperties: string[]): strin
 };
 
 export default getRebuiltResults;
+export type {DeepObj};

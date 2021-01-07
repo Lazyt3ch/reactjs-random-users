@@ -25,6 +25,9 @@ import {
   Route,
 } from "react-router-dom";
 
+interface DeepObj {
+  [key: string]: string | object;
+}
 
 function App() {
   const {numResultsDefault} = constants;
@@ -35,7 +38,7 @@ function App() {
   const [statuses, setStatuses] = useState(getUpdatedStatuses(allProperties, false));
   const [validProperties, setValidProperties] = useState(getValidProperties(statuses));
 
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<DeepObj[]>([]);
 
   const [results2D, setResults2D] = useState([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState("");
