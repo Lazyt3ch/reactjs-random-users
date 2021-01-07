@@ -12,15 +12,15 @@ interface Props {
 
 function FetcherNumResults(props: Props) {
   const {
+    numResults,
+    setNumResults,
+  } = props;
+
+  const {
     numResultsLowerLimit,
     numResultsUpperLimit,
     numResultsDefault,
   } = constants;
-
-  const {
-    numResults,
-    setNumResults,
-  } = props;
 
   const options = [
     20,
