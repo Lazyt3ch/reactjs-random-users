@@ -5,7 +5,33 @@ import FetcherProperties from "./FetcherProperties";
 import FetcherLaunch from "./FetcherLaunch";
 import PropTypes from "prop-types";
 
-function Fetcher(props) {
+import {DeepObj} from "./../../Helpers/dataRebuilder";
+
+interface Props {
+    // FetcherNumResults:
+    numResults: number;
+    setNumResults: Function;
+
+    // FetcherProperties:
+    allProperties: string[];
+
+    statuses: [string, boolean][];
+    setStatuses: Function;
+    
+    validProperties: string[];
+    setValidProperties: Function;
+    
+    // FetcherLaunch:
+    results: DeepObj[];
+    setResults: Function;
+
+    resultsFetchCount: number;
+    setResultsFetchCount: Function;
+
+    setActivePageNumber: Function;
+}
+
+function Fetcher(props: Props) {
   const {
     // FetcherNumResults:
     numResults, 
