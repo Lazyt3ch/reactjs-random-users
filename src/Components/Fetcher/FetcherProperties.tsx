@@ -53,13 +53,13 @@ function FetcherProperties(props: Props) {
     updateValidProperties(statusesNew);
   };
 
-  const handleInvertSelection = (event) => {
-    const statusesNew = Object.assign({}, statuses);
+  const handleInvertSelection = () => {
+    // const statusesNew = Object.assign({}, statuses);
+    // for (const property of allProperties) {
+    //   statusesNew[property] = !statusesNew[property];
+    // }
 
-    for (const property of allProperties) {
-      statusesNew[property] = !statusesNew[property];
-    }
-
+    const statusesNew = statuses.map( ([property, status]) => [property, !status] );
     updateStatusesAndProperties(statusesNew);
   };
   
