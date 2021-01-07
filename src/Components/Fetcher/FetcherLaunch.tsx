@@ -5,12 +5,14 @@ import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
+import {DeepObj} from "./../../Helpers/dataRebuilder";
+
 interface Props {
   numResults: number; 
 
   validProperties: string[];
   
-  setResults: React.SetStateAction<string[][]>;
+  setResults: React.SetStateAction<DeepObj[]>;
   
   // resultsFetchCount: number; 
   // setResultsFetchCount: (arg: number) => void;
