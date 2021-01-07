@@ -131,9 +131,6 @@ FetcherLaunch.propTypes = {
   validProperties: PropTypes.array.isRequired,
   
   setResults: PropTypes.func.isRequired,
-  
-  resultsFetchCount: PropTypes.number,
-  setResultsFetchCount: PropTypes.func,
 
   setActivePageNumber: PropTypes.func.isRequired,
 };

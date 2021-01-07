@@ -88,7 +88,7 @@ Fetcher.propTypes = {
     // FetcherProperties:
     allProperties: PropTypes.array.isRequired,
 
-    statuses: PropTypes.object.isRequired,
+    statuses: PropTypes.array.isRequired,
     setStatuses: PropTypes.func.isRequired,
     
     validProperties: PropTypes.array.isRequired,
@@ -96,9 +96,6 @@ Fetcher.propTypes = {
     
     // FetcherLaunch:
     setResults: PropTypes.func.isRequired,
-
-    resultsFetchCount: PropTypes.number,
-    setResultsFetchCount: PropTypes.func,
 
     setActivePageNumber: PropTypes.func.isRequired,
 };
