@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 import {DeepObj} from "./../../Helpers/dataRebuilder";
 
+
 interface Props {
     // FetcherNumResults:
     numResults: number;
@@ -31,8 +32,9 @@ interface Props {
     setActivePageNumber: React.SetStateAction<number>;
 }
 
+
 function Fetcher(props: Props) {
-  const {
+    const {
     // FetcherNumResults:
     numResults, 
     setNumResults,
