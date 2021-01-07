@@ -17,7 +17,7 @@ interface Props {
   // resultsFetchCount: number; 
   // setResultsFetchCount: (arg: number) => void;
 
-  setActivePageNumber: (arg: number) => void;
+  setActivePageNumber: React.SetStateAction<number>;
 }
 
 
