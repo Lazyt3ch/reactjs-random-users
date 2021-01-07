@@ -7,7 +7,7 @@ import Fetcher from "./Components/Fetcher/Fetcher";
 import UsersGrid from "./Components/UserGrid/UsersGrid";
 
 import getRebuiltResults from "./Helpers/dataRebuilder";
-import isBadData from "./Helpers/badDataChecker";
+import isNonEmptyArray from "./Helpers/badDataChecker";
 
 import constants from "./constants";
 
@@ -48,7 +48,7 @@ function App() {
   const [prevPagePath, setPrevPagePath] = useState("");
 
   useEffect( () => {
-    if (isBadData(results)) {
+    if (!isNonEmptyArray(results)) {
       return;
     }
 
@@ -56,7 +56,7 @@ function App() {
       ? getRebuiltResults(results, validProperties)
       : [];
 
-    if (!isBadData(results2DNew) && results2DNew.length) {
+    if (isNonEmptyArray(results2DNew) && results2DNew.length) {
       setResults2D(results2DNew);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,7 +77,7 @@ function App() {
   
   
   useEffect( () => {
-    if (!totalPages && !isBadData(results)) {
+    if (!totalPages && isNonEmptyArray(results)) {
       return;
     }
 
