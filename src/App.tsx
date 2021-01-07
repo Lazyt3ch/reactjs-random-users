@@ -6,7 +6,7 @@ import Home from "./Components/Home/Home";
 import Fetcher from "./Components/Fetcher/Fetcher";
 import UsersGrid from "./Components/UserGrid/UsersGrid";
 
-import getRebuiltResults from "./Helpers/dataRebuilder";
+import getRebuiltResults, {DeepObj} from "./Helpers/dataRebuilder";
 import isNonEmptyArray from "./Helpers/badDataChecker";
 
 import constants from "./constants";
@@ -24,10 +24,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-
-interface DeepObj {
-  [key: string]: string | object;
-}
 
 function App() {
   const {numResultsDefault} = constants;
