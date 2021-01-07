@@ -12,7 +12,7 @@ interface Props {
   // FetcherNumResults:
   numResults: number;
   // setNumResults: React.SetStateAction<number>;
-  setNumResults: React.SetStateAction<number>;
+  setNumResults: React.Dispatch<React.SetStateAction<number>>;
 
   // FetcherProperties:
   allProperties: string[];

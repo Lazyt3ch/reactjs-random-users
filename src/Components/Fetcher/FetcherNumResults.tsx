@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 interface Props {
   numResults: number;
-  setNumResults: React.SetStateAction<number>;
+  setNumResults: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function FetcherNumResults(props: Props) {
