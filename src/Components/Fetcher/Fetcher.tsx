@@ -11,7 +11,6 @@ import {DeepObj} from "./../../Helpers/dataRebuilder";
 interface Props {
   // FetcherNumResults:
   numResults: number;
-  // setNumResults: React.SetStateAction<number>;
   setNumResults: React.Dispatch<React.SetStateAction<number>>;
 
   // FetcherProperties:
@@ -19,22 +18,14 @@ interface Props {
 
   statuses: [string, boolean][];
   setStatuses: React.Dispatch<React.SetStateAction<[string, boolean][]>>;
-  // setStatuses: Function;
   
   validProperties: string[];
   setValidProperties: React.Dispatch<React.SetStateAction<string[]>>;
-  // setValidProperties: Function;
   
   // FetcherLaunch:
-  // results: DeepObj[];
   setResults: React.Dispatch<React.SetStateAction<DeepObj[]>>;
-  // setResults: Function;
-
-  // resultsFetchCount: number;
-  // setResultsFetchCount: React.SetStateAction<number>;
 
   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
-  // setActivePageNumber: Function;
 }
 
 
@@ -54,11 +45,7 @@ function Fetcher(props: Props) {
     setValidProperties,
     
     // FetcherLaunch:
-    // results, 
     setResults,
-
-    // resultsFetchCount, 
-    // setResultsFetchCount,
 
     setActivePageNumber,
   } = props;
@@ -77,7 +64,6 @@ function Fetcher(props: Props) {
         statuses={statuses}
         setStatuses={setStatuses}
         
-        // validProperties={validProperties}
         setValidProperties={setValidProperties}
       />
       
@@ -86,11 +72,7 @@ function Fetcher(props: Props) {
         
         validProperties={validProperties}
         
-        // results={results}
         setResults={setResults}
-
-        // resultsFetchCount={resultsFetchCount} 
-        // setResultsFetchCount={setResultsFetchCount}    
 
         setActivePageNumber={setActivePageNumber}
       />
@@ -113,7 +95,6 @@ Fetcher.propTypes = {
     setValidProperties: PropTypes.func.isRequired,
     
     // FetcherLaunch:
-    // results: PropTypes.array.isRequired,
     setResults: PropTypes.func.isRequired,
 
     resultsFetchCount: PropTypes.number,

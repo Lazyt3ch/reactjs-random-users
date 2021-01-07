@@ -23,6 +23,7 @@ function FetcherProperties(props: Props) {
     setValidProperties,
   } = props;
 
+
   const handleUnselectAll = () => {
     setStatuses(getUpdatedStatuses(allProperties, false));
     setValidProperties([]);
@@ -50,7 +51,6 @@ function FetcherProperties(props: Props) {
       ([property, status]) => [property, !status] );
     updateStatusesAndProperties(statusesNew);
   };
-
   
   const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {checked, name} = event.target;
@@ -89,8 +89,6 @@ function FetcherProperties(props: Props) {
                 name={property}
                 color="primary"
                 mb={"0px"}
-                // checked={propertiesStatuses[property]} 
-                // checked={statuses.find(item => item[0] === property)[1]}
                 checked={getPropertyStatus(property)}
                 onChange={handleSingleCheck}
               />
@@ -135,7 +133,7 @@ function FetcherProperties(props: Props) {
 FetcherProperties.propTypes = {
   allProperties: PropTypes.array.isRequired,
 
-  statuses: PropTypes.object.isRequired,
+  statuses: PropTypes.array.isRequired,
   setStatuses: PropTypes.func.isRequired,
 
   setValidProperties: PropTypes.func.isRequired,

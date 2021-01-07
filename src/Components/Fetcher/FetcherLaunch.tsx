@@ -6,7 +6,7 @@ import {Alert} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
 import {DeepObj} from "./../../Helpers/dataRebuilder";
-import isNonEmptyArray from "../../Helpers/badDataChecker";
+import isNonEmptyArray from "./../../Helpers/badDataChecker";
 
 type Severity = "success" | "error" | "info" | "warning" | undefined;
 
@@ -16,9 +16,6 @@ interface Props {
   validProperties: string[];
   
   setResults: React.Dispatch<React.SetStateAction<DeepObj[]>>;
-  
-  // resultsFetchCount: number; 
-  // setResultsFetchCount: (arg: number) => void;
 
   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -30,16 +27,13 @@ function FetcherLaunch(props: Props) {
     validProperties, 
     
     setResults,
-    
-    // resultsFetchCount, 
-    // setResultsFetchCount,
 
     setActivePageNumber,
   } = props;
 
-  const [isFetching, setIsFetching] = useState(false);
-  const [fetchAttempted, setFetchAttempted] = useState(false);
-  const [messageAfterFetch, setMessageAfterFetch] = useState("");
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const [fetchAttempted, setFetchAttempted] = useState<boolean>(false);
+  const [messageAfterFetch, setMessageAfterFetch] = useState<string>("");
   
   const history = useHistory();
 
@@ -87,7 +81,6 @@ function FetcherLaunch(props: Props) {
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
-      // setResultsFetchCount(resultsFetchCount + 1);
 
       // Important, otherwise no rows will be displayed in certain cases
       setActivePageNumber(0); // 0 is first page's index
