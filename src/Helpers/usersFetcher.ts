@@ -10,7 +10,8 @@ interface Results {
   errorMessage?: string;
 }
 
-async function fetchUsers(numResults: number, properties=[], isToInclude=true): Promise<Results> {
+async function fetchUsers(
+  numResults: number, properties:string[] = [], isToInclude=true): Promise<Results> {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
   let resultsArr: object[] | undefined = undefined;
   let errorMessage = "";
