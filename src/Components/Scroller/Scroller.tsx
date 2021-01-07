@@ -3,8 +3,20 @@
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import PropTypes from "prop-types";
+
+interface Props {
+  children: JSX.Element;
+
+  scrollTopArr: number[];
+  setScrollTopArr: Function;
+
+  activePageNumber: number;
+
+  prevPagePath: string;
+  setPrevPagePath: Function;
+}
  
-function Scroller(props) { 
+function Scroller(props: Props) { 
   const { 
     children, 
 
