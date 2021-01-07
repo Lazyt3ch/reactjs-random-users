@@ -31,8 +31,8 @@ function FetcherNumResults(props: Props) {
     1000,
   ];
 
-  const [value, setValue] = useState(numResults || numResultsDefault);
-  const [inputValue, setInputValue] = useState((numResults || numResultsDefault).toString());
+  const [value, setValue] = useState<number>(numResults || numResultsDefault);
+  const [inputValue, setInputValue] = useState<string>((numResults || numResultsDefault).toString());
 
   useEffect( 
     () => {
