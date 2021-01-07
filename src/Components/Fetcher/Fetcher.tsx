@@ -26,8 +26,8 @@ interface Props {
     results: DeepObj[];
     setResults: React.SetStateAction<DeepObj[]>;
 
-    resultsFetchCount: number;
-    setResultsFetchCount: React.SetStateAction<number>;
+    // resultsFetchCount: number;
+    // setResultsFetchCount: React.SetStateAction<number>;
 
     setActivePageNumber: React.SetStateAction<number>;
 }
@@ -52,8 +52,8 @@ function Fetcher(props: Props) {
     results, 
     setResults,
 
-    resultsFetchCount, 
-    setResultsFetchCount,
+    // resultsFetchCount, 
+    // setResultsFetchCount,
 
     setActivePageNumber,
   } = props;
