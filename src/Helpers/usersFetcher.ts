@@ -1,13 +1,13 @@
 import buildUrl from "./urlBuilder";
 
+interface DeserializedData {
+  error?: string;
+  results?: object[];
+}
+
 interface Results {
   resultsArr?: object[];
   errorMessage?: string;
-}
-
-interface FetchedData {
-  error?: string;
-  results?: object[];
 }
 
 async function fetchUsers(numResults: number, properties=[], isToInclude=true): Promise<Results> {
@@ -25,7 +25,7 @@ async function fetchUsers(numResults: number, properties=[], isToInclude=true): 
 
     // https://www.tjvantoll.com/2015/09/13/fetch-and-errors/
     if (response.ok) {
-      const data: FetchedData = await response.json();
+      const data: DeserializedData = await response.json();
   
       if (data.error || !data.results || !data.results.length) {
         errorMessage = "The server returned an unspecified error.";
