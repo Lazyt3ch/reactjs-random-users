@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect} from "react";
+import React, {useState, useLayoutEffect, ReactElement, ReactHTMLElement, ReactNode} from "react";
 import getGridColumnsFormula from "../../Helpers/gridCalculator";
 import isNonEmptyArray from "../../Helpers/badDataChecker";
 import UsersGridItem from "./UsersGridItem";
@@ -7,6 +7,11 @@ import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 // import { CheckboxProps } from "@material-ui/core";
+
+// https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
+interface DOMEvent<T extends EventTarget> extends Event {
+  target: T
+}
 
 interface Props {
   results2D: string[][];
@@ -91,14 +96,11 @@ function UsersGrid(props: Props) {
       setGridColumnsFormula(gridColumnsFormulaNew);
     }
   }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
-  
 
-  function handleBriefResultsChange(event: React.SyntheticEvent<EventTarget>): void {
-    // const targetElement: EventTarget = event.target; 
-    setIsBriefResults(event.target.checked);    
-    // setIsBriefResults(targetElement.checked);   
+
+  function handleBriefResultsChange(event: DOMEvent<HTMLInputElement>): void {
+    setIsBriefResults(event.target.checked);  
   }
-
 
   return (
     <>
