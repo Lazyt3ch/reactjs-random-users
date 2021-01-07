@@ -48,7 +48,7 @@ function FetcherProperties(props: Props) {
     setValidProperties(validPropertiesNew);
   };
 
-  const updateStatusesAndProperties = statusesNew => {
+  const updateStatusesAndProperties = (statusesNew: [string, boolean][]) => {
     setStatuses(statusesNew);
     updateValidProperties(statusesNew);
   };
