@@ -44,7 +44,7 @@ function App() {
   const [activePageNumber, setActivePageNumber] = useState(0);
   const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
-  const [prevPagePath, setPrevPagePath] = useState("");
+  const [prevPagePath, setPrevPagePath] = useState<string>("");
 
   useEffect( () => {
     if (!isNonEmptyArray(results)) {
@@ -67,11 +67,8 @@ function App() {
 
     // Row 0 is used for table header, so content rows numbering starts from 1
     const totalUsers = results.length; 
-
-    if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-      const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
-      setTotalPages(totalPagesNew);  
-    }    
+    const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+    setTotalPages(totalPagesNew);  
   }, [results, setTotalPages]);
   
   
@@ -84,7 +81,7 @@ function App() {
     setScrollTopArr(scrollTopArrNew);
   }, [totalPages, results, setScrollTopArr]);
 
-  
+
   return (
     <Router>
       <Nav 
