@@ -8,10 +8,11 @@ import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 // import { CheckboxProps } from "@material-ui/core";
 
+// The approach below works, but I found a simpler one.
 // https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
-interface DOMEvent<T extends EventTarget> extends Event {
-  target: T
-}
+// interface DOMEvent<T extends EventTarget> extends Event {
+//   target: T
+// }
 
 interface Props {
   results2D: string[][];
@@ -98,7 +99,7 @@ function UsersGrid(props: Props) {
   }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
 
 
-  function handleBriefResultsChange(event: DOMEvent<HTMLInputElement>): void {
+  function handleBriefResultsChange(event: React.ChangeEvent<HTMLInputElement>): void {
     setIsBriefResults(event.target.checked);  
   }
 
