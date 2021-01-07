@@ -80,10 +80,11 @@ function App() {
       return;
     }
 
-    const scrollTopArrNew = new Array(totalPages).fill(0);
+    const scrollTopArrNew: number[] = new Array(totalPages).fill(0);
     setScrollTopArr(scrollTopArrNew);
   }, [totalPages, results, setScrollTopArr]);
 
+  
   return (
     <Router>
       <Nav 
