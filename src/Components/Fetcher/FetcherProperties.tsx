@@ -14,11 +14,6 @@ interface Props {
 }
 
 function FetcherProperties(props: Props) {
-  // const {allProperties}: {allProperties: string[]} = props;
-  // const {statuses}: {statuses: [string, boolean][]} = props;
-  // const {setStatuses} = props;
-  // const {setValidProperties} = props;
-
   const {
     allProperties,
 
@@ -39,9 +34,6 @@ function FetcherProperties(props: Props) {
   };
 
   const updateValidProperties = (statusesNew: [string, boolean][]): void => {
-    // const validPropertiesNew = allProperties.reduce( (acc, p) =>
-    //   statusesNew[p] ? [...acc, p] : acc, 
-    //   [] );      
     const validPropertiesNew = statusesNew
       .filter( ([property, status]) => status && allProperties.includes(property) )
       .map( ([property, _]) => property );
