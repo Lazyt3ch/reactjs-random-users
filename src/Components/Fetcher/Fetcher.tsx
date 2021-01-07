@@ -9,27 +9,27 @@ import {DeepObj} from "./../../Helpers/dataRebuilder";
 
 
 interface Props {
-    // FetcherNumResults:
-    numResults: number;
-    setNumResults: React.SetStateAction<number>;
+  // FetcherNumResults:
+  numResults: number;
+  // setNumResults: React.SetStateAction<number>;
 
-    // FetcherProperties:
-    allProperties: string[];
+  // FetcherProperties:
+  allProperties: string[];
 
-    statuses: [string, boolean][];
-    setStatuses: React.SetStateAction<[string, boolean][]>;
-    
-    validProperties: string[];
-    setValidProperties: React.SetStateAction<string[]>;
-    
-    // FetcherLaunch:
-    results: DeepObj[];
-    setResults: React.SetStateAction<DeepObj[]>;
+  statuses: [string, boolean][];
+  // setStatuses: React.SetStateAction<[string, boolean][]>;
+  
+  validProperties: string[];
+  // setValidProperties: React.SetStateAction<string[]>;
+  
+  // FetcherLaunch:
+  results: DeepObj[];
+  // setResults: React.SetStateAction<DeepObj[]>;
 
-    // resultsFetchCount: number;
-    // setResultsFetchCount: React.SetStateAction<number>;
+  // resultsFetchCount: number;
+  // setResultsFetchCount: React.SetStateAction<number>;
 
-    setActivePageNumber: React.SetStateAction<number>;
+  // setActivePageNumber: React.SetStateAction<number>;
 }
 
 
