@@ -63,8 +63,8 @@ function FetcherNumResults(props: Props) {
         freeSolo={true}
         value={value}
         inputValue={inputValue}
-        onChange={(event, valueNew) => setValue(valueNew)}
-        onInputChange={(event, inputValueNew) => setInputValue(inputValueNew)}
+        onChange={(event, valueNew) => setValue(fixNumResults(valueNew))}
+        onInputChange={(event, inputValueNew) => setInputValue(fixNumResults(inputValueNew).toString())}
         renderInput={(params) => 
           <TextField {...params} 
             type="number"
