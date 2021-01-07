@@ -27,21 +27,21 @@ import {
 
 function App() {
   const {numResultsDefault} = constants;
-  const [numResults, setNumResults] = useState(numResultsDefault);
+  const [numResults, setNumResults] = useState<number>(numResultsDefault);
 
   const allProperties = getAllProperties();
 
-  const [statuses, setStatuses] = useState(getUpdatedStatuses(allProperties, false));
-  const [validProperties, setValidProperties] = useState(getValidProperties(statuses));
+  const [statuses, setStatuses] = useState<[string, boolean][]>(getUpdatedStatuses(allProperties, false));
+  const [validProperties, setValidProperties] = useState<string[]>(getValidProperties(statuses));
 
   const [results, setResults] = useState<DeepObj[]>([]);
 
   const [results2D, setResults2D] = useState<string[][]>([]);
-  const [gridColumnsFormula, setGridColumnsFormula] = useState("");
-  const [isBriefResults, setIsBriefResults] = useState(false);
-  const [resultsFetchCount, setResultsFetchCount] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
-  const [activePageNumber, setActivePageNumber] = useState(0);
+  const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
+  const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
+  const [resultsFetchCount, setResultsFetchCount] = useState<number>(0);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [activePageNumber, setActivePageNumber] = useState<number>(0);
   const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
   const [prevPagePath, setPrevPagePath] = useState<string>("");
