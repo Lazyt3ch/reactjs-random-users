@@ -12,28 +12,28 @@ interface Props {
   // FetcherNumResults:
   numResults: number;
   // setNumResults: React.SetStateAction<number>;
-  setNumResults: Dispatch<React.SetStateAction<number>>;
+  setNumResults: React.SetStateAction<number>;
 
   // FetcherProperties:
   allProperties: string[];
 
   statuses: [string, boolean][];
-  setStatuses: Dispatch<React.SetStateAction<[string, boolean][]>>;
+  setStatuses: React.SetStateAction<[string, boolean][]>;
   // setStatuses: Function;
   
   validProperties: string[];
-  setValidProperties: Dispatch<React.SetStateAction<string[]>>;
+  setValidProperties: React.SetStateAction<string[]>;
   // setValidProperties: Function;
   
   // FetcherLaunch:
   results: DeepObj[];
-  setResults: Dispatch<React.SetStateAction<DeepObj[]>>;
+  setResults: React.SetStateAction<DeepObj[]>;
   // setResults: Function;
 
   // resultsFetchCount: number;
   // setResultsFetchCount: React.SetStateAction<number>;
 
-  setActivePageNumber: Dispatch<React.SetStateAction<number>>;
+  setActivePageNumber: React.SetStateAction<number>;
   // setActivePageNumber: Function;
 }
 
