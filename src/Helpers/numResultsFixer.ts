@@ -1,6 +1,6 @@
 import constants from "../constants";
 
-const fixNumResults = (numResults: number | string): number => {
+const fixNumResults = (numResults: number | string | null | undefined): number => {
   const {
     numResultsLowerLimit,
     numResultsUpperLimit,
@@ -9,7 +9,9 @@ const fixNumResults = (numResults: number | string): number => {
 
   let numResultsToUse = numResultsDefault;
 
-  if (typeof(numResults) === "string") {
+  if (numResults === null || numResults === undefined) {
+    numResultsToUse = 0;
+  } else if (typeof(numResults) === "string") {
     if (numResults === "") {
       numResultsToUse = 1;
     } else {
