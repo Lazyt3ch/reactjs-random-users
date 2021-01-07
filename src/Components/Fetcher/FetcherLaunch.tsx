@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import {DeepObj} from "./../../Helpers/dataRebuilder";
 import isNonEmptyArray from "../../Helpers/badDataChecker";
 
+type Severity = "success" | "error" | "info" | "warning" | undefined;
 
 interface Props {
   numResults: number; 
@@ -21,7 +22,6 @@ interface Props {
 
   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 }
-
 
 function FetcherLaunch(props: Props) {
   const {
@@ -43,8 +43,8 @@ function FetcherLaunch(props: Props) {
   
   const history = useHistory();
 
-  const [message, setMessage] = useState("");
-  const [severity, setSeverity] = useState("");
+  const [message, setMessage] = useState<string>("");
+  const [severity, setSeverity] = useState<Severity>(undefined);
 
   useEffect(
     () => {
