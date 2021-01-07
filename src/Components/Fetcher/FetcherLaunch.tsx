@@ -6,6 +6,8 @@ import {Alert} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
 import {DeepObj} from "./../../Helpers/dataRebuilder";
+import isNonEmptyArray from "../../Helpers/badDataChecker";
+
 
 interface Props {
   numResults: number; 
@@ -81,7 +83,7 @@ function FetcherLaunch(props: Props) {
     setIsFetching(false);
     setFetchAttempted(true);
 
-    if (!errorMessage && isNonEmptyArr(resultsArr)) {
+    if (!errorMessage && isNonEmptyArray(resultsArr)) {
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
