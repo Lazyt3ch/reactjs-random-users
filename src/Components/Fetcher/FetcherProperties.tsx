@@ -40,7 +40,7 @@ function FetcherProperties(props: Props) {
     setValidProperties(validPropertiesNew);
   };
 
-  const updateStatusesAndProperties = (statusesNew: [string, boolean][]) => {
+  const updateStatusesAndProperties = (statusesNew: [string, boolean][]): void => {
     setStatuses(statusesNew);
     updateValidProperties(statusesNew);
   };
@@ -54,17 +54,29 @@ function FetcherProperties(props: Props) {
     const statusesNew = statuses.map( ([property, status]) => [property, !status] );
     updateStatusesAndProperties(statusesNew);
   };
-  
-  const handleSingleCheck = (event) => {
-    const {checked, name} = event.target;
-    const statusesNew = Object.assign({}, statuses);
 
-    for (const property of allProperties) {
-      if (property === name) {
-        statusesNew[property] = checked;
-        break;
-      }
-    }
+  
+  /* Example of event handling: */
+  // function handleBriefResultsChange(event: React.ChangeEvent<HTMLInputElement>): void {
+  //   setIsBriefResults(event.target.checked);  
+  // }
+
+  const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const {checked, name} = event.target;
+    // const statusesNew = Object.assign({}, statuses);
+
+    // for (const property of allProperties) {
+    //   if (property === name) {
+    //     statusesNew[property] = checked;
+    //     break;
+    //   }
+    // }
+
+    // const statusesNew = JSON.parse(JSON.stringify(statuses)); // Deep-copy the array
+
+    const statusesNew = statuses.map( ([property, oldStatus]) => 
+      ( property === name ? [property, oldStatus] : [property, checked] ) );
+
 
     updateStatusesAndProperties(statusesNew);
   };
