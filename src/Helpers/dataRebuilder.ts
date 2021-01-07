@@ -6,16 +6,16 @@ const addTrailingCommaSpace = (str: string): string => {
   return str.endsWith(", ") ? str : `${str}, `;
 };
 
-interface UserObj {
+interface DeepObj {
   [key: string]: string | object;
 }
 
-interface SimpleObj {
+interface FlatObj {
   [key: string]: string;
 }
 
-const getRebuiltData = (userObj: UserObj): SimpleObj => {
-  // Now using brackets instead of parentheses as subproperty grouping characters,
+const getRebuiltData = (userObj: DeepObj): FlatObj => {
+  // Using brackets instead of parentheses as subproperty grouping characters,
   // because parentheses sometimes are present in retrieved users data
   let builtStr: string;
 
@@ -30,7 +30,7 @@ const getRebuiltData = (userObj: UserObj): SimpleObj => {
       if (value !== null && typeof value === 'object') {
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
         extractData(value, level + 1);
-      } else {
+      } else if (typeof value === "string") {
         // <undefined> will replace an empry string, and <null> will replace a null value
         builtStr = `${builtStr}${key.length ? key : "<undefined>"}: ${value ? value: "<null>"}, `;
         hitBottom = true;
@@ -47,7 +47,7 @@ const getRebuiltData = (userObj: UserObj): SimpleObj => {
   }
 
   // const builtObj: object = { dummyValue: 0 };
-  const builtObj: SimpleObj = {};
+  const builtObj: FlatObj = {};
   // let tempValue;
 
   Object.entries(userObj).forEach( ([key, value]) => {
@@ -61,13 +61,13 @@ const getRebuiltData = (userObj: UserObj): SimpleObj => {
   return builtObj;
 }
 
-const getRebuiltResults = (results: UserObj[], validProperties: string[]): [] => {
+const getRebuiltResults = (results: DeepObj[], validProperties: string[]): string[][] => {
   const rebuiltResults = results.map( userObj => getRebuiltData(userObj) );
 
   // Row 0 contains property names (it's like a table header)
   const results2D = [validProperties]; 
 
-  let rowArr;
+  let rowArr: string[];
   
   for (const rowObj of rebuiltResults) {
     rowArr = [];

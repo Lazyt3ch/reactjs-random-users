@@ -1,11 +1,11 @@
 import buildUrl from "./urlBuilder";
 
-// interface Results {
-//   resultsArr?: [];
-//   errorMessage?: string;
-// }
+interface Results {
+  resultsArr?: [];
+  errorMessage?: string;
+}
 
-async function fetchUsers(numResults: number, properties=[], isToInclude=true) {
+async function fetchUsers(numResults: number, properties=[], isToInclude=true): Promise<Results> {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
   let resultsArr = null;
   let errorMessage = "";
