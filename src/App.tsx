@@ -42,7 +42,7 @@ function App() {
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [activePageNumber, setActivePageNumber] = useState(0);
-  const [scrollTopArr, setScrollTopArr] = useState([]);
+  const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
   const [prevPagePath, setPrevPagePath] = useState("");
 
