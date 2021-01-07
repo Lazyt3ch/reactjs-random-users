@@ -10,15 +10,14 @@ interface UserObj {
   [key: string]: string | object;
 }
 
-// const getRebuiltData = (userObj: UserObj | null): object => {
 const getRebuiltData = (userObj: UserObj): object => {
-    // Now using brackets instead of parentheses as subproperty grouping characters,
+  // Now using brackets instead of parentheses as subproperty grouping characters,
   // because parentheses sometimes are present in retrieved users data
   let builtStr: string;
 
-  // if (userObj === null) {
-  //   return {};
-  // }
+  if (userObj === null) {
+    return {};
+  }
 
   const extractData = (currentObj: object, level=1): string => {
     let hitBottom = false;
@@ -44,18 +43,23 @@ const getRebuiltData = (userObj: UserObj): object => {
   }
 
   // const builtObj: object = { dummyValue: 0 };
-  const builtObj = {};
-  let tempValue;
+  const builtObj: {[key: string]: any} = {};
+  // let tempValue;
 
   Object.entries(userObj).forEach( ([key, value]) => {
     builtStr = "";
-    tempValue = value;
 
-    if (typeof tempValue !== 'string') {
-      tempValue = removeTrailingCommaSpace(extractData(tempValue));
-    }
+    builtObj[key] = (typeof value === 'string')
+      ? value
+      : removeTrailingCommaSpace(extractData(value));
 
-    builtObj[key] = tempValue;
+    // tempValue = value;
+
+    // if (typeof tempValue !== 'string') {
+    //   tempValue = removeTrailingCommaSpace(extractData(tempValue));
+    // }
+
+    // builtObj[key] = tempValue;
 
     // if (typeof tempValue === "string") {
     //   builtObj[key] = tempValue;
