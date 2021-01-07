@@ -38,10 +38,12 @@ function FetcherProperties(props: Props) {
     setValidProperties(allProperties);
   };
 
-  const updateValidProperties = (statusesNew) => {
-    const validPropertiesNew = allProperties.reduce( (acc, p) =>
-      statusesNew[p] ? [...acc, p] : acc, 
-      [] );      
+  const updateValidProperties = (statusesNew: [string, boolean][]): void => {
+    // const validPropertiesNew = allProperties.reduce( (acc, p) =>
+    //   statusesNew[p] ? [...acc, p] : acc, 
+    //   [] );      
+    const validPropertiesNew: string[] = statusesNew
+      .filter( ([property, status]) => status && allProperties.includes(property) );
     setValidProperties(validPropertiesNew);
   };
 
