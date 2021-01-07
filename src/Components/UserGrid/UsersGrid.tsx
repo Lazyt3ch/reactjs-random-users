@@ -7,7 +7,25 @@ import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 
-function UsersGrid(props) {
+interface Props {
+  results2D: string[][];
+    
+  gridColumnsFormula: string;
+  setGridColumnsFormula: Function;
+
+  isBriefResults: boolean;
+  setIsBriefResults: Function;
+
+  activePageNumber: number;
+  setActivePageNumber: Function;
+
+  totalPages: number;
+
+  scrollTopArr: number[];
+  setScrollTopArr: Function;
+}
+
+function UsersGrid(props: Props) {
   const {
     results2D,
     
