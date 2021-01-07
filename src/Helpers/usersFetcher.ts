@@ -16,7 +16,8 @@ async function fetchUsers(
   numResults: number, properties:string[] = [], isToInclude=true): Promise<Results> {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
   // let resultsArr: object[] | undefined = undefined;
-  let resultsArr: DeepObj[] | undefined = undefined;
+  // let resultsArr: DeepObj[] | undefined = undefined;
+  let resultsArr: DeepObj[] = [];
   let errorMessage = "";
 
   const getErrorText = (text: string) => 
