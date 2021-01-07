@@ -42,8 +42,9 @@ function FetcherProperties(props: Props) {
     // const validPropertiesNew = allProperties.reduce( (acc, p) =>
     //   statusesNew[p] ? [...acc, p] : acc, 
     //   [] );      
-    const validPropertiesNew: string[] = statusesNew
-      .filter( ([property, status]) => status && allProperties.includes(property) );
+    const validPropertiesNew = statusesNew
+      .filter( ([property, status]) => status && allProperties.includes(property) )
+      .map( ([property, _]) => property );
     setValidProperties(validPropertiesNew);
   };
 
