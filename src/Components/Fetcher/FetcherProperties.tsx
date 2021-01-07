@@ -46,46 +46,30 @@ function FetcherProperties(props: Props) {
   };
 
   const handleInvertSelection = () => {
-    // const statusesNew = Object.assign({}, statuses);
-    // for (const property of allProperties) {
-    //   statusesNew[property] = !statusesNew[property];
-    // }
-
-    const statusesNew = statuses.map( ([property, status]) => [property, !status] );
+    const statusesNew: [string, boolean][] = statuses.map( 
+      ([property, status]) => [property, !status] );
     updateStatusesAndProperties(statusesNew);
   };
 
   
-  /* Example of event handling: */
-  // function handleBriefResultsChange(event: React.ChangeEvent<HTMLInputElement>): void {
-  //   setIsBriefResults(event.target.checked);  
-  // }
-
   const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {checked, name} = event.target;
-    // const statusesNew = Object.assign({}, statuses);
-
-    // for (const property of allProperties) {
-    //   if (property === name) {
-    //     statusesNew[property] = checked;
-    //     break;
-    //   }
-    // }
-
-    // const statusesNew = JSON.parse(JSON.stringify(statuses)); // Deep-copy the array
-
-    const statusesNew = statuses.map( ([property, oldStatus]) => 
+    const statusesNew: [string, boolean][] = statuses.map( ([property, oldStatus]) => 
       ( property === name ? [property, oldStatus] : [property, checked] ) );
-
-
     updateStatusesAndProperties(statusesNew);
   };
 
-  const propertiesStatuses = statuses;
   const numTotalProperties = allProperties.length;
 
-  const numSelectedProperties = Object.values(propertiesStatuses)
-    .reduce( (acc, value) => acc + value, 0 );  
+  const numSelectedProperties = statuses.reduce( 
+    (acc, [_, status]) => acc + (status ? 1 : 0), 0 );  
+
+  const getPropertyStatus = (propertyName: string): boolean => {
+    const item = statuses.find(item => item[0] === propertyName);
+    return (item === undefined)  
+      ? false   // Make TypeScript happy
+      : item[1];
+  }
 
 
   return (
@@ -105,7 +89,9 @@ function FetcherProperties(props: Props) {
                 name={property}
                 color="primary"
                 mb={"0px"}
-                checked={propertiesStatuses[property]} 
+                // checked={propertiesStatuses[property]} 
+                // checked={statuses.find(item => item[0] === property)[1]}
+                checked={getPropertyStatus(property)}
                 onChange={handleSingleCheck}
               />
               <span>
