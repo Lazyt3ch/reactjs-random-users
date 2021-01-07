@@ -3,12 +3,12 @@ import {DeepObj} from "./dataRebuilder";
 
 
 interface DeserializedData {
-  error?: string;
   results?: DeepObj[];
+  error?: string;
 }
 
 interface Results {
-  resultsArr?: object[];
+  resultsArr?: DeepObj[];
   errorMessage?: string;
 }
 
