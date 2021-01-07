@@ -36,7 +36,7 @@ function App() {
 
   const [results, setResults] = useState<DeepObj[]>([]);
 
-  const [results2D, setResults2D] = useState([]);
+  const [results2D, setResults2D] = useState<string[][]>([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState("");
   const [isBriefResults, setIsBriefResults] = useState(false);
   const [resultsFetchCount, setResultsFetchCount] = useState(0);
