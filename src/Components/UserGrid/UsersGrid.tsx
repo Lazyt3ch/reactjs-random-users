@@ -1,11 +1,12 @@
 import React, {useState, useLayoutEffect} from "react";
 import getGridColumnsFormula from "../../Helpers/gridCalculator";
-import isBadData from "../../Helpers/badDataChecker";
+import isNonEmptyArray from "../../Helpers/badDataChecker";
 import UsersGridItem from "./UsersGridItem";
 import Pagination from "../Pagination/Pagination";
 import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
+// import { CheckboxProps } from "@material-ui/core";
 
 interface Props {
   results2D: string[][];
@@ -44,16 +45,16 @@ function UsersGrid(props: Props) {
     setScrollTopArr,
   } = props;
 
-  const [activePageRows, setActivePageRows] = useState([]);
+  const [activePageRows, setActivePageRows] = useState<string[][]>([]);
 
   
   useLayoutEffect( () => {
-      if (isBadData(results2D)) {
+      if (!isNonEmptyArray(results2D)) {
       return;
     }
 
-    const getActivePageRows = allResults => {
-      if (!totalPages || isBadData(allResults)) {
+    const getActivePageRows = (allResults: string[][]): string[][] => {
+      if (!totalPages || !isNonEmptyArray(allResults)) {
         return [];
       }
 
@@ -65,7 +66,7 @@ function UsersGrid(props: Props) {
       const activePageRowsNew = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
 
-      if (isBadData(activePageRowsNew)) {
+      if (!isNonEmptyArray(activePageRowsNew)) {
         return [];
       }        
 
@@ -77,7 +78,7 @@ function UsersGrid(props: Props) {
     if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
       const activePageRowsNew = getActivePageRows(results2D);
 
-      if (isBadData(activePageRowsNew)) {
+      if (!isNonEmptyArray(activePageRowsNew)) {
         return;
       }
 
@@ -92,8 +93,10 @@ function UsersGrid(props: Props) {
   }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
   
 
-  function handleBriefResultsChange(event) {
-    setIsBriefResults(event.target.checked);    
+  function handleBriefResultsChange(event: React.SyntheticEvent<EventTarget>): void {
+    const targetElement: HTMLInputElement = event.target; 
+    // setIsBriefResults(event.target.checked);    
+    setIsBriefResults(targetElement.checked);   
   }
 
   return (
