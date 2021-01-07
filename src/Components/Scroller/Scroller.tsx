@@ -56,8 +56,10 @@ function Scroller(props: Props) {
   }, [pathname, activePageNumber]);
 
   useEffect(() => {    
-    const onScroll = e => {
-      const scrollPos = e.target.documentElement.scrollTop;
+    // const onScroll = (e: React.UIEvent<Window>): void => {
+    const onScroll = (): void => {
+        // const scrollPos = e.target.documentElement.scrollTop;
+      const scrollPos = document.documentElement.scrollTop;
       if (pathname.startsWith("/view/") && scrollPos > 0) {
         const scrollTopArrNew = scrollTopArr.slice();
         scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
