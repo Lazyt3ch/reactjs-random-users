@@ -63,7 +63,7 @@ function Fetcher(props: Props) {
     <div className="fetcher">
       <FetcherNumResults 
         numResults={numResults} 
-        setNumResults={setNumResults}
+        // setNumResults={setNumResults}
       />
       
       <FetcherProperties 
@@ -72,7 +72,7 @@ function Fetcher(props: Props) {
         statuses={statuses}
         setStatuses={setStatuses}
         
-        validProperties={validProperties}
+        // validProperties={validProperties}
         setValidProperties={setValidProperties}
       />
       
@@ -84,8 +84,8 @@ function Fetcher(props: Props) {
         results={results}
         setResults={setResults}
 
-        resultsFetchCount={resultsFetchCount} 
-        setResultsFetchCount={setResultsFetchCount}    
+        // resultsFetchCount={resultsFetchCount} 
+        // setResultsFetchCount={setResultsFetchCount}    
 
         setActivePageNumber={setActivePageNumber}
       />

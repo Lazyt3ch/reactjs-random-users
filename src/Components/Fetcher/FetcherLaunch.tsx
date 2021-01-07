@@ -12,8 +12,8 @@ interface Props {
   
   setResults: (arg: []) => void;
   
-  resultsFetchCount: number; 
-  setResultsFetchCount: (arg: number) => void;
+  // resultsFetchCount: number; 
+  // setResultsFetchCount: (arg: number) => void;
 
   setActivePageNumber: (arg: number) => void;
 }
@@ -27,8 +27,8 @@ function FetcherLaunch(props: Props) {
     
     setResults,
     
-    resultsFetchCount, 
-    setResultsFetchCount,
+    // resultsFetchCount, 
+    // setResultsFetchCount,
 
     setActivePageNumber,
   } = props;

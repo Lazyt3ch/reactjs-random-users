@@ -8,8 +8,9 @@ interface Props {
   allProperties: string[];
 
   statuses: [string, boolean][];
-  setStatuses: function;
-  setValidProperties: function;
+  setStatuses: React.SetStateAction<[string, boolean][]>;
+
+  setValidProperties: React.SetStateAction<string[]>;
 }
 
 function FetcherProperties(props: Props) {
