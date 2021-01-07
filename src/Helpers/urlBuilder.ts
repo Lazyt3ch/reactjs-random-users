@@ -3,7 +3,7 @@ import fixNumResults from "./numResultsFixer";
 
 const buildUrl = (numResults: number, properties: string[], isInclude=true): string => {
   const baseUrlSlash = "https://randomuser.me/api/";
-  const urlParams = [];
+  const urlParams: string[] = [];
 
   const numResultsToUse = fixNumResults(numResults);
   const numResultsSubstr = `results=${numResultsToUse}`;
