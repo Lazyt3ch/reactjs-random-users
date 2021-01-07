@@ -7,7 +7,14 @@ import PropTypes from "prop-types";
 // Material-UI tooltips slowed down page rendering;
 // react-tooltip seems to be buggy. 
 
-function UsersGridItem(props) {
+interface Props {
+  value: string; 
+  rowIndex: number;
+  isBriefResults: boolean;
+}
+
+
+function UsersGridItem(props: Props) {
   const {
     value, 
     rowIndex, 
@@ -17,7 +24,7 @@ function UsersGridItem(props) {
   const subpropNamePattern = "[a-z]+:\\s";
   const subpropNameRegexp = useMemo( () => new RegExp(subpropNamePattern), [] );
 
-  const [strArr, setStrArr] = useState([]);
+  const [strArr, setStrArr] = useState<string[]>([]);
   
   useEffect( 
     () => {
