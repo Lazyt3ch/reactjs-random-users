@@ -1,7 +1,7 @@
-import isBadData from "./badDataChecker";
+import isNonEmptyArray from "./badDataChecker";
 
 const getGridColumnsFormula = (results2D: string[][]): string => {
-  if (isBadData(results2D) || isBadData(results2D[0])) {
+  if (!isNonEmptyArray(results2D) || !isNonEmptyArray(results2D[0])) {
     return "";
   }
 
