@@ -81,7 +81,7 @@ function FetcherLaunch(props: Props) {
     setIsFetching(false);
     setFetchAttempted(true);
 
-    if (!errorMessage && resultsArr && Array.isArray(resultsArr) && resultsArr.length) {
+    if (!errorMessage && isNonEmptyArr(resultsArr)) {
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
