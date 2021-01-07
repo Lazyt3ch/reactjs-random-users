@@ -14,12 +14,12 @@ interface Props {
 
   validProperties: string[];
   
-  setResults: React.SetStateAction<DeepObj[]>;
+  setResults: React.Dispatch<React.SetStateAction<DeepObj[]>>;
   
   // resultsFetchCount: number; 
   // setResultsFetchCount: (arg: number) => void;
 
-  setActivePageNumber: React.SetStateAction<number>;
+  setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 }
 
 
