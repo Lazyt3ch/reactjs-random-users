@@ -5,7 +5,12 @@ import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
-function FetcherNumResults(props) {
+interface Props {
+  numResults: number;
+  setNumResults: React.SetStateAction<number>;
+}
+
+function FetcherNumResults(props: Props) {
   const {
     numResultsLowerLimit,
     numResultsUpperLimit,
