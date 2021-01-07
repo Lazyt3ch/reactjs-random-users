@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch } from "react";
 
 import FetcherNumResults from "./FetcherNumResults";
 import FetcherProperties from "./FetcherProperties";
@@ -12,29 +12,34 @@ interface Props {
   // FetcherNumResults:
   numResults: number;
   // setNumResults: React.SetStateAction<number>;
+  setNumResults: Dispatch<React.SetStateAction<number>>;
 
   // FetcherProperties:
   allProperties: string[];
 
   statuses: [string, boolean][];
-  // setStatuses: React.SetStateAction<[string, boolean][]>;
+  setStatuses: Dispatch<React.SetStateAction<[string, boolean][]>>;
+  // setStatuses: Function;
   
   validProperties: string[];
-  // setValidProperties: React.SetStateAction<string[]>;
+  setValidProperties: Dispatch<React.SetStateAction<string[]>>;
+  // setValidProperties: Function;
   
   // FetcherLaunch:
   results: DeepObj[];
-  // setResults: React.SetStateAction<DeepObj[]>;
+  setResults: Dispatch<React.SetStateAction<DeepObj[]>>;
+  // setResults: Function;
 
   // resultsFetchCount: number;
   // setResultsFetchCount: React.SetStateAction<number>;
 
-  // setActivePageNumber: React.SetStateAction<number>;
+  setActivePageNumber: Dispatch<React.SetStateAction<number>>;
+  // setActivePageNumber: Function;
 }
 
 
 function Fetcher(props: Props) {
-    const {
+  const {
     // FetcherNumResults:
     numResults, 
     setNumResults,
@@ -63,7 +68,7 @@ function Fetcher(props: Props) {
     <div className="fetcher">
       <FetcherNumResults 
         numResults={numResults} 
-        // setNumResults={setNumResults}
+        setNumResults={setNumResults}
       />
       
       <FetcherProperties 
