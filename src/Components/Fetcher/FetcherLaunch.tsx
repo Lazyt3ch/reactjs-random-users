@@ -10,7 +10,7 @@ interface Props {
 
   validProperties: string[];
   
-  setResults: (arg: []) => void;
+  setResults: React.SetStateAction<string[][]>;
   
   // resultsFetchCount: number; 
   // setResultsFetchCount: (arg: number) => void;
