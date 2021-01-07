@@ -26,7 +26,7 @@ interface Props {
   // setValidProperties: Function;
   
   // FetcherLaunch:
-  results: DeepObj[];
+  // results: DeepObj[];
   setResults: React.SetStateAction<DeepObj[]>;
   // setResults: Function;
 
@@ -54,7 +54,7 @@ function Fetcher(props: Props) {
     setValidProperties,
     
     // FetcherLaunch:
-    results, 
+    // results, 
     setResults,
 
     // resultsFetchCount, 
@@ -86,7 +86,7 @@ function Fetcher(props: Props) {
         
         validProperties={validProperties}
         
-        results={results}
+        // results={results}
         setResults={setResults}
 
         // resultsFetchCount={resultsFetchCount} 
@@ -113,7 +113,7 @@ Fetcher.propTypes = {
     setValidProperties: PropTypes.func.isRequired,
     
     // FetcherLaunch:
-    results: PropTypes.array.isRequired,
+    // results: PropTypes.array.isRequired,
     setResults: PropTypes.func.isRequired,
 
     resultsFetchCount: PropTypes.number,
