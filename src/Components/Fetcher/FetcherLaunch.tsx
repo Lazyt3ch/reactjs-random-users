@@ -83,11 +83,11 @@ function FetcherLaunch(props: Props) {
     setIsFetching(false);
     setFetchAttempted(true);
 
-    if (!errorMessage && isNonEmptyArray(resultsArr)) {
+    if (!errorMessage && resultsArr !== undefined && isNonEmptyArray(resultsArr)) {
       setResults(resultsArr);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
-      setResultsFetchCount(resultsFetchCount + 1);
+      // setResultsFetchCount(resultsFetchCount + 1);
 
       // Important, otherwise no rows will be displayed in certain cases
       setActivePageNumber(0); // 0 is first page's index
@@ -98,7 +98,7 @@ function FetcherLaunch(props: Props) {
         setMessageAfterFetch("");
         setSeverity("info");
       }, 2000 );
-    } else {
+    } else if (errorMessage) {
       setMessageAfterFetch(errorMessage);
       setSeverity("error");
       setTimeout( () => {
