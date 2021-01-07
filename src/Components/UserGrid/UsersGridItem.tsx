@@ -13,7 +13,6 @@ interface Props {
   isBriefResults: boolean;
 }
 
-
 function UsersGridItem(props: Props) {
   const {
     value, 
@@ -37,12 +36,12 @@ function UsersGridItem(props: Props) {
     [value, rowIndex, setStrArr]
   );
 
-  const [tooltipArr, setTooltipArr] = useState([]);
+  const [tooltipArr, setTooltipArr] = useState<string[]>([]);
   
   useEffect( 
     () => {
-      const tooltipArrNew = [];
-      const nameStack = [];
+      const tooltipArrNew: string[] = [];
+      const nameStack: string[] = [];
       for (let i = 0; i < strArr.length; i++) {
         if ( strArr[i] === "[" ) {
           if (i > 0 && subpropNameRegexp.test(strArr[i - 1]) ) {
