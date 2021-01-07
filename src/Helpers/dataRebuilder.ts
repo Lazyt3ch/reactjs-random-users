@@ -46,9 +46,7 @@ const getRebuiltData = (userObj: DeepObj): FlatObj => {
     return builtStr;
   }
 
-  // const builtObj: object = { dummyValue: 0 };
   const builtObj: FlatObj = {};
-  // let tempValue;
 
   Object.entries(userObj).forEach( ([key, value]) => {
     builtStr = "";
