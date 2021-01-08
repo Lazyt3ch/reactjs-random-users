@@ -114,11 +114,7 @@ function App() {
               validProperties={validProperties}
               setValidProperties={setValidProperties}
               
-              results={results}
               setResults={setResults}
-
-              // resultsFetchCount={resultsFetchCount}
-              // setResultsFetchCount={setResultsFetchCount}
 
               setActivePageNumber={setActivePageNumber}
             />
@@ -126,11 +122,7 @@ function App() {
 
           <Route path="/view/">
             <UsersGrid 
-              // results={results} 
-              // resultsFetchCount={resultsFetchCount}
-
               results2D={results2D} 
-              // setResults2D={setResults2D} 
 
               gridColumnsFormula={gridColumnsFormula}
               setGridColumnsFormula={setGridColumnsFormula}
@@ -142,10 +134,6 @@ function App() {
               setActivePageNumber={setActivePageNumber}
               
               totalPages={totalPages}
-              // setTotalPages={setTotalPages}
-
-              scrollTopArr={scrollTopArr}
-              setScrollTopArr={setScrollTopArr}             
             />
           </Route>
 
