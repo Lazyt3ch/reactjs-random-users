@@ -7,7 +7,6 @@ const addTrailingCommaSpace = (str: string): string => {
 };
 
 interface DeepObj {
-  // [key: string]: string | object;
   [key: string]: string | DeepObj;
 }
 
