@@ -121,9 +121,6 @@ function UsersGrid(props: Props) {
 
           activePageNumber={activePageNumber} 
           setActivePageNumber={setActivePageNumber}    
-
-          scrollTopArr={scrollTopArr}
-          setScrollTopArr={setScrollTopArr}
         />        
       </div>
 
