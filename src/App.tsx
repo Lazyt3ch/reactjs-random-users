@@ -31,8 +31,10 @@ function App() {
 
   const allProperties = getAllProperties();
 
-  const [statuses, setStatuses] = useState<[string, boolean][]>(getUpdatedStatuses(allProperties, false));
-  const [validProperties, setValidProperties] = useState<string[]>(getValidProperties(statuses));
+  const [statuses, setStatuses] = useState<[string, boolean][]>(
+    getUpdatedStatuses(allProperties, false));
+  const [validProperties, setValidProperties] = useState<string[]>(
+    getValidProperties(statuses));
 
   const [results, setResults] = useState<DeepObj[]>([]);
 
