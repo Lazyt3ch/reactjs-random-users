@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect, ReactElement, ReactHTMLElement, ReactNode} from "react";
+import React, {useState, useLayoutEffect} from "react";
 import getGridColumnsFormula from "../../Helpers/gridCalculator";
 import isNonEmptyArray from "../../Helpers/badDataChecker";
 import UsersGridItem from "./UsersGridItem";
@@ -6,13 +6,6 @@ import Pagination from "../Pagination/Pagination";
 import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
-// import { CheckboxProps } from "@material-ui/core";
-
-// The approach below works, but I found a simpler one.
-// https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
-// interface DOMEvent<T extends EventTarget> extends Event {
-//   target: T
-// }
 
 interface Props {
   results2D: string[][];
