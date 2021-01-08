@@ -79,23 +79,19 @@ function UsersGrid(props: Props) {
       return activePageRowsNew;
     }    
 
-    const {usersPerPage} = constants;
+    const activePageRowsNew = getActivePageRows(results2D);
 
-    if (Number.isInteger(usersPerPage) && usersPerPage > 0) {
-      const activePageRowsNew = getActivePageRows(results2D);
-
-      if (!isNonEmptyArray(activePageRowsNew)) {
-        return;
-      }
-
-      setActivePageRows(activePageRowsNew);
-
-      const gridColumnsFormulaNew = activePageRowsNew.length > 1
-        ? getGridColumnsFormula(activePageRowsNew)
-        : "";
-      
-      setGridColumnsFormula(gridColumnsFormulaNew);
+    if (!isNonEmptyArray(activePageRowsNew)) {
+      return;
     }
+
+    setActivePageRows(activePageRowsNew);
+
+    const gridColumnsFormulaNew = activePageRowsNew.length > 1
+      ? getGridColumnsFormula(activePageRowsNew)
+      : "";
+    
+    setGridColumnsFormula(gridColumnsFormulaNew);
   }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
 
 
