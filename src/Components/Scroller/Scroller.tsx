@@ -1,12 +1,10 @@
 // https://www.cluemediator.com/scroll-to-the-top-of-the-page-after-render-in-reactjs
 
-// import {useEffect, ReactChildren, ReactChild} from "react";
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import PropTypes from "prop-types";
 
 interface Props {
-  // children: ReactChild | ReactChildren;
   children: JSX.Element;
 
   scrollTopArr: number[];
@@ -18,7 +16,6 @@ interface Props {
   setPrevPagePath: Function;
 }
  
-// function Scroller(props: Props): ReactChild | ReactChildren { 
 function Scroller(props: Props): JSX.Element { 
     const { 
     children, 
@@ -59,9 +56,7 @@ function Scroller(props: Props): JSX.Element {
   }, [pathname, activePageNumber]);
 
   useEffect(() => {    
-    // const onScroll = (e: React.UIEvent<Window>): void => {
     const onScroll = (): void => {
-        // const scrollPos = e.target.documentElement.scrollTop;
       const scrollPos = document.documentElement.scrollTop;
       if (pathname.startsWith("/view/") && scrollPos > 0) {
         const scrollTopArrNew = scrollTopArr.slice();
