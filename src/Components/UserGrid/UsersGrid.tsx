@@ -126,7 +126,7 @@ function UsersGrid(props: Props) {
                     value={value}
                     rowIndex={rowIndex}
                     isBriefResults={isBriefResults}
-                    style={rowIndex === 0 ? {fontWeight: 700} : null}              
+                    style={{fontWeight: (rowIndex === 0 ? 700 : 400)}}              
                   />
                 )}
               </React.Fragment>

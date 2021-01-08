@@ -11,6 +11,7 @@ interface Props {
   value: string; 
   rowIndex: number;
   isBriefResults: boolean;
+  style: React.CSSProperties;
 }
 
 function UsersGridItem(props: Props) {
@@ -18,6 +19,7 @@ function UsersGridItem(props: Props) {
     value, 
     rowIndex, 
     isBriefResults,
+    style,
   } = props;
 
   const subpropNamePattern = "[a-z]+:\\s";
@@ -67,7 +69,7 @@ function UsersGridItem(props: Props) {
   );  
 
   return (
-    <>
+    <div style={style}>
       { rowIndex > 0
         ? <div className="grid-item property-content"
             dir="ltr"
@@ -105,7 +107,7 @@ function UsersGridItem(props: Props) {
           </div>
       }
 
-    </>
+    </div>
     
   );
 
@@ -115,6 +117,7 @@ UsersGridItem.propTypes = {
   value: PropTypes.string.isRequired,
   rowIndex: PropTypes.number.isRequired,
   isBriefResults: PropTypes.bool.isRequired,
+  style: PropTypes.object,
 };
 
 export default UsersGridItem;
