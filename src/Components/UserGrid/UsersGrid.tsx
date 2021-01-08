@@ -20,9 +20,6 @@ interface Props {
   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 
   totalPages: number;
-
-  scrollTopArr: number[];
-  setScrollTopArr: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 function UsersGrid(props: Props) {
@@ -39,9 +36,6 @@ function UsersGrid(props: Props) {
     setActivePageNumber,
 
     totalPages, 
-
-    scrollTopArr, 
-    setScrollTopArr,
   } = props;
 
   const [activePageRows, setActivePageRows] = useState<string[][]>([]);
@@ -159,9 +153,6 @@ UsersGrid.propTypes = {
   setActivePageNumber: PropTypes.func.isRequired,
 
   totalPages: PropTypes.number.isRequired,
-
-  scrollTopArr: PropTypes.array.isRequired,
-  setScrollTopArr: PropTypes.func.isRequired,
 };
 
 export default UsersGrid;
