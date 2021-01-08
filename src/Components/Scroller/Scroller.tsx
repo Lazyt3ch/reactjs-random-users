@@ -1,11 +1,12 @@
 // https://www.cluemediator.com/scroll-to-the-top-of-the-page-after-render-in-reactjs
 
-import {useEffect} from "react";
+import {useEffect, ReactChildren, ReactChild} from "react";
 import {useLocation} from "react-router-dom";
 import PropTypes from "prop-types";
 
 interface Props {
-  children: JSX.Element;
+  // children: JSX.Element;
+  children: ReactChild | ReactChildren;
 
   scrollTopArr: number[];
   setScrollTopArr: Function;
