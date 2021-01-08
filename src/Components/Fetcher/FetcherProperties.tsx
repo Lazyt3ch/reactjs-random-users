@@ -55,7 +55,7 @@ function FetcherProperties(props: Props) {
   const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {checked, name} = event.target;
     const statusesNew: [string, boolean][] = statuses.map( ([property, oldStatus]) => 
-      ( property === name ? [property, oldStatus] : [property, checked] ) );
+      ( property === name ? [property, checked] : [property, oldStatus] ) );
     updateStatusesAndProperties(statusesNew);
   };
 
