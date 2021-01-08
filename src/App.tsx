@@ -41,7 +41,6 @@ function App() {
   const [results2D, setResults2D] = useState<string[][]>([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
   const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
-  // const [resultsFetchCount, setResultsFetchCount] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [activePageNumber, setActivePageNumber] = useState<number>(0);
   const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
