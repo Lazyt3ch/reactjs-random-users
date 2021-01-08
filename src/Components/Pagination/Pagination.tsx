@@ -45,13 +45,15 @@ function Pagination(props: Props) {
     [totalPages, activePageNumber]
   )
 
-  interface SpanMouseEvent extends React.MouseEvent<HTMLElement> {
-    target: HTMLSpanElement;
-  }  
+  // interface SpanMouseEvent extends React.MouseEvent<HTMLElement> {
+  //   target: HTMLSpanElement;
+  // }  
 
-  function handlePageNumberClick(event: SpanMouseEvent) {
-    const text = event.target.textContent;    
-    let pageNumber;    
+  // function handlePageNumberClick(event: SpanMouseEvent) {
+  function handlePageNumberClick(event: React.MouseEvent) {
+    // const text = event.target.textContent;    
+    const text = event.currentTarget.textContent;    
+    let pageNumber: number;    
 
     if (typeof text === "string") { // Making TypeScript happy
       if (text.startsWith("<<")) {
