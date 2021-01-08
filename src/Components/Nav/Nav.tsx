@@ -3,7 +3,11 @@ import {NavLink} from "react-router-dom";
 import {AppBar} from '@material-ui/core';
 import PropTypes from "prop-types";
 
-function Nav(props) {
+interface Props {
+  activePageNumber: number;
+}
+
+function Nav(props: Props) {
   const {activePageNumber} = props;
 
   return (
