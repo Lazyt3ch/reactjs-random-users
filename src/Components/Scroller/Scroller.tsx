@@ -5,7 +5,6 @@ import {useLocation} from "react-router-dom";
 import PropTypes from "prop-types";
 
 interface Props {
-  // children: JSX.Element;
   children: ReactChild | ReactChildren;
 
   scrollTopArr: number[];
@@ -84,6 +83,9 @@ Scroller.propTypes = {
   setScrollTopArr: PropTypes.func.isRequired,
 
   activePageNumber: PropTypes.number.isRequired,
+
+  prevPagePath: PropTypes.string.isRequired,
+  setPrevPagePath: PropTypes.func.isRequired,
 };
 
 export default Scroller;
