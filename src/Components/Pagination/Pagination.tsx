@@ -45,25 +45,31 @@ function Pagination(props: Props) {
     [totalPages, activePageNumber]
   )
 
-  function handlePageNumberClick(event) {
+  interface SpanMouseEvent extends React.MouseEvent<HTMLElement> {
+    target: HTMLSpanElement;
+  }  
+
+  function handlePageNumberClick(event: SpanMouseEvent) {
     const text = event.target.textContent;    
     let pageNumber;    
 
-    if (text.startsWith("<<")) {
-      pageNumber = 0;
-    } else if (text.startsWith(">>")) {
-      pageNumber = totalPages - 1;
-    } else if (text.trim().startsWith("<")) {
-      pageNumber = Math.max(activePageNumber - 1, 0);
-    } else if (text.trim().startsWith(">")) {
-      pageNumber = Math.min(activePageNumber + 1, totalPages - 1);
-    } else {
-      pageNumber = parseInt(text.trim()) - 1;
-    }
-
-    if (pageNumber !== activePageNumber) {
-      setActivePageNumber(pageNumber);
-      history.push(`/view/${pageNumber + 1}`);
+    if (typeof text === "string") { // Making TypeScript happy
+      if (text.startsWith("<<")) {
+        pageNumber = 0;
+      } else if (text.startsWith(">>")) {
+        pageNumber = totalPages - 1;
+      } else if (text.trim().startsWith("<")) {
+        pageNumber = Math.max(activePageNumber - 1, 0);
+      } else if (text.trim().startsWith(">")) {
+        pageNumber = Math.min(activePageNumber + 1, totalPages - 1);
+      } else {
+        pageNumber = parseInt(text.trim()) - 1;
+      }
+  
+      if (pageNumber !== activePageNumber) {
+        setActivePageNumber(pageNumber);
+        history.push(`/view/${pageNumber + 1}`);
+      }
     }
   }
 
