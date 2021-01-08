@@ -9,7 +9,15 @@ import PropTypes from "prop-types";
 // The "page-spacer" span keeps the ">" and ">>" span elements in the same positions.
 // Otherwise in certain cases they are displaced to the right when clicking on ">" span repeatedly.
 
-function Pagination(props) {
+interface Props {
+  totalPages: number;
+
+  activePageNumber: number;
+  setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
+}
+
+
+function Pagination(props: Props) {
   const {
     totalPages, 
 
