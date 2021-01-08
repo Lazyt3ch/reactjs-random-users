@@ -15,8 +15,6 @@ interface Results {
 async function fetchUsers(
   numResults: number, properties:string[] = [], isToInclude=true): Promise<Results> {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
-  // let resultsArr: object[] | undefined = undefined;
-  // let resultsArr: DeepObj[] | undefined = undefined;
   let resultsArr: DeepObj[] = [];
   let errorMessage = "";
 
@@ -34,17 +32,14 @@ async function fetchUsers(
   
       if (data.error || !data.results || !data.results.length) {
         errorMessage = "The server returned an unspecified error.";
-        // console.log(errorMessage);      
       } else {
         resultsArr = data.results;
       }  
     } else {
       errorMessage = getErrorText(response.statusText);
-      // console.log(errorMessage);
     }
   } catch(err) {
     errorMessage = getErrorText(err);
-    // console.log(errorMessage);
   } finally {
     return { 
       resultsArr, 
