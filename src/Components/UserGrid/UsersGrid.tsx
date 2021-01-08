@@ -18,18 +18,18 @@ interface Props {
   results2D: string[][];
     
   gridColumnsFormula: string;
-  setGridColumnsFormula: Function;
+  setGridColumnsFormula: React.Dispatch<React.SetStateAction<string>>;
 
   isBriefResults: boolean;
-  setIsBriefResults: Function;
+  setIsBriefResults: React.Dispatch<React.SetStateAction<boolean>>;
 
   activePageNumber: number;
-  setActivePageNumber: Function;
+  setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 
   totalPages: number;
 
   scrollTopArr: number[];
-  setScrollTopArr: Function;
+  setScrollTopArr: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 function UsersGrid(props: Props) {
