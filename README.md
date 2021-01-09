@@ -4,7 +4,7 @@ You can use this simple web app to retrieve and view users data from RandomUser.
 
 ## Technical notes
 
-*   This web app is built on [React](https://reactjs.org/) using [facebook/create-react-app](https://github.com/facebook/create-react-app) as a starting point. Initially, all of the components and helper functions were written in JavaScript (ECMAScript 2015+). Later, some components from [Material-UI](https://material-ui.com/) were added to the project to ensure a more uniform look and feel when the app is opened in different browsers. Even later, all of the components and helper functions were rewritten in TypeScript.
+*   This web app is built on [React](https://reactjs.org/) using [facebook/create-react-app](https://github.com/facebook/create-react-app) as a starting point. Initially, all of its components and helper functions were written in JavaScript (ECMAScript 2015+). Later, some [Material-UI](https://material-ui.com/) components were added to the project to ensure a more uniform look and feel when the app is opened in different browsers. Even later, all of the components and helper functions were rewritten in TypeScript.
 
 *   For some reason, when a `user id` is requested, RandomUser.me may return an invalid name—value pair like this:
 
