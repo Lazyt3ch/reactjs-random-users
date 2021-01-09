@@ -14,7 +14,7 @@ function Home() {
           an invalid name&mdash;value pair like this:</p>
           <p><strong>id: &#x7B;name: "", value: null&#x7D;</strong></p>
           <p>In such cases, when data is displayed in Data Viewer, each empty name and null value 
-            will be replaced with a &lt;null&gt;&mdash;&lt;/null&gt; pair.</p>
+            will be replaced with a <strong>&lt;""&gt;</strong>&mdash;<strong>&lt;null&gt;</strong> pair.</p>
         </li>
 
         <li>
