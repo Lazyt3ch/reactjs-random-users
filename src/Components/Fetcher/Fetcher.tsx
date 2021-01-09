@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 
 import {DeepObj} from "./../../Helpers/dataRebuilder";
 
+import "./Fetcher.css";
+
 
 interface Props {
   // FetcherNumResults:
