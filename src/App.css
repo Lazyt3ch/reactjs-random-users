@@ -134,7 +134,7 @@
 
 /* tooltip START */
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_bottom */
-.tooltip {
+/* .tooltip {
     position: relative;
     display: inline;
 }
@@ -164,19 +164,19 @@
     border-width: 5px;
     border-style: solid;
     border-color: black transparent transparent transparent;
-}
+} */
 
 /* Dummy class to prevent displaying an arrow for a tooltip */
 /* .no-arrow {
 } */
   
-.tooltip:hover .tooltiptext {
+/* .tooltip:hover .tooltiptext {
     visibility: visible;
 }
 
 .tooltip:hover {
     background-color: yellow;
-}
+} */
 /* tooltip END */
 
 
