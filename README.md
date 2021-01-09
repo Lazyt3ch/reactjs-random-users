@@ -4,9 +4,9 @@ You can use this simple web app to retrieve and view users data from RandomUser.
 
 ## Technical notes
 
-*   For some reason, when a **user id** is requested, RandomUser.me may return an invalid name—value pair like this:
+*   For some reason, when a `user id` is requested, RandomUser.me may return an invalid name—value pair like this:
 
-    **id: {name: "", value: null}**
+    `id: {name: "", value: null}`
 
     In such cases, when data is displayed in Data Viewer, each empty name and null value will be replaced with a `""`—`null` pair.
 
