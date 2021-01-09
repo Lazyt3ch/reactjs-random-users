@@ -10,14 +10,7 @@ function Home() {
       <p><strong>Technical notes</strong></p>
       <ul>
         <li>
-          <p>This web app is built on [React](https://reactjs.org/) 
-            using [facebook/create-react-app](https://github.com/facebook/create-react-app) 
-            as a starting point. Initially, all of the components and helper functions were 
-            written in JavaScript (ECMAScript 2015+). Later, some components from 
-            [Material-UI](https://material-ui.com/) were added to the project to ensure 
-            the same look and feel when the app is opened in different browsers. Even later, 
-            all of the components and helper functions were rewritten in TypeScript.</p>
-
+          <p>This web app is built on <a href="https://reactjs.org/">React</a> using <a href="https://github.com/facebook/create-react-app">facebook/create-react-app</a> as a starting point. Initially, all of the components and helper functions were written in JavaScript (ECMAScript 2015+). Later, some components from <a href="https://material-ui.com/">Material-UI</a> were added to the project to ensure a more uniform look and feel when the app is opened in different browsers. Even later, all of the components and helper functions were rewritten in TypeScript.</p>
         </li>
 
         <li>
