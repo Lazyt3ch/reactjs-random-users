@@ -15,7 +15,7 @@
 
 
 /* fetcher START */
-.fetcher {
+/* .fetcher {
     margin-top: 3.5rem;
     margin-left: 1rem;
 }
@@ -39,12 +39,12 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-}
+} */
 /* fetcher END */
 
 
 /* home page START */
-.home-page {
+/* .home-page {
     margin-top: 3.5rem;
     margin-left: 1rem;
     max-width: 60rem;
@@ -56,7 +56,7 @@
 
 .home-page p {
     font-size: 1.1rem;
-}
+} */
 /* home page END */
 
 
