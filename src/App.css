@@ -182,7 +182,7 @@
 
 /* pagination START */
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round */
-.pagination {
+/* .pagination {
     display: inline-block;
     margin-left: 1rem;
     margin-top: 1rem;
@@ -241,6 +241,6 @@
 .pagination span:last-child {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-}
+} */
 /* pagination END */
 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
+import "./Pagination.css";
 
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round
 

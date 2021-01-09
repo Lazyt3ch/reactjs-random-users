@@ -1,0 +1,61 @@
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round */
+.pagination {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+.pagination span {
+    float: left;
+    padding: 6px 14px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    background-color: #3f51b5;
+    color: white;
+    font-family: Courier, Monaco, monospace;
+    font-weight: bold;
+}
+  
+.pagination span.active-page {
+    color: navy;
+    background-color: white;
+    font-weight: 700;
+    border: 1px solid navy;
+}
+
+.pagination span.switched-off {
+    color: navy;
+    background-color: lightgray;
+    font-weight: bold;
+    border: 1px solid navy;
+}
+
+.pagination span.page-ellipsis {
+    color: navy;
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+.pagination span.page-spacer {
+    color: white;
+    background-color: lightgray;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.pagination span:hover:not(.no-hover-effect) {
+    background-color: yellow;
+    color: black;
+}
+  
+.pagination span:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+  
+.pagination span:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
