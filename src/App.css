@@ -61,7 +61,7 @@
 
 
 /* nav START */
-.nav-container {
+/* .nav-container {
     display: flex;
     flex-direction: row;
     justify-items: flex-start;
@@ -82,7 +82,7 @@
 .nav-link:hover:not(.nav-link-active) {
     color: black;
     background-color: yellow;
-}
+} */
 /* nav END */
 
 

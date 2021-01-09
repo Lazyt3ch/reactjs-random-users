@@ -2,6 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import {AppBar} from '@material-ui/core';
 import PropTypes from "prop-types";
+import "./Nav.css";
 
 interface Props {
   activePageNumber: number;

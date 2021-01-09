@@ -1,0 +1,22 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-weight: 500;
+}
+
+.nav-link-active {
+    color: navy;
+    background-color: white;
+}
+
+.nav-link:hover:not(.nav-link-active) {
+    color: black;
+    background-color: yellow;
+}
