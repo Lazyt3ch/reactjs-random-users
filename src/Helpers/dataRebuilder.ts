@@ -32,8 +32,12 @@ const getRebuiltData = (userObj: DeepObj): FlatObj => {
         builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
         extractData(value, level + 1);
       } else if (typeof value === "string") {
-        // An empty string will be replaced with <"">, and a null value, with <null> 
-        builtStr = `${builtStr}${key.length ? key : '<"">'}: ${value ? value: "<null>"}, `;
+        // An empty string will be replaced with <"">
+        builtStr = `${builtStr}${key}: ${value ? value: '<"">'}, `;
+        hitBottom = true;
+      } else if (value === null) {
+        // A null will be replaced with with <null> 
+        builtStr = `${builtStr}${key}: ${value ? value: '<null>'}, `;
         hitBottom = true;
       }
     });
