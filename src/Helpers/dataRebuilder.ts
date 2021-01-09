@@ -28,18 +28,18 @@ const getRebuiltData = (userObj: DeepObj): FlatObj => {
     let hitBottom = false;
 
     Object.entries(currentObj).forEach( ([key, value]) => {
-      if (value !== null && typeof value === 'object') {
-        builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
-        extractData(value, level + 1);
+      if (value === null) {
+        // A null will be replaced with with <null> 
+        builtStr = `${builtStr}${key}: ${value ? value: '<null>'}, `;
+        hitBottom = true;
       } else if (typeof value === "string") {
         // An empty string will be replaced with <"">
         builtStr = `${builtStr}${key}: ${value ? value: '<"">'}, `;
         hitBottom = true;
-      } else if (value === null) {
-        // A null will be replaced with with <null> 
-        builtStr = `${builtStr}${key}: ${value ? value: '<null>'}, `;
-        hitBottom = true;
-      }
+      } else if (value !== null && typeof value === 'object') {
+        builtStr = `${builtStr.length ? addTrailingCommaSpace(builtStr) : ""}${key}: [`;
+        extractData(value, level + 1);
+      } 
     });
 
     if (hitBottom) {
