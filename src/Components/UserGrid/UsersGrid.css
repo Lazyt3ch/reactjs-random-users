@@ -1,0 +1,42 @@
+.users-view-top-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+    position: fixed;
+    left: 0;
+    top: 1rem;
+    width: 100%;
+    z-index: 15;    
+}
+
+.grid-settings {
+    margin-top: 1.5rem;
+    padding-left: .5rem;
+    padding-top: .5rem;
+    background-color: white;
+}
+
+.grid-container-wrapper {
+    padding: 10rem 0 0 0;   
+    width: 100%;   
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: .3rem 1rem;
+    width: 100%;    
+    padding: 0 1rem;
+}
+
+.grid-item {
+    overflow-wrap: break-word;
+}
+
+.property-name, .subproperty-name {
+    font-weight: 700;
+}
+
+.subproperty-name {
+    font-size: .85rem;
+}

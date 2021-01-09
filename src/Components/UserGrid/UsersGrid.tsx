@@ -6,6 +6,7 @@ import Pagination from "../Pagination/Pagination";
 import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
+import "./UsersGrid.css";
 
 interface Props {
   results2D: string[][];
