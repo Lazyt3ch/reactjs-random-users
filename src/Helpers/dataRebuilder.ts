@@ -24,7 +24,6 @@ const getRebuiltData = (userObj: DeepObj): FlatObj => {
     return {};
   }
 
-  // const extractData = (currentObj: object, level=1): string => {
   const extractData = (currentObj: DeepObj, level=1): string => {
     let hitBottom = false;
 

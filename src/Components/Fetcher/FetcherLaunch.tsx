@@ -5,7 +5,6 @@ import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
-// import {DeepObj} from "./../../Helpers/dataRebuilder";
 import isNonEmptyArray from "./../../Helpers/badDataChecker";
 
 type Severity = "success" | "error" | "info" | "warning" | undefined;
@@ -15,7 +14,6 @@ interface Props {
 
   validProperties: string[];
   
-  // setResults: React.Dispatch<React.SetStateAction<DeepObj[]>>;
   setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
 
   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
@@ -74,13 +72,10 @@ function FetcherLaunch(props: Props) {
     }
 
     setIsFetching(true);
-    // const { resultsArr, errorMessage } = await fetchUsers(numResults, validProperties);
     const { results2D, errorMessage } = await fetchUsers(numResults, validProperties);
     setIsFetching(false);
     setFetchAttempted(true);
 
-    // if (!errorMessage && resultsArr !== undefined && isNonEmptyArray(resultsArr)) {
-    //   setResults(resultsArr);
     if (!errorMessage && results2D !== undefined && isNonEmptyArray(results2D)) {
       setResults2D(results2D);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
@@ -134,7 +129,7 @@ FetcherLaunch.propTypes = {
 
   validProperties: PropTypes.array.isRequired,
   
-  setResults: PropTypes.func.isRequired,
+  setResults2D: PropTypes.func.isRequired,
 
   setActivePageNumber: PropTypes.func.isRequired,
 };

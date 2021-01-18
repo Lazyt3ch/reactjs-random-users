@@ -1,9 +1,5 @@
 import buildUrl from "./urlBuilder";
-import getRebuiltResults, {
-  DeepObj, 
-  // FlatObj,
-  // getRebuiltData,
-} from "./dataRebuilder";
+import getRebuiltResults, {DeepObj} from "./dataRebuilder";
 
 interface DeserializedData {
   results?: DeepObj[];
@@ -11,7 +7,6 @@ interface DeserializedData {
 }
 
 interface Results {
-  // resultsArr?: DeepObj[];
   results2D: string[][];
   errorMessage?: string;
 }
@@ -19,7 +14,6 @@ interface Results {
 async function fetchUsers(
   numResults: number, properties:string[] = [], isToInclude=true): Promise<Results> {
   const completeUrl = buildUrl(numResults, properties, isToInclude);
-  // let resultsArr: DeepObj[] = [];
   let results2D: string[][] = [];
   let errorMessage = "";
 
@@ -38,7 +32,6 @@ async function fetchUsers(
       if (data.error || !data.results || !data.results.length) {
         errorMessage = "The server returned an unspecified error.";
       } else {
-        // resultsArr = data.results;
         results2D = getRebuiltResults(data.results, properties);
       }  
     } else {
@@ -48,7 +41,6 @@ async function fetchUsers(
     errorMessage = getErrorText(err);
   } finally {
     return { 
-      // resultsArr, 
       results2D,
       errorMessage,
     };

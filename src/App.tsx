@@ -6,7 +6,6 @@ import Home from "./Components/Home/Home";
 import Fetcher from "./Components/Fetcher/Fetcher";
 import UsersGrid from "./Components/UserGrid/UsersGrid";
 
-// import getRebuiltResults, {DeepObj} from "./Helpers/dataRebuilder";
 import isNonEmptyArray from "./Helpers/badDataChecker";
 
 import constants from "./constants";
@@ -36,10 +35,7 @@ function App() {
   const [validProperties, setValidProperties] = useState<string[]>(
     getValidProperties(statuses));
 
-  // const [results, setResults] = useState<DeepObj[]>([]);
-
   const [results2D, setResults2D] = useState<string[][]>([]);
-  // const [results, setResults] = useState<string[][]>([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
   const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -47,21 +43,6 @@ function App() {
   const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
   const [prevPagePath, setPrevPagePath] = useState<string>("");
-
-  // useEffect( () => {
-  //   if (!isNonEmptyArray(results)) {
-  //     return;
-  //   }
-
-  //   const results2DNew = results.length
-  //     ? getRebuiltResults(results, validProperties)
-  //     : [];
-
-  //   if (isNonEmptyArray(results2DNew) && results2DNew.length) {
-  //     setResults2D(results2DNew);
-  //   }
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [results, setResults2D]);
 
 
   useEffect( () => {
@@ -114,7 +95,6 @@ function App() {
               validProperties={validProperties}
               setValidProperties={setValidProperties}
               
-              // setResults={setResults}
               setResults2D={setResults2D}
 
               setActivePageNumber={setActivePageNumber}
