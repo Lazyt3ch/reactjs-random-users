@@ -1,9 +1,17 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createAction, createReducer } from "@reduxjs/toolkit";
 
-const activePageNumberReducer = createReducer(0, {
-  SET_ACTIVE_PAGE_NUMBER: (state, action):number => {
-    return action.payload;
-  }
+interface ActivePageNumberState {
+  activePageNumber: number;
+}
+
+const setActivePageNumber = createAction('activePageNumber/setActivePageNumber');
+const initialState = { activePageNumber: 0 } as ActivePageNumberState;
+
+const activePageNumberReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(setActivePageNumber, (state, action) => {
+      state.activePageNumber = action.payload;
+    })
 });
 
 export default activePageNumberReducer;
