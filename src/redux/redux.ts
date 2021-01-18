@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import numResultsReducer from "./numResultsReducer";
 import statusesReducer from "./statusesReducer";
 import validPropertiesReducer from "./validPropertiesReducer";
