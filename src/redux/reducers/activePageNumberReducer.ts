@@ -1,17 +1,26 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface ActivePageNumberState {
   activePageNumber: number;
 }
 
-const setActivePageNumber = createAction('activePageNumber/setActivePageNumber');
-const initialState = { activePageNumber: 0 } as ActivePageNumberState;
-
-const activePageNumberReducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(setActivePageNumber, (state, action) => {
+// Slice
+const slice = createSlice({
+  name: 'activePageNumber',
+  initialState: {
+    activePageNumber: 0;
+  },
+  reducers: {
+    setActivePageNumber: (state, action) => {
       state.activePageNumber = action.payload;
-    })
+    }
+  },
 });
 
-export default activePageNumberReducer;
+export default slice.reducer;
+
+// Actions
+const {setActivePageNumber} = slice.actions;
+
+
+
