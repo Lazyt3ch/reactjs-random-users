@@ -1,7 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit"
+import { ReducerAction } from "react";
 
 const activePageNumberReducer = createReducer(0, {
-  SET_ACTIVE_PAGE_NUMBER: (state, action) => {
+  SET_ACTIVE_PAGE_NUMBER: (state, action):number => {
     return action.payload;
   }
 })
