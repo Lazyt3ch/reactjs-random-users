@@ -39,7 +39,7 @@ function App() {
   const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
   const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [activePageNumber, setActivePageNumber] = useState<number>(0);
+  // const [activePageNumber, setActivePageNumber] = useState<number>(0);
   const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
   const [prevPagePath, setPrevPagePath] = useState<string>("");
@@ -97,7 +97,7 @@ function App() {
               
               setResults2D={setResults2D}
 
-              setActivePageNumber={setActivePageNumber}
+              // setActivePageNumber={setActivePageNumber}
             />
           </Route>
 
@@ -111,8 +111,8 @@ function App() {
               isBriefResults={isBriefResults}
               setIsBriefResults={setIsBriefResults}
 
-              activePageNumber={activePageNumber}
-              setActivePageNumber={setActivePageNumber}
+              // activePageNumber={activePageNumber}
+              // setActivePageNumber={setActivePageNumber}
               
               totalPages={totalPages}
             />
