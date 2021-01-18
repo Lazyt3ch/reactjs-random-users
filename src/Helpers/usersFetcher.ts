@@ -1,6 +1,9 @@
 import buildUrl from "./urlBuilder";
-import {DeepObj} from "./dataRebuilder";
-
+import getRebuiltResults, {
+  DeepObj, 
+  FlatObj,
+  getRebuiltData,
+} from "./dataRebuilder";
 
 interface DeserializedData {
   results?: DeepObj[];

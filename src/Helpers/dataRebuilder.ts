@@ -1,11 +1,3 @@
-const removeTrailingCommaSpace = (str: string): string => {
-  return str.endsWith(", ") ? str.slice(0, -2) : str;
-};
-
-const addTrailingCommaSpace = (str: string): string => {
-  return str.endsWith(", ") ? str : `${str}, `;
-};
-
 interface DeepObj {
   [key: string]: string | DeepObj;
 }
@@ -17,6 +9,15 @@ interface FlatObj {
 const getRebuiltData = (userObj: DeepObj): FlatObj => {
   // Using brackets instead of parentheses as subproperty grouping characters,
   // because parentheses sometimes are present in retrieved users data
+
+  const removeTrailingCommaSpace = (str: string): string => {
+    return str.endsWith(", ") ? str.slice(0, -2) : str;
+  };
+  
+  const addTrailingCommaSpace = (str: string): string => {
+    return str.endsWith(", ") ? str : `${str}, `;
+  };
+  
   let builtStr: string;
 
   if (userObj === null) {
