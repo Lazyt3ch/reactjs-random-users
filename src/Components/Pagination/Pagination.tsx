@@ -3,6 +3,8 @@ import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Pagination.css";
 
+import store from "../../redux/store";
+
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round
 
 // Row 0 is used for table header, so content row numbering starts from 1

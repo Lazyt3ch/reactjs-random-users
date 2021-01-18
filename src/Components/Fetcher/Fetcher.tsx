@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 
 import "./Fetcher.css";
 
+import store from "../../redux/store";
+
 
 interface Props {
   // FetcherNumResults:

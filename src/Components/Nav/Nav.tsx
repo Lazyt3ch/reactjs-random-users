@@ -4,6 +4,8 @@ import {AppBar} from '@material-ui/core';
 import PropTypes from "prop-types";
 import "./Nav.css";
 
+import store from "../../redux/store";
+
 interface Props {
   activePageNumber: number;
 }

@@ -8,6 +8,8 @@ import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 import "./UsersGrid.css";
 
+import store from "../../redux/store";
+
 interface Props {
   results2D: string[][];
     

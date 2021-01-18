@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 
 import isNonEmptyArray from "./../../Helpers/badDataChecker";
 
+import store from "../../redux/store";
+
 type Severity = "success" | "error" | "info" | "warning" | undefined;
 
 interface Props {

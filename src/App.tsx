@@ -24,6 +24,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import store from "./redux/store";
+
 function App() {
   const {numResultsDefault} = constants;
   const [numResults, setNumResults] = useState<number>(numResultsDefault);

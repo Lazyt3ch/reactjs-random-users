@@ -5,6 +5,8 @@ import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
+import store from "../../redux/store";
+
 interface Props {
   numResults: number;
   setNumResults: React.Dispatch<React.SetStateAction<number>>;

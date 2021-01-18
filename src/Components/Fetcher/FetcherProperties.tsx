@@ -4,6 +4,8 @@ import SpacedButton from "../SpacedButton/SpacedButton";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 
+import store from "../../redux/store";
+
 interface Props {
   allProperties: string[];
 
