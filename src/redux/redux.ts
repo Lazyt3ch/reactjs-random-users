@@ -10,15 +10,17 @@ import scrollTopArrReducer from "./scrollTopArrReducer";
 import prevPagePathReducer from "./prevPagePathReducer";
 
 const store = configureStore({
-    reducer: {
-        numResults: numResultsReducer,
-        statuses: statusesReducer,
-        validProperties: validPropertiesReducer,
-        results2D: results2DReducer,
-        gridColumnsFormula: gridColumnsFormulaReducer,
-        isBriefResults: isBriefResultsReducer,
-        activePageNumber: activePageNumberReducer,
-        scrollTopArr: scrollTopArrReducer,
-        prevPagePath: prevPagePathReducer,
-    }
+  reducer: {
+    numResults: numResultsReducer,
+    statuses: statusesReducer,
+    validProperties: validPropertiesReducer,
+    results2D: results2DReducer,
+    gridColumnsFormula: gridColumnsFormulaReducer,
+    isBriefResults: isBriefResultsReducer,
+    activePageNumber: activePageNumberReducer,
+    scrollTopArr: scrollTopArrReducer,
+    prevPagePath: prevPagePathReducer,
+  }
 });
+
+export default store;
