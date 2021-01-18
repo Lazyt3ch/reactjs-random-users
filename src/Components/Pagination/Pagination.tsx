@@ -64,7 +64,8 @@ function Pagination(props: Props) {
       }
   
       if (pageNumber !== activePageNumber) {
-        setActivePageNumber(pageNumber);
+        // setActivePageNumber(pageNumber);
+        store.dispatch({type: SET_ACTIVE_PAGE_NUMBER, payload: pageNumber});
         history.push(`/view/${pageNumber + 1}`);
       }
     }
