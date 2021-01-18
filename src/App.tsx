@@ -6,7 +6,7 @@ import Home from "./Components/Home/Home";
 import Fetcher from "./Components/Fetcher/Fetcher";
 import UsersGrid from "./Components/UserGrid/UsersGrid";
 
-import getRebuiltResults, {DeepObj} from "./Helpers/dataRebuilder";
+// import getRebuiltResults, {DeepObj} from "./Helpers/dataRebuilder";
 import isNonEmptyArray from "./Helpers/badDataChecker";
 
 import constants from "./constants";
@@ -36,9 +36,10 @@ function App() {
   const [validProperties, setValidProperties] = useState<string[]>(
     getValidProperties(statuses));
 
-  const [results, setResults] = useState<DeepObj[]>([]);
+  // const [results, setResults] = useState<DeepObj[]>([]);
 
   const [results2D, setResults2D] = useState<string[][]>([]);
+  // const [results, setResults] = useState<string[][]>([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
   const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -47,40 +48,40 @@ function App() {
 
   const [prevPagePath, setPrevPagePath] = useState<string>("");
 
-  useEffect( () => {
-    if (!isNonEmptyArray(results)) {
-      return;
-    }
+  // useEffect( () => {
+  //   if (!isNonEmptyArray(results)) {
+  //     return;
+  //   }
 
-    const results2DNew = results.length
-      ? getRebuiltResults(results, validProperties)
-      : [];
+  //   const results2DNew = results.length
+  //     ? getRebuiltResults(results, validProperties)
+  //     : [];
 
-    if (isNonEmptyArray(results2DNew) && results2DNew.length) {
-      setResults2D(results2DNew);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [results, setResults2D]);
+  //   if (isNonEmptyArray(results2DNew) && results2DNew.length) {
+  //     setResults2D(results2DNew);
+  //   }
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [results, setResults2D]);
 
 
   useEffect( () => {
     const {usersPerPage} = constants;
 
     // Row 0 is used for table header, so content rows numbering starts from 1
-    const totalUsers = results.length; 
+    const totalUsers = results2D.length; 
     const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
     setTotalPages(totalPagesNew);  
-  }, [results, setTotalPages]);
+  }, [results2D, setTotalPages]);
   
   
   useEffect( () => {
-    if (!totalPages && isNonEmptyArray(results)) {
+    if (!totalPages && isNonEmptyArray(results2D)) {
       return;
     }
 
     const scrollTopArrNew: number[] = new Array(totalPages).fill(0);
     setScrollTopArr(scrollTopArrNew);
-  }, [totalPages, results, setScrollTopArr]);
+  }, [totalPages, results2D, setScrollTopArr]);
 
 
   return (
@@ -113,7 +114,8 @@ function App() {
               validProperties={validProperties}
               setValidProperties={setValidProperties}
               
-              setResults={setResults}
+              // setResults={setResults}
+              setResults2D={setResults2D}
 
               setActivePageNumber={setActivePageNumber}
             />

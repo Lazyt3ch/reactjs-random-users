@@ -5,7 +5,7 @@ import FetcherProperties from "./FetcherProperties";
 import FetcherLaunch from "./FetcherLaunch";
 import PropTypes from "prop-types";
 
-import {DeepObj} from "./../../Helpers/dataRebuilder";
+// import {DeepObj} from "./../../Helpers/dataRebuilder";
 
 import "./Fetcher.css";
 
@@ -25,7 +25,8 @@ interface Props {
   setValidProperties: React.Dispatch<React.SetStateAction<string[]>>;
   
   // FetcherLaunch:
-  setResults: React.Dispatch<React.SetStateAction<DeepObj[]>>;
+  // setResults: React.Dispatch<React.SetStateAction<DeepObj[]>>;
+  setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
 
   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -47,7 +48,8 @@ function Fetcher(props: Props) {
     setValidProperties,
     
     // FetcherLaunch:
-    setResults,
+    // setResults,
+    setResults2D,
 
     setActivePageNumber,
   } = props;
@@ -74,7 +76,8 @@ function Fetcher(props: Props) {
         
         validProperties={validProperties}
         
-        setResults={setResults}
+        // setResults={setResults}
+        setResults2D={setResults2D}
 
         setActivePageNumber={setActivePageNumber}
       />

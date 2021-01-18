@@ -16,7 +16,7 @@ interface Props {
   validProperties: string[];
   
   // setResults: React.Dispatch<React.SetStateAction<DeepObj[]>>;
-  setResults: React.Dispatch<React.SetStateAction<string[][]>>;
+  setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
 
   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -27,7 +27,7 @@ function FetcherLaunch(props: Props) {
 
     validProperties, 
     
-    setResults,
+    setResults2D,
 
     setActivePageNumber,
   } = props;
@@ -82,7 +82,7 @@ function FetcherLaunch(props: Props) {
     // if (!errorMessage && resultsArr !== undefined && isNonEmptyArray(resultsArr)) {
     //   setResults(resultsArr);
     if (!errorMessage && results2D !== undefined && isNonEmptyArray(results2D)) {
-      setResults(results2D);
+      setResults2D(results2D);
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
 
