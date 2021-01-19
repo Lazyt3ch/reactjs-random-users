@@ -1,10 +1,10 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit"
 
-const initialState = { statuses: [["", false]] };
+const initialState: [string, boolean][] = [];
 
 const statusesReducer = createReducer(initialState, {
-  SET_STATUSES: (state, action: PayloadAction<[string, boolean][]>) => {
-    state.statuses = action.payload;
+  STATUSES: (state, action: PayloadAction<[string, boolean][]>) => {
+    state = action.payload;
   }
 });
 
