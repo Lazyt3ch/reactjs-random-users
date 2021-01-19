@@ -9,33 +9,12 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import PropTypes from "prop-types";
 
-// import store from "../../redux/store";
-
 interface Props {
   children: JSX.Element;
-
-//   scrollTopArr: number[];
-//   setScrollTopArr: Function;
-
-//   activePageNumber: number;
-
-//   prevPagePath: string;
-//   setPrevPagePath: Function;
 }
 
 function Scroller(props: Props): JSX.Element { 
-// function Scroller(): JSX.Element { 
-  const { 
-    children, 
-
-  //   scrollTopArr, 
-  //   setScrollTopArr,
-
-  //   activePageNumber,
-
-  //   prevPagePath, 
-  //   setPrevPagePath,
-  } = props;
+  const { children } = props;
 
   const {pathname} = useLocation();
 
@@ -54,7 +33,6 @@ function Scroller(props: Props): JSX.Element {
       });            
     }
 
-    // setPrevPagePath(pathname);
     dispatch({ type: actionTypes.PREV_PAGE_PATH, payload: pathname });    
 
     if (pathname.startsWith("/view/")) {
@@ -74,11 +52,8 @@ function Scroller(props: Props): JSX.Element {
     const onScroll = (): void => {
       const scrollPos = document.documentElement.scrollTop;
       if (pathname.startsWith("/view/") && scrollPos > 0) {
-        // const scrollTopArrNew = scrollTopArr.slice();
-        // scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
         const undatedScrollTopArr = scrollTopArr.slice();
         undatedScrollTopArr[activePageNumber] = Math.floor(scrollPos);
-        // setScrollTopArr(scrollTopArrNew);
         dispatch({ type: actionTypes.SCROLL_TOP_ARR, payload: undatedScrollTopArr });
       }  
     };
@@ -88,21 +63,12 @@ function Scroller(props: Props): JSX.Element {
       window.removeEventListener("scroll", onScroll);
     };
   }, [scrollTopArr, dispatch, pathname, activePageNumber]);    
-  // }, [scrollTopArr, setScrollTopArr, pathname, activePageNumber]);    
  
   return children;
 }
  
 Scroller.propTypes = {
   children: PropTypes.object.isRequired,
-
-//   scrollTopArr: PropTypes.array.isRequired, 
-//   setScrollTopArr: PropTypes.func.isRequired,
-
-//   activePageNumber: PropTypes.number.isRequired,
-
-//   prevPagePath: PropTypes.string.isRequired,
-//   setPrevPagePath: PropTypes.func.isRequired,
 };
 
 export default Scroller;
