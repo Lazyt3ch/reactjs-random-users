@@ -31,6 +31,7 @@ import { RootState } from "./redux/store";
 
 function App() {
   const {numResultsDefault} = constants;
+  const results2D = useSelector((state: RootState) => state.results2D);
   // const [numResults, setNumResults] = useState<number>(numResultsDefault);
   // store.dispatch({ type: actionTypes.NUM_RESULTS, payload: numResultsDefault });
   const dispatch = useDispatch();
