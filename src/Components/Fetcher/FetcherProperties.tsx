@@ -1,5 +1,9 @@
 import React from "react";
-import {getUpdatedStatuses, getAllProperties} from "../../utils/propertiesFixer";
+import {
+  getValidProperties, 
+  getUpdatedStatuses, 
+  getAllProperties,
+  } from "../../utils/propertiesFixer";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 // import PropTypes from "prop-types";
@@ -30,11 +34,23 @@ function FetcherProperties() {
 
   //   setValidProperties,
   // } = props;
-  const allProperties = getAllProperties();
   const dispatch = useDispatch();
-  // type ArrayOfStringBooleanTuples = RootState.statuses;
+
+  const allProperties = getAllProperties();
+  const validProperties = getValidProperties(statuses);
+  dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
 
   const statuses = useSelector((state: RootState) => state.statuses);
+  let updatedStatuses;
+
+  if (Object.keys(statuses).length === 0) {
+    updatedStatuses = getUpdatedStatuses(allProperties, false);
+    dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses });
+  }
+
+
+
+  console.log("statuses =", statuses);
 
   const handleUnselectAll = () => {
     // setStatuses(getUpdatedStatuses(allProperties, false));
