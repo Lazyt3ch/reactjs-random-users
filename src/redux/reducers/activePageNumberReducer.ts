@@ -21,7 +21,9 @@ const slice = createSlice({
 export default slice.reducer;
 
 // Actions
-// const {setActivePageNumber} = slice.actions;
+const {activePageNumber} = slice.actions;
+// export const setActivePageNumber = 
+
 
 
 
