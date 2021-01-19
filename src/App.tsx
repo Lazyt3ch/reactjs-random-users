@@ -81,9 +81,10 @@ function App() {
       return;
     }
 
-    const scrollTopArrNew: number[] = new Array(totalPages).fill(0);
-    setScrollTopArr(scrollTopArrNew);
-  }, [totalPages, results2D, setScrollTopArr]);
+    const updatedScrollTopArr: number[] = new Array(totalPages).fill(0);
+    // setScrollTopArr(scrollTopArrNew);
+    dispatch({ type: actionTypes.SCROLL_TOP_ARR, payload: updatedScrollTopArr });
+  }, [totalPages, results2D, dispatch]);
 
 
   return (
