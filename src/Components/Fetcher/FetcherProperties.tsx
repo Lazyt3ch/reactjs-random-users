@@ -1,10 +1,14 @@
 import React from "react";
-import {getUpdatedStatuses} from "../../Helpers/propertiesFixer";
+import {getUpdatedStatuses} from "../../utils/propertiesFixer";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 
-import store from "../../redux/store";
+// import store from "../../redux/store";
+import {RootState} from "../../redux/store";
+import actionTypes from "../../redux/actionTypes";
+import {useSelector, useDispatch} from 'react-redux';
+
 
 interface Props {
   allProperties: string[];
