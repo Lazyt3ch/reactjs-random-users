@@ -5,7 +5,7 @@ import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
 // import PropTypes from "prop-types";
 
-import store from "../../redux/store";
+import store, {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 
