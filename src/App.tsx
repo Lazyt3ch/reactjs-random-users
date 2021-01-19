@@ -7,7 +7,6 @@ import Fetcher from "./Components/Fetcher/Fetcher";
 import UsersGrid from "./Components/UserGrid/UsersGrid";
 
 import isNonEmptyArray from "./utils/badDataChecker";
-
 import constants from "./constants";
 
 import './App.css';
@@ -27,7 +26,6 @@ function App() {
 
   const results2D = useSelector((state: RootState) => state.results2D);
   const totalPages = useSelector((state: RootState) => state.totalPages);
-
 
   useEffect( () => {
     const {usersPerPage} = constants;
@@ -53,7 +51,7 @@ function App() {
     <Router>
       <Nav />
       
-      <Scroller >
+      <Scroller>
 
         <Switch>
           <Route path="/get" exact>
