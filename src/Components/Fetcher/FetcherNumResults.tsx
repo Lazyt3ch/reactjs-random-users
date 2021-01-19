@@ -66,7 +66,8 @@ function FetcherNumResults(props: Props) {
         value={value}
         inputValue={inputValue}
         onChange={(event, valueNew) => setValue(fixNumResults(valueNew))}
-        onInputChange={(event, inputValueNew) => setInputValue(fixNumResults(inputValueNew).toString())}
+        onInputChange={(event, inputValueNew) => 
+          setInputValue(fixNumResults(inputValueNew).toString())}
         renderInput={(params) => 
           <TextField {...params} 
             type="number"
