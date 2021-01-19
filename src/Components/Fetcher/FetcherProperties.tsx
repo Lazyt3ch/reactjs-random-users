@@ -33,9 +33,8 @@ function FetcherProperties() {
   const dispatch = useDispatch();
   // type ArrayOfStringBooleanTuples = RootState.statuses;
 
+  const statuses = useSelector((state: RootState) => state.statuses);
   
-
-
   const handleUnselectAll = () => {
     // setStatuses(getUpdatedStatuses(allProperties, false));
     // setValidProperties([]);
