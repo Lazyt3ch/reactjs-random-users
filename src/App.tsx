@@ -88,17 +88,17 @@ function App() {
   return (
     <Router>
       <Nav 
-        activePageNumber={activePageNumber}
+        // activePageNumber={activePageNumber}
       />
       
       <Scroller
-        scrollTopArr={scrollTopArr}
-        setScrollTopArr={setScrollTopArr}
+        // scrollTopArr={scrollTopArr}
+        // setScrollTopArr={setScrollTopArr}
 
-        activePageNumber={activePageNumber} 
+        // activePageNumber={activePageNumber} 
 
-        prevPagePath={prevPagePath} 
-        setPrevPagePath={setPrevPagePath}
+        // prevPagePath={prevPagePath} 
+        // setPrevPagePath={setPrevPagePath}
       >
 
         <Switch>
@@ -109,13 +109,13 @@ function App() {
 
               // allProperties={allProperties}
               
-              statuses={statuses}
-              setStatuses={setStatuses}
+              // statuses={statuses}
+              // setStatuses={setStatuses}
               
-              validProperties={validProperties}
-              setValidProperties={setValidProperties}
+              // validProperties={validProperties}
+              // setValidProperties={setValidProperties}
               
-              setResults2D={setResults2D}
+              // setResults2D={setResults2D}
 
               // setActivePageNumber={setActivePageNumber}
             />
@@ -123,18 +123,18 @@ function App() {
 
           <Route path="/view/">
             <UsersGrid 
-              results2D={results2D} 
+              // results2D={results2D} 
 
-              gridColumnsFormula={gridColumnsFormula}
-              setGridColumnsFormula={setGridColumnsFormula}
+              // gridColumnsFormula={gridColumnsFormula}
+              // setGridColumnsFormula={setGridColumnsFormula}
 
-              isBriefResults={isBriefResults}
-              setIsBriefResults={setIsBriefResults}
+              // isBriefResults={isBriefResults}
+              // setIsBriefResults={setIsBriefResults}
 
               // activePageNumber={activePageNumber}
               // setActivePageNumber={setActivePageNumber}
               
-              totalPages={totalPages}
+              // totalPages={totalPages}
             />
           </Route>
 
