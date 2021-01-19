@@ -9,6 +9,7 @@ import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 import {ArrayOfStringBooleanTuples} from "../../redux/reducers/statusesReducer";
+import {ArrayOfStrings} from "../../redux/reducers/validPropertiesReducer";
 
 // interface Props {
 //   allProperties: string[];
@@ -34,7 +35,7 @@ function FetcherProperties() {
   // type ArrayOfStringBooleanTuples = RootState.statuses;
 
   const statuses = useSelector((state: RootState) => state.statuses);
-  
+
   const handleUnselectAll = () => {
     // setStatuses(getUpdatedStatuses(allProperties, false));
     // setValidProperties([]);
