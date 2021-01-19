@@ -50,7 +50,7 @@ function FetcherProperties() {
     dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
   }
 
-  console.log("statuses =", statuses);
+  // console.log("statuses =", statuses);
 
   const handleUnselectAll = () => {
     // setStatuses(getUpdatedStatuses(allProperties, false));
