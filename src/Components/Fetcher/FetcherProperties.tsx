@@ -81,7 +81,8 @@ function FetcherProperties() {
     const {checked, name} = event.target;
     // const statusesNew: [string, boolean][] = statuses.map( ([property, oldStatus]) => 
     const updatedStatuses: ArrayOfStringBooleanTuples = statuses.map( ([property, oldStatus]) => 
-      ( property === name ? [property, checked] : [property, oldStatus] ) );
+      [ property, (property === name ? checked : oldStatus) ] );
+    // ( property === name ? [property, checked] : [property, oldStatus] ) );
     updateStatusesAndProperties(updatedStatuses);
   };
 
