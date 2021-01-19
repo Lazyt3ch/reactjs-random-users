@@ -1,5 +1,5 @@
 import React from "react";
-import {getUpdatedStatuses} from "../../utils/propertiesFixer";
+import {getUpdatedStatuses, getAllProperties} from "../../utils/propertiesFixer";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
@@ -29,7 +29,7 @@ function FetcherProperties() {
 
   //   setValidProperties,
   // } = props;
-
+  const allProperties = getAllProperties();
   const dispatch = useDispatch();
 
 
