@@ -56,13 +56,16 @@ function FetcherProperties() {
       .filter( ([property, status]) => status && allProperties.includes(property) )
       .map( ([property, _]) => property );
     // setValidProperties(validPropertiesNew);
-    dispatch({ type: actionTypes.VALID_PROPERTIES, payload: updatedValidProperties})
+    dispatch({ type: actionTypes.VALID_PROPERTIES, payload: updatedValidProperties});
   };
 
   // const updateStatusesAndProperties = (statusesNew: [string, boolean][]): void => {
-  const updateStatusesAndProperties = (statusesNew: ArrayOfStringBooleanTuples): void => {
-      setStatuses(statusesNew);
-    updateValidProperties(statusesNew);
+  // const updateStatusesAndProperties = (statusesNew: ArrayOfStringBooleanTuples): void => {
+  const updateStatusesAndProperties = (updatedStatuses: ArrayOfStringBooleanTuples): void => {
+    // setStatuses(statusesNew);
+    // updateValidProperties(statusesNew);
+    dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses})
+    updateValidProperties(updatedStatuses);
   };
 
   const handleInvertSelection = () => {
