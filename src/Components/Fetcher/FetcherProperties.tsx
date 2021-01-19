@@ -33,6 +33,8 @@ function FetcherProperties() {
   const dispatch = useDispatch();
   // type ArrayOfStringBooleanTuples = RootState.statuses;
 
+  
+
 
   const handleUnselectAll = () => {
     // setStatuses(getUpdatedStatuses(allProperties, false));
@@ -70,9 +72,9 @@ function FetcherProperties() {
 
   const handleInvertSelection = () => {
     // const statusesNew: [string, boolean][] = statuses.map( 
-    const statusesNew: ArrayOfStringBooleanTuples = statuses.map( 
-        ([property, status]) => [property, !status] );
-    updateStatusesAndProperties(statusesNew);
+    const updatedStatuses: ArrayOfStringBooleanTuples = statuses.map( 
+      ([property, status]) => [property, !status] );
+    updateStatusesAndProperties(updatedStatuses);
   };
   
   const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
