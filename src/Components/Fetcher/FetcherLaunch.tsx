@@ -88,12 +88,14 @@ function FetcherLaunch() {
     setFetchAttempted(true);
 
     if (!errorMessage && results2D !== undefined && isNonEmptyArray(results2D)) {
-      setResults2D(results2D);
+      // setResults2D(results2D);
+      dispatch({ type: actionTypes.RESULTS_2D, payload: results2D });
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
 
       // Important, otherwise no rows will be displayed in certain cases
-      setActivePageNumber(0); // 0 is first page's index
+      // setActivePageNumber(0); // 0 is first page's index      
+      dispatch({ type: actionTypes.ACTIVE_PAGE_NUMBER, payload: 0 }); // 0 is first page's index
 
       setTimeout( () => {
         history.push("/view/1"); // 1 is first page's displayed number
