@@ -47,6 +47,9 @@ function FetcherLaunch() {
 
   const dispatch = useDispatch();
 
+  const numResults = useSelector((state: RootState) => state.numResults);
+  const validProperties = useSelector((state: RootState) => state.validProperties);
+
   useEffect(
     () => {
       if (isFetching) {
