@@ -25,7 +25,7 @@ import {
 } from "react-router-dom";
 
 import store from "./redux/store";
-import actionTypes from "./redux/actionTypes";
+import actionTypes from "./redux/constants";
 
 function App() {
   const {numResultsDefault} = constants;
