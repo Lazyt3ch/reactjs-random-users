@@ -5,47 +5,13 @@ import UsersGridItem from "./UsersGridItem";
 import Pagination from "../Pagination/Pagination";
 import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
-// import PropTypes from "prop-types";
 import "./UsersGrid.css";
 
 import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 
-// import store from "../../redux/store";
-
-// interface Props {
-//   results2D: string[][];
-    
-//   gridColumnsFormula: string;
-//   setGridColumnsFormula: React.Dispatch<React.SetStateAction<string>>;
-
-//   isBriefResults: boolean;
-//   setIsBriefResults: React.Dispatch<React.SetStateAction<boolean>>;
-
-//   activePageNumber: number;
-//   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
-
-//   totalPages: number;
-// }
-
-// function UsersGrid(props: Props) {
 function UsersGrid() {
-  // const {
-  //   results2D,
-    
-  //   gridColumnsFormula,
-  //   setGridColumnsFormula,
-
-  //   isBriefResults, 
-  //   setIsBriefResults,
-
-  //   activePageNumber, 
-  //   setActivePageNumber,
-
-  //   totalPages, 
-  // } = props;
-
   const [activePageRows, setActivePageRows] = useState<string[][]>([]);
 
   const dispatch = useDispatch();
@@ -71,7 +37,6 @@ function UsersGrid() {
       // Row 0 is used for table header, so content rows numbering starts from 1
       const contentRowsStart = (activePageNumber * usersPerPage) + 1;
       const contentRowsEnd = contentRowsStart + usersPerPage;
-      // const activePageRowsNew = [ allResults[0] ].concat(
       const updatedActivePageRows = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
 
@@ -90,20 +55,16 @@ function UsersGrid() {
 
     setActivePageRows(updatedActivePageRows);
 
-    // const gridColumnsFormulaNew = activePageRowsNew.length > 1
     const updatedGridColumnsFormula = updatedActivePageRows.length > 1
       ? getGridColumnsFormula(updatedActivePageRows)
       : "";
     
-    // setGridColumnsFormula(gridColumnsFormulaNew);
     dispatch({ type: actionTypes.GRID_COLUMNS_FORMULA, payload: updatedGridColumnsFormula});
 
-  // }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
   }, [results2D, activePageNumber, totalPages, dispatch]);
 
 
   function handleBriefResultsChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    // setIsBriefResults(event.target.checked);  
     dispatch({ type: actionTypes.IS_BRIEF_RESULTS, payload: event.target.checked});
   }
 
@@ -124,12 +85,7 @@ function UsersGrid() {
           </label>
         </div>
 
-        <Pagination 
-          // totalPages={totalPages} 
-
-          // activePageNumber={activePageNumber} 
-          // setActivePageNumber={setActivePageNumber}    
-        />        
+        <Pagination />        
       </div>
 
       <div className="grid-container-wrapper">
@@ -160,20 +116,5 @@ function UsersGrid() {
     </>
   );
 }
-
-// UsersGrid.propTypes = {
-//   results2D: PropTypes.array.isRequired,
-    
-//   gridColumnsFormula: PropTypes.string.isRequired,
-//   setGridColumnsFormula: PropTypes.func.isRequired,
-
-//   isBriefResults: PropTypes.bool.isRequired,
-//   setIsBriefResults: PropTypes.func.isRequired,
-
-//   activePageNumber: PropTypes.number.isRequired,
-//   setActivePageNumber: PropTypes.func.isRequired,
-
-//   totalPages: PropTypes.number.isRequired,
-// };
 
 export default UsersGrid;
