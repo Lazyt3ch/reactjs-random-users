@@ -3,7 +3,7 @@ import fetchUsers from "../../utils/usersFetcher";
 import {useHistory} from "react-router-dom";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import isNonEmptyArray from "../../utils/badDataChecker";
 
