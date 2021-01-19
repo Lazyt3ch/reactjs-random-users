@@ -48,11 +48,14 @@ function FetcherProperties() {
     dispatch({ type: actionTypes.STATUSES, payload: statuses });
   };
 
-  const updateValidProperties = (statusesNew: [string, boolean][]): void => {
-    const validPropertiesNew = statusesNew
+  // const updateValidProperties = (statusesNew: [string, boolean][]): void => {
+  const updateValidProperties = (updatedStatuses: [string, boolean][]): void => {
+    // const validPropertiesNew = statusesNew
+    const updatedValidProperties = updatedStatuses
       .filter( ([property, status]) => status && allProperties.includes(property) )
       .map( ([property, _]) => property );
-    setValidProperties(validPropertiesNew);
+    // setValidProperties(validPropertiesNew);
+    dispatch({ type: actionTypes.VALID_PROPERTIES, payload: updatedValidProperties})
   };
 
   const updateStatusesAndProperties = (statusesNew: [string, boolean][]): void => {

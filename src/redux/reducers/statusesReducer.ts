@@ -1,6 +1,6 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit"
 
-type ArrayOfStringBooleanTuples = [string, boolean][];
+export type ArrayOfStringBooleanTuples = [string, boolean][];
 
 interface Statuses {
   statuses: ArrayOfStringBooleanTuples;
