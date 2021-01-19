@@ -10,6 +10,7 @@ import isBriefResultsReducer from "./reducers/isBriefResultsReducer";
 import activePageNumberReducer from "./reducers/activePageNumberReducer";
 import scrollTopArrReducer from "./reducers/scrollTopArrReducer";
 import prevPagePathReducer from "./reducers/prevPagePathReducer";
+import totalPagesReducer from './reducers/totalPagesReducer';
 
 const rootReducer = combineReducers({
   numResults: numResultsReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   activePageNumber: activePageNumberReducer,
   scrollTopArr: scrollTopArrReducer,
   prevPagePath: prevPagePathReducer,
+  totalPages: totalPagesReducer,
 });
 
 const store = configureStore({

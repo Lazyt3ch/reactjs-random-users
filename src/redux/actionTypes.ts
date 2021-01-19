@@ -8,6 +8,7 @@ const actionTypes = {
   SCROLL_TOP_ARR: 'SCROLL_TOP_ARR',
   STATUSES: 'STATUSES',
   VALID_PROPERTIES: 'VALID_PROPERTIES',
+  TOTAL_PAGES: 'TOTAL_PAGES',
 };
 
 export default actionTypes;
