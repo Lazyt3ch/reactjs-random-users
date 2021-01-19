@@ -1,21 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-interface IsBriefResultsAction {
-  type: string;
-  payload: boolean;
-}
+const initialState = { isBriefResults: false };
 
-// Slice
-const slice = createSlice({
-  name: 'isBriefResultsReducer',
-  initialState: {
-    isBriefResults: false,
-  },
-  reducers: {
-    setIsBriefResults: (state, action: IsBriefResultsAction) => {
-      state.isBriefResults = action.payload;
-    }
-  },
+const isBriefResultsReducer = createReducer(initialState, {
+  SET_GRID_COLUMNS_FORMULA: (state, action: PayloadAction<boolean>) => {
+    state.isBriefResults = action.payload;
+  }
 });
 
-export default slice.reducer;
+export default isBriefResultsReducer;

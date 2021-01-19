@@ -1,21 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-interface GridColumnsFormulaAction {
-  type: string;
-  payload: string;
-}
+const initialState = { gridColumnsFormula: "" };
 
-// Slice
-const slice = createSlice({
-  name: 'gridColumnsFormula',
-  initialState: {
-    gridColumnsFormula: "",
-  },
-  reducers: {
-    setGridColumnsFormula: (state, action: GridColumnsFormulaAction) => {
-      state.gridColumnsFormula = action.payload;
-    }
-  },
+const gridColumnsFormulaReducer = createReducer(initialState, {
+  SET_GRID_COLUMNS_FORMULA: (state, action: PayloadAction<string>) => {
+    state.gridColumnsFormula = action.payload;
+  }
 });
 
-export default slice.reducer;
+export default gridColumnsFormulaReducer;
