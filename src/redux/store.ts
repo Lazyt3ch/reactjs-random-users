@@ -1,4 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
+import {combineReducers} from 'redux';
 
 import numResultsReducer from "./reducers/numResultsReducer";
 import statusesReducer from "./reducers/statusesReducer";
@@ -10,18 +11,22 @@ import activePageNumberReducer from "./reducers/activePageNumberReducer";
 import scrollTopArrReducer from "./reducers/scrollTopArrReducer";
 import prevPagePathReducer from "./reducers/prevPagePathReducer";
 
+const rootReducer = combineReducers({
+  numResults: numResultsReducer,
+  statuses: statusesReducer,
+  validProperties: validPropertiesReducer,
+  results2D: results2DReducer,
+  gridColumnsFormula: gridColumnsFormulaReducer,
+  isBriefResults: isBriefResultsReducer,
+  activePageNumber: activePageNumberReducer,
+  scrollTopArr: scrollTopArrReducer,
+  prevPagePath: prevPagePathReducer,
+});
+
 const store = configureStore({
-  reducer: {
-    numResults: numResultsReducer,
-    statuses: statusesReducer,
-    validProperties: validPropertiesReducer,
-    results2D: results2DReducer,
-    gridColumnsFormula: gridColumnsFormulaReducer,
-    isBriefResults: isBriefResultsReducer,
-    activePageNumber: activePageNumberReducer,
-    scrollTopArr: scrollTopArrReducer,
-    prevPagePath: prevPagePathReducer,
-  }
+  reducer: rootReducer
 });
 
 export default store;
+
+export type RootState = ReturnType<typeof rootReducer>;
