@@ -1,8 +1,10 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-const validPropertiesReducer = createReducer([], {
-  SET_VALID_PROPERTIES: (state, action):string[] => {
-    return action.payload;
+const initialState = { validProperties: [""] };
+
+const validPropertiesReducer = createReducer(initialState, {
+  VALID_PROPERTIES: (state, action: PayloadAction<string[]>) => {
+    state.validProperties = action.payload;
   }
 });
 
