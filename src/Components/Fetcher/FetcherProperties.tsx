@@ -9,7 +9,7 @@ import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 import {ArrayOfStringBooleanTuples} from "../../redux/reducers/statusesReducer";
-import {ArrayOfStrings} from "../../redux/reducers/validPropertiesReducer";
+// import {ArrayOfStrings} from "../../redux/reducers/validPropertiesReducer";
 
 // interface Props {
 //   allProperties: string[];
