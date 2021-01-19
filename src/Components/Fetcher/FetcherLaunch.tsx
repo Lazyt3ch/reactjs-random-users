@@ -127,14 +127,14 @@ function FetcherLaunch() {
   );
 }
 
-FetcherLaunch.propTypes = {
-  numResults: PropTypes.number.isRequired,
+// FetcherLaunch.propTypes = {
+//   numResults: PropTypes.number.isRequired,
 
-  validProperties: PropTypes.array.isRequired,
+//   validProperties: PropTypes.array.isRequired,
   
-  setResults2D: PropTypes.func.isRequired,
+//   setResults2D: PropTypes.func.isRequired,
 
-  setActivePageNumber: PropTypes.func.isRequired,
-};
+//   setActivePageNumber: PropTypes.func.isRequired,
+// };
 
 export default FetcherLaunch;
