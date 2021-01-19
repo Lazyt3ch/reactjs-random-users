@@ -26,6 +26,7 @@ import {
 
 import store from "./redux/store";
 import actionTypes from "./redux/actionTypes";
+import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
   const {numResultsDefault} = constants;
