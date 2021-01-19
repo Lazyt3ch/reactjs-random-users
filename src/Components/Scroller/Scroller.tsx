@@ -25,8 +25,8 @@ interface Props {
 
 function Scroller(props: Props): JSX.Element { 
 // function Scroller(): JSX.Element { 
-  //   const { 
-  //   children, 
+  const { 
+    children, 
 
   //   scrollTopArr, 
   //   setScrollTopArr,
@@ -35,7 +35,7 @@ function Scroller(props: Props): JSX.Element {
 
   //   prevPagePath, 
   //   setPrevPagePath,
-  // } = props;
+  } = props;
 
   const {pathname} = useLocation();
 
