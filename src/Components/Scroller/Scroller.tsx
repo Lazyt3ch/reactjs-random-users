@@ -7,12 +7,12 @@ import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 // import store from "../../redux/store";
 
-// interface Props {
-//   children: JSX.Element;
+interface Props {
+  children: JSX.Element;
 
 //   scrollTopArr: number[];
 //   setScrollTopArr: Function;
@@ -21,10 +21,10 @@ import {useSelector, useDispatch} from 'react-redux';
 
 //   prevPagePath: string;
 //   setPrevPagePath: Function;
-// }
+}
 
-// function Scroller(props: Props): JSX.Element { 
-function Scroller(): JSX.Element { 
+function Scroller(props: Props): JSX.Element { 
+// function Scroller(): JSX.Element { 
   //   const { 
   //   children, 
 
@@ -87,13 +87,14 @@ function Scroller(): JSX.Element {
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, [scrollTopArr, setScrollTopArr, pathname, activePageNumber]);    
+  }, [scrollTopArr, dispatch, pathname, activePageNumber]);    
+  // }, [scrollTopArr, setScrollTopArr, pathname, activePageNumber]);    
  
   return children;
 }
  
-// Scroller.propTypes = {
-//   children: PropTypes.object.isRequired,
+Scroller.propTypes = {
+  children: PropTypes.object.isRequired,
 
 //   scrollTopArr: PropTypes.array.isRequired, 
 //   setScrollTopArr: PropTypes.func.isRequired,
@@ -102,6 +103,6 @@ function Scroller(): JSX.Element {
 
 //   prevPagePath: PropTypes.string.isRequired,
 //   setPrevPagePath: PropTypes.func.isRequired,
-// };
+};
 
 export default Scroller;
