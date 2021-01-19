@@ -36,8 +36,8 @@ function FetcherProperties() {
   const handleUnselectAll = () => {
     // setStatuses(getUpdatedStatuses(allProperties, false));
     // setValidProperties([]);
-    const updateStatuses = getUpdatedStatuses(allProperties, false);
-    dispatch({ type: actionTypes.STATUSES, payload: updateStatuses });
+    const statuses = getUpdatedStatuses(allProperties, false);
+    dispatch({ type: actionTypes.STATUSES, payload: statuses });
   };
 
   const handleSelectAll = () => {
