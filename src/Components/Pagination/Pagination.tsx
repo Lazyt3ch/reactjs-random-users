@@ -38,6 +38,9 @@ function Pagination() {
 
   const history = useHistory();  
 
+  const totalPages = useSelector((state: RootState) => state.totalPages);
+  const activePageNumber = useSelector((state: RootState) => state.activePageNumber);
+
   // const totalPages = useSelector((state: RootState) => state.to)
 
   useEffect(
