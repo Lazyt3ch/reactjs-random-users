@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from "react";
 import fetchUsers from "../../utils/usersFetcher";
+import isNonEmptyArray from "../../utils/badDataChecker";
 import {useHistory} from "react-router-dom";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
 // import PropTypes from "prop-types";
 
-import isNonEmptyArray from "../../utils/badDataChecker";
+import {RootState} from "../../redux/store";
+import actionTypes from "../../redux/actionTypes";
+import {useSelector, useDispatch} from 'react-redux';
 
 // import store from "../../redux/store";
 
@@ -41,6 +44,8 @@ function FetcherLaunch() {
 
   const [message, setMessage] = useState<string>("");
   const [severity, setSeverity] = useState<Severity>(undefined);
+
+  const dispatch = useDispatch();
 
   useEffect(
     () => {
