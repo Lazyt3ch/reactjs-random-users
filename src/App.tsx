@@ -6,7 +6,7 @@ import Home from "./Components/Home/Home";
 import Fetcher from "./Components/Fetcher/Fetcher";
 import UsersGrid from "./Components/UserGrid/UsersGrid";
 
-import isNonEmptyArray from "./Helpers/badDataChecker";
+import isNonEmptyArray from "./utils/badDataChecker";
 
 import constants from "./constants";
 
@@ -14,7 +14,7 @@ import {
   getAllProperties, 
   getUpdatedStatuses,
   getValidProperties,
-} from "./Helpers/propertiesFixer";
+} from "./utils/propertiesFixer";
 
 import './App.css';
 
@@ -29,7 +29,7 @@ import actionTypes from "./redux/actionTypes";
 
 function App() {
   const {numResultsDefault} = constants;
-  // const [numResults, setNumResults] = useState<number>(numResultsDefault);
+  const [numResults, setNumResults] = useState<number>(numResultsDefault);
   store.dispatch({ type: actionTypes.NUM_RESULTS, payload: numResultsDefault });
 
   const allProperties = getAllProperties();
