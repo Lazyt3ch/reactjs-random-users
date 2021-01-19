@@ -63,7 +63,7 @@ function FetcherProperties() {
 
   // const updateStatusesAndProperties = (statusesNew: [string, boolean][]): void => {
   // const updateStatusesAndProperties = (statusesNew: ArrayOfStringBooleanTuples): void => {
-  const updateStatusesAndProperties = (updatedStatuses: ArrayOfStringBooleanTuples): void => {
+  const updateStatuses = (updatedStatuses: ArrayOfStringBooleanTuples): void => {
     // setStatuses(statusesNew);
     // updateValidProperties(statusesNew);
     dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses})
@@ -74,7 +74,8 @@ function FetcherProperties() {
     // const statusesNew: [string, boolean][] = statuses.map( 
     const updatedStatuses: ArrayOfStringBooleanTuples = statuses.map( 
       ([property, status]) => [property, !status] );
-    updateStatusesAndProperties(updatedStatuses);
+    updateValidProperties(updatedStatuses);
+    updateStatuses(updatedStatuses);
   };
   
   const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -83,7 +84,8 @@ function FetcherProperties() {
     const updatedStatuses: ArrayOfStringBooleanTuples = statuses.map( ([property, oldStatus]) => 
       [ property, (property === name ? checked : oldStatus) ] );
     // ( property === name ? [property, checked] : [property, oldStatus] ) );
-    updateStatusesAndProperties(updatedStatuses);
+    updateValidProperties(updatedStatuses);
+    updateStatuses(updatedStatuses);
   };
 
   const numTotalProperties = allProperties.length;
