@@ -1,16 +1,18 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-type ArrayOfStrings = string[];
+export type ArrayOfStrings = string[];
 
-interface ValidProperties {
-  validProperties: ArrayOfStrings;
-}
+// interface ValidProperties {
+//   validProperties: ArrayOfStrings;
+// }
 
-const initialState = { validProperties: [] } as ValidProperties;
+// const initialState = { validProperties: [] } as ValidProperties;
+const initialState = [] as ArrayOfStrings;
 
 const validPropertiesReducer = createReducer(initialState, {
   VALID_PROPERTIES: (state, action: PayloadAction<ArrayOfStrings>) => {
-    state.validProperties = action.payload;
+    // state.validProperties = action.payload;
+    state = action.payload;
   }
 });
 
