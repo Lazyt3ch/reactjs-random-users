@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
-// import PropTypes from "prop-types";
 import "./Pagination.css";
 
 import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
-
-// import store from "../../redux/store";
 
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round
 
@@ -16,24 +13,7 @@ import {useSelector, useDispatch} from 'react-redux';
 // The "page-spacer" span keeps the ">" and ">>" span elements in the same positions.
 // Otherwise in certain cases they are displaced to the right when clicking on ">" span repeatedly.
 
-// interface Props {
-//   totalPages: number;
-
-//   activePageNumber: number;
-//   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
-// }
-
-
-// function Pagination(props: Props) {
 function Pagination() {
-
-  // const {
-  //   totalPages, 
-
-  //   activePageNumber,
-  //   setActivePageNumber,
-  // } = props;
-
   const [displayedPageNumbers, setDisplayedPageNumbers] = useState([0]);
 
   const history = useHistory();  
@@ -42,8 +22,6 @@ function Pagination() {
   const activePageNumber = useSelector((state: RootState) => state.activePageNumber);
 
   const dispatch = useDispatch();
-
-  // const totalPages = useSelector((state: RootState) => state.to)
 
   useEffect(
     () => {
@@ -80,8 +58,6 @@ function Pagination() {
       }
   
       if (pageNumber !== activePageNumber) {
-        // setActivePageNumber(pageNumber);
-        // store.dispatch({type: SET_ACTIVE_PAGE_NUMBER, payload: pageNumber});
         dispatch({ type: actionTypes.ACTIVE_PAGE_NUMBER, payload: pageNumber});
         history.push(`/view/${pageNumber + 1}`);
       }
@@ -207,12 +183,5 @@ function Pagination() {
     </>
   );
 }
-
-// Pagination.propTypes = {
-//   totalPages: PropTypes.number.isRequired,
-
-//   activePageNumber: PropTypes.number.isRequired,
-//   setActivePageNumber: PropTypes.func.isRequired,
-// };
 
 export default Pagination;
