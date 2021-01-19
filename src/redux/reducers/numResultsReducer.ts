@@ -1,6 +1,10 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = { numResults: 0 };
+interface NumResults {
+  numResults: number;
+}
+
+const initialState = { numResults: 0 } as NumResults;
 
 const numResultsReducer = createReducer(initialState, {
   NUM_RESULTS: (state, action: PayloadAction<number>) => {
