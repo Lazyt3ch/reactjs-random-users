@@ -29,7 +29,7 @@ import actionTypes from "./redux/actionTypes";
 
 function App() {
   const {numResultsDefault} = constants;
-  const [numResults, setNumResults] = useState<number>(numResultsDefault);
+  // const [numResults, setNumResults] = useState<number>(numResultsDefault);
   store.dispatch({ type: actionTypes.NUM_RESULTS, payload: numResultsDefault });
 
   const allProperties = getAllProperties();
