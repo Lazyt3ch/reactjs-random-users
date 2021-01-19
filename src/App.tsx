@@ -69,7 +69,7 @@ function App() {
     const {usersPerPage} = constants;
 
     // Row 0 is used for table header, so content rows numbering starts from 1
-    const totalUsers = results2D.length; 
+    const totalUsers = results2D.length - 1; // First row contains property names
     // const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
     const updatedTotalPages = Math.ceil(totalUsers / usersPerPage);
 
