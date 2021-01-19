@@ -40,12 +40,16 @@ function FetcherNumResults() {
   const [value, setValue] = useState<number>(numResults || numResultsDefault);
   const [inputValue, setInputValue] = useState<string>((numResults || numResultsDefault).toString());
 
+  const dispatch = useDispatch();
+
   useEffect( 
     () => {
       const fixedNum = fixNumResults(value);
       setValue(fixedNum);
-      setNumResults(fixedNum);
-    }, [value, setNumResults]
+      // setNumResults(fixedNum);      
+      dispatch({ type: actionTypes.NUM_RESULTS, payload: fixedNum });
+    // }, [value, setNumResults]
+    }, [value, dispatch]
   );
 
   useEffect( 
