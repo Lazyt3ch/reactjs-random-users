@@ -4,6 +4,9 @@ import {AppBar} from '@material-ui/core';
 // import PropTypes from "prop-types";
 import "./Nav.css";
 
+import {RootState} from "../../redux/store";
+import {useSelector} from 'react-redux';
+
 // import store from "../../redux/store";
 
 // interface Props {
@@ -13,6 +16,7 @@ import "./Nav.css";
 // function Nav(props: Props) {
 function Nav() {
   // const {activePageNumber} = props;
+  const activePageNumber = useSelector((state: RootState) => state.activePageNumber);
 
   return (
     <>
