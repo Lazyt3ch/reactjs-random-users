@@ -73,8 +73,8 @@ function App() {
     // const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
     const updatedTotalPages = Math.ceil(totalUsers / usersPerPage);
 
-    console.log("totalUsers, usersPerPage, updatedTotalPages =", 
-      totalUsers, usersPerPage, updatedTotalPages);
+    // console.log("totalUsers, usersPerPage, updatedTotalPages =", 
+    //   totalUsers, usersPerPage, updatedTotalPages);
 
       // setTotalPages(totalPagesNew);  
     dispatch({ type: actionTypes.TOTAL_PAGES, payload: updatedTotalPages });
