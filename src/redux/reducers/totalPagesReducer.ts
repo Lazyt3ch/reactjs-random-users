@@ -4,7 +4,7 @@ const initialState = 0;
 
 const totalPagesReducer = createReducer(initialState, {
   TOTAL_PAGES: (state, action: PayloadAction<number>) => {
-    state = action.payload;
+    return action.payload;
   }
 });
 

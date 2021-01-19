@@ -4,7 +4,7 @@ const initialState = "";
 
 const prevPagePathReducer = createReducer(initialState, {
   PREV_PAGE_PATH: (state, action: PayloadAction<string>) => {
-    state = action.payload;
+    return action.payload;
   }
 });
 

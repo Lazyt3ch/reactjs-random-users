@@ -11,7 +11,7 @@ const initialState = [] as ArrayOfNumbers;
 
 const scrollTopArrReducer = createReducer(initialState, {
   SCROLL_TOP_ARR: (state, action: PayloadAction<ArrayOfNumbers>) => {
-    state = action.payload;
+    return action.payload;
   }
 });
 

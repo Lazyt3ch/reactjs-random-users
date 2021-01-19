@@ -12,7 +12,7 @@ const initialState = [] as ArrayOfStrings;
 const validPropertiesReducer = createReducer(initialState, {
   VALID_PROPERTIES: (state, action: PayloadAction<ArrayOfStrings>) => {
     // state.validProperties = action.payload;
-    state = action.payload;
+    return action.payload;
   }
 });
 

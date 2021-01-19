@@ -4,7 +4,7 @@ const initialState = false;
 
 const isBriefResultsReducer = createReducer(initialState, {
   IS_BRIEF_RESULTS: (state, action: PayloadAction<boolean>) => {
-    state = action.payload;
+    return action.payload;
   }
 });
 

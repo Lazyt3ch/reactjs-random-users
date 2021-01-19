@@ -12,7 +12,7 @@ const initialState = [] as ArrayOfStringBooleanTuples;
 const statusesReducer = createReducer(initialState, {
   STATUSES: (state, action: PayloadAction<ArrayOfStringBooleanTuples>) => {
     // state.statuses = action.payload;
-    state = action.payload;
+    return action.payload;
   }
 });
 

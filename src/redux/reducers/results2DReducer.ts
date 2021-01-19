@@ -12,7 +12,7 @@ const initialState = [] as TwoDimArrayOfStrings;
 const results2DReducer = createReducer(initialState, {
   RESULTS_2D: (state, action:PayloadAction<TwoDimArrayOfStrings>) => {
     // state.results2D = action.payload;
-    state = action.payload;
+    return action.payload;
   }
 });
 

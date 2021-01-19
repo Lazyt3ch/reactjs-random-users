@@ -4,7 +4,7 @@ const initialState = 0;
 
 const numResultsReducer = createReducer(initialState, {
   NUM_RESULTS: (state, action: PayloadAction<number>) => {
-    state = action.payload;
+    return action.payload;
   }
 });
 

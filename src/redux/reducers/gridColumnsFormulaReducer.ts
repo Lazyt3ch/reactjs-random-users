@@ -4,7 +4,7 @@ const initialState = "";
 
 const gridColumnsFormulaReducer = createReducer(initialState, {
   GRID_COLUMNS_FORMULA: (state, action: PayloadAction<string>) => {
-    state = action.payload;
+    return action.payload;
   }
 });
 
