@@ -5,41 +5,46 @@ import UsersGridItem from "./UsersGridItem";
 import Pagination from "../Pagination/Pagination";
 import constants from "../../constants";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "./UsersGrid.css";
+
+import {RootState} from "../../redux/store";
+import actionTypes from "../../redux/actionTypes";
+import {useSelector, useDispatch} from 'react-redux';
 
 // import store from "../../redux/store";
 
-interface Props {
-  results2D: string[][];
+// interface Props {
+//   results2D: string[][];
     
-  gridColumnsFormula: string;
-  setGridColumnsFormula: React.Dispatch<React.SetStateAction<string>>;
+//   gridColumnsFormula: string;
+//   setGridColumnsFormula: React.Dispatch<React.SetStateAction<string>>;
 
-  isBriefResults: boolean;
-  setIsBriefResults: React.Dispatch<React.SetStateAction<boolean>>;
+//   isBriefResults: boolean;
+//   setIsBriefResults: React.Dispatch<React.SetStateAction<boolean>>;
 
-  activePageNumber: number;
-  setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
+//   activePageNumber: number;
+//   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
 
-  totalPages: number;
-}
+//   totalPages: number;
+// }
 
-function UsersGrid(props: Props) {
-  const {
-    results2D,
+// function UsersGrid(props: Props) {
+function UsersGrid() {
+  // const {
+  //   results2D,
     
-    gridColumnsFormula,
-    setGridColumnsFormula,
+  //   gridColumnsFormula,
+  //   setGridColumnsFormula,
 
-    isBriefResults, 
-    setIsBriefResults,
+  //   isBriefResults, 
+  //   setIsBriefResults,
 
-    activePageNumber, 
-    setActivePageNumber,
+  //   activePageNumber, 
+  //   setActivePageNumber,
 
-    totalPages, 
-  } = props;
+  //   totalPages, 
+  // } = props;
 
   const [activePageRows, setActivePageRows] = useState<string[][]>([]);
 
@@ -143,19 +148,19 @@ function UsersGrid(props: Props) {
   );
 }
 
-UsersGrid.propTypes = {
-  results2D: PropTypes.array.isRequired,
+// UsersGrid.propTypes = {
+//   results2D: PropTypes.array.isRequired,
     
-  gridColumnsFormula: PropTypes.string.isRequired,
-  setGridColumnsFormula: PropTypes.func.isRequired,
+//   gridColumnsFormula: PropTypes.string.isRequired,
+//   setGridColumnsFormula: PropTypes.func.isRequired,
 
-  isBriefResults: PropTypes.bool.isRequired,
-  setIsBriefResults: PropTypes.func.isRequired,
+//   isBriefResults: PropTypes.bool.isRequired,
+//   setIsBriefResults: PropTypes.func.isRequired,
 
-  activePageNumber: PropTypes.number.isRequired,
-  setActivePageNumber: PropTypes.func.isRequired,
+//   activePageNumber: PropTypes.number.isRequired,
+//   setActivePageNumber: PropTypes.func.isRequired,
 
-  totalPages: PropTypes.number.isRequired,
-};
+//   totalPages: PropTypes.number.isRequired,
+// };
 
 export default UsersGrid;
