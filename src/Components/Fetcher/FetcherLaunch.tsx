@@ -4,38 +4,14 @@ import isNonEmptyArray from "../../utils/badDataChecker";
 import {useHistory} from "react-router-dom";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
-// import PropTypes from "prop-types";
 
 import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 
-// import store from "../../redux/store";
-
 type Severity = "success" | "error" | "info" | "warning" | undefined;
 
-// interface Props {
-//   numResults: number; 
-
-//   validProperties: string[];
-  
-//   setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
-
-//   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
-// }
-
-// function FetcherLaunch(props: Props) {
 function FetcherLaunch() {
-  // const {
-  //   numResults, 
-
-  //   validProperties, 
-    
-  //   setResults2D,
-
-  //   setActivePageNumber,
-  // } = props;
-
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [fetchAttempted, setFetchAttempted] = useState<boolean>(false);
   const [messageAfterFetch, setMessageAfterFetch] = useState<string>("");
@@ -88,13 +64,11 @@ function FetcherLaunch() {
     setFetchAttempted(true);
 
     if (!errorMessage && results2D !== undefined && isNonEmptyArray(results2D)) {
-      // setResults2D(results2D);
       dispatch({ type: actionTypes.RESULTS_2D, payload: results2D });
       setMessageAfterFetch("Users data retrieval is complete. Switching to Dava Viewer...");
       setSeverity("success");
 
       // Important, otherwise no rows will be displayed in certain cases
-      // setActivePageNumber(0); // 0 is first page's index      
       dispatch({ type: actionTypes.ACTIVE_PAGE_NUMBER, payload: 0 }); // 0 is first page's index
 
       setTimeout( () => {
@@ -136,15 +110,5 @@ function FetcherLaunch() {
     </>
   );
 }
-
-// FetcherLaunch.propTypes = {
-//   numResults: PropTypes.number.isRequired,
-
-//   validProperties: PropTypes.array.isRequired,
-  
-//   setResults2D: PropTypes.func.isRequired,
-
-//   setActivePageNumber: PropTypes.func.isRequired,
-// };
 
 export default FetcherLaunch;
