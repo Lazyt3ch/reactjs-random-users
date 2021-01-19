@@ -9,16 +9,16 @@ import store from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 
-interface Props {
-  numResults: number;
-  setNumResults: React.Dispatch<React.SetStateAction<number>>;
-}
+// interface Props {
+//   numResults: number;
+//   setNumResults: React.Dispatch<React.SetStateAction<number>>;
+// }
 
 function FetcherNumResults(props: Props) {
-  const {
-    numResults,
-    setNumResults,
-  } = props;
+  // const {
+  //   numResults,
+  //   setNumResults,
+  // } = props;
 
   const {
     numResultsLowerLimit,
@@ -35,6 +35,7 @@ function FetcherNumResults(props: Props) {
     1000,
   ];
 
+  const numResults = useSelector(state => state.numResults);
   const [value, setValue] = useState<number>(numResults || numResultsDefault);
   const [inputValue, setInputValue] = useState<string>((numResults || numResultsDefault).toString());
 
@@ -81,9 +82,9 @@ function FetcherNumResults(props: Props) {
   );
 }
 
-FetcherNumResults.propTypes = {
-  numResults: PropTypes.number.isRequired,
-  setNumResults: PropTypes.func.isRequired,
-};
+// FetcherNumResults.propTypes = {
+//   numResults: PropTypes.number.isRequired,
+//   setNumResults: PropTypes.func.isRequired,
+// };
 
 export default FetcherNumResults;
