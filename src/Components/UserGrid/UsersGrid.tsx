@@ -71,30 +71,35 @@ function UsersGrid() {
       // Row 0 is used for table header, so content rows numbering starts from 1
       const contentRowsStart = (activePageNumber * usersPerPage) + 1;
       const contentRowsEnd = contentRowsStart + usersPerPage;
-      const activePageRowsNew = [ allResults[0] ].concat(
+      // const activePageRowsNew = [ allResults[0] ].concat(
+      const updatedActivePageRows = [ allResults[0] ].concat(
         allResults.slice(contentRowsStart, contentRowsEnd + 1) );
 
-      if (!isNonEmptyArray(activePageRowsNew)) {
+      if (!isNonEmptyArray(updatedActivePageRows)) {
         return [];
       }        
 
-      return activePageRowsNew;
+      return updatedActivePageRows;
     }    
 
-    const activePageRowsNew = getActivePageRows(results2D);
+    const updatedActivePageRows = getActivePageRows(results2D);
 
-    if (!isNonEmptyArray(activePageRowsNew)) {
+    if (!isNonEmptyArray(updatedActivePageRows)) {
       return;
     }
 
-    setActivePageRows(activePageRowsNew);
+    setActivePageRows(updatedActivePageRows);
 
-    const gridColumnsFormulaNew = activePageRowsNew.length > 1
-      ? getGridColumnsFormula(activePageRowsNew)
+    // const gridColumnsFormulaNew = activePageRowsNew.length > 1
+    const updatedGridColumnsFormula = updatedActivePageRows.length > 1
+      ? getGridColumnsFormula(updatedActivePageRows)
       : "";
     
-    setGridColumnsFormula(gridColumnsFormulaNew);
-  }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
+    // setGridColumnsFormula(gridColumnsFormulaNew);
+    dispatch({ type: actionTypes.GRID_COLUMNS_FORMULA, payload: updatedGridColumnsFormula});
+
+  // }, [results2D, activePageNumber, totalPages, setGridColumnsFormula]);
+  }, [results2D, activePageNumber, totalPages, dispatch]);
 
 
   function handleBriefResultsChange(event: React.ChangeEvent<HTMLInputElement>): void {
