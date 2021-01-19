@@ -103,7 +103,8 @@ function UsersGrid() {
 
 
   function handleBriefResultsChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setIsBriefResults(event.target.checked);  
+    // setIsBriefResults(event.target.checked);  
+    dispatch({ type: actionTypes.IS_BRIEF_RESULTS, payload: event.target.checked});
   }
 
   return (
