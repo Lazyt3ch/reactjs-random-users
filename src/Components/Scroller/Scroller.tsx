@@ -40,6 +40,8 @@ function Scroller(): JSX.Element {
   const {pathname} = useLocation();
 
   const scrollTopArr = useSelector((state: RootState) => state.scrollTopArr);
+  const activePageNumber = useSelector((state: RootState) => state.activePageNumber);
+  const prevPagePath = useSelector((state: RootState) => state.prevPagePath);
 
   useEffect(() => {
     // The piece of code below is part of the flickering-reduction solution
