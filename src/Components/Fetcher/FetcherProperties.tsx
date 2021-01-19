@@ -2,7 +2,7 @@ import React from "react";
 import {getUpdatedStatuses, getAllProperties} from "../../utils/propertiesFixer";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 // import store from "../../redux/store";
 import {RootState} from "../../redux/store";
@@ -156,13 +156,13 @@ function FetcherProperties() {
   );
 }
 
-FetcherProperties.propTypes = {
-  allProperties: PropTypes.array.isRequired,
+// FetcherProperties.propTypes = {
+//   allProperties: PropTypes.array.isRequired,
 
-  statuses: PropTypes.array.isRequired,
-  setStatuses: PropTypes.func.isRequired,
+//   statuses: PropTypes.array.isRequired,
+//   setStatuses: PropTypes.func.isRequired,
 
-  setValidProperties: PropTypes.func.isRequired,
-};
+//   setValidProperties: PropTypes.func.isRequired,
+// };
 
 export default FetcherProperties;
