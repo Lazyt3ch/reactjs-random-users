@@ -37,18 +37,18 @@ function FetcherProperties() {
   const dispatch = useDispatch();
 
   const allProperties = getAllProperties();
-  const validProperties = getValidProperties(statuses);
-  dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
-
+  
   const statuses = useSelector((state: RootState) => state.statuses);
+
   let updatedStatuses;
+  let validProperties;
 
   if (Object.keys(statuses).length === 0) {
     updatedStatuses = getUpdatedStatuses(allProperties, false);
+    validProperties = getValidProperties(updatedStatuses);
     dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses });
+    dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
   }
-
-
 
   console.log("statuses =", statuses);
 
