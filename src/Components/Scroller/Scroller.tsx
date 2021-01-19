@@ -2,6 +2,11 @@
 
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
+
+import {RootState} from "../../redux/store";
+import actionTypes from "../../redux/actionTypes";
+import {useSelector, useDispatch} from 'react-redux';
+
 // import PropTypes from "prop-types";
 
 // import store from "../../redux/store";
@@ -33,6 +38,8 @@ function Scroller(): JSX.Element {
   // } = props;
 
   const {pathname} = useLocation();
+
+  const scrollTopArr = useSelector((state: RootState) => state.scrollTopArr);
 
   useEffect(() => {
     // The piece of code below is part of the flickering-reduction solution
