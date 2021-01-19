@@ -12,7 +12,7 @@ const slice = createSlice({
     gridColumnsFormula: "",
   },
   reducers: {
-    setActivePageNumber: (state, action: GridColumnsFormulaAction) => {
+    setGridColumnsFormula: (state, action: GridColumnsFormulaAction) => {
       state.gridColumnsFormula = action.payload;
     }
   },

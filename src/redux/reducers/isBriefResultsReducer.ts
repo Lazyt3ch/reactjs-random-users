@@ -1,9 +1,21 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
-const isBriefResultsReducer = createReducer(false, {
-  SET_IS_BRIEF_RESULTS: (state, action):boolean => {
-    return action.payload;
-  }
+interface IsBriefResultsAction {
+  type: string;
+  payload: boolean;
+}
+
+// Slice
+const slice = createSlice({
+  name: 'isBriefResultsReducer',
+  initialState: {
+    isBriefResults: false,
+  },
+  reducers: {
+    setIsBriefResults: (state, action: IsBriefResultsAction) => {
+      state.isBriefResults = action.payload;
+    }
+  },
 });
 
-export default isBriefResultsReducer;
+export default slice.reducer;
