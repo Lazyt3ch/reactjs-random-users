@@ -1,6 +1,6 @@
 import React, {useState, useLayoutEffect} from "react";
-import getGridColumnsFormula from "../../Helpers/gridCalculator";
-import isNonEmptyArray from "../../Helpers/badDataChecker";
+import getGridColumnsFormula from "../../utils/gridCalculator";
+import isNonEmptyArray from "../../utils/badDataChecker";
 import UsersGridItem from "./UsersGridItem";
 import Pagination from "../Pagination/Pagination";
 import constants from "../../constants";
@@ -8,7 +8,7 @@ import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
 import PropTypes from "prop-types";
 import "./UsersGrid.css";
 
-import store from "../../redux/store";
+// import store from "../../redux/store";
 
 interface Props {
   results2D: string[][];

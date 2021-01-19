@@ -3,6 +3,10 @@ import {useHistory} from "react-router-dom";
 // import PropTypes from "prop-types";
 import "./Pagination.css";
 
+import {RootState} from "../../redux/store";
+import actionTypes from "../../redux/actionTypes";
+import {useSelector, useDispatch} from 'react-redux';
+
 // import store from "../../redux/store";
 
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_border_round
@@ -33,6 +37,8 @@ function Pagination() {
   const [displayedPageNumbers, setDisplayedPageNumbers] = useState([0]);
 
   const history = useHistory();  
+
+  // const totalPages = useSelector((state: RootState) => state.to)
 
   useEffect(
     () => {
