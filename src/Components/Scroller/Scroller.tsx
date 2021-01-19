@@ -39,6 +39,8 @@ function Scroller(): JSX.Element {
 
   const {pathname} = useLocation();
 
+  const dispatch = useDispatch();
+
   const scrollTopArr = useSelector((state: RootState) => state.scrollTopArr);
   const activePageNumber = useSelector((state: RootState) => state.activePageNumber);
   const prevPagePath = useSelector((state: RootState) => state.prevPagePath);
@@ -52,7 +54,8 @@ function Scroller(): JSX.Element {
       });            
     }
 
-    setPrevPagePath(pathname);
+    // setPrevPagePath(pathname);
+    dispatch({ type: actionTypes.PREV_PAGE_PATH, payload: pathname });    
 
     if (pathname.startsWith("/view/")) {
       setTimeout( () => {  // setTimeout is vital here!!!
