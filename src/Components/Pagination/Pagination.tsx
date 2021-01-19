@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "./Pagination.css";
 
 // import store from "../../redux/store";
@@ -12,21 +12,23 @@ import "./Pagination.css";
 // The "page-spacer" span keeps the ">" and ">>" span elements in the same positions.
 // Otherwise in certain cases they are displaced to the right when clicking on ">" span repeatedly.
 
-interface Props {
-  totalPages: number;
+// interface Props {
+//   totalPages: number;
 
-  activePageNumber: number;
-  setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
-}
+//   activePageNumber: number;
+//   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
+// }
 
 
-function Pagination(props: Props) {
-  const {
-    totalPages, 
+// function Pagination(props: Props) {
+function Pagination() {
 
-    activePageNumber,
-    setActivePageNumber,
-  } = props;
+  // const {
+  //   totalPages, 
+
+  //   activePageNumber,
+  //   setActivePageNumber,
+  // } = props;
 
   const [displayedPageNumbers, setDisplayedPageNumbers] = useState([0]);
 
@@ -193,11 +195,11 @@ function Pagination(props: Props) {
   );
 }
 
-Pagination.propTypes = {
-  totalPages: PropTypes.number.isRequired,
+// Pagination.propTypes = {
+//   totalPages: PropTypes.number.isRequired,
 
-  activePageNumber: PropTypes.number.isRequired,
-  setActivePageNumber: PropTypes.func.isRequired,
-};
+//   activePageNumber: PropTypes.number.isRequired,
+//   setActivePageNumber: PropTypes.func.isRequired,
+// };
 
 export default Pagination;
