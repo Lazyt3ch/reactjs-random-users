@@ -10,29 +10,34 @@ import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 
 
-interface Props {
-  allProperties: string[];
+// interface Props {
+//   allProperties: string[];
 
-  statuses: [string, boolean][];
-  setStatuses: React.Dispatch<React.SetStateAction<[string, boolean][]>>;
+//   statuses: [string, boolean][];
+//   setStatuses: React.Dispatch<React.SetStateAction<[string, boolean][]>>;
 
-  setValidProperties: React.Dispatch<React.SetStateAction<string[]>>;
-}
+//   setValidProperties: React.Dispatch<React.SetStateAction<string[]>>;
+// }
 
-function FetcherProperties(props: Props) {
-  const {
-    allProperties,
+// function FetcherProperties(props: Props) {
+function FetcherProperties() {  
+  // const {
+  //   allProperties,
 
-    statuses, 
-    setStatuses,
+  //   statuses, 
+  //   setStatuses,
 
-    setValidProperties,
-  } = props;
+  //   setValidProperties,
+  // } = props;
+
+  const dispatch = useDispatch();
 
 
   const handleUnselectAll = () => {
-    setStatuses(getUpdatedStatuses(allProperties, false));
-    setValidProperties([]);
+    // setStatuses(getUpdatedStatuses(allProperties, false));
+    // setValidProperties([]);
+    const updateStatuses = getUpdatedStatuses(allProperties, false);
+    dispatch({ type: actionTypes.STATUSES, payload: updateStatuses });
   };
 
   const handleSelectAll = () => {
