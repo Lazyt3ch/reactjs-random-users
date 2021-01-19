@@ -41,6 +41,8 @@ function Pagination() {
   const totalPages = useSelector((state: RootState) => state.totalPages);
   const activePageNumber = useSelector((state: RootState) => state.activePageNumber);
 
+  const dispatch = useDispatch();
+
   // const totalPages = useSelector((state: RootState) => state.to)
 
   useEffect(
@@ -78,7 +80,8 @@ function Pagination() {
   
       if (pageNumber !== activePageNumber) {
         // setActivePageNumber(pageNumber);
-        store.dispatch({type: SET_ACTIVE_PAGE_NUMBER, payload: pageNumber});
+        // store.dispatch({type: SET_ACTIVE_PAGE_NUMBER, payload: pageNumber});
+        dispatch({ type: actionTypes.ACTIVE_PAGE_NUMBER, payload: pageNumber});
         history.push(`/view/${pageNumber + 1}`);
       }
     }
