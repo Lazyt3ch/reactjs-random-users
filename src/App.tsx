@@ -24,9 +24,9 @@ import {
   Route,
 } from "react-router-dom";
 
-import store, {RootState} from "./redux/store";
+// import store, {RootState} from "./redux/store";
 import actionTypes from "./redux/actionTypes";
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 function App() {
   const {numResultsDefault} = constants;
