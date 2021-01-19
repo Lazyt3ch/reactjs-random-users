@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useMemo} from "react";
 import PropTypes from "prop-types";
 
-import store from "../../redux/store";
+// import store from "../../redux/store";
 
 // Finally, using a very fast pure CSS tooltip from here:
 // https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_bottom

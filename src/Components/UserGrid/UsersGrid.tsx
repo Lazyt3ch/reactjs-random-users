@@ -125,10 +125,10 @@ function UsersGrid() {
         </div>
 
         <Pagination 
-          totalPages={totalPages} 
+          // totalPages={totalPages} 
 
-          activePageNumber={activePageNumber} 
-          setActivePageNumber={setActivePageNumber}    
+          // activePageNumber={activePageNumber} 
+          // setActivePageNumber={setActivePageNumber}    
         />        
       </div>
 
