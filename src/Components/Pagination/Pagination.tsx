@@ -56,6 +56,7 @@ function Pagination() {
           : activePageNumber >= totalPages - 2
             ? pageNumbers.slice(-4, -1)
             : pageNumbers.slice(activePageNumber - 1, activePageNumber + 2);    
+            
       setDisplayedPageNumbers(displayedPageNumbersNew);
     }, 
     [totalPages, activePageNumber]
