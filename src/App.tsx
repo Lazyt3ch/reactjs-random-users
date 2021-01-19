@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+// import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 
 import Scroller from './Components/Scroller/Scroller';
 import Nav from "./Components/Nav/Nav";
