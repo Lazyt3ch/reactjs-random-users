@@ -49,8 +49,9 @@ function FetcherProperties() {
   };
 
   // const updateValidProperties = (statusesNew: [string, boolean][]): void => {
-  const updateValidProperties = (updatedStatuses: [string, boolean][]): void => {
-    // const validPropertiesNew = statusesNew
+  // const updateValidProperties = (updatedStatuses: [string, boolean][]): void => {
+  const updateValidProperties = (updatedStatuses: ArrayOfStringBooleanTuples): void => {
+      // const validPropertiesNew = statusesNew
     const updatedValidProperties = updatedStatuses
       .filter( ([property, status]) => status && allProperties.includes(property) )
       .map( ([property, _]) => property );
@@ -58,20 +59,23 @@ function FetcherProperties() {
     dispatch({ type: actionTypes.VALID_PROPERTIES, payload: updatedValidProperties})
   };
 
-  const updateStatusesAndProperties = (statusesNew: [string, boolean][]): void => {
-    setStatuses(statusesNew);
+  // const updateStatusesAndProperties = (statusesNew: [string, boolean][]): void => {
+  const updateStatusesAndProperties = (statusesNew: ArrayOfStringBooleanTuples): void => {
+      setStatuses(statusesNew);
     updateValidProperties(statusesNew);
   };
 
   const handleInvertSelection = () => {
-    const statusesNew: [string, boolean][] = statuses.map( 
-      ([property, status]) => [property, !status] );
+    // const statusesNew: [string, boolean][] = statuses.map( 
+    const statusesNew: ArrayOfStringBooleanTuples = statuses.map( 
+        ([property, status]) => [property, !status] );
     updateStatusesAndProperties(statusesNew);
   };
   
   const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {checked, name} = event.target;
-    const statusesNew: [string, boolean][] = statuses.map( ([property, oldStatus]) => 
+    // const statusesNew: [string, boolean][] = statuses.map( ([property, oldStatus]) => 
+    const statusesNew: ArrayOfStringBooleanTuples = statuses.map( ([property, oldStatus]) => 
       ( property === name ? [property, checked] : [property, oldStatus] ) );
     updateStatusesAndProperties(statusesNew);
   };
