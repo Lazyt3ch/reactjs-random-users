@@ -27,7 +27,6 @@ import {
 // import store, {RootState} from "./redux/store";
 import actionTypes from "./redux/actionTypes";
 import {useDispatch} from 'react-redux';
-import statusesReducer from "./redux/reducers/statusesReducer";
 
 function App() {
   const {numResultsDefault} = constants;
@@ -98,10 +97,10 @@ function App() {
         <Switch>
           <Route path="/get" exact>
             <Fetcher 
-              numResults={numResults}
-              setNumResults={setNumResults}
+              // numResults={numResults}
+              // setNumResults={setNumResults}
 
-              allProperties={allProperties}
+              // allProperties={allProperties}
               
               statuses={statuses}
               setStatuses={setStatuses}
