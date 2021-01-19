@@ -6,34 +6,13 @@ import {
   } from "../../utils/propertiesFixer";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import SpacedCheckbox from "../SpacedCheckbox/SpacedCheckbox";
-// import PropTypes from "prop-types";
 
-// import store from "../../redux/store";
 import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 import {ArrayOfStringBooleanTuples} from "../../redux/reducers/statusesReducer";
-// import {ArrayOfStrings} from "../../redux/reducers/validPropertiesReducer";
 
-// interface Props {
-//   allProperties: string[];
-
-//   statuses: [string, boolean][];
-//   setStatuses: React.Dispatch<React.SetStateAction<[string, boolean][]>>;
-
-//   setValidProperties: React.Dispatch<React.SetStateAction<string[]>>;
-// }
-
-// function FetcherProperties(props: Props) {
 function FetcherProperties() {  
-  // const {
-  //   allProperties,
-
-  //   statuses, 
-  //   setStatuses,
-
-  //   setValidProperties,
-  // } = props;
   const dispatch = useDispatch();
 
   const allProperties = getAllProperties();
@@ -50,44 +29,29 @@ function FetcherProperties() {
     dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
   }
 
-  // console.log("statuses =", statuses);
-
   const handleUnselectAll = () => {
-    // setStatuses(getUpdatedStatuses(allProperties, false));
-    // setValidProperties([]);
     const updatedStatuses = getUpdatedStatuses(allProperties, false);
     dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses });
   };
 
   const handleSelectAll = () => {
-    // setStatuses(getUpdatedStatuses(allProperties, true));
-    // setValidProperties(allProperties);
     const updatedStatuses = getUpdatedStatuses(allProperties, true);
     dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses });
   };
 
-  // const updateValidProperties = (statusesNew: [string, boolean][]): void => {
-  // const updateValidProperties = (updatedStatuses: [string, boolean][]): void => {
   const updateValidProperties = (updatedStatuses: ArrayOfStringBooleanTuples): void => {
-      // const validPropertiesNew = statusesNew
     const updatedValidProperties = updatedStatuses
       .filter( ([property, status]) => status && allProperties.includes(property) )
       .map( ([property, _]) => property );
-    // setValidProperties(validPropertiesNew);
     dispatch({ type: actionTypes.VALID_PROPERTIES, payload: updatedValidProperties});
   };
 
-  // const updateStatusesAndProperties = (statusesNew: [string, boolean][]): void => {
-  // const updateStatusesAndProperties = (statusesNew: ArrayOfStringBooleanTuples): void => {
   const updateStatuses = (updatedStatuses: ArrayOfStringBooleanTuples): void => {
-    // setStatuses(statusesNew);
-    // updateValidProperties(statusesNew);
     dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses})
     updateValidProperties(updatedStatuses);
   };
 
   const handleInvertSelection = () => {
-    // const statusesNew: [string, boolean][] = statuses.map( 
     const updatedStatuses: ArrayOfStringBooleanTuples = statuses.map( 
       ([property, status]) => [property, !status] );
     updateValidProperties(updatedStatuses);
@@ -96,10 +60,8 @@ function FetcherProperties() {
   
   const handleSingleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {checked, name} = event.target;
-    // const statusesNew: [string, boolean][] = statuses.map( ([property, oldStatus]) => 
     const updatedStatuses: ArrayOfStringBooleanTuples = statuses.map( ([property, oldStatus]) => 
       [ property, (property === name ? checked : oldStatus) ] );
-    // ( property === name ? [property, checked] : [property, oldStatus] ) );
     updateValidProperties(updatedStatuses);
     updateStatuses(updatedStatuses);
   };
@@ -174,14 +136,5 @@ function FetcherProperties() {
     </div>
   );
 }
-
-// FetcherProperties.propTypes = {
-//   allProperties: PropTypes.array.isRequired,
-
-//   statuses: PropTypes.array.isRequired,
-//   setStatuses: PropTypes.func.isRequired,
-
-//   setValidProperties: PropTypes.func.isRequired,
-// };
 
 export default FetcherProperties;
