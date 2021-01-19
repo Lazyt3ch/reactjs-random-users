@@ -1,13 +1,15 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit"
 
+type ArrayOfStringBooleanTuples = [string, boolean][];
+
 interface Statuses {
-  statuses: [string, boolean][];
+  statuses: ArrayOfStringBooleanTuples;
 }
 
 const initialState = { statuses: [] } as Statuses;
 
 const statusesReducer = createReducer(initialState, {
-  STATUSES: (state, action: PayloadAction<[string, boolean][]>) => {
+  STATUSES: (state, action: PayloadAction<ArrayOfStringBooleanTuples>) => {
     state.statuses = action.payload;
   }
 });
