@@ -48,6 +48,13 @@ function UsersGrid() {
 
   const [activePageRows, setActivePageRows] = useState<string[][]>([]);
 
+  const dispatch = useDispatch();
+
+  const results2D = useSelector((state: RootState) => state.results2D);
+  const gridColumnsFormula = useSelector((state: RootState) => state.gridColumnsFormula);
+  const isBriefResults = useSelector((state: RootState) => state.isBriefResults);
+  const activePageNumber = useSelector((state: RootState) => state.activePageNumber);
+  const totalPages = useSelector((state: RootState) => state.totalPages);
   
   useLayoutEffect( () => {
       if (!isNonEmptyArray(results2D)) {
