@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react";
 import constants from "../../constants";
-import fixNumResults from "../../Helpers/numResultsFixer";
+import fixNumResults from "../../utils/numResultsFixer";
 import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
 import store from "../../redux/store";
+import actionTypes from "../../redux/actionTypes";
+import {useSelector, useDispatch} from 'react-redux';
 
 interface Props {
   numResults: number;
