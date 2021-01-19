@@ -37,6 +37,7 @@ function FetcherNumResults() {
   ];
 
   const numResults = useSelector((state: RootState) => state.numResults);
+  console.log("numResults =", numResults);
   const [value, setValue] = useState<number>(numResults || numResultsDefault);
   const [inputValue, setInputValue] = useState<string>((numResults || numResultsDefault).toString());
 
