@@ -74,9 +74,12 @@ function Scroller(): JSX.Element {
     const onScroll = (): void => {
       const scrollPos = document.documentElement.scrollTop;
       if (pathname.startsWith("/view/") && scrollPos > 0) {
-        const scrollTopArrNew = scrollTopArr.slice();
-        scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
-        setScrollTopArr(scrollTopArrNew);
+        // const scrollTopArrNew = scrollTopArr.slice();
+        // scrollTopArrNew[activePageNumber] = Math.floor(scrollPos);
+        const undatedScrollTopArr = scrollTopArr.slice();
+        undatedScrollTopArr[activePageNumber] = Math.floor(scrollPos);
+        // setScrollTopArr(scrollTopArrNew);
+        dispatch({ type: actionTypes.SCROLL_TOP_ARR, payload: undatedScrollTopArr });
       }  
     };
     window.addEventListener("scroll", onScroll);
