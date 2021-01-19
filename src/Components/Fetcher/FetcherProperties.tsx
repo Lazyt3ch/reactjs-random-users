@@ -31,6 +31,7 @@ function FetcherProperties() {
   // } = props;
   const allProperties = getAllProperties();
   const dispatch = useDispatch();
+  // type ArrayOfStringBooleanTuples = RootState.statuses;
 
 
   const handleUnselectAll = () => {
