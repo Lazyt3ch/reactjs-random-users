@@ -1,8 +1,10 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-const numResultsReducer = createReducer(0, {
-  SET_NUM_RESULTS: (state, action):number => {
-    return action.payload;
+const initialState = { numResults: 0 };
+
+const numResultsReducer = createReducer(initialState, {
+  NUM_RESULTS: (state, action: PayloadAction<number>) => {
+    state.numResults = action.payload;
   }
 });
 

@@ -1,8 +1,10 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-const prevPagePathReducer = createReducer("", {
-  SET_GRID_COLUMNS_FORMULA: (state, action):string => {
-    return action.payload;
+const initialState = { prevPagePath: "" };
+
+const prevPagePathReducer = createReducer(initialState, {
+  PREV_PAGE_PATH: (state, action: PayloadAction<string>) => {
+    state.prevPagePath = action.payload;
   }
 });
 

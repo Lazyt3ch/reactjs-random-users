@@ -1,7 +1,9 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createReducer, PayloadAction } from "@reduxjs/toolkit"
 
-const results2DReducer = createReducer([], {
-  SET_RESULTS_2D: (state, action):string[][] => {
+const initialState = [];
+
+const results2DReducer = createReducer(initialState, {
+  RESULTS_2D: (state, action):PayloadAction<string[][]> => {
     return action.payload;
   }
 });
