@@ -3,55 +3,55 @@ import React from "react";
 import FetcherNumResults from "./FetcherNumResults";
 import FetcherProperties from "./FetcherProperties";
 import FetcherLaunch from "./FetcherLaunch";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import "./Fetcher.css";
 
-import store from "../../redux/store";
+// import store from "../../redux/store";
 
 
-interface Props {
-  // FetcherNumResults:
-  numResults: number;
-  setNumResults: React.Dispatch<React.SetStateAction<number>>;
+// interface Props {
+//   // FetcherNumResults:
+//   numResults: number;
+//   setNumResults: React.Dispatch<React.SetStateAction<number>>;
 
-  // FetcherProperties:
-  allProperties: string[];
+//   // FetcherProperties:
+//   allProperties: string[];
 
-  statuses: [string, boolean][];
-  setStatuses: React.Dispatch<React.SetStateAction<[string, boolean][]>>;
+//   statuses: [string, boolean][];
+//   setStatuses: React.Dispatch<React.SetStateAction<[string, boolean][]>>;
   
-  validProperties: string[];
-  setValidProperties: React.Dispatch<React.SetStateAction<string[]>>;
+//   validProperties: string[];
+//   setValidProperties: React.Dispatch<React.SetStateAction<string[]>>;
   
-  // FetcherLaunch:
-  setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
+//   // FetcherLaunch:
+//   setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
 
-  setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
-}
+//   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
+// }
 
+// function Fetcher(props: Props) {
+function Fetcher() {
+  // const {
+  //   // FetcherNumResults:
+  //   numResults, 
+  //   setNumResults,
 
-function Fetcher(props: Props) {
-  const {
-    // FetcherNumResults:
-    numResults, 
-    setNumResults,
+  //   // FetcherProperties:
+  //   allProperties,
 
-    // FetcherProperties:
-    allProperties,
-
-    statuses,
-    setStatuses,
+  //   statuses,
+  //   setStatuses,
     
-    validProperties,
-    setValidProperties,
+  //   validProperties,
+  //   setValidProperties,
     
-    // FetcherLaunch:
-    // setResults,
-    setResults2D,
+  //   // FetcherLaunch:
+  //   // setResults,
+  //   setResults2D,
 
-    setActivePageNumber,
-  } = props;
+  //   setActivePageNumber,
+  // } = props;
 
 
   return (
@@ -84,25 +84,25 @@ function Fetcher(props: Props) {
   );
 }
 
-Fetcher.propTypes = {
-    // FetcherNumResults:
-    numResults: PropTypes.number.isRequired,
-    setNumResults: PropTypes.func.isRequired,
+// Fetcher.propTypes = {
+//     // FetcherNumResults:
+//     numResults: PropTypes.number.isRequired,
+//     setNumResults: PropTypes.func.isRequired,
 
-    // FetcherProperties:
-    allProperties: PropTypes.array.isRequired,
+//     // FetcherProperties:
+//     allProperties: PropTypes.array.isRequired,
 
-    statuses: PropTypes.array.isRequired,
-    setStatuses: PropTypes.func.isRequired,
+//     statuses: PropTypes.array.isRequired,
+//     setStatuses: PropTypes.func.isRequired,
     
-    validProperties: PropTypes.array.isRequired,
-    setValidProperties: PropTypes.func.isRequired,
+//     validProperties: PropTypes.array.isRequired,
+//     setValidProperties: PropTypes.func.isRequired,
     
-    // FetcherLaunch:
-    // setResults: PropTypes.func.isRequired,
-    setResults2D: PropTypes.func.isRequired,
+//     // FetcherLaunch:
+//     // setResults: PropTypes.func.isRequired,
+//     setResults2D: PropTypes.func.isRequired,
 
-    setActivePageNumber: PropTypes.func.isRequired,
-};
+//     setActivePageNumber: PropTypes.func.isRequired,
+// };
 
 export default Fetcher;
