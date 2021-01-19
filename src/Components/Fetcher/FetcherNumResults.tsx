@@ -56,8 +56,10 @@ function FetcherNumResults() {
     () => {
       const fixedNum = fixNumResults(inputValue);
       setInputValue(fixedNum.toString());
-      setNumResults(fixedNum);
-    }, [inputValue, setNumResults]
+      // setNumResults(fixedNum);
+      dispatch({ type: actionTypes.NUM_RESULTS, payload: fixedNum });
+    // }, [inputValue, setNumResults]
+    }, [inputValue, dispatch]
   );
 
   return (
