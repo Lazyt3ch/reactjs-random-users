@@ -1,9 +1,21 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
-const gridColumnsFormulaReducer = createReducer("", {
-  SET_GRID_COLUMNS_FORMULA: (state, action):string => {
-    return action.payload;
-  }
+interface GridColumnsFormulaAction {
+  type: string;
+  payload: string;
+}
+
+// Slice
+const slice = createSlice({
+  name: 'gridColumnsFormula',
+  initialState: {
+    gridColumnsFormula: "",
+  },
+  reducers: {
+    setActivePageNumber: (state, action: GridColumnsFormulaAction) => {
+      state.gridColumnsFormula = action.payload;
+    }
+  },
 });
 
-export default gridColumnsFormulaReducer;
+export default slice.reducer;

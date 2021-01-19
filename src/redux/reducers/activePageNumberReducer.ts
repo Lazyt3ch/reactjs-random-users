@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ActivePageNumberState {
-  activePageNumber: number;
+interface ActivePageNumberAction {
+  type: string;
+  payload: number;
 }
 
 // Slice
 const slice = createSlice({
   name: 'activePageNumber',
   initialState: {
-    activePageNumber: 0;
+    activePageNumber: 0,
   },
   reducers: {
-    setActivePageNumber: (state, action) => {
+    setActivePageNumber: (state, action: ActivePageNumberAction) => {
       state.activePageNumber = action.payload;
     }
   },
@@ -20,7 +21,7 @@ const slice = createSlice({
 export default slice.reducer;
 
 // Actions
-const {setActivePageNumber} = slice.actions;
+// const {setActivePageNumber} = slice.actions;
 
 
 
