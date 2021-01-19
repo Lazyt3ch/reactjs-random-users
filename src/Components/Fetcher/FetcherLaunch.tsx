@@ -1,36 +1,37 @@
 import React, {useState, useEffect} from "react";
-import fetchUsers from "../../Helpers/usersFetcher";
+import fetchUsers from "../../utils/usersFetcher";
 import {useHistory} from "react-router-dom";
 import SpacedButton from "../SpacedButton/SpacedButton";
 import {Alert} from '@material-ui/lab';
 import PropTypes from "prop-types";
 
-import isNonEmptyArray from "./../../Helpers/badDataChecker";
+import isNonEmptyArray from "../../utils/badDataChecker";
 
-import store from "../../redux/store";
+// import store from "../../redux/store";
 
 type Severity = "success" | "error" | "info" | "warning" | undefined;
 
-interface Props {
-  numResults: number; 
+// interface Props {
+//   numResults: number; 
 
-  validProperties: string[];
+//   validProperties: string[];
   
-  setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
+//   setResults2D: React.Dispatch<React.SetStateAction<string[][]>>;
 
-  setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
-}
+//   setActivePageNumber: React.Dispatch<React.SetStateAction<number>>;
+// }
 
-function FetcherLaunch(props: Props) {
-  const {
-    numResults, 
+// function FetcherLaunch(props: Props) {
+function FetcherLaunch() {
+  // const {
+  //   numResults, 
 
-    validProperties, 
+  //   validProperties, 
     
-    setResults2D,
+  //   setResults2D,
 
-    setActivePageNumber,
-  } = props;
+  //   setActivePageNumber,
+  // } = props;
 
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [fetchAttempted, setFetchAttempted] = useState<boolean>(false);
