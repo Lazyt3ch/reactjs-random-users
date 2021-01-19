@@ -26,7 +26,8 @@ import {
 
 // import store, {RootState} from "./redux/store";
 import actionTypes from "./redux/actionTypes";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import { RootState } from "./redux/store";
 
 function App() {
   const {numResultsDefault} = constants;
@@ -52,7 +53,9 @@ function App() {
   const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
   const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
   // const [totalPages, setTotalPages] = useState<number>(0);
+  
   dispatch({ type: actionTypes.TOTAL_PAGES, payload: 0 });
+  const totalPages = useSelector((state: RootState) => state.totalPages);
   // const [activePageNumber, setActivePageNumber] = useState<number>(0);
   const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
