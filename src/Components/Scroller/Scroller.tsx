@@ -4,32 +4,33 @@ import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import PropTypes from "prop-types";
 
-import store from "../../redux/store";
+// import store from "../../redux/store";
 
-interface Props {
-  children: JSX.Element;
+// interface Props {
+//   children: JSX.Element;
 
-  scrollTopArr: number[];
-  setScrollTopArr: Function;
+//   scrollTopArr: number[];
+//   setScrollTopArr: Function;
 
-  activePageNumber: number;
+//   activePageNumber: number;
 
-  prevPagePath: string;
-  setPrevPagePath: Function;
-}
- 
-function Scroller(props: Props): JSX.Element { 
-    const { 
-    children, 
+//   prevPagePath: string;
+//   setPrevPagePath: Function;
+// }
 
-    scrollTopArr, 
-    setScrollTopArr,
+// function Scroller(props: Props): JSX.Element { 
+function Scroller(): JSX.Element { 
+  //   const { 
+  //   children, 
 
-    activePageNumber,
+  //   scrollTopArr, 
+  //   setScrollTopArr,
 
-    prevPagePath, 
-    setPrevPagePath,
-  } = props;
+  //   activePageNumber,
+
+  //   prevPagePath, 
+  //   setPrevPagePath,
+  // } = props;
 
   const {pathname} = useLocation();
 
@@ -76,16 +77,16 @@ function Scroller(props: Props): JSX.Element {
   return children;
 }
  
-Scroller.propTypes = {
-  children: PropTypes.object.isRequired,
+// Scroller.propTypes = {
+//   children: PropTypes.object.isRequired,
 
-  scrollTopArr: PropTypes.array.isRequired, 
-  setScrollTopArr: PropTypes.func.isRequired,
+//   scrollTopArr: PropTypes.array.isRequired, 
+//   setScrollTopArr: PropTypes.func.isRequired,
 
-  activePageNumber: PropTypes.number.isRequired,
+//   activePageNumber: PropTypes.number.isRequired,
 
-  prevPagePath: PropTypes.string.isRequired,
-  setPrevPagePath: PropTypes.func.isRequired,
-};
+//   prevPagePath: PropTypes.string.isRequired,
+//   setPrevPagePath: PropTypes.func.isRequired,
+// };
 
 export default Scroller;
