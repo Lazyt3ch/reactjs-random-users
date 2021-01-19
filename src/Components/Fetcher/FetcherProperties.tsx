@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
-
+import {ArrayOfStringBooleanTuples} from "../../redux/reducers/statusesReducer";
 
 // interface Props {
 //   allProperties: string[];
