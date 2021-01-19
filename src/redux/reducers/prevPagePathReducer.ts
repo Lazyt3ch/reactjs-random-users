@@ -1,10 +1,10 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = "";
+const initialState = { prevPagePath: "" };
 
 const prevPagePathReducer = createReducer(initialState, {
   PREV_PAGE_PATH: (state, action: PayloadAction<string>) => {
-    state = action.payload;
+    state.prevPagePath = action.payload;
   }
 });
 

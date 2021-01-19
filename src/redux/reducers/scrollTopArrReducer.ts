@@ -1,10 +1,14 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit"
 
-const initialState: number[] = [];
+interface ScrollTopArr {
+  scrollTopArr: number[];
+}
+
+const initialState = { scrollTopArr: [] } as ScrollTopArr;
 
 const scrollTopArrReducer = createReducer(initialState, {
   SCROLL_TOP_ARR: (state, action: PayloadAction<number[]>) => {
-    state = action.payload;
+    state.scrollTopArr = action.payload;
   }
 });
 

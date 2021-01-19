@@ -1,10 +1,10 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = "";
+const initialState = { gridColumnsFormula: "" };
 
 const gridColumnsFormulaReducer = createReducer(initialState, {
   GRID_COLUMNS_FORMULA: (state, action: PayloadAction<string>) => {
-    state = action.payload;
+    state.gridColumnsFormula = action.payload;
   }
 });
 

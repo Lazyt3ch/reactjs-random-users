@@ -1,10 +1,14 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: string[] = [];
+interface ValidProperties {
+  validProperties: string[];
+}
+
+const initialState = { validProperties: [] } as ValidProperties;
 
 const validPropertiesReducer = createReducer(initialState, {
   VALID_PROPERTIES: (state, action: PayloadAction<string[]>) => {
-    state = action.payload;
+    state.validProperties = action.payload;
   }
 });
 
