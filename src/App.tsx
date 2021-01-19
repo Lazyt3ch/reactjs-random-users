@@ -49,17 +49,17 @@ function App() {
   //   getValidProperties(statuses));
   dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
 
-  const [results2D, setResults2D] = useState<string[][]>([]);
-  const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
-  const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
+  // const [results2D, setResults2D] = useState<string[][]>([]);
+  // const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
+  // const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
   // const [totalPages, setTotalPages] = useState<number>(0);
   
-  dispatch({ type: actionTypes.TOTAL_PAGES, payload: 0 });
+  // dispatch({ type: actionTypes.TOTAL_PAGES, payload: 0 });
   const totalPages = useSelector((state: RootState) => state.totalPages);
   // const [activePageNumber, setActivePageNumber] = useState<number>(0);
-  const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
+  // const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
-  const [prevPagePath, setPrevPagePath] = useState<string>("");
+  // const [prevPagePath, setPrevPagePath] = useState<string>("");
 
 
   useEffect( () => {
