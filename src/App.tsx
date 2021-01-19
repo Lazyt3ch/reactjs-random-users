@@ -39,6 +39,7 @@ function App() {
   // store.dispatch({ type: actionTypes.NUM_RESULTS, payload: numResultsDefault });
   dispatch({ type: actionTypes.NUM_RESULTS, payload: numResultsDefault });
 
+  /*
   const allProperties = getAllProperties();
 
   const statuses = getUpdatedStatuses(allProperties, false);
@@ -51,6 +52,7 @@ function App() {
   // const [validProperties, setValidProperties] = useState<string[]>(
   //   getValidProperties(statuses));
   dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
+  */
 
   // const [results2D, setResults2D] = useState<string[][]>([]);
   // const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
