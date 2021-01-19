@@ -57,28 +57,28 @@ function Fetcher() {
   return (
     <div className="fetcher">
       <FetcherNumResults 
-        numResults={numResults} 
-        setNumResults={setNumResults}
+        // numResults={numResults} 
+        // setNumResults={setNumResults}
       />
       
       <FetcherProperties 
-        allProperties={allProperties}
+        // allProperties={allProperties}
 
-        statuses={statuses}
-        setStatuses={setStatuses}
+        // statuses={statuses}
+        // setStatuses={setStatuses}
         
-        setValidProperties={setValidProperties}
+        // setValidProperties={setValidProperties}
       />
       
       <FetcherLaunch
-        numResults={numResults} 
+        // numResults={numResults} 
         
-        validProperties={validProperties}
+        // validProperties={validProperties}
         
-        // setResults={setResults}
-        setResults2D={setResults2D}
+        // // setResults={setResults}
+        // setResults2D={setResults2D}
 
-        setActivePageNumber={setActivePageNumber}
+        // setActivePageNumber={setActivePageNumber}
       />
     </div>
   );
