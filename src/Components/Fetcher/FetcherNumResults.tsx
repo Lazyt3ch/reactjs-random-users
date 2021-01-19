@@ -3,7 +3,7 @@ import constants from "../../constants";
 import fixNumResults from "../../utils/numResultsFixer";
 import {TextField} from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import store from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
@@ -14,7 +14,8 @@ import {useSelector, useDispatch} from 'react-redux';
 //   setNumResults: React.Dispatch<React.SetStateAction<number>>;
 // }
 
-function FetcherNumResults(props: Props) {
+// function FetcherNumResults(props: Props) {
+function FetcherNumResults() {
   // const {
   //   numResults,
   //   setNumResults,
