@@ -51,7 +51,8 @@ function App() {
   const [results2D, setResults2D] = useState<string[][]>([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
   const [isBriefResults, setIsBriefResults] = useState<boolean>(false);
-  const [totalPages, setTotalPages] = useState<number>(0);
+  // const [totalPages, setTotalPages] = useState<number>(0);
+  dispatch({ type: actionTypes.TOTAL_PAGES, payload: 0 });
   // const [activePageNumber, setActivePageNumber] = useState<number>(0);
   const [scrollTopArr, setScrollTopArr] = useState<number[]>([]);
 
@@ -63,9 +64,12 @@ function App() {
 
     // Row 0 is used for table header, so content rows numbering starts from 1
     const totalUsers = results2D.length; 
-    const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
-    setTotalPages(totalPagesNew);  
-  }, [results2D, setTotalPages]);
+    // const totalPagesNew = Math.ceil(totalUsers / usersPerPage);
+    const updatedTotalPages = Math.ceil(totalUsers / usersPerPage);
+    // setTotalPages(totalPagesNew);  
+    dispatch({ type: actionTypes.TOTAL_PAGES, payload: updatedTotalPages });
+  }, [results2D, dispatch]);
+  // }, [results2D, setTotalPages]);
   
   
   useEffect( () => {
