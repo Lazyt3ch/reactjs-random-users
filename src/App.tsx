@@ -27,6 +27,7 @@ import {
 // import store, {RootState} from "./redux/store";
 import actionTypes from "./redux/actionTypes";
 import {useDispatch} from 'react-redux';
+import statusesReducer from "./redux/reducers/statusesReducer";
 
 function App() {
   const {numResultsDefault} = constants;
@@ -37,10 +38,16 @@ function App() {
 
   const allProperties = getAllProperties();
 
-  const [statuses, setStatuses] = useState<[string, boolean][]>(
-    getUpdatedStatuses(allProperties, false));
-  const [validProperties, setValidProperties] = useState<string[]>(
-    getValidProperties(statuses));
+  const statuses = getUpdatedStatuses(allProperties, false);
+
+  // const [statuses, setStatuses] = useState<[string, boolean][]>(
+  //   getUpdatedStatuses(allProperties, false));
+  dispatch({ type: actionTypes.STATUSES, payload: statuses });
+
+  const validProperties = getValidProperties(statuses);
+  // const [validProperties, setValidProperties] = useState<string[]>(
+  //   getValidProperties(statuses));
+  dispatch({ type: actionTypes.VALID_PROPERTIES, payload: validProperties });
 
   const [results2D, setResults2D] = useState<string[][]>([]);
   const [gridColumnsFormula, setGridColumnsFormula] = useState<string>("");
