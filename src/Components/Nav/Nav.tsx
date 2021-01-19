@@ -1,17 +1,18 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {AppBar} from '@material-ui/core';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "./Nav.css";
 
 // import store from "../../redux/store";
 
-interface Props {
-  activePageNumber: number;
-}
+// interface Props {
+//   activePageNumber: number;
+// }
 
-function Nav(props: Props) {
-  const {activePageNumber} = props;
+// function Nav(props: Props) {
+function Nav() {
+  // const {activePageNumber} = props;
 
   return (
     <>
@@ -46,8 +47,8 @@ function Nav(props: Props) {
   );
 }
 
-Nav.propTypes = {
-  activePageNumber: PropTypes.number.isRequired,
-};
+// Nav.propTypes = {
+//   activePageNumber: PropTypes.number.isRequired,
+// };
 
 export default Nav;
