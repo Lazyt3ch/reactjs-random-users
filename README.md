@@ -9,8 +9,8 @@ You can check out the app in action [here](https://reactjs-random-users-20201209
 *   Here's how this small project evolved over time:
     *   It was built on [React](https://reactjs.org/) using [facebook/create-react-app](https://github.com/facebook/create-react-app) as a starting point. Initially, all of its components and helper functions were written in JavaScript (ECMAScript 2015+). 
     *   Some [Material-UI](https://material-ui.com/) components were added to ensure a more uniform look and feel when the app is opened in different browsers. 
-    *   All of the components and helper functions were rewritten in TypeScript.
-    *   Redux was added as part of Redux Toolkit.
+    *   All of the components and helper functions were rewritten in [TypeScript](https://www.typescriptlang.org/).
+    *   Redux was added as part of [Redux Toolkit](https://redux-toolkit.js.org/).
 
 *   When `id` is specified among the properties to be retrieved, some user IDs returned by RandomUser.me are empty/null:
 
