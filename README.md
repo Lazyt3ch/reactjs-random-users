@@ -1,6 +1,8 @@
-# Users Data Retriever and Viewer
+# User Data Retriever and Viewer
 
-You can use this simple web app to retrieve and view users data from RandomUser.me
+This simple web app retrieves and displays fake (that is, randomly generated) user data kindly provided by [RandomUser.me](https://randomuser.me/).
+
+You can check out the app in action [here](https://reactjs-random-users-20201209.netlify.app/).
 
 ## Technical notes
 
