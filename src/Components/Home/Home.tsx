@@ -18,12 +18,9 @@ function Home() {
         </li>
 
         <li>
-          <p>For some reason, when a <strong>user id</strong> is requested, RandomUser.me may return 
-          an invalid name&mdash;value pair like this:</p>
+          <p>When <strong>id</strong> is specified among the properties to be retrieved, some user IDs returned by RandomUser.me are empty/null:</p>
           <p><strong>id: &#x7B;name: "", value: null&#x7D;</strong></p>
-          <p>In such cases, when data is displayed in Data Viewer, each empty name will be replaced 
-            with <strong>&lt;""&gt;</strong>, and each null value will be replaced 
-            with <strong>&lt;null&gt;</strong>.</p>
+          <p>In Data Viewer, each empty name is displayed as <strong>&lt;""&gt;</strong>, and each null value is displayed as <strong>&lt;null&gt;</strong>.</p>
         </li>
 
         <li>
