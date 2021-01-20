@@ -16,7 +16,7 @@ function Home() {
         <li>
           Here's how this small project evolved over time:
           <ul>
-            <li>It was built on <a href="https://reactjs.org/">React</a> using <a href="https://github.com/facebook/create-react-app">facebook/create-react-app</a> as a starting point. Initially, all of its components and helper functions were written in JavaScript (ECMAScript 2015+).</li>
+            <li>It was built on <a href="https://reactjs.org/">React</a> using <a href="https://github.com/facebook/create-react-app">Create React App</a> as a starting point. Initially, all of its components and helper functions were written in JavaScript (ECMAScript 2015+).</li>
             <li>Some <a href="https://material-ui.com/">Material-UI</a> components were added to ensure a more uniform look and feel when the app is opened in different browsers.</li>
             <li>All of the components and helper functions were rewritten in <a href="https://www.typescriptlang.org/">TypeScript</a>.</li>
             <li>Redux was added as part of <a href="https://redux-toolkit.js.org/">Redux Toolkit</a>.</li>
