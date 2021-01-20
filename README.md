@@ -18,4 +18,4 @@ You can check out the app in action [here](https://reactjs-random-users-20201209
 
     In Data Viewer, each empty name is displayed as `<"">`, and each null value is displayed as `<null>`.
 
-*   It is not advisable to select too many properties at once as the resulting table may be cluttered with retrieved data, and some indivisible pieces of data (e.g. a phone number, an email address, or a web address) may have to be broken up and displayed in a few rows.
+*   It is not advisable to select too many properties at once as the resulting table may be cluttered with retrieved data, and some indivisible pieces of data (e.g. a phone number, an email address, or a web address) may have to be forced to wrap.
