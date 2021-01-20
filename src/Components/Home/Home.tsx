@@ -4,8 +4,12 @@ import "./Home.css";
 function Home() {
   return (
     <div className="home-page">
-      <h1>Users Data Retriever and Viewer</h1>
-      <p>You can use this simple web app to retrieve and view users data from RandomUser.me</p>
+      <h1>User Data Retriever and Viewer</h1>
+      <p>This simple web app retrieves and displays fake (that is, randomly generated) 
+        user data kindly provided
+        by <a href="https://randomuser.me/">RandomUser.me</a>.</p>
+      <p>You can find the app 
+        repo <a href="https://github.com/lazyt3ch/reactjs-random-users">here</a>.</p>
 
       <p><strong>Technical notes</strong></p>
       <ul>
