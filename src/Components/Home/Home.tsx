@@ -14,6 +14,14 @@ function Home() {
       <p><strong>Technical notes</strong></p>
       <ul>
         <li>
+          <p>Here's how this small project evolved over time:</p>
+          <ul>
+            <li></li>
+            <li>Some <a href="https://material-ui.com/">Material-UI</a> components were added to ensure a more uniform look and feel when the app is opened in different browsers.</li>
+            <li>All of the components and helper functions were rewritten in TypeScript.</li>
+            <li>Redux was added as part of Redux Toolkit.</li>
+          </ul>
+
           <p>This web app is built on <a href="https://reactjs.org/">React</a> using <a href="https://github.com/facebook/create-react-app">facebook/create-react-app</a> as a starting point. Initially, all of its components and helper functions were written in JavaScript (ECMAScript 2015+). Later, some <a href="https://material-ui.com/">Material-UI</a> components were added to the project to ensure a more uniform look and feel when the app is opened in different browsers. Even later, all of the components and helper functions were rewritten in TypeScript.</p>
         </li>
 
