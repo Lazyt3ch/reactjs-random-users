@@ -5,8 +5,8 @@ function Home() {
   return (
     <div className="home-page">
       <h1>User Data Retriever and Viewer</h1>
-      <p>This simple web app retrieves and displays fake (that is, randomly generated) 
-        user data kindly provided
+      <p>This simple web app retrieves and displays randomly generated 
+        data kindly provided
         by <a href="https://randomuser.me/">RandomUser.me</a>.</p>
       <p>You can find the app 
         repo <a href="https://github.com/lazyt3ch/reactjs-random-users">here</a>.</p>
@@ -14,7 +14,7 @@ function Home() {
       <p><strong>Technical notes</strong></p>
       <ul>
         <li>
-          <p>Here's how this small project evolved over time:</p>
+          Here's how this small project evolved over time:
           <ul>
             <li>It was built on <a href="https://reactjs.org/">React</a> using <a href="https://github.com/facebook/create-react-app">facebook/create-react-app</a> as a starting point. Initially, all of its components and helper functions were written in JavaScript (ECMAScript 2015+).</li>
             <li>Some <a href="https://material-ui.com/">Material-UI</a> components were added to ensure a more uniform look and feel when the app is opened in different browsers.</li>
