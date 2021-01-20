@@ -1,6 +1,6 @@
 # User Data Retriever and Viewer
 
-This simple web app retrieves and displays fake (that is, randomly generated) user data kindly provided by [RandomUser.me](https://randomuser.me/).
+This simple web app retrieves and displays randomly generated data kindly provided by [RandomUser.me](https://randomuser.me/).
 
 You can check out the app in action [here](https://reactjs-random-users-20201209.netlify.app/).
 
