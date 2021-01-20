@@ -33,7 +33,7 @@ function Home() {
           <p>It is not advisable to select too many properties at once as the resulting table 
             may be cluttered with retrieved data, and some indivisible pieces of data 
             (e.g. a phone number, an email address, or a web address) 
-            may have to be broken up and displayed in a few rows.</p>
+            may have to be forced to wrap.</p>
         </li>
       </ul>
     </div>
