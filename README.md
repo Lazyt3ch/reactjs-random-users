@@ -12,7 +12,7 @@ You can check out the app in action [here](https://reactjs-random-users-20201209
     *   All of the components and helper functions were rewritten in TypeScript.
     *   Redux was added as part of Redux Toolkit.
 
-*   When `id` is specified among the properties to be retrieved, some user IDs returned by RandomUser.me are empty:
+*   When `id` is specified among the properties to be retrieved, some user IDs returned by RandomUser.me are empty/null:
 
     `id: {name: "", value: null}`
 
