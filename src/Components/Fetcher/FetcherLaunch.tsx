@@ -90,9 +90,14 @@ function FetcherLaunch() {
     }
   }
 
-  function handleClearCache() {
-    clear();
-    // window.location.reload(false);
+  function handleClearCache() {    
+    setMessage("Now all the data will be deleted, and the Home page will open...");
+    setSeverity("info");
+    setTimeout( () => {
+      clear();
+      history.push("/");
+      window.location.reload(false);
+    }, 3000);
   }
 
   return (
