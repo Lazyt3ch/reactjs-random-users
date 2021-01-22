@@ -27,8 +27,11 @@ const rootReducer = combineReducers({
   totalPages: totalPagesReducer,
 });
 
+const preloadedState = load();
+
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  preloadedState: Object.keys(preloadedState).length ? preloadedState : {},
 });
 
 export default store;
