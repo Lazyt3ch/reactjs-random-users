@@ -12,6 +12,8 @@ import scrollTopArrReducer from "./reducers/scrollTopArrReducer";
 import prevPagePathReducer from "./reducers/prevPagePathReducer";
 import totalPagesReducer from './reducers/totalPagesReducer';
 
+import { save, load } from "redux-localstorage-simple";
+
 const rootReducer = combineReducers({
   numResults: numResultsReducer,
   statuses: statusesReducer,
