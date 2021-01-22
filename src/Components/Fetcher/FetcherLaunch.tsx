@@ -96,7 +96,9 @@ function FetcherLaunch() {
     setTimeout( () => {
       history.push("/");
       clear();
-      window.location.reload();
+      setTimeout( () => {
+        window.location.reload();
+      }, 200);      
     }, 3000);
   }
 
