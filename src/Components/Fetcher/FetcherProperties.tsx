@@ -31,11 +31,13 @@ function FetcherProperties() {
 
   const handleUnselectAll = () => {
     const updatedStatuses = getUpdatedStatuses(allProperties, false);
+    updateValidProperties(updatedStatuses);
     dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses });
   };
 
   const handleSelectAll = () => {
     const updatedStatuses = getUpdatedStatuses(allProperties, true);
+    updateValidProperties(updatedStatuses);
     dispatch({ type: actionTypes.STATUSES, payload: updatedStatuses });
   };
 
