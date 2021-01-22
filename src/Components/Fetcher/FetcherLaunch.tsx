@@ -9,6 +9,8 @@ import {RootState} from "../../redux/store";
 import actionTypes from "../../redux/actionTypes";
 import {useSelector, useDispatch} from 'react-redux';
 
+import {clear} from "redux-localstorage-simple";
+
 type Severity = "success" | "error" | "info" | "warning" | undefined;
 
 function FetcherLaunch() {
@@ -88,6 +90,11 @@ function FetcherLaunch() {
     }
   }
 
+  function handleClearCache() {
+    clear();
+    window.location.reload(false);
+  }
+
   return (
     <>
       {message.length && 
@@ -107,6 +114,15 @@ function FetcherLaunch() {
       >
         Retrieve data
       </SpacedButton>      
+
+      <SpacedButton variant="contained"
+        color="secondary"
+        mt="15px"
+        ml="30px"
+        onClick={handleClearCache} 
+      >
+        Reset all data
+      </SpacedButton>           
     </>
   );
 }
