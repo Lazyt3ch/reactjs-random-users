@@ -92,7 +92,7 @@ function FetcherLaunch() {
 
   function handleClearCache() {
     clear();
-    window.location.reload(false);
+    // window.location.reload(false);
   }
 
   return (
