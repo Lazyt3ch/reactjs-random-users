@@ -32,6 +32,7 @@ const preloadedState = load();
 const store = configureStore({
   reducer: rootReducer,
   preloadedState: Object.keys(preloadedState).length ? preloadedState : {},
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(save()),
 });
 
 export default store;
