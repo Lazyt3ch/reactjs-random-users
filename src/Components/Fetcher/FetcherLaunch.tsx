@@ -94,9 +94,9 @@ function FetcherLaunch() {
     setMessage("Now all the data will be deleted, and the Home page will open...");
     setSeverity("info");
     setTimeout( () => {
-      clear();
       history.push("/");
-      window.location.reload(false);
+      clear();
+      window.location.reload();
     }, 3000);
   }
 
