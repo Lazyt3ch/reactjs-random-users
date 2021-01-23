@@ -8,8 +8,7 @@ function Home() {
       <p>This simple web app retrieves and displays randomly generated 
         data kindly provided
         by <a href="https://randomuser.me/">RandomUser.me</a>.</p>
-      <p>You can find the app 
-        repo <a href="https://github.com/lazyt3ch/reactjs-random-users">here</a>.</p>
+      <p>If you want to see the app's insides, check out its <a href="https://github.com/lazyt3ch/reactjs-random-users">GitHub repository</a>.</p>
 
       <p><strong>Technical notes</strong></p>
       <ul>
