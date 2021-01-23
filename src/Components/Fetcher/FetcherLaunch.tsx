@@ -93,9 +93,9 @@ function FetcherLaunch() {
   function handleClearCache() {    
     setMessage("Now all the data will be deleted, and the Home page will open...");
     setSeverity("info");
+    clear();
     setTimeout( () => {
       // history.push("/");
-      clear();
       setTimeout( () => {
         window.location.reload();
       }, 200);      
