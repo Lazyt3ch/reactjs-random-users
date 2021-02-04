@@ -23,9 +23,9 @@ function Home() {
         </li>
 
         <li>
-          <p>When <span className="gray-bg">id</span> is specified among the properties to be retrieved, some user IDs returned by RandomUser.me are empty/null:</p>
-          <p><span className="gray-bg">id: &#x7B;name: "", value: null&#x7D;</span></p>
-          <p>In Data Viewer, each empty name is displayed as <span className="gray-bg">&lt;""&gt;</span>, and each null value is displayed as <span className="gray-bg">&lt;null&gt;</span>.</p>
+          <p>When <span className="home-page__gray-bg">id</span> is specified among the properties to be retrieved, some user IDs returned by RandomUser.me are empty/null:</p>
+          <p><span className="home-page__gray-bg">id: &#x7B;name: "", value: null&#x7D;</span></p>
+          <p>In Data Viewer, each empty name is displayed as <span className="home-page__gray-bg">&lt;""&gt;</span>, and each null value is displayed as <span className="home-page__gray-bg">&lt;null&gt;</span>.</p>
         </li>
 
         <li>
