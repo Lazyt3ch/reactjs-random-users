@@ -1,22 +1,22 @@
-.nav-container {
+.nav__container {
     display: flex;
     flex-direction: row;
     justify-items: flex-start;
 }
 
-.nav-link {
+.nav__link {
     text-decoration: none;
     color: white;
     padding: .5rem 1.5rem;
     font-weight: 500;
 }
 
-.nav-link-active {
+.nav__link_active {
     color: navy;
     background-color: white;
 }
 
-.nav-link:hover:not(.nav-link-active) {
+.nav__link:hover:not(.nav__link_active) {
     color: black;
     background-color: yellow;
 }

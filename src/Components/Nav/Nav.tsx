@@ -12,27 +12,27 @@ function Nav() {
   return (
     <>
       <AppBar position="fixed">
-        <div className="nav-container">
+        <div className="nav__container">
           <NavLink 
             to="/get" exact
-            className="nav-link"
-            activeClassName="nav-link-active" 
+            className="nav__link"
+            activeClassName="nav__link_active" 
           >
             Data Retriever
           </NavLink>
 
           <NavLink
             to={`/view/${activePageNumber + 1}`} exact
-            className="nav-link"
-            activeClassName="nav-link-active" 
+            className="nav__link"
+            activeClassName="nav__link_active" 
           >
             Data Viewer
           </NavLink>
 
           <NavLink 
             to="/" exact
-            className="nav-link"
-            activeClassName="nav-link-active" 
+            className="nav__link"
+            activeClassName="nav__link_active" 
           >
             Home Page
           </NavLink>  
