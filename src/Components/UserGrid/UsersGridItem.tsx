@@ -73,7 +73,7 @@ function UsersGridItem(props: Props) {
   return (
     <div style={style}>
       { rowIndex > 0
-        ? <div className="grid-item property-content"
+        ? <div className="users-view__grid-item property-content"
             dir="ltr"
           >
             {strArr.map ( (part, partIdx) => 
@@ -92,7 +92,7 @@ function UsersGridItem(props: Props) {
                     >
                       {part}
                       {tooltipArr[partIdx] && tooltipArr[partIdx].length
-                        ? <span className="tooltiptext"                        
+                        ? <span className="tooltip-text"                        
                             aria-label={tooltipArr[partIdx]}   
                           >
                             {tooltipArr[partIdx]}
@@ -104,7 +104,7 @@ function UsersGridItem(props: Props) {
             )}
             
           </div>
-        : <div className="grid-item property-name">
+        : <div className="users-view__grid-item property-name">
             {value}
           </div>
       }

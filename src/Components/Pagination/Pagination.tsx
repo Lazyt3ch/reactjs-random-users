@@ -72,7 +72,7 @@ function Pagination() {
         >
           &lt;&lt;
           {activePageNumber > 0 &&
-            <span className="tooltiptext" style={{minWidth: "11rem"}}>
+            <span className="tooltip-text" style={{minWidth: "11rem"}}>
               Go to First Page
             </span>           
           }
@@ -83,7 +83,7 @@ function Pagination() {
         >
           &nbsp;&lt;
           {activePageNumber > 0 &&
-            <span className="tooltiptext" style={{minWidth: "11rem"}}>
+            <span className="tooltip-text" style={{minWidth: "11rem"}}>
               {`Go to Page ${activePageNumber}`}
             </span>           
           }          
@@ -161,7 +161,7 @@ function Pagination() {
         >
           &nbsp;&gt;
           {activePageNumber < totalPages - 1 &&
-            <span className="tooltiptext" style={{minWidth: "11rem"}}>
+            <span className="tooltip-text" style={{minWidth: "11rem"}}>
               {`Go to Page ${activePageNumber + 2}`}
             </span>           
           }             
@@ -174,7 +174,7 @@ function Pagination() {
         >
           &gt;&gt;
           {activePageNumber < totalPages - 1 &&
-            <span className="tooltiptext" style={{minWidth: "11rem"}}>
+            <span className="tooltip-text" style={{minWidth: "11rem"}}>
               Go to Last Page
             </span>           
           }

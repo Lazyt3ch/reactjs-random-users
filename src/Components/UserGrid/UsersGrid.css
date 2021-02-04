@@ -1,4 +1,4 @@
-.users-view-top-wrapper {
+.users-view__top-wrapper {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -10,27 +10,27 @@
     z-index: 15;    
 }
 
-.grid-settings {
+.users-view__grid-settings {
     margin-top: 1.5rem;
     padding-left: .5rem;
     padding-top: .5rem;
     background-color: white;
 }
 
-.grid-container-wrapper {
+.users-view__grid__wrapper {
     padding: 10rem 0 0 0;   
     width: 100%;   
     margin-bottom: 1rem;
 }
 
-.grid-container {
+.users-view__grid__container {
     display: grid;
     grid-gap: .3rem 1rem;
     width: 100%;    
     padding: 0 1rem;
 }
 
-.grid-item {
+.users-view__grid-item {
     overflow-wrap: break-word;
 }
 
@@ -50,7 +50,7 @@
     display: inline;
 }
   
-.tooltip .tooltiptext {
+.tooltip .tooltip-text {
     visibility: hidden;
     font-size: 1rem;
     font-weight: 400;
@@ -66,7 +66,7 @@
     left: 0%;
 }
   
-.tooltip:not(.no-arrow) .tooltiptext::after {
+.tooltip:not(.no-arrow) .tooltip-text::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -77,7 +77,7 @@
     border-color: black transparent transparent transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltip:hover .tooltip-text {
     visibility: visible;
 }
 

@@ -71,8 +71,8 @@ function UsersGrid() {
   return (
     <>
 
-      <div className="users-view-top-wrapper"> 
-        <div className="grid-settings">
+      <div className="users-view__top-wrapper"> 
+        <div className="users-view__grid-settings">
           <SpacedCheckbox 
             color="primary"
             mb={"0px"}          
@@ -88,8 +88,8 @@ function UsersGrid() {
         <Pagination />        
       </div>
 
-      <div className="grid-container-wrapper">
-        <div className="grid-container" id="users-grid-container"
+      <div className="users-view__grid__wrapper">
+        <div className="users-view__grid__container" id="users-grid-container"
           style={{
             gridTemplateColumns: gridColumnsFormula,
           }}
