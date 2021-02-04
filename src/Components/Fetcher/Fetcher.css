@@ -3,12 +3,12 @@
     margin-left: 1rem;
 }
 
-.fetcher-properties-wrapper {
+.fetcher__properties__wrapper {
     display: flex;
     flex-direction: row;
 }
 
-.fetcher-properties-checkboxes-wrapper {
+.fetcher__properties__checkboxes__wrapper {
     width: 24rem;
     height: 18.5rem;
     display: flex;
@@ -16,7 +16,7 @@
     flex-wrap: wrap;
 }
 
-.fetcher-properties-buttons-wrapper {
+.fetcher__properties__buttons__wrapper {
     margin-top: 1.5rem;
     margin-left: 1rem;
     display: flex;

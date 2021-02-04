@@ -87,8 +87,8 @@ function FetcherProperties() {
         Select user properties to retrieve
       </p>
 
-      <div className="fetcher-properties-wrapper">      
-        <ul className="fetcher-properties-checkboxes-wrapper"
+      <div className="fetcher__properties__wrapper">      
+        <ul className="fetcher__properties__checkboxes__wrapper"
           style={{listStyleType: "none", paddingLeft: 0}}
         
         >
@@ -108,7 +108,7 @@ function FetcherProperties() {
           } 
         </ul>
         
-        <div className="fetcher-properties-buttons-wrapper">
+        <div className="fetcher__properties__buttons__wrapper">
           <SpacedButton variant="outlined"
             color="primary"
             mb={"20px"}
