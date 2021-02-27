@@ -21,16 +21,37 @@ import {
 import actionTypes from "./redux/actionTypes";
 import {useDispatch, useSelector} from 'react-redux';
 import { RootState } from "./redux/store";
+// import store from "./redux/store";
 
-import { load } from "redux-localstorage-simple";
+// import { load, save } from "redux-localstorage-simple";
+// import {configureStore} from '@reduxjs/toolkit';
 
 function App() {
-  const loadFromStorage = () => {
-    load();
-    console.log("loading from localStorage");
-  }
+  // const loadFromStorage = () => {
+  //   const preloadedState = load();
+  //   store = configureStore({
+  //     reducer: rootReducer,
+  //     preloadedState: Object.keys(preloadedState).length ? preloadedState : {},
+  //     middleware: (getDefaultMiddleware) => 
+  //       getDefaultMiddleware().concat(save({ debounce: 500 })),
+  //   });
+  //   console.log("loading from localStorage");
+  // }
   
-  window.addEventListener("storage", loadFromStorage);
+  useEffect( () => {
+    const reloadData = () => {
+      // window.location.reload();
+      window.removeEventListener("storage", reloadData);
+    };
+
+    window.addEventListener("storage", reloadData);
+    console.log("added event listener");
+
+    return () => {
+      window.removeEventListener("storage", reloadData);
+      console.log("removed event listener");
+    };
+  }, []);
 
   const dispatch = useDispatch();
 

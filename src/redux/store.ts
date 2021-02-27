@@ -29,7 +29,9 @@ const rootReducer = combineReducers({
 
 const preloadedState = load();
 
-const store = configureStore({
+let store;
+
+store = configureStore({
   reducer: rootReducer,
   preloadedState: Object.keys(preloadedState).length ? preloadedState : {},
   middleware: (getDefaultMiddleware) => 
