@@ -15,6 +15,8 @@ import totalPagesReducer from './reducers/totalPagesReducer';
 import { save, load } from "redux-localstorage-simple";
 import { createStateSyncMiddleware, initMessageListener } from 'redux-state-sync';
 
+// import actionTypes from "./actionTypes"
+
 const rootReducer = combineReducers({
   numResults: numResultsReducer,
   statuses: statusesReducer,
@@ -31,7 +33,9 @@ const rootReducer = combineReducers({
 const preloadedState = load();
 
 const stateSyncConfig = {
-  blacklist: [], // Add blacklisted actions
+  blacklist: [
+    // actionTypes.ACTIVE_PAGE_NUMBER, // May cause issues if the number of pages is reduced!
+  ], // Add blacklisted actions
 };
 
 const stateSyncMiddlewares = [createStateSyncMiddleware(stateSyncConfig)];
