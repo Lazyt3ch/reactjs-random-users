@@ -22,7 +22,16 @@ import actionTypes from "./redux/actionTypes";
 import {useDispatch, useSelector} from 'react-redux';
 import { RootState } from "./redux/store";
 
+import { load } from "redux-localstorage-simple";
+
 function App() {
+  const loadFromStorage = () => {
+    load();
+    console.log("loading from localStorage");
+  }
+  
+  window.addEventListener("storage", loadFromStorage);
+
   const dispatch = useDispatch();
 
   const results2D = useSelector((state: RootState) => state.results2D);

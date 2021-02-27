@@ -36,10 +36,6 @@ const store = configureStore({
     getDefaultMiddleware().concat(save({ debounce: 500 })),
 });
 
-const loadFromStorage = () => load();
-
-window.addEventListener("storage", loadFromStorage);
-
 export default store;
 
 export type RootState = ReturnType<typeof rootReducer>;
