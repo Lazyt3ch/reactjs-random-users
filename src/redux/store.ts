@@ -13,7 +13,6 @@ import prevPagePathReducer from "./reducers/prevPagePathReducer";
 import totalPagesReducer from './reducers/totalPagesReducer';
 
 import { save, load } from "redux-localstorage-simple";
-
 import { createStateSyncMiddleware, initMessageListener } from 'redux-state-sync';
 
 const rootReducer = combineReducers({
@@ -31,11 +30,11 @@ const rootReducer = combineReducers({
 
 const preloadedState = load();
 
-const config = {
+const stateSyncConfig = {
   blacklist: [], // Add blacklisted actions
 };
 
-const stateSyncMiddlewares = [createStateSyncMiddleware(config)];
+const stateSyncMiddlewares = [createStateSyncMiddleware(stateSyncConfig)];
 
 const store = configureStore({
   reducer: rootReducer,
