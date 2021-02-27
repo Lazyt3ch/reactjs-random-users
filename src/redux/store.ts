@@ -12,7 +12,9 @@ import scrollTopArrReducer from "./reducers/scrollTopArrReducer";
 import prevPagePathReducer from "./reducers/prevPagePathReducer";
 import totalPagesReducer from './reducers/totalPagesReducer';
 
-import { save, load } from "redux-localstorage-simple";
+// import { save, load } from "redux-localstorage-simple";
+
+import { createStateSyncMiddleware, initMessageListener } from 'redux-state-sync';
 
 const rootReducer = combineReducers({
   numResults: numResultsReducer,
@@ -27,14 +29,28 @@ const rootReducer = combineReducers({
   totalPages: totalPagesReducer,
 });
 
-const preloadedState = load();
+// const preloadedState = load();
+
+// const store = configureStore({
+//   reducer: rootReducer,
+//   preloadedState: Object.keys(preloadedState).length ? preloadedState : {},
+//   middleware: (getDefaultMiddleware) => 
+//     getDefaultMiddleware().concat(save({ debounce: 500 })),
+// });
+
+const config = {
+  blacklist: [],
+};
+
+const middlewares = [createStateSyncMiddleware(config)];
 
 const store = configureStore({
   reducer: rootReducer,
-  preloadedState: Object.keys(preloadedState).length ? preloadedState : {},
   middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware().concat(save({ debounce: 500 })),
+    getDefaultMiddleware().concat(...middlewares),  
 });
+
+initMessageListener(store);
 
 export default store;
 
